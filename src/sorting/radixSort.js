@@ -8,7 +8,7 @@
     When to use     : ??
     Remark          : ??
 */
-
+// FIXME sorting is broken on the negative values
 import { getDigit, getLength } from '../util/math.js'
 
 export const radixSort = (arr) => {
