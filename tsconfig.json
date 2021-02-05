@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "dist",
+
+        "module": "esnext",
+        "target": "esnext",
+        // "strict": true,
+        // "alwaysStrict": true,
+        "allowJs": true,
+        "checkJs": true,
+        // "isolatedModules": true,
+
+        "lib": ["dom", "ESNext"],
+
+        "assumeChangesOnlyAffectDirectDependencies": true,
+        "incremental": true,
+        // "inlineSourceMap": true,
+        // "inlineSources": true,
+        "removeComments": true,
+
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noUnusedParameters": true,
+        "noEmitOnError": true,
+
+        // "listFiles": true,
+        "locale": "ru",
+        "pretty": true,
+        "watch": true
+    },
+    "include": ["src/**/*.ts", "sa/unique.ts"],
+    "exclude": ["node_modules", "src/**/*.spec.ts"]
+}
