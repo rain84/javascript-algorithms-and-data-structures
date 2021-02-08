@@ -86,16 +86,20 @@ describe('SingleLinkedList', () => {
 		expect(list.head === list.tail).toBeTruthy()
 	})
 
-	// test('should unshift', () => {
-	// 	list.unshift(6)
-	// 	expect(list.length).toBe(4)
-	// 	expect(list.head.val).toBe(6)
+	test('should unshift', () => {
+		list.unshift(6)
+		expect(list.length).toBe(4)
+		expect(list.head.val).toBe(6)
 
-	// 	list.unshift(5, 4)
-	// 	expect(list.length).toBe(6)
-	// 	expect(list.head.val).toBe(4)
-	// 	expect([...list]).toMatchObject([4, 5, 6, 1, 2, 3])
-	// })
+		list.unshift(5, 4)
+		expect(list.length).toBe(6)
+		expect(list.head.val).toBe(4)
+		expect([...list]).toMatchObject([4, 5, 6, 1, 2, 3])
+		list.shift()
+		list.shift()
+		list.shift()
+		expect([...list]).toMatchObject([1, 2, 3])
+	})
 
 	test('should spread values', () => {
 		expect([...list]).toMatchObject([1, 2, 3])

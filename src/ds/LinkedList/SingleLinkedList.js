@@ -1,4 +1,4 @@
-const node = ({ val, next = null }) => ({ val, next })
+const makeNode = ({ val, next = null }) => ({ val, next })
 
 export class SingleLinkedList {
 	#head = null
@@ -23,33 +23,20 @@ export class SingleLinkedList {
 		return this.#tail
 	}
 
-	// push(val, ...values) {
-	// 	if (!val) return
+	push(val, ...values) {
+		if (!val) return
 
-	// 	this.#tail = node({ val })
-	// 	this.#length++
+		// TODO:  maybe there is a more elegant solution
+		const node = makeNode({ val })
+		if (this.#tail) {
+			this.#tail.next = node
+			this.#tail = this.#tail.next
+		} else this.#tail = node
 
-	// 	if (!this.#head) this.#head = this.#tail
-	// 	if (values.length) this.push(values)
-	// }
+		this.#length++
 
-	push(...values) {
-		if (!values.length) return
-
-		if (this.#head === null) {
-			const val = values.shift()
-			this.#head = this.#tail = node({ val })
-			this.#length++
-
-			if (!values.length) return
-		}
-
-		values.reduce((prev, val) => {
-			this.#length++
-			this.#tail = node({ val })
-			prev.next = this.#tail
-			return this.#tail
-		}, this.#tail)
+		if (!this.#head) this.#head = this.#tail
+		if (values.length) this.push.apply(this, values)
 	}
 
 	pop() {
@@ -88,21 +75,15 @@ export class SingleLinkedList {
 		return val
 	}
 
-	unshift(...values) {
-		if (this.#head === null) {
-			const val = values.shift()
-			this.#head = this.#tail = node({ val })
-			this.#length++
+	unshift(val, ...values) {
+		if (!val) return
 
-			if (!values.length) return
-		}
+		const node = makeNode({ val, next: this.#head })
+		this.#head = node
+		if (!this.#tail) this.#tail = this.#head
+		this.#length++
 
-		values.reduce((prev, val) => {
-			this.#length++
-			this.#tail = node({ val })
-			prev.next = this.#tail
-			return this.#tail
-		}, this.#tail)
+		if (values.length) this.unshift.apply(this, values)
 	}
 
 	append(list) {
