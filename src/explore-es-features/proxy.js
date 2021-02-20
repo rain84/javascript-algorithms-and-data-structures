@@ -1,25 +1,18 @@
-export class ProxySuccessor {
-	name = 'ProxySuccessor'
-	#instance = {}
+const target = {
+	val: 7
+}
 
-	constructor() {
-		this.#instance = new Proxy(this.#instance, {
-			get(target, key, receiver) {
-				if (key === Symbol.iterator) return target[Symbol.iterator].bind(target)
-				// else if (!Number.isNaN(+key))
-				//     return target.get
+const handler = {
+	get: (target, name) => target[name],
 
-				return Reflect.get(target, key, receiver)
-			}
-		})
-		return this.#instance
-	}
-
-	getName() {
-		return this.name
-	}
-
-	get(index) {
-		return `Number ${index}`
+	set: (target, prop, val) => {
+		console.log('set', prop, val)
+		target[prop] = val
+		return val
 	}
 }
+
+const p = new Proxy(target, handler)
+
+console.log(++p.val)
+console.log(++p.val)
