@@ -5,7 +5,8 @@
 	"main": "./src/index.js",
 	"scripts": {
 		"start": "nodemon ./src/index.js",
-		"test": "jest --watchAll"
+		"test": "jest --watchAll",
+		"tsc": "tsc"
 	},
 	"author": "Aleksandr Gerasimov <rainy_sky@mail.ru>",
 	"license": "MIT",

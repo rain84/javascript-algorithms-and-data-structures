@@ -1,35 +1,26 @@
 {
-    "compilerOptions": {
-        "rootDir": "src",
-        "outDir": "dist",
-
-        "module": "esnext",
-        "target": "esnext",
-        // "strict": true,
-        // "alwaysStrict": true,
-        "allowJs": true,
-        "checkJs": true,
-        // "isolatedModules": true,
-
-        "lib": ["dom", "ESNext"],
-
-        "assumeChangesOnlyAffectDirectDependencies": true,
-        "incremental": true,
-        // "inlineSourceMap": true,
-        // "inlineSources": true,
-        "removeComments": true,
-
-        "strictNullChecks": true,
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noUnusedParameters": true,
-        "noEmitOnError": true,
-
-        // "listFiles": true,
-        "locale": "ru",
-        "pretty": true,
-        "watch": true
-    },
-    "include": ["src/**/*.ts", "sa/unique.ts"],
-    "exclude": ["node_modules", "src/**/*.spec.ts"]
+	"compilerOptions": {
+		"target": "ES2015",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": false,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react-jsx",
+		"strictNullChecks": true,
+		"baseUrl": "./src",
+		"locale": "ru",
+		"pretty": true,
+		"watch": true
+	},
+	"include": ["src/**/*.ts"],
+	"exclude": ["node_modules", "src/**/*.spec.ts", "src/interview-tasks"]
 }
