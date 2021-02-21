@@ -1,4 +1,10 @@
 {
+	"ts-node": {
+		"pretty": true,
+		"isolatedModules": false,
+		"emit": true,
+		"sourceMap": false
+	},
 	"compilerOptions": {
 		"target": "ES2015",
 		"lib": ["dom", "dom.iterable", "esnext"],
@@ -8,6 +14,7 @@
 		"allowSyntheticDefaultImports": true,
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
+		"incremental": true,
 		"noFallthroughCasesInSwitch": true,
 		"module": "esnext",
 		"moduleResolution": "node",
