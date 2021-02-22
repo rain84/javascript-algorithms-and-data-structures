@@ -3,23 +3,24 @@ type TCallback = (data?: unknown) => void
 export abstract class EventEmitter {
 	private static events = new Map<string, TCallback[]>()
 
-	trigger(event: string, data?: unknown) {
-		if (!EventEmitter.events.has(event)) return
+	static getEventCbs(event: string) {
+		return EventEmitter.getCallbacks(event)
+	}
 
-		EventEmitter.events.get(event)?.forEach((cb) => cb(data))
+	trigger(event: string, data?: unknown) {
+		EventEmitter.getCallbacks(event)?.forEach((cb) => cb(data))
 	}
 
 	on(event: string, cb: TCallback) {
-		const callbacks = EventEmitter.events.get(event) ?? []
+		const callbacks = EventEmitter.getCallbacks(event)
 		callbacks.push(cb)
-
 		EventEmitter.events.set(event, callbacks)
 
 		return () => this.off(event, cb)
 	}
 
 	off(event: string, cb: TCallback) {
-		const callbacks = EventEmitter.events.get(event) ?? []
+		const callbacks = EventEmitter.getCallbacks(event)
 		const index = callbacks.indexOf(cb)
 
 		if (index === -1) return
@@ -35,5 +36,9 @@ export abstract class EventEmitter {
 		}
 
 		this.on(event, wrapper)
+	}
+
+	private static getCallbacks(event: string) {
+		return EventEmitter.events.get(event) ?? []
 	}
 }
