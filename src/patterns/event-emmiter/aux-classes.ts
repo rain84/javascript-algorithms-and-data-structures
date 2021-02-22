@@ -4,10 +4,10 @@ export enum EVENT_TYPES {
 	'INCREMENT' = 'INCREMENT',
 	'A:INCREMENT' = 'A:INCREMENT',
 	'DECREMENT' = 'DECREMENT',
-	'SET' = 'SET'
+	'ONLY_ONCE' = 'ONLY_ONCE'
 }
 
-export class A extends EventEmitter {
+export class ClassA extends EventEmitter {
 	private _counter = 0
 
 	get counter() {
@@ -20,11 +20,11 @@ export class A extends EventEmitter {
 		this.on(EVENT_TYPES.INCREMENT, () => this._counter++)
 		this.on(EVENT_TYPES['A:INCREMENT'], () => this._counter++)
 		this.on(EVENT_TYPES.DECREMENT, () => this._counter--)
-		this.once(EVENT_TYPES.SET, () => (this._counter = 100))
+		this.once(EVENT_TYPES.ONLY_ONCE, () => (this._counter += 100))
 	}
 }
 
-export class B extends EventEmitter {
+export class ClassB extends EventEmitter {
 	private _counter = 0
 
 	get counter() {
@@ -33,9 +33,9 @@ export class B extends EventEmitter {
 	constructor() {
 		super()
 
-		this.on(EVENT_TYPES.INCREMENT, () => this._counter++)
+		this.on(EVENT_TYPES.INCREMENT, () => (this._counter += 2))
 		this.on(EVENT_TYPES['A:INCREMENT'], () => this._counter++)
-		this.on(EVENT_TYPES.DECREMENT, () => this._counter--)
-		this.once(EVENT_TYPES.SET, () => (this._counter = 100))
+		this.on(EVENT_TYPES.DECREMENT, () => (this._counter -= 2))
+		this.once(EVENT_TYPES.ONLY_ONCE, () => (this._counter += 200))
 	}
 }

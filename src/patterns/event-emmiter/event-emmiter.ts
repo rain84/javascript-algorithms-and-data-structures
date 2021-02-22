@@ -1,44 +1,66 @@
-type TCallback = (data?: unknown) => void
+type TCallback = (...payload: unknown[]) => void
+type TCallbacksMap = Map<EventEmitter, TCallback>
+type TEventsMap = Map<string, TCallbacksMap>
 
+// TODO:    1) add support of the multiple callback
+//          2) try to find solution to play well with WeakMap and GC
 export abstract class EventEmitter {
-	private static events = new Map<string, TCallback[]>()
+	//  events design:
+	//  Map({
+	//      'eventName': Map({
+	//          [instanceof EventEmitter]: TCallback
+	//      })
+	//  })
+	private static events: TEventsMap = new Map()
 
 	static getEventCbs(event: string) {
-		return EventEmitter.getCallbacks(event)
+		return EventEmitter.events.get(event)
 	}
 
-	trigger(event: string, data?: unknown) {
-		EventEmitter.getCallbacks(event)?.forEach((cb) => cb(data))
+	trigger(event: string, ...payload: unknown[]) {
+		const callbacks = EventEmitter.events.get(event)
+
+		if (!callbacks) return
+
+		for (const [self, cb] of callbacks) cb.apply(self, payload)
 	}
 
 	on(event: string, cb: TCallback) {
-		const callbacks = EventEmitter.getCallbacks(event)
-		callbacks.push(cb)
+		const callbacks = EventEmitter.events.get(event) ?? new Map()
+
+		callbacks.set(this, cb)
 		EventEmitter.events.set(event, callbacks)
 
-		return () => this.off(event, cb)
+		return () => this.off(event)
 	}
 
-	off(event: string, cb: TCallback) {
-		const callbacks = EventEmitter.getCallbacks(event)
-		const index = callbacks.indexOf(cb)
-
-		if (index === -1) return
-
-		callbacks.splice(index, 1)
-		EventEmitter.events.set(event, callbacks)
+	off(event?: string) {
+		if (event) {
+			EventEmitter.deleteCallback(event, this)
+		} else {
+			for (const [event] of EventEmitter.events) {
+				EventEmitter.deleteCallback(event, this)
+			}
+		}
 	}
 
 	once(event: string, cb: TCallback) {
-		const wrapper = (...args: unknown[]) => {
+		const wrapper: TCallback = (...args) => {
 			cb(...args)
-			this.off(event, wrapper)
+			this.off(event)
 		}
 
 		this.on(event, wrapper)
 	}
 
-	private static getCallbacks(event: string) {
-		return EventEmitter.events.get(event) ?? []
+	private static deleteCallback(event: string, self: EventEmitter) {
+		const callbacks = EventEmitter.events.get(event)
+
+		if (!callbacks) return
+
+		callbacks.delete(self)
+
+		if (callbacks.size === 0) EventEmitter.events.delete(event)
+		else EventEmitter.events.set(event, callbacks)
 	}
 }
