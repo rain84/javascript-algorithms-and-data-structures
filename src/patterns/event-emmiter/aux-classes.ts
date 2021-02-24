@@ -14,6 +14,10 @@ export class ClassA extends EventEmitter {
 		return this._counter
 	}
 
+	set counter(val: number) {
+		this._counter = val
+	}
+
 	constructor() {
 		super()
 

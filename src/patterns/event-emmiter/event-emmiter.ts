@@ -1,6 +1,8 @@
 type TCallback = (...payload: unknown[]) => void
-type TCallbacksMap = Map<EventEmitter, TCallback>
-type TEventsMap = Map<string, TCallbacksMap>
+type TTuple1ArrayOfCallbacks = [TCallback[]]
+type TTuple1ObjectOfCallbacks = [{ [prop: string]: TCallback }]
+type T1CallbackTuple = [TCallback]
+type TEventsMap = Map<string, Map<EventEmitter, Set<TCallback>>>
 
 // TODO:    1) add support of the multiple callback
 //          2) try to find solution to play well with WeakMap and GC
@@ -8,7 +10,7 @@ export abstract class EventEmitter {
 	//  events design:
 	//  Map({
 	//      'eventName': Map({
-	//          [instanceof EventEmitter]: TCallback
+	//          [instanceof EventEmitter]: Set<TCallback>
 	//      })
 	//  })
 	private static events: TEventsMap = new Map()
@@ -18,28 +20,33 @@ export abstract class EventEmitter {
 	}
 
 	trigger(event: string, ...payload: unknown[]) {
-		const callbacks = EventEmitter.events.get(event)
+		const cbMap = EventEmitter.events.get(event)
 
-		if (!callbacks) return
+		if (!cbMap) return
 
-		for (const [self, cb] of callbacks) cb.apply(self, payload)
+		cbMap.forEach((cbSet, self) => {
+			cbSet.forEach((cb) => {
+				cb.apply(self, payload)
+			})
+		})
 	}
 
-	on(event: string, cb: TCallback) {
-		const callbacks = EventEmitter.events.get(event) ?? new Map()
+	on(event: string, ...cbs: TCallback[]) {
+		const cbMap = EventEmitter.events.get(event) ?? new Map()
+		const cbSet = cbMap.get(this) ?? new Set<TCallback>()
 
-		callbacks.set(this, cb)
-		EventEmitter.events.set(event, callbacks)
+		cbMap.set(this, new Set([...cbSet, ...cbs]))
+		EventEmitter.events.set(event, cbMap)
 
-		return () => this.off(event)
+		return () => this.off(event, ...cbs)
 	}
 
-	off(event?: string) {
+	off(event?: string, ...cbs: TCallback[]) {
 		if (event) {
-			EventEmitter.deleteCallback(event, this)
+			EventEmitter.deleteCallbacks(event, cbs, this)
 		} else {
 			for (const [event] of EventEmitter.events) {
-				EventEmitter.deleteCallback(event, this)
+				EventEmitter.deleteCallbacks(event, cbs, this)
 			}
 		}
 	}
@@ -53,14 +60,19 @@ export abstract class EventEmitter {
 		this.on(event, wrapper)
 	}
 
-	private static deleteCallback(event: string, self: EventEmitter) {
-		const callbacks = EventEmitter.events.get(event)
+	private static deleteCallbacks(event: string, cbs: TCallback[], self: EventEmitter) {
+		const cbMap = EventEmitter.events.get(event)
+		const cbSet = cbMap?.get(self)
 
-		if (!callbacks) return
+		if (!cbMap || !cbSet) return
 
-		callbacks.delete(self)
+		if (cbs.length === 0) cbSet.clear()
+		else cbs.forEach((cb) => cbSet.delete(cb))
 
-		if (callbacks.size === 0) EventEmitter.events.delete(event)
-		else EventEmitter.events.set(event, callbacks)
+		if (cbSet.size === 0) cbMap.delete(self)
+		else cbMap.set(self, cbSet)
+
+		if (cbMap.size === 0) EventEmitter.events.delete(event)
+		else EventEmitter.events.set(event, cbMap)
 	}
 }
