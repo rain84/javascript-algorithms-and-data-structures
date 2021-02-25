@@ -12,10 +12,6 @@ export abstract class EventEmitter {
 	//  })
 	private static events: TEventsMap = new Map()
 
-	static getEventCbs(event: string) {
-		return EventEmitter.events.get(event)
-	}
-
 	trigger(event: string, ...payload: unknown[]) {
 		const cbMap = EventEmitter.events.get(event)
 
