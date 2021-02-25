@@ -1,11 +1,8 @@
 type TCallback = (...payload: unknown[]) => void
-type TTuple1ArrayOfCallbacks = [TCallback[]]
-type TTuple1ObjectOfCallbacks = [{ [prop: string]: TCallback }]
-type T1CallbackTuple = [TCallback]
 type TEventsMap = Map<string, Map<EventEmitter, Set<TCallback>>>
 
-// TODO:    1) add support of the multiple callback
-//          2) try to find solution to play well with WeakMap and GC
+// TODO:    try to find solution to play well with WeakMap and GC
+//          https://github.com/tc39/proposal-weakrefs#iterable-weakmaps
 export abstract class EventEmitter {
 	//  events design:
 	//  Map({
