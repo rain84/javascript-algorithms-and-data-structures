@@ -1,5 +1,5 @@
 import path from 'path'
-import { register } from 'ts-node'
+import { create } from 'ts-node'
 import { traverseDirRecursive } from './util/index.js'
 import ts from 'typescript'
 
@@ -24,7 +24,7 @@ const execScript = async (script) => {
 
 		if (is.js) return import(entry.path)
 		if (is.ts) {
-			const tsNode = register()
+			const tsNode = create()
 
 			Object.assign(tsNode.config.options, {
 				isolatedModules: false,
@@ -32,8 +32,8 @@ const execScript = async (script) => {
 			})
 
 			try {
-				const compilled = tsNode.compile('', entry.path)
-				console.log('Successfully compiled\n', compilled)
+				tsNode.compile('', entry.path)
+				console.log('Successfully compiled\n')
 			} catch (e) {
 				console.log('Catched on ts-node compillation: \n', e)
 			}
