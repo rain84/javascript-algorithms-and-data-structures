@@ -1,4 +1,4 @@
-import { maxSubArray, addToSet } from './max-sub-array.airbnb'
+import { maxSubArray, addToSet } from './max-sub-array'
 
 describe('MaxSubArray', () => {
 	let arr = []
