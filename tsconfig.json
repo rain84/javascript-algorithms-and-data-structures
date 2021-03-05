@@ -1,33 +1,33 @@
 {
-	"ts-node": {
-		"pretty": true,
-		"isolatedModules": false,
-		"emit": true,
-		"sourceMap": false
-	},
-	"compilerOptions": {
-		"target": "ES2015",
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowJs": false,
-		"skipLibCheck": true,
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-		"incremental": true,
-		"noFallthroughCasesInSwitch": true,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"noEmit": true,
-		"jsx": "react-jsx",
-		"strictNullChecks": true,
-		"baseUrl": "./src",
-		"locale": "ru",
-		"pretty": true,
-		"watch": true
-	},
-	"include": ["src/**/*.ts"],
-	"exclude": ["node_modules", "src/**/*.spec.ts", "src/interview-tasks"]
+  "ts-node": {
+    "pretty": true,
+    "isolatedModules": false,
+    "emit": true,
+    "sourceMap": false
+  },
+  "compilerOptions": {
+    "target": "ES2015",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strictNullChecks": true,
+    "baseUrl": "./src",
+    "locale": "ru",
+    "pretty": true,
+    "watch": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "src/**/*.spec.ts", "src/interview-tasks"]
 }
