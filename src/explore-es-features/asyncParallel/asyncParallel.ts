@@ -13,9 +13,7 @@ interface P<T> extends Promise<PResult<T>> {
     [promiseName]?: string
 }
 
-interface Promises<T> {
-    [prop: string]: Promise<T>
-}
+interface Promises<T> extends Object<Promise<T>> {}
 
 type U = unknown
 type ToArray<T> = (promises: Promises<T>) => P<U>[]

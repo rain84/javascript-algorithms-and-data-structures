@@ -23,7 +23,8 @@ describe('ParallelAsync', () => {
             config: fakedFetch(1),
         })
     })
-    test('should return proxy', async () => {
+
+    test('proxy should return data asyncronously', async () => {
         expect(heavyFetches).toBeDefined()
 
         expect(await heavyFetches.settings).toBe(3)
