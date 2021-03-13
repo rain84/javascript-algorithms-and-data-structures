@@ -1,24 +1,53 @@
-//  testing of primitive converttion of object
+const fakedFetch = (timeout) => new Promise((resolve) => setTimeout(() => resolve(timeout), timeout * 1000))
+
 const obj = {
-	name: 'stroage',
+    name: 'storage',
 
-	valueOf() {
-		console.log('in valueOf')
-		return this.name
-	},
+    [Symbol.toPrimitive]: function () {
+        console.log('in Symbol.toPrimitive')
+        return this.name
+    },
 
-	toString() {
-		console.log('in toString')
-		return this.name
-	},
+    *[Symbol.iterator]() {
+        // yield await fakedFetch(1)
+        yield 'hello'
+        yield 'wirldd'
+        yield 'iteration!'
+    },
 
-	[Symbol.toPrimitive]: function () {
-		console.log('in Symbol.toPrimitive')
-		return this.name
-	}
+    async *[Symbol.asyncIterator]() {
+        // yield await fakedFetch(1)
+        yield 'hello'
+        yield 'async'
+        yield 'iteration!'
+    },
 }
 
-;+obj
-'' + obj
-console.log(obj)
-console.dir(obj)
+;(async () => {
+    // for await (const iterator of obj) {
+    //     console.log(iterator)
+    // }
+
+    const handler = {
+        get: async (target, name, receiver) => {
+            // console.log(name, typeof name)
+            return target[name]
+        },
+
+        set: (target, prop, val) => {
+            console.log('set', prop, val)
+            target[prop] = val
+            return val
+        },
+
+        enumerate: function (oTarget, sKey) {
+            console.log('in enumerate')
+            return oTarget.keys()
+        },
+    }
+
+    const target = obj
+    const p = new Proxy(target, handler)
+    const data = { ...(await p) }
+    console.log(data)
+})()
