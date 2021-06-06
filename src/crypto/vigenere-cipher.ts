@@ -36,8 +36,8 @@ const execute = (cryptoFn: CryptoFn) => (alphabet: string) => (message: string, 
         index.keyword = alphabet.indexOf(ch.keyword)
         index.message = alphabet.indexOf(ch.message)
 
-        if (index.keyword === -1) throw new Error('Keyword is not valid for alphabet')
-        if (index.message === -1) throw new Error('Message is not valid for alphabet')
+        if (index.keyword === -1) throw new Error(`Symbol "${ch.keyword}" in keyword is not valid for alphabet`)
+        if (index.message === -1) throw new Error(`Symbol "${ch.message}" in message is not valid for alphabet`)
 
         index.result = cryptoFn(index.message, index.keyword, alphabet.length)
 
