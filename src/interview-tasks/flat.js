@@ -16,6 +16,7 @@
         return res
     }
 
+    const data = [1, [2, [3]], [4, [5]]]
     console.log(flat(data)) // => [1, 2, 3, 4, 5]
     console.log(flat2(data)) // => [1, 2, 3, 4, 5]
 }
