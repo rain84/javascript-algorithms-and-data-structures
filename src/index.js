@@ -1,51 +1,64 @@
 import path from 'path'
-import { create } from 'ts-node'
 import { traverseDirRecursive } from './utils/index.js'
-import ts from 'typescript'
+import { exec as _exec } from 'child_process'
+import { promisify } from 'util'
 
-const script = {
-  name: process.argv[2],
-  folderPath: path.resolve(process.cwd(), 'src'),
+const exec = promisify(_exec)
+
+const getScriptConfig = () => {
+  try {
+    const { base, ext, name } = path.parse(process.argv[2])
+
+    if (!name || !ext) return
+
+    return {
+      base,
+      ext: ext.slice(1),
+      name,
+    }
+  } catch {}
 }
 
-if (!script.name) throw new Error('Script name should be provided')
-
-const execScript = async (script) => {
+const execScript = async (config) => {
   const action = async (entry) => {
-    const match = entry.path.match(/(.*)\.(js|mjs|ts)$/)
-    const isTarget = !!match?.[1]?.endsWith(script.name)
-
+    const isTarget = entry.path.endsWith(config.base)
     if (!isTarget) return
 
     const is = {
-      [match[2]]: true,
+      [config.ext]: true,
     }
 
     if (is.js || is.mjs) return import(entry.path)
-
     if (is.ts) {
-      const tsNode = create()
+      const command = `tsc ${config.base} && node ${config.name}.js && rm ${config.name}.js`
+      const { error, stdout, stderr } = await exec(command, { cwd: path.dirname(entry.path) })
 
-      Object.assign(tsNode.config.options, {
-        isolatedModules: false,
-        emit: true,
-      })
-
-      try {
-        tsNode.compile('', entry.path)
-        console.log('Successfully compiled\n')
-      } catch (e) {
-        console.log('Catched on ts-node compillation: \n', e)
+      if (error || stderr) {
+        console.log('TS execution error', std)
+        console.log('stderr', stderr)
+        console.log('error', error)
+      } else {
+        console.log(stdout)
       }
     }
   }
-  return traverseDirRecursive(script.folderPath, action)
+
+  const initialFolder = path.resolve(process.cwd(), 'src')
+  return traverseDirRecursive(initialFolder, action)
 }
 
-try {
-  console.log('\n')
-  await execScript(script)
-  console.log('\n')
-} catch (e) {
-  console.log(e)
+const run = () => {
+  try {
+    const config = getScriptConfig()
+
+    if (!config) {
+      console.log('Wrong file name')
+      return
+    }
+
+    execScript(config)
+  } catch (error) {
+    console.log(error)
+  }
 }
+run()

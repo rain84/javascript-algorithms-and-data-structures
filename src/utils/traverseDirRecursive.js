@@ -1,39 +1,41 @@
 import path from 'path'
 import fs from 'fs/promises'
 
-export const traverseDirRecursive = async (dirPath, action = async () => {}, logEntryPath = false) => {
-	const entries = await fs.readdir(dirPath)
+const noop = async () => {}
 
-	const entriesPromiseOfStat = entries.reduce((arrayOfPromises, fileName) => {
-		if (!fileName.startsWith('.')) {
-			const entry = { path: path.resolve(dirPath, fileName) }
-			entry.stat = fs.stat(entry.path)
+export const traverseDirRecursive = async (dirPath, action = noop, logEntryPath = false) => {
+  const entries = await fs.readdir(dirPath)
 
-			arrayOfPromises.push(
-				new Promise((resolve, reject) =>
-					entry.stat
-						.then((entryStat) => {
-							entry.stat = entryStat
-							resolve({ entry })
-						})
-						.catch(reject)
-				)
-			)
-		}
-		return arrayOfPromises
-	}, [])
+  const entriesPromiseOfStat = entries.reduce((arrayOfPromises, fileName) => {
+    if (!fileName.startsWith('.')) {
+      const entry = { path: path.resolve(dirPath, fileName) }
+      entry.stat = fs.stat(entry.path)
 
-	const entriesStat = await Promise.all(entriesPromiseOfStat)
+      arrayOfPromises.push(
+        new Promise((resolve, reject) =>
+          entry.stat
+            .then((entryStat) => {
+              entry.stat = entryStat
+              resolve({ entry })
+            })
+            .catch(reject)
+        )
+      )
+    }
+    return arrayOfPromises
+  }, [])
 
-	for (const { entry } of entriesStat) {
-		if (logEntryPath) console.log(entry.path)
+  const entriesStat = await Promise.all(entriesPromiseOfStat)
 
-		let result = await action(entry)
+  for (const { entry } of entriesStat) {
+    if (logEntryPath) console.log(entry.path)
 
-		if (!result && entry.stat.isDirectory()) {
-			result = await traverseDirRecursive(entry.path, action, logEntryPath)
-		}
+    let result = await action(entry)
 
-		if (result) return result
-	}
+    if (!result && entry.stat.isDirectory()) {
+      result = await traverseDirRecursive(entry.path, action, logEntryPath)
+    }
+
+    if (result) return result
+  }
 }

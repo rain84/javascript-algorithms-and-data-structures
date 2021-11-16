@@ -15,7 +15,8 @@
   },
   "type": "module",
   "nodemonConfig": {
-    "watch": "./src/**/*"
+    "watch": "./src/**/*",
+    "ext": "js,mjs,ts"
   },
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.12.13",
