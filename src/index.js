@@ -29,17 +29,21 @@ const execScript = async (config) => {
     }
 
     if (is.js || is.mjs) return import(entry.path)
-    if (is.ts) {
-      const command = `tsc ${config.base} && node ${config.name}.js && rm ${config.name}.js`
-      const { error, stdout, stderr } = await exec(command, { cwd: path.dirname(entry.path) })
 
-      if (error || stderr) {
-        console.log('TS execution error', std)
-        console.log('stderr', stderr)
-        console.log('error', error)
-      } else {
-        console.log(stdout)
+    if (is.ts) {
+      const command = [
+        `tsc ${config.base} -t es5 --outFile ${config.name}.tmp.js`,
+        `node ${config.name}.tmp.js`,
+        `rm ${config.name}.tmp.js`,
+      ].join(' && ')
+      const { error, stdout } = await exec(command, { cwd: path.dirname(entry.path) })
+
+      if (error) {
+        error.message = 'TS execution error'
+        throw error
       }
+
+      console.log(stdout)
     }
   }
 
@@ -51,14 +55,12 @@ const run = () => {
   try {
     const config = getScriptConfig()
 
-    if (!config) {
-      console.log('Wrong file name')
-      return
-    }
+    if (!config) throw new Error('Wrong file name')
 
     execScript(config)
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 run()

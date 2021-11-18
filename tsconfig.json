@@ -1,12 +1,6 @@
 {
-  "ts-node": {
-    "pretty": true,
-    "isolatedModules": false,
-    "emit": true,
-    "sourceMap": false
-  },
   "compilerOptions": {
-    "target": "ES2015",
+    "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
     "skipLibCheck": true,
@@ -16,18 +10,19 @@
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": true,
     "jsx": "react-jsx",
     "strictNullChecks": true,
     "baseUrl": "./src",
     "locale": "ru",
     "pretty": true,
-    "watch": true
+    "watch": true,
+    "useDefineForClassFields": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "src/**/*.spec.ts", "src/interview-tasks"]
+  "exclude": ["node_modules", "src/**/*.spec.ts"]
 }
