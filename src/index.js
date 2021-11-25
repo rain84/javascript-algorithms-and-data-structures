@@ -32,9 +32,11 @@ const execScript = async (config) => {
 
     if (is.ts) {
       const command = [
-        `tsc ${config.base} -t es5 --outFile ${config.name}.tmp.js`,
-        `node ${config.name}.tmp.js`,
-        `rm ${config.name}.tmp.js`,
+        `cp ${config.base} tmp.ts`,
+        `tsc tmp.ts --target esnext ` + `--module CommonJS`,
+        `mv tmp.js tmp.cjs`,
+        `node tmp.cjs`,
+        `rm tmp.cjs tmp.ts`,
       ].join(' && ')
       const { error, stdout } = await exec(command, { cwd: path.dirname(entry.path) })
 
