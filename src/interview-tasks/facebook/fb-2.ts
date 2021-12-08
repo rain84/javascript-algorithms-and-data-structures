@@ -11,30 +11,27 @@
   https://www.geeksforgeeks.org/minimum-number-of-squares-whose-sum-equals-to-given-number-n/
  */
 
-export const getSquadedNumbers = (n: number): number[] => {
+export const getSquares = (n: number): number[] => {
   const root = { fractional: 0, integer: 0 }
   root.fractional = Math.sqrt(n)
   root.integer = Math.floor(root.fractional)
 
+  const square = root.integer ** 2
   const haveRoots = root.fractional - root.integer > 0
   if (haveRoots) {
-    n -= root.integer ** 2
-    return [root.integer, ...getSquadedNumbers(n)]
+    n -= square
+    return [square, ...getSquares(n)]
   }
 
-  return [root.integer]
+  return [square]
 }
 
-export const getN = (n: number): number => getSquadedNumbers(n).length
+export const getN = (n: number): number => getSquares(n).length
 
-const log = (n: number, fn: (n: number) => number[]) =>
-  console.log(
-    `${fn.name}(${n})`,
-    fn(n)
-      .map((val) => val ** 2)
-      .join(' + ')
-  )
+const log = (n: number, fn: (n: number) => number[]) => console.log(`${fn.name}(${n})`, fn(n).join(' + '))
 
-for (let index = 0; index < 100; index++) {
-  log(index, getSquadedNumbers)
+// console.log('getSquadedNumbers(12)  ', getSquares(12));
+
+for (let index = 0; index < 20; index++) {
+  log(index, getSquares)
 }
