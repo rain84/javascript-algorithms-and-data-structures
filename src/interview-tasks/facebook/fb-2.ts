@@ -3,15 +3,15 @@
   find the smallest number of squared integers which sum to n.
 
   For example, given n = 13, 
-  return 2 since 13 = 32 + 22 = 9 + 4.
+  return 2 since 13 = 3^2 + 2^2 = 9 + 4.
 
   Given n = 27, 
-  return 3 since 27 = 32 + 32 + 32 = 9 + 9 + 9.
+  return 3 since 27 = 3^2 + 3^2 + 3^2 = 9 + 9 + 9.
 
   https://www.geeksforgeeks.org/minimum-number-of-squares-whose-sum-equals-to-given-number-n/
  */
 
-export const getSquares = (n: number): number[] => {
+const justGetSquares = (n: number): number[] => {
   const root = { fractional: 0, integer: 0 }
   root.fractional = Math.sqrt(n)
   root.integer = Math.floor(root.fractional)
@@ -20,18 +20,74 @@ export const getSquares = (n: number): number[] => {
   const haveRoots = root.fractional - root.integer > 0
   if (haveRoots) {
     n -= square
-    return [square, ...getSquares(n)]
+    return [square, ...justGetSquares(n)]
   }
 
   return [square]
 }
 
-export const getN = (n: number): number => getSquares(n).length
+const calcSum = (arr: number[]): number => arr.reduce((acc, val) => acc + val)
 
-const log = (n: number, fn: (n: number) => number[]) => console.log(`${fn.name}(${n})`, fn(n).join(' + '))
+//  TODO: IMPROVE EXECUTION SPEED
+//  [val, ...values] - like some numbers,
+//  any arbitary sum-combinations of them
+//  should be eqal to "sum"
+//  "size" is used to reduce the number of genetated combinantions
+const getCombinations = ([val, ...values]: number[], sum: number, size = +Infinity): number[][] => {
+  if (val === undefined) return []
 
-// console.log('getSquadedNumbers(12)  ', getSquares(12));
+  const results = []
+  const result = []
+  let nextResults: number[][]
+  let resultSum = 0
 
-for (let index = 0; index < 20; index++) {
-  log(index, getSquares)
+  while (resultSum < sum) {
+    result.push(val)
+    if (result.length === size) return results
+
+    resultSum = calcSum(result)
+    if (resultSum === sum) nextResults = [result]
+    else {
+      const combinations = getCombinations(values, sum - resultSum, size)
+      nextResults = combinations.map((rest) => [...result, ...rest])
+    }
+
+    nextResults.forEach((result) => {
+      results.push(result)
+      if (result.length < size) size = result.length
+    })
+  }
+
+  return [...results, ...getCombinations(values, sum, size)]
 }
+
+export const getSquares = (n: number): number[][] => {
+  if (n === 1) return [[1]]
+  if (n === 2) return [[1, 1]]
+  if (n === 3) return [[1, 1, 1]]
+
+  const fractionalRoot = Math.sqrt(n)
+  let root = Math.floor(fractionalRoot)
+  if (root === fractionalRoot) return [[root ** 2]]
+
+  const size = n - root ** 2 + 1
+
+  // populate array of squares
+  const squares = []
+  do squares.push(root ** 2)
+  while (--root)
+  // console.log('squares, size', squares, size)
+  return getCombinations(squares, n, size)
+}
+
+export const getN = (n: number): number => {
+  return getSquares(n).reduce((l, { length }) => (length < l ? length : l), +Infinity)
+}
+
+// console.log(getN(4))
+
+for (let i = 1; i <= 50; i++) {
+  console.log(i, getSquares(i))
+}
+
+// console.log(getSquares(2))
