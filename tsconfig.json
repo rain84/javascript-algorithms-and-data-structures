@@ -2,8 +2,16 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "outDir": "out",
-    "sourceMap": true,
-    "isolatedModules": true
-  }
+    // "outDir": "out",
+    "inlineSourceMap": true,
+    "downlevelIteration": true
+    // "isolatedModules": true,
+    // "baseUrl": "."
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/*.test.ts"
+  ]
 }
