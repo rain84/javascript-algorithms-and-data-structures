@@ -44,3 +44,5 @@ const output: Intervals = [
 
 const result = mergeOverlappingIntervals(input)
 console.log(JSON.stringify(result, null, ''))
+
+export {}

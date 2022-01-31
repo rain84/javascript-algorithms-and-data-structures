@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
-    // "outDir": "out",
+    "outDir": "out",
     "inlineSourceMap": true,
-    "downlevelIteration": true
-    // "isolatedModules": true,
-    // "baseUrl": "."
+    "downlevelIteration": true,
+    "lib": ["ES2021", "DOM"]
   },
   "include": [
     "src/**/*.ts"

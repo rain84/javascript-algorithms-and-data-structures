@@ -75,3 +75,5 @@ console.log('\n')
 
 matrix.adjaceAt(2, 2, 'G')
 console.log(matrix.toString())
+
+export {}
