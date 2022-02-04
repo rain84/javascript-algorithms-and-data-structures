@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
+    "module": "es6",
+    "moduleResolution": "Node",
     "outDir": "out",
     "inlineSourceMap": true,
     "downlevelIteration": true,
