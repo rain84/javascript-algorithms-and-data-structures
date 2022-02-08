@@ -14,16 +14,16 @@
                         recusive in nature.
 */
 
-export const insertionSort = (arr) => {
-	for (let i = 1; i < arr.length; i++) {
-		for (let j = i - 1; j >= 0; j--) {
-			if ((arr[j - 1] ?? -Infinity) < arr[i] && arr[i] < arr[j]) {
-				const [val] = arr.splice(i, 1)
-				arr.splice(j, 0, val)
-				break
-			}
-		}
-	}
+export const insertionSort = (arr: number[]) => {
+  for (let i = 1; i < arr.length; i++) {
+    const element = arr[i]
 
-	return arr
+    let j = i - 1
+    for (; j >= 0 && arr[j] > element; j--) {
+      arr[j + 1] = arr[j]
+    }
+    arr[j + 1] = element
+  }
+
+  return arr
 }

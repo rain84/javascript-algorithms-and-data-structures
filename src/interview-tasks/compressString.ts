@@ -1,67 +1,67 @@
-{
-    const compressString = (str: string): string =>
-        [...str].reduce((acc: string, val: string) => {
-            const [, str, prevItem, lastItem] = /(.*)(\D)(\d+)$/.exec(acc) || /(.*)()(\D+)$/.exec(acc) || []
+const compressString = (str: string): string =>
+  [...str].reduce((acc: string, val: string) => {
+    const [, str, prevItem, lastItem] = /(.*)(\D)(\d+)$/.exec(acc) || /(.*)()(\D+)$/.exec(acc) || []
 
-            if (!lastItem) return val
-            if (lastItem === val) return acc + 2
-            if (/^\d+$/.test(lastItem)) {
-                if (prevItem === val) return str + prevItem + (+lastItem + 1)
-                else return acc + val
-            }
-
-            return acc + val
-        }, '')
-
-    const compressString2 = (str: string): string => {
-        let lastCh: string = str[0]
-        let nextCh: string = ''
-        let res: string[] = []
-        let counter = 1
-
-        const push = (ch: string): void => {
-            res.push(ch)
-            if (1 < counter) {
-                res.push(counter.toString())
-                counter = 1
-            }
-        }
-
-        for (let i = 1; i < str.length; i++) {
-            nextCh = str[i]
-
-            if (nextCh === lastCh) counter++
-            else {
-                push(lastCh)
-                lastCh = nextCh
-            }
-        }
-
-        push(nextCh)
-
-        return res.join('')
+    if (!lastItem) return val
+    if (lastItem === val) return acc + 2
+    if (/^\d+$/.test(lastItem)) {
+      if (prevItem === val) return str + prevItem + (+lastItem + 1)
+      else return acc + val
     }
 
-    const testing = (fns: Function[], validationData: [string, string][]) => {
-        for (const fn of fns) {
-            console.log(`Function '${fn.name}'`)
+    return acc + val
+  }, '')
 
-            for (const [data, expects] of validationData) {
-                const res = fn(data)
-                console.log(res, res === expects)
-            }
-            console.log('\n')
-        }
+const compressString2 = (str: string): string => {
+  let lastCh: string = str[0]
+  let nextCh: string = ''
+  let res: string[] = []
+  let counter = 1
+
+  const push = (ch: string): void => {
+    res.push(ch)
+    if (1 < counter) {
+      res.push(counter.toString())
+      counter = 1
     }
+  }
 
-    testing(
-        [compressString, compressString2],
-        [
-            ['AVVVBB', 'AV3B2'],
-            ['AVVVBBBVVXDHJFFFFDDDDDDHAAAAJJJDDSLSSSDDDD', 'AV3B3V2XDHJF4D6HA4J3D2SLS3D4'],
-            ['ABCD', 'ABCD'],
-            ['', ''],
-            ['AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!', 'A50!3'],
-        ],
-    )
+  for (let i = 1; i < str.length; i++) {
+    nextCh = str[i]
+
+    if (nextCh === lastCh) counter++
+    else {
+      push(lastCh)
+      lastCh = nextCh
+    }
+  }
+
+  push(nextCh)
+
+  return res.join('')
 }
+
+const testing = (fns: Function[], validationData: [string, string][]) => {
+  for (const fn of fns) {
+    console.log(`Function '${fn.name}'`)
+
+    for (const [data, expects] of validationData) {
+      const res = fn(data)
+      console.log(res, res === expects)
+    }
+    console.log('\n')
+  }
+}
+
+testing(
+  [compressString, compressString2],
+  [
+    ['AVVVBB', 'AV3B2'],
+    ['AVVVBBBVVXDHJFFFFDDDDDDHAAAAJJJDDSLSSSDDDD', 'AV3B3V2XDHJF4D6HA4J3D2SLS3D4'],
+    ['ABCD', 'ABCD'],
+    ['', ''],
+    ['AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!', 'A50!3'],
+  ]
+)
+
+export {}

@@ -97,3 +97,5 @@ function log(data: any, msg?: string): void {
 log(tree)
 log(tree.maxpathForRoot, 'tree.maxpathForRoot')
 log(tree.maxpath, 'tree.maxpath')
+
+export {}

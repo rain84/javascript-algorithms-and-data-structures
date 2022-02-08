@@ -74,3 +74,5 @@ function findPairs3(list: number[], target: number) {
 
   return result
 }
+
+export {}
