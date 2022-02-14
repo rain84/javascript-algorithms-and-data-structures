@@ -40,7 +40,7 @@ function findPairs(list: number[], target: number) {
 
 function findPairs2(list: number[], target: number) {
   const result: [number, number][] = []
-  const dict = {}
+  const dict: { [K in number]: number } = {}
 
   for (const val of list) {
     dict[target - val] = val

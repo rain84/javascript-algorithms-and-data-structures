@@ -84,8 +84,9 @@ export const equalChunks: EC = (arr, count) => {
 
   while (count--) {
     const indexes = getChunkIndexes(array, size)
-    const extracted = extractByIndexes(array, indexes)
+    if (!indexes) continue
 
+    const extracted = extractByIndexes(array, indexes)
     array = extracted.restArray
     res.push(extracted.chunk)
   }

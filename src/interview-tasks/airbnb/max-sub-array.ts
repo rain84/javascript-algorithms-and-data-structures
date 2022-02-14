@@ -17,7 +17,7 @@ interface Info {
 }
 
 type AddToSet = (collection: { [key: number]: Set<number> }, idx: number, val: number) => void
-type MaxSubArray = (arr: number[]) => MinMax[]
+type MaxSubArray = (arr: number[]) => MinMax[] | void
 
 const make = {
     info: (index: number, length: number): Info => ({ index, length }),

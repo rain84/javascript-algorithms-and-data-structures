@@ -28,7 +28,7 @@ export const qsort = (arr: number[], left = 0, right = arr.length - 1) => {
   qsort(arr, pivotIndex + 1, right)
 }
 
-export const quickSort = (arr, p = { left: 0, right: arr.length - 1 }) => {
+export const quickSort = (arr: number[], p = { left: 0, right: arr.length - 1 }) => {
   let pivot = p.left
   let pivotOnStart = p.left
   const pivotValue = arr[pivotOnStart]
@@ -73,7 +73,7 @@ export const qsort2 = (arr: number[], left = 0, right = arr.length - 1) => {
 
 //  have impact with O(n) on space complexity,
 //  because it uses left- and right- arrays
-export const quickSort2 = (arr: number[]) => {
+export const quickSort2 = (arr: number[]): number[] => {
   if (arr.length <= 1) return arr
 
   const left = []

@@ -36,8 +36,8 @@ const calcSum = (arr: number[]): number => arr.reduce((acc, val) => acc + val)
 const getCombinations = ([val, ...values]: number[], sum: number, size = +Infinity): number[][] => {
   if (val === undefined) return []
 
-  const results = []
-  const result = []
+  const results: number[][] = []
+  const result: number[] = []
   let nextResults: number[][]
   let resultSum = 0
 
@@ -49,7 +49,10 @@ const getCombinations = ([val, ...values]: number[], sum: number, size = +Infini
     if (resultSum === sum) nextResults = [result]
     else {
       const combinations = getCombinations(values, sum - resultSum, size)
-      nextResults = combinations.map((rest) => [...result, ...rest])
+      nextResults = combinations.map((rest) => {
+        if (Array.isArray(rest)) return [...result, ...rest]
+        else return result
+      })
     }
 
     nextResults.forEach((result) => {
