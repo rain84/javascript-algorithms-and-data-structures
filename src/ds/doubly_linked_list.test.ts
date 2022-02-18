@@ -46,12 +46,13 @@ describe('DoublyLinkedList', () => {
 
     list.unshift('Hello')
     expect(list.toString()).toBe('Hello world!!')
+    expect(list.unshift('🙏').unshift('🔥').unshift('🍺').toString()).toBe('🍺🙏🔥Helloworld!!')
   })
 
   test('Should have "get()" and "set()"', () => {
-    // expect(list.get(-1)).toBeUndefined()
-    // expect(list.get(4)).toBeUndefined()
-    // expect(list.get(2)).toBe('world')
+    expect(list.get(-1)).toBeUndefined()
+    expect(list.get(4)).toBeUndefined()
+    expect(list.get(2)).toBe('world')
 
     list.set(1, '🙂')
     expect(list.toString()).toBe('Hello🙂world!!')

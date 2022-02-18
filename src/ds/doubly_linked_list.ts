@@ -72,19 +72,21 @@ export class DoublyLinkedList<T = unknown> {
     return val
   }
 
-  unshift(val: T) {
-    const node = new Node(val)
+  unshift(...vals: T[]) {
+    vals.forEach((val) => {
+      const node = new Node(val)
 
-    this.#length++
+      this.#length++
 
-    if (!this.#head || !this.#tail) {
-      this.#head = this.#tail = node
-      return this
-    }
+      if (!this.#head || !this.#tail) {
+        this.#head = this.#tail = node
+        return this
+      }
 
-    this.#head.prev = node
-    node.next = this.#head
-    this.#head = node
+      this.#head.prev = node
+      node.next = this.#head
+      this.#head = node
+    })
 
     return this
   }
