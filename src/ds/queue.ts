@@ -1,8 +1,5 @@
 class Node<T> {
-  constructor(
-    public val: T,
-    public prev: Node<T> | null = null
-  ) { }
+  constructor(public val: T, public prev: Node<T> | null = null) {}
 }
 
 export class Queue<T> {
@@ -51,4 +48,3 @@ export class Queue<T> {
     return this.size === 0
   }
 }
-

@@ -1,6 +1,6 @@
 import { Queue } from './queue'
 
-describe('Queue', () => {
+describe('DS: Queue', () => {
   let queue: Queue<string>
 
   beforeEach(() => {
