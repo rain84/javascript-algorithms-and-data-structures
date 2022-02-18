@@ -46,6 +46,9 @@ describe('SinglyLinkedList', () => {
 
     sll.unshift('Hello')
     expect(sll.toString()).toBe('Hello world!!')
+    
+    sll.unshift('🙂').unshift('🍯').unshift('🍕')
+    expect(sll.toString()).toBe('🍕🍯🙂Hello world!!')
   })
 
   test('Should have "get()" and "set()"', () => {

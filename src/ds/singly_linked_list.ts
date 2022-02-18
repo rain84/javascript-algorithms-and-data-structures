@@ -71,13 +71,15 @@ export class SinglyLinkedList<T = unknown> {
     return val
   }
 
-  unshift(val: T) {
-    const node = new Node(val)
-    node.next = this.#head
-    this.#head = node
-    this.#length++
+  unshift(...vals: T[]) {
+    vals.forEach((val) => {
+      const node = new Node(val)
+      node.next = this.#head
+      this.#head = node
+      this.#length++
 
-    if (!this.#tail) this.#tail = node
+      if (!this.#tail) this.#tail = node
+    })
 
     return this
   }
