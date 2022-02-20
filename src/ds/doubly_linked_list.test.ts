@@ -1,6 +1,6 @@
 import { DoublyLinkedList } from './doubly_linked_list'
 
-describe('DoublyLinkedList', () => {
+describe('DS: Doubly linked list', () => {
   let list: DoublyLinkedList<string | number>
 
   beforeEach(() => {

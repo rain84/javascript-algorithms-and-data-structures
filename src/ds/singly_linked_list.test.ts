@@ -1,6 +1,6 @@
 import { SinglyLinkedList } from './singly_linked_list'
 
-describe('SinglyLinkedList', () => {
+describe('DS: Singly linked list', () => {
   let sll: SinglyLinkedList<string | number>
 
   beforeEach(() => {
@@ -46,7 +46,7 @@ describe('SinglyLinkedList', () => {
 
     sll.unshift('Hello')
     expect(sll.toString()).toBe('Hello world!!')
-    
+
     sll.unshift('🙂').unshift('🍯').unshift('🍕')
     expect(sll.toString()).toBe('🍕🍯🙂Hello world!!')
   })
