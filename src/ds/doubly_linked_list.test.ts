@@ -46,7 +46,7 @@ describe('DS: Doubly linked list', () => {
 
     list.unshift('Hello')
     expect(list.toString()).toBe('Hello world!!')
-    expect(list.unshift('🙏').unshift('🔥').unshift('🍺').toString()).toBe('🍺🙏🔥Helloworld!!')
+    expect(list.unshift('🙏').unshift('🔥').unshift('🍺').toString()).toBe('🍺🔥🙏Hello world!!')
   })
 
   test('Should have "get()" and "set()"', () => {

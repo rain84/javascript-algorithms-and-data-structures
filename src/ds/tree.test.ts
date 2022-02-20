@@ -10,6 +10,7 @@ describe('DS: Tree', () => {
     instanse: BST<T>
     values: T[]
     push: (val: T) => void
+    toString: () => string
   }
 
   const selector = {
@@ -20,12 +21,21 @@ describe('DS: Tree', () => {
   class Tree<T> {
     instanse: BST<T>
     values: T[] = []
+    #keySelector: (val: T) => number
+    #dataSelector: (val: T) => unknown
 
-    constructor(selector: (val: T) => number) {
-      this.instanse = new BST<T>(selector)
+    constructor(keySelector: (val: T) => number, dataSelector: (val: T) => unknown) {
+      this.#keySelector = keySelector
+      this.#dataSelector = dataSelector
+      this.instanse = new BST<T>(keySelector)
     }
+
     push = (val: T) => {
       this.values.push(val)
+    }
+
+    toString() {
+      return this.values.map(this.#dataSelector).join('')
     }
   }
 
@@ -36,8 +46,8 @@ describe('DS: Tree', () => {
 
   beforeEach(() => {
     tree = {
-      number: new Tree<number>(selector.identity),
-      shape: new Tree<IShape>(selector.shape),
+      number: new Tree<number>(selector.identity, selector.identity),
+      shape: new Tree<IShape>(selector.shape, ({ val }: IShape) => val),
     }
 
     tree.number.instanse.insert(2).insert(7).insert(5).insert(9)
@@ -51,20 +61,20 @@ describe('DS: Tree', () => {
 
   test('Should have "infixTraverse()"', () => {
     tree.shape.instanse.infixTraverse(tree.shape.push)
-    expect(tree.shape.values.map(({ val }) => val).join('')).toBe('abcde')
+    expect(tree.shape.toString()).toBe('abcde')
 
     tree.number.instanse.infixTraverse(tree.number.push)
-    expect(tree.number.values.join('')).toBe('2579')
+    expect(tree.number.toString()).toBe('2579')
   })
 
   test('Should have "postfixTraverse()"', () => {
     tree.number.instanse.postfixTraverse(tree.number.push)
-    expect(tree.number.values.join('')).toBe('2795')
+    expect(tree.number.toString()).toBe('2795')
   })
 
   test('Should have "prefixTraverse()"', () => {
     tree.number.instanse.prefixTraverse(tree.number.push)
-    expect(tree.number.values.join('')).toBe('5972')
+    expect(tree.number.toString()).toBe('5972')
   })
 
   test('Should insert objects', () => {})
