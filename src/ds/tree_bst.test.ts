@@ -1,6 +1,6 @@
-import { BST } from './tree'
+import { BST } from './tree-bst'
 
-describe('DS: Tree', () => {
+describe('DS: Tree - BST', () => {
   interface IShape {
     key: number
     val: string
