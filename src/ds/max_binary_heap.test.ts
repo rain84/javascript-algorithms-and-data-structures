@@ -1,7 +1,7 @@
 import { random } from '../utils/array'
 import { BinaryHeapMax, BinaryHeapMin } from './max_binary_heap'
 
-describe('DS: Max binary heap', () => {
+describe('DS: Min and max binary heap', () => {
   interface IHeap {
     max: BinaryHeapMax<number> | null
     min: BinaryHeapMin<number> | null
