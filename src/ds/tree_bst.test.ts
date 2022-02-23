@@ -1,4 +1,4 @@
-import { BST } from './tree-bst'
+import { BST } from './tree_bst'
 
 describe('DS: Tree - BST', () => {
   interface IShape {
@@ -23,7 +23,10 @@ describe('DS: Tree - BST', () => {
     values: T[] = []
     #dataSelector: (val: T) => unknown
 
-    constructor(keySelector: (val: T) => number, dataSelector: (val: T) => unknown) {
+    constructor(
+      keySelector: (val: T) => number,
+      dataSelector: (val: T) => unknown
+    ) {
       this.#dataSelector = dataSelector
       this.instanse = new BST<T>(keySelector)
     }
