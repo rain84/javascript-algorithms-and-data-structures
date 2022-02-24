@@ -75,4 +75,17 @@ function findPairs3(list: number[], target: number) {
   return result
 }
 
+export const findPairs4 = (arr: number[], target: number) => {
+  const set = new Set<number>()
+
+  for (const pair1 of arr) {
+    const pair2 = target - pair1
+
+    if (!set.has(pair2)) set.add(pair1)
+    else return [pair1, pair2]
+  }
+
+  return false
+}
+
 export {}
