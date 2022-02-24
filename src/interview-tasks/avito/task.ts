@@ -1,7 +1,9 @@
 /*
 Условие задачи
-Дан список целых неповторяющихся чисел и целое число. Необходимо найти все пары в списке, сумма которых равна заданному числу.
-Перестановки (i, j) и (j, i) считаются одной и той же парой, можно вывести любую из них.
+Дан список целых неповторяющихся чисел и целое число.
+Необходимо найти 1ую пару в списке, сумма которых равна заданному числу.
+Перестановки (i, j) и (j, i) считаются одной и той же парой,
+можно вывести любую из них.
 
 Входные параметры
 Массив целых чисел размера N.
@@ -56,26 +58,31 @@ function findPairs2(list: number[], target: number) {
   return result
 }
 
-function findPairs3(list: number[], target: number) {
-  const result: [number, number][] = []
+/**
+ * THE BEST SOLUTION
+ * Time complexity O(n)
+ * Space complexity O(1)
+ */
+export const findPair3 = (list: number[], target: number)  => {
   let l = 0
   let r = list.length - 1
-
-  list.sort()
 
   while (l < r) {
     const sum = list[l] + list[r]
 
-    if (sum === target) {
-      result.push([list[l++], list[r--]])
-    } else if (sum < target) l++
+    if (sum === target) return [list[l], list[r]]
+    if (sum < target) l++
     else r--
   }
 
-  return result
+  return false
 }
 
-export const findPairs4 = (arr: number[], target: number) => {
+/**
+ * Time complexity O(n)
+ * Space complexity O(n)
+ */
+export const findPair4 = (arr: number[], target: number) => {
   const set = new Set<number>()
 
   for (const pair1 of arr) {
@@ -88,4 +95,26 @@ export const findPairs4 = (arr: number[], target: number) => {
   return false
 }
 
-export {}
+/**
+ * Time complexity O(log(n))
+ * Space complexity O(1)
+ */
+export const findPair5 = (arr: number[], target: number) => {
+  for (let i = 0; i < arr.length - 1; i++) {
+    const pair1 = arr[i]
+    const pair2 = target - pair1
+    let iLeft = i + 1
+    let iRight = arr.length - 1
+
+    do {
+      const iMiddle = Math.floor((iLeft + iRight) / 2)
+      const item = arr[iMiddle]
+
+      if (item === pair2) return [pair1, pair2]
+      if (item < pair2) iLeft = iMiddle + 1
+      else iRight = iMiddle - 1
+    } while (iLeft <= iRight)
+  }
+
+  return false
+}
