@@ -10,9 +10,9 @@
 Целое число.
 */
 
-findPairs([2, 4, 5, 3], 7) // [[2,5], [4,3]]
+// findPairs([2, 4, 5, 3], 7) // [[2,5], [4,3]]
 
-function findPairs(list: number[], target: number) {
+export const findPairs1 = (list: number[], target: number) => {
   const result = []
   const { length } = list
 
@@ -40,7 +40,7 @@ function findPairs(list: number[], target: number) {
   return result
 }
 
-function findPairs2(list: number[], target: number) {
+export const findPairs2 = (list: number[], target: number) => {
   const result: [number, number][] = []
   const dict: { [K in number]: number } = {}
 
@@ -63,7 +63,7 @@ function findPairs2(list: number[], target: number) {
  * Time complexity O(n)
  * Space complexity O(1)
  */
-export const findPair3 = (list: number[], target: number)  => {
+export const findPair3 = (list: number[], target: number) => {
   let l = 0
   let r = list.length - 1
 
@@ -117,4 +117,38 @@ export const findPair5 = (arr: number[], target: number) => {
   }
 
   return false
+}
+
+export const findPairIndexes = (arr: number[], sum: number) => {
+  const deltas = new Set<number>()
+  const indexes = new Map<number, number>()
+
+  for (let i = 0; i < arr.length; i++) {
+    const item = arr[i]
+
+    if (deltas.has(item)) return [i, indexes.get(sum - item)]
+
+    deltas.add(sum - item)
+    indexes.set(item, i)
+  }
+}
+
+export const haveSum = (arr: number[], sum: number) =>
+  arr.some(
+    (
+      (set) => (n: number) =>
+        set.has(n) || !set.add(sum - n)
+    )(new Set())
+  )
+
+export const findPair6 = (arr: number[], sum: number) => {
+  const el = arr.find(
+    (
+      (set) => (n) =>
+        set.has(n) || !set.add(sum - n)
+    )(new Set())
+  )
+
+  if (!el) return
+  return [el, sum - el]
 }
