@@ -144,7 +144,7 @@ export const haveSum = (arr: number[], sum: number) =>
 export const findPair6 = (arr: number[], sum: number) => {
   const el = arr.find(
     (
-      (set) => (n) =>
+      (set) => (n: number) =>
         set.has(n) || !set.add(sum - n)
     )(new Set())
   )
