@@ -1,3 +1,4 @@
+//  fibonacci via recursion
 export const fib = (() => {
   const cache = new Map()
 
@@ -13,10 +14,18 @@ export const fib = (() => {
   return memoized
 })()
 
-const test = (length: number, fn: (n: number) => number) =>
-  new Array(length)
-    .fill(0)
-    .map((_, val) => fn(val))
-    .join(', ')
+//  fibonacci via while-iteration
+export const fib2 = (() => {
+  const cache = [0, 1]
 
-console.log(`test(20, fib)`, test(20, fib))
+  const memoized = (n: number) => {
+    if (n < 0) return
+
+    while (cache[n] === undefined)
+      cache.push(cache[cache.length - 1] + cache[cache.length - 2])
+
+    return cache[n]
+  }
+
+  return memoized
+})()
