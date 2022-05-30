@@ -18,7 +18,7 @@
 
 // Output: 5
 
-const getMinLength = (arr: number[], n: number) => {
+export const getMinRoof = (arr: number[], n: number) => {
   if (arr.length < n) return 0
 
   const slice = arr.slice(0, n - 1)
@@ -37,13 +37,3 @@ const getMinLength = (arr: number[], n: number) => {
 
   return result
 }
-
-// const input = [12, 6, 5, 2]
-const input = [2, 5, 6, 9, 12]
-const output = 8
-const K = 4
-
-const result = getMinLength(input, K)
-console.log(`getMinLength(input, K)`, result, result === output)
-
-export {}
