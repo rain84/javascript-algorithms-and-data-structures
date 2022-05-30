@@ -1,4 +1,4 @@
-const compress = (str: string): string => {
+export const compress = (str: string): string => {
   let result = ''
   let counter = 0
 
@@ -16,7 +16,7 @@ const compress = (str: string): string => {
   return result
 }
 
-const decompress = (str: string): string => {
+export const decompress = (str: string): string => {
   if (typeof str !== 'string' || !str.length) return ''
 
   let result: string[] = []
@@ -26,7 +26,7 @@ const decompress = (str: string): string => {
   do {
     const ch = str[i]
     const number = +ch
-    const isNumber = isNaN(number)
+    const isNumber = !isNaN(number)
 
     if (isNumber) {
       count = count === 0 ? number : count * 10 + number
@@ -40,14 +40,3 @@ const decompress = (str: string): string => {
 
   return result.join('')
 }
-
-const input = 'aaaabbbcccd'
-const output = '4a3b3cd'
-
-console.log(
-  `decompress(compress(input))`,
-  decompress(compress(input)) === input
-)
-console.log(`decompress(output)`, decompress(output))
-
-export {}
