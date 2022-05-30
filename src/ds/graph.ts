@@ -2,6 +2,13 @@ type AdjacencyList = {
   [K: string]: string[]
 }
 
+type VertexContainer = {
+  current: string
+  prev?: string
+}
+
+type Cb = (vertex: string, edge?: string) => void
+
 export class Graph {
   #adjacency: AdjacencyList
 
@@ -40,64 +47,82 @@ export class Graph {
     return this
   }
 
-  dfsRecursive(vertex: string, cb: (vertex: string) => void) {
+  dfsRecursive(current: string, cb: Cb) {
     const visited = new Set<string>()
 
-    const walk = (vertex: string) => {
-      cb(vertex)
-      visited.add(vertex)
-      this.#getNeighboursFor(vertex)?.forEach(
-        (vertex) => !visited.has(vertex) && walk(vertex)
-      )
-    }
-    walk(vertex)
-  }
+    const walk = (vertex: VertexContainer) => {
+      const edge = this.getEdge(vertex.current, vertex.prev)
+      cb(vertex.current, edge)
 
-  bfsRecursive(vertex: string, cb: (vertex: string) => void) {
-    const visited = new Set<string>()
-    let vs: string[] = [vertex]
+      vertex.prev = vertex.current
+      visited.add(vertex.current)
 
-    const walk = (vertex: string) => {
-      vs.forEach((vertex) => {
-        if (visited.has(vertex)) return
-
-        cb(vertex)
-        visited.add(vertex)
-        vs.push(...(this.#getNeighboursFor(vertex) ?? []))
-
-        walk(vertex)
+      this.#getNeighboursFor(vertex.current)?.forEach((current) => {
+        if (visited.has(current)) return
+        walk({ current, prev: vertex.prev })
       })
     }
-    walk(vertex)
+    walk({ current })
   }
 
-  dfsIterative(vertex: string, cb: (vertex: string) => void) {
+  bfsRecursive(current: string, cb: Cb) {
     const visited = new Set<string>()
-    let vs: string[] = [vertex]
-    let next: string | undefined
+    let vs: VertexContainer[] = [{ current }]
 
-    while ((next = vs.pop())) {
-      cb(next)
-      visited.add(next)
-      vs.push(...this.#getNeighboursFor(next))
-      vs = vs.filter((v) => !visited.has(v))
+    const walk = () => {
+      vs.forEach((vertex) => {
+        if (visited.has(vertex.current)) return
+
+        const edge = this.getEdge(vertex.current, vertex.prev)
+        cb(vertex.current, edge)
+
+        visited.add(vertex.current)
+        vs.push(
+          ...(this.#getNeighboursFor(vertex.current).map((current) => ({
+            current,
+            prev: vertex.current,
+          })) ?? [])
+        )
+        walk()
+      })
     }
+    walk()
   }
 
-  bfsIterative(vertex: string, cb: (vertex: string) => void) {
-    const visited = new Set<string>()
-    let vs: string[] = [vertex]
-    let next: string | undefined
+  // dfsIterative(current: string, cb: Cb) {
+  //   const visited = new Set<string>()
+  //   let vertex: VertexContainer | undefined
 
-    while ((next = vs.shift())) {
-      cb(next)
-      visited.add(next)
-      vs.push(...this.#getNeighboursFor(next))
+  //   let vs: VertexContainer[] = [{ current }]
+
+  //   while ((vertex = vs.pop())) {
+  //     const edge = this.getEdge(vertex.current, vertex.prev)
+  //     cb(vertex.current, edge)
+  //     vertex.prev = vertex.current
+  //     visited.add(vertex.current)
+  //     vs.push(...this.#getNeighboursFor(vertex.current))
+  //     vs = vs.filter((v) => !visited.has(v))
+  //   }
+  // }
+
+  bfsIterative(initialVertex: string, cb: Cb) {
+    const visited = new Set<string>()
+    let vs: string[] = [initialVertex]
+    let vertex: string | undefined
+
+    while ((vertex = vs.shift())) {
+      cb(vertex)
+      visited.add(vertex)
+      vs.push(...this.#getNeighboursFor(vertex))
       vs = vs.filter((v) => !visited.has(v))
     }
   }
 
   #getNeighboursFor(vertex: string) {
     return this.#adjacency[vertex]
+  }
+
+  protected getEdge(v1: string, v2?: string): string | undefined {
+    if (v2 !== undefined) return [v1, v2].sort().join('-')
   }
 }

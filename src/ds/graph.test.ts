@@ -3,10 +3,13 @@ import { Graph } from './graph'
 describe('DS: Graph', () => {
   let graph: Graph
   let path: string[]
+  let edges: string[]
+  let cb: (v: string, e: string) => void
 
   const toString = (graph: Graph) => {
     const path = []
-    graph.bfsRecursive('a', (v) => path.push(v))
+    const vertexes = []
+    graph.bfsRecursive('a', (v: string) => path.push(v))
     return path.sort().join('')
   }
 
@@ -30,6 +33,11 @@ describe('DS: Graph', () => {
       .addEdge('e', 'f')
 
     path = []
+    edges = []
+    cb = (v, edge) => {
+      path.push(v)
+      if (edge) edges.push(edge)
+    }
   })
 
   test('Should have "removeEdge()"', () => {
@@ -43,19 +51,23 @@ describe('DS: Graph', () => {
   })
 
   test('Should have "dfsRecursive()"', () => {
-    graph.dfsRecursive('a', (v) => path.push(v))
+    graph.dfsRecursive('a', cb)
     expect(path.join('')).toBe('abdecf')
+    expect(edges.toString()).toBe('a-b,b-d,d-e,c-e,e-f')
   })
-  test('Should have "dfsIterative()"', () => {
-    graph.dfsIterative('a', (v) => path.push(v))
+
+  xtest('Should have "dfsIterative()"', () => {
+    graph.dfsIterative('a', cb)
     expect(path.join('')).toBe('acefdb')
+    expect(edges.toString()).toBe('a-c, c-e, e-f, f-d, d-b')
   })
   test('Should have "bfsRecursive()"', () => {
-    graph.bfsRecursive('a', (v) => path.push(v))
+    graph.bfsRecursive('a', cb)
     expect(path.join('')).toBe('abcdef')
+    expect(edges.toString()).toBe('a-b,a-c,b-d,c-e,d-f')
   })
   test('Should have "bfsIterative()"', () => {
-    graph.bfsIterative('a', (v) => path.push(v))
+    graph.bfsIterative('a', cb)
     expect(path.join('')).toBe('abcdef')
   })
 })
