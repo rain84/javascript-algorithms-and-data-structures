@@ -19,3 +19,4 @@ const p = new Proxy(target, handler)
 
 console.log(++p.val)
 console.log(++p.val)
+  
