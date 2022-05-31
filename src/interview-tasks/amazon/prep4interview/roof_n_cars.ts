@@ -24,14 +24,16 @@ export const getMinRoof = (arr: number[], n: number) => {
   const slice = arr.slice(0, n - 1)
   let i = n - 1
   let result = Infinity
+  let slicePointer = i
 
   do {
-    slice.push(arr[i])
+    slice[slicePointer++] = arr[i]
+
     const min = Math.min(...slice)
     const max = Math.max(...slice)
     const diff = max - min + 1
-    slice.shift()
 
+    if (slicePointer === n) slicePointer = 0
     if (diff < result) result = diff
   } while (++i < arr.length)
 
