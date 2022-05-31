@@ -40,33 +40,33 @@ describe('DS: Graph', () => {
     }
   })
 
-  test('Should have "removeEdge()"', () => {
+  test('should have "removeEdge()"', () => {
     graph.removeEdge('f', 'e').removeEdge('f', 'd')
     expect(toString(graph)).toBe('abcde')
   })
 
-  test('Should have "removeVertex()"', () => {
+  test('should have "removeVertex()"', () => {
     graph.removeVertex('d').removeVertex('e')
     expect(toString(graph)).toBe('abc')
   })
 
-  test('Should have "dfsRecursive()"', () => {
+  test('should have "dfsRecursive()"', () => {
     graph.dfsRecursive('a', cb)
     expect(path.join('')).toBe('abdecf')
     expect(edges.toString()).toBe('a-b,b-d,d-e,c-e,e-f')
   })
 
-  xtest('Should have "dfsIterative()"', () => {
+  xtest('should have "dfsIterative()"', () => {
     graph.dfsIterative('a', cb)
     expect(path.join('')).toBe('acefdb')
     expect(edges.toString()).toBe('a-c, c-e, e-f, f-d, d-b')
   })
-  test('Should have "bfsRecursive()"', () => {
+  test('should have "bfsRecursive()"', () => {
     graph.bfsRecursive('a', cb)
     expect(path.join('')).toBe('abcdef')
     expect(edges.toString()).toBe('a-b,a-c,b-d,c-e,d-f')
   })
-  test('Should have "bfsIterative()"', () => {
+  test('should have "bfsIterative()"', () => {
     graph.bfsIterative('a', cb)
     expect(path.join('')).toBe('abcdef')
   })

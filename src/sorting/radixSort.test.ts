@@ -1,6 +1,6 @@
 import { radixSort } from './radixSort'
 
-describe('Radix sort', () => {
+describe('Sorting: Radix sort', () => {
   test('positive inputs', () => {
     const array = [72, 99, 84, 95, 22, 54, 66, 80, 21, 5]
     expect(radixSort(array)).toEqual([5, 21, 22, 54, 66, 72, 80, 84, 95, 99])

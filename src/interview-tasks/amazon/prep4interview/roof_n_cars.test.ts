@@ -1,6 +1,6 @@
 import { getMinRoof } from './roof_n_cars'
 
-describe('roof_n_cars', () => {
+describe('Interview: Amazon. Roof_n_Cars', () => {
   const IO = new Map<[number[], number], number>([
     [[[2, 5, 6, 12], 3], 5],
     [[[12, 5, 6, 2], 3], 5],

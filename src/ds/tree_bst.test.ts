@@ -75,7 +75,7 @@ describe('DS: Tree - BST', () => {
       .insert({ key: 9, val: 'e' })
   })
 
-  test('Should have "infixTraverse()"', () => {
+  test('should have "infixTraverse()"', () => {
     tree.shape.instanse.dfsInfix(tree.shape.push)
     expect(tree.shape.toString()).toBe('abcde')
 
@@ -83,7 +83,7 @@ describe('DS: Tree - BST', () => {
     expect(tree.number.toString()).toBe('2579')
   })
 
-  test('Should have "prefixTraverse()"', () => {
+  test('should have "prefixTraverse()"', () => {
     tree.shape.instanse.dfsPrefix(tree.shape.push)
     expect(tree.shape.toString()).toBe('cbade')
 
@@ -91,7 +91,7 @@ describe('DS: Tree - BST', () => {
     expect(tree.number.toString()).toBe('2759')
   })
 
-  test('Should have "postfixTraverse()"', () => {
+  test('should have "postfixTraverse()"', () => {
     tree.shape.instanse.dfsPostfix(tree.shape.push)
     expect(tree.shape.toString()).toBe('abedc')
 
@@ -99,7 +99,7 @@ describe('DS: Tree - BST', () => {
     expect(tree.number.toString()).toBe('5972')
   })
 
-  test('Should have "bsfTraverse()"', () => {
+  test('should have "bsfTraverse()"', () => {
     tree.shape.instanse.bfs(tree.shape.push)
     expect(tree.shape.toString()).toBe('cbdae')
 
@@ -107,7 +107,7 @@ describe('DS: Tree - BST', () => {
     expect(tree.number.toString()).toBe('2759')
   })
 
-  test('Should have "search()"', () => {
+  test('should have "search()"', () => {
     let result: number | IShape | undefined = tree.number.instanse.search(9)
     expect(result).toBe(9)
 
@@ -121,7 +121,7 @@ describe('DS: Tree - BST', () => {
     expect(result).toBeUndefined()
   })
 
-  test('Should traverse', () => {
+  test('should traverse', () => {
     /*
         10
        /  \

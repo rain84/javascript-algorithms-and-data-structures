@@ -1,9 +1,10 @@
 import { equalChunks, getChunkIndexes, extractByIndexes, ResultType } from './equalChunks'
 
-describe('Interview task: equalChunks', () => {
+describe('Interview: Meta. Equal chunks', () => {
   const helpers = {
     sum: (arr: number[]) => arr.reduce((a, b) => a + b),
-    have3equalChunks: (arr: ResultType) => arr.every((item) => helpers.sum(item) === helpers.sum(arr[0])),
+    have3equalChunks: (arr: ResultType) =>
+      arr.every((item) => helpers.sum(item) === helpers.sum(arr[0])),
   }
 
   test('should return null on empty array', () => {
@@ -41,7 +42,8 @@ describe('Interview task: equalChunks', () => {
   })
 
   describe('getChunkIndexes', () => {
-    const sumOfIndexes = (arr: number[], indexes: number[]): number => indexes.reduce((acc, idx) => acc + arr[idx], 0)
+    const sumOfIndexes = (arr: number[], indexes: number[]): number =>
+      indexes.reduce((acc, idx) => acc + arr[idx], 0)
 
     test('sumOfIndexes should work', () => {
       expect(sumOfIndexes([7, 43, 123, 9, 23, 2], [0, 2, 4])).toBe(153)
@@ -60,12 +62,16 @@ describe('Interview task: equalChunks', () => {
 
   describe('splitArrByIndexes', () => {
     test('splitArrByIndexes should work', () => {
-      expect(extractByIndexes([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2])).toEqual({
+      expect(
+        extractByIndexes([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2])
+      ).toEqual({
         chunk: [0, 1, 2],
         restArray: [3, 4, 5, 6, 7, 8, 9],
       })
 
-      expect(extractByIndexes([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [7, 9, 5, 2])).toEqual({
+      expect(
+        extractByIndexes([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [7, 9, 5, 2])
+      ).toEqual({
         chunk: [7, 9, 5, 2],
         restArray: [0, 1, 3, 4, 6, 8],
       })

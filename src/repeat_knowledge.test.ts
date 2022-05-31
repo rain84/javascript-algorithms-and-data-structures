@@ -1,6 +1,6 @@
 import { DoublyLinkedList } from './repeat_knowledge'
 
-describe('Test for repeated knowledge', () => {
+describe('Repeat knowledge 🧑🏻‍💻', () => {
   describe('DoublyLinkedList', () => {
     let list: DoublyLinkedList<string | number>
 
@@ -61,7 +61,9 @@ describe('Test for repeated knowledge', () => {
     test('Should have "insert()"', () => {
       expect(list.insert(-1, 'Data')).toBeUndefined()
       expect(list.insert(10, 'Data')).toBeUndefined()
-      expect(list.insert(1, '🙏').insert(3, '🔥').toString()).toBe('Hello🙏 🔥world!!')
+      expect(list.insert(1, '🙏').insert(3, '🔥').toString()).toBe(
+        'Hello🙏 🔥world!!'
+      )
     })
 
     test('Should have "remove()"', () => {

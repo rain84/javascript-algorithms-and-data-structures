@@ -9,7 +9,7 @@ import {
   haveSum,
 } from './task'
 
-describe('Interview tasks: Avito', () => {
+describe('Interview: Avito. findPairs', () => {
   test('findPairs1', () => {
     expect(findPairs1([2, 4, 5, 3], 7)).toMatchObject([
       [2, 5],

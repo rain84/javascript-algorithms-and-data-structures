@@ -1,6 +1,6 @@
 import { fibonacci, fibonacci2 } from './fibonacci'
 
-describe('Fibonacci', () => {
+describe('Interview: Amazon. Fibonacci', () => {
   const IO = new Map([
     [3, 2],
     [10, 55],

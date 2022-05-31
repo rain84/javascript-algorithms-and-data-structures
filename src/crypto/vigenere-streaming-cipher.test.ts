@@ -1,6 +1,6 @@
 import { encode, decode, alphabet } from './vigenere-streaming-cipher'
 
-describe('Poly-alphabet "Vigenere"-streaming-cipher', () => {
+describe('Crypto: Poly-alphabet "Vigenere"-streaming-cipher', () => {
   //   const autokey = 'QUEENLY'
   //   const message = 'ATTACKATDAWN'.toLocaleLowerCase()
   //   const encodedMessage = 'QNXEPVYTWTWP'.toLocaleLowerCase()
@@ -18,6 +18,8 @@ describe('Poly-alphabet "Vigenere"-streaming-cipher', () => {
   })
 
   test('should just work', () => {
-    expect(decode(alphabet.ru)(encode(alphabet.ru)(message, autokey), autokey)).toBe(message)
+    expect(
+      decode(alphabet.ru)(encode(alphabet.ru)(message, autokey), autokey)
+    ).toBe(message)
   })
 })

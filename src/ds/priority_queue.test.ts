@@ -12,7 +12,7 @@ describe('DS: Priority Queue', () => {
     data.forEach((char, i) => queue.enqueue(char, randomPriority[i]))
   })
 
-  test('Should have "queue()" and "dequeue()"', () => {
+  test('should have "queue()" and "dequeue()"', () => {
     const values = []
     let val: string
 

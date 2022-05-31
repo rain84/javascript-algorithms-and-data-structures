@@ -1,6 +1,6 @@
 import { compress, decompress } from './stringCompression'
 
-describe('String compression', () => {
+describe('Interview: Amazon. String compression', () => {
   test('should compress', () => {
     expect(compress('aaaabbbcccd')).toBe('4a3b3cd')
   })

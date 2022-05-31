@@ -18,7 +18,7 @@ describe('DS: Min and max binary heap', () => {
     })
   })
 
-  test('Should have "insert()" and "remove()"', () => {
+  test('should have "insert()" and "remove()"', () => {
     const values = {
       max: [],
       min: [],

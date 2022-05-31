@@ -7,7 +7,7 @@ describe('DS: Queue', () => {
     queue = new Queue(...'abcde')
   })
 
-  test('Should have ctor, "isEmpty()" & "size"', () => {
+  test('should have ctor, "isEmpty()" & "size"', () => {
     expect(queue.size).toBe(5)
     expect(queue.isEmpty()).toBeFalsy()
 
@@ -16,7 +16,7 @@ describe('DS: Queue', () => {
     expect(queue.isEmpty()).toBeTruthy()
   })
 
-  test('Should have "enqueue()" & "dequeue()"', () => {
+  test('should have "enqueue()" & "dequeue()"', () => {
     expect((queue.enqueue('z'), queue.size)).toBe(6)
     expect(queue.dequeue()).toBe('a')
     expect(queue.size).toBe(5)

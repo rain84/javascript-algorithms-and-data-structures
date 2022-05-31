@@ -7,7 +7,7 @@ describe('DS: Stack', () => {
     stack = new Stack(...'abcdefg')
   })
 
-  test('Should have ctor, "push()", "isEmpty()" & "size()"', () => {
+  test('should have ctor, "push()", "isEmpty()" & "size()"', () => {
     expect(stack.size()).toBe(7)
     expect(stack.peek()).toBe('g')
 
@@ -20,7 +20,7 @@ describe('DS: Stack', () => {
     expect(stack.peek()).toBe('c')
   })
 
-  test('Should have "pop()" & "peek()"', () => {
+  test('should have "pop()" & "peek()"', () => {
     expect(stack.pop()).toBe('g')
     expect(stack.peek()).toBe('f')
     expect(stack.size()).toBe(6)

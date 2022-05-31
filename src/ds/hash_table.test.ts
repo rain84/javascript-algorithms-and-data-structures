@@ -13,7 +13,7 @@ describe('DS: HashTable', () => {
     data.forEach((key, val) => hashTable.set(key, val))
   })
 
-  test('Should have "set()" and "get()"', () => {
+  test('should have "set()" and "get()"', () => {
     expect(hashTable.get('The')).toBe(0)
     expect(hashTable.get('Language')).toBe(3)
     expect(hashTable.get('non-existent')).toBeUndefined()
@@ -32,7 +32,7 @@ describe('DS: HashTable', () => {
     expect(hashTable.get('prop3')).toBe(3)
   })
 
-  test('Should have "delete()"', () => {
+  test('should have "delete()"', () => {
     hashTable.delete('The')
     expect(hashTable.get('The')).toBeUndefined()
 
@@ -49,7 +49,7 @@ describe('DS: HashTable', () => {
     expect(hashTable.get('prop3')).toBe(3)
   })
 
-  test('Should have "keys()"', () => {
+  test('should have "keys()"', () => {
     const keys = hashTable.keys()
     keys.sort()
     data.sort()
@@ -57,7 +57,7 @@ describe('DS: HashTable', () => {
     expect(keys).toMatchObject(data)
   })
 
-  test('Should have "values()"', () => {
+  test('should have "values()"', () => {
     const indexes = data.map((_, i) => i)
     const values = hashTable.values()
     values.sort((a, b) => a - b)
@@ -65,7 +65,7 @@ describe('DS: HashTable', () => {
     expect(values).toMatchObject(indexes)
   })
 
-  test('Should have "entries()"', () => {
+  test('should have "entries()"', () => {
     const entries = hashTable
       .entries()
       .reduce((acc, [val, key]) => ((acc[key] = val), acc), [])
