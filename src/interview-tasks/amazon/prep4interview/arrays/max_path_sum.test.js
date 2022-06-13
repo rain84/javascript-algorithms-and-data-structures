@@ -1,4 +1,5 @@
 import { max_path_sum } from './max_path_sum.js'
+import { arr } from './input-2.js'
 
 describe('Interview: Amazon. Arrays.  max_path_sum', () => {
   it('should work', () => {
@@ -6,4 +7,7 @@ describe('Interview: Amazon. Arrays.  max_path_sum', () => {
     expect(max_path_sum([2, 3, 7, 10, 12], [1, 5, 7, 8])).toBe(35)
     expect(max_path_sum([1, 2, 3], [3, 4, 5])).toBe(15)
   })
+
+  // expect(max_path_sum(arr.a, arr.b)).toBe(503008440)
+  it.todo('should work with a large arrays')
 })
