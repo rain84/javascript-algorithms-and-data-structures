@@ -8,6 +8,7 @@ describe('Interview: Amazon. Arrays.  max_path_sum', () => {
     expect(max_path_sum([1, 2, 3], [3, 4, 5])).toBe(15)
   })
 
-  // expect(max_path_sum(arr.a, arr.b)).toBe(503008440)
-  it.todo('should work with a large arrays')
+  
+  it('should work with a large arrays', () =>
+    expect(max_path_sum(arr.a, arr.b)).toBe(503008440))
 })
