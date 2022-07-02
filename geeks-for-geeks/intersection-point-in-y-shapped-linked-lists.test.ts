@@ -31,8 +31,13 @@ describe('GFG. Intersection Point in Y Shapped Linked Lists', () => {
     ])(
       '%# should work',
       (list1: Node, list2: Node, common: Node, result: number) => {
-        list1.next = common
-        list2.next = common
+        let l = list1
+        while (l.next) l = l.next
+        l.next = common
+
+        l = list2
+        while (l.next) l = l.next
+        l.next = common
 
         expect(intersectPoint(list1, list2)).toBe(result)
       }
