@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .root {
+        border: 1px solid;
+      }
+
+      .root > div {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <div class="el">ноль ноль ноль ноль ноль</div>
+      <div class="el">
+        один один один один один один один один один один один
+      </div>
+      <div class="el">
+        два два два два два два два два два два два два два два два два два два
+        два два два два два
+      </div>
+      <div class="el">
+        три три три три три три три три три три три три три три три три три три
+        три три три три три три три три три три три три три три три три три три
+      </div>
+      <div class="el">
+        четыре четыре четыре четыре четыре четыре четыре четыре четыре четыре
+        четыре четыре четыре четыре четыре четыре четыре четыре четыре четыре
+        четыре четыре четыре четыре четыре четыре четыре четыре четыре четыре
+        четыре четыре
+      </div>
+    </div>
+
+    <!-- <div class="root">
+      <div class="el">У каждого объявления есть свои стили</div>
+      <div class="el">Их не нужно менять</div>
+      <div class="el">Каждое объявление должно быть свободным по высоте</div>
+      <div class="el">А вот ширину нужно будет выставить</div>
+      <div class="el">
+        Ширину элемента root, при необходимости вы можете определить, но в
+        тестах она может быть разная
+      </div>
+    </div>
+ -->
+    <script>
+      const renderWaterfall = (rootNode, columnCount, elementGap) => {
+        rootNode.style.display = 'grid'
+        rootNode.style.gridTemplateColumns = `repeat(${columnCount}, 1fr)`
+        rootNode.style.alignContent = `center`
+        rootNode.style.gridGap = `${elementGap}px`
+
+        const children = [...rootNode.children]
+        const colsHeight = new Array(columnCount).fill(0)
+
+        const nextChildren = []
+        let row = 0
+        let col = 0
+        let i = 0
+
+        for (let child of children) {
+          const { offsetHeight } = child
+          const min = Math.min(...colsHeight)
+          const minColIndex = colsHeight.indexOf(min)
+          colsHeight[minColIndex] += offsetHeight + elementGap
+
+          if (i % columnCount === 0) {
+            row++
+            col = 0
+          } else {
+            col = minColIndex
+          }
+          i++
+
+          nextChildren[(row - 1) * columnCount + col] = child
+        }
+
+        console.log(`nextChildren`, nextChildren)
+
+        for (let i = 0; i < nextChildren.length; i++) {
+          rootNode.appendChild(nextChildren[i])
+        }
+      }
+
+      const rootNode = document.querySelector('.root')
+      renderWaterfall(rootNode, 4, 10)
+    </script>
+  </body>
+</html>
