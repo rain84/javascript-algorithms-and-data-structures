@@ -60,3 +60,5 @@ export class Promise_<T> {
 
   constructor() {}
 }
+
+export const { resolve, reject, promisify } = Promise_
