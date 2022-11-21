@@ -1,5 +1,6 @@
-import { resolve, reject } from '../../utils/async'
 import { Promise_ } from './promise'
+
+const { resolve, reject } = Promise_
 
 describe('Promise', () => {
   describe('promise.race()', () => {
@@ -27,8 +28,8 @@ describe('Promise', () => {
     it('should process array of rejected promises', async () => {
       expect.assertions(1)
       return expect(
-        Promise_.race([reject(10, 2), reject(11, 3), reject(12, 1)])
-      ).resolves.toBe(12)
+        Promise_.race([reject(10, 2), reject(41), reject(11, 3), reject(12, 1)])
+      ).resolves.toBe(41)
     })
 
     it('should process array of non-promise values', async () => {

@@ -1,6 +1,6 @@
-import { resolve, reject } from '../../utils/async'
 import { Promise_ } from './promise'
 
+const { resolve, reject } = Promise_
 type TPromises = Record<string, Array<unknown | Promise<unknown>>>
 
 describe('Promise', () => {
