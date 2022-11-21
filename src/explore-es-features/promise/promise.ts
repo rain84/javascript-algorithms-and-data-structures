@@ -51,7 +51,9 @@ export class Promise_<T> {
   }
 
   static reject = <T>(value?: T, timeout?: number) => {
-    return new Promise<T>((_, rej) => setTimeout(rej, timeout, value))
+    return typeof timeout === 'undefined'
+      ? Promise.reject(value)
+      : new Promise<T>((_, rej) => setTimeout(rej, timeout, value))
   }
 
   static promisify = <T>(val: T | Promise<T>): Promise<T> => {
