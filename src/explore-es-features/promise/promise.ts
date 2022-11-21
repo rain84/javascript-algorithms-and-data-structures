@@ -7,7 +7,7 @@ export class Promise_<T> {
       let isRejected = false
 
       for (const item of iterable) {
-        const p = Promise_.#promisify(item)
+        const p = Promise_.promisify(item)
 
         result = result
           .then((collection: T[] | void) => {
@@ -39,13 +39,24 @@ export class Promise_<T> {
       }
 
       for (const item of iterable) {
-        Promise_.#promisify(item).then(callback).catch(callback)
+        Promise_.promisify(item).then(callback).catch(callback)
       }
     })
   }
 
-  static #promisify = <T>(val: T | Promise<T>): Promise<T> =>
-    val?.constructor !== Promise ? Promise.resolve(val) : val
+  static resolve = <T>(value?: T, timeout?: number) => {
+    return typeof timeout === 'undefined'
+      ? Promise.resolve(value)
+      : new Promise<T>((res) => setTimeout(res, timeout, value))
+  }
+
+  static reject = <T>(value?: T, timeout?: number) => {
+    return new Promise<T>((_, rej) => setTimeout(rej, timeout, value))
+  }
+
+  static promisify = <T>(val: T | Promise<T>): Promise<T> => {
+    return val?.constructor !== Promise ? Promise.resolve(val) : val
+  }
 
   constructor() {}
 }
