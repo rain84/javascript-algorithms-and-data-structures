@@ -9,80 +9,78 @@ import {
   haveSum,
 } from './task'
 
-describe('Interview: Avito. findPairs', () => {
-  test('findPairs1', () => {
-    expect(findPairs1([2, 4, 5, 3], 7)).toMatchObject([
-      [2, 5],
-      [4, 3],
-    ])
-    expect(findPairs1([2, 4, 5, 3], 0)).toMatchObject([])
-  })
+it('findPairs1', () => {
+  expect(findPairs1([2, 4, 5, 3], 7)).toMatchObject([
+    [2, 5],
+    [4, 3],
+  ])
+  expect(findPairs1([2, 4, 5, 3], 0)).toMatchObject([])
+})
 
-  test('findPairs2', () => {
-    expect(findPairs2([2, 4, 5, 3], 7)).toMatchObject([
-      [2, 5],
-      [4, 3],
-    ])
-    expect(findPairs2([2, 4, 5, 3], 0)).toMatchObject([])
-  })
+it('findPairs2', () => {
+  expect(findPairs2([2, 4, 5, 3], 7)).toMatchObject([
+    [2, 5],
+    [4, 3],
+  ])
+  expect(findPairs2([2, 4, 5, 3], 0)).toMatchObject([])
+})
 
-  test('findPair3', () => {
-    const data = [-1, 0, 1, 3, 4]
-    let target = 5
-    let result = findPair3(data, target)
-    ;(result as [number, number]).sort()
-    expect(result).toMatchObject([1, 4])
+it('findPair3', () => {
+  const data = [-1, 0, 1, 3, 4]
+  let target = 5
+  let result = findPair3(data, target)
+  ;(result as [number, number]).sort()
+  expect(result).toMatchObject([1, 4])
 
-    target = 9
-    result = findPair3(data, target)
-    expect(result).toBeFalsy()
-  })
+  target = 9
+  result = findPair3(data, target)
+  expect(result).toBeFalsy()
+})
 
-  test('findPair4', () => {
-    const data = [-1, 0, 1, 3, 4]
-    let target = 5
-    let result = findPair4(data, target)
-    ;(result as [number, number]).sort()
-    expect(result).toMatchObject([1, 4])
+it('findPair4', () => {
+  const data = [-1, 0, 1, 3, 4]
+  let target = 5
+  let result = findPair4(data, target)
+  ;(result as [number, number]).sort()
+  expect(result).toMatchObject([1, 4])
 
-    target = 9
-    result = findPair4(data, target)
-    expect(result).toBeFalsy()
-  })
+  target = 9
+  result = findPair4(data, target)
+  expect(result).toBeFalsy()
+})
 
-  test('findPair5', () => {
-    const data = [-1, 0, 1, 3, 4]
-    let target = 5
-    let result = findPair5(data, target)
-    ;(result as [number, number]).sort()
-    expect(result).toMatchObject([1, 4])
+it('findPair5', () => {
+  const data = [-1, 0, 1, 3, 4]
+  let target = 5
+  let result = findPair5(data, target)
+  ;(result as [number, number]).sort()
+  expect(result).toMatchObject([1, 4])
 
-    target = 9
-    result = findPair5(data, target)
-    expect(result).toBeFalsy()
-  })
+  target = 9
+  result = findPair5(data, target)
+  expect(result).toBeFalsy()
+})
 
-  test('findPair6', () => {
-    const data = [-1, 0, 1, 3, 4]
-    let target = 5
-    let result = findPair6(data, target)
-    ;(result as [number, number]).sort()
-    expect(result).toMatchObject([1, 4])
+it('findPair6', () => {
+  const data = [-1, 0, 1, 3, 4]
+  let target = 5
+  let result = findPair6(data, target)
+  ;(result as [number, number]).sort()
+  expect(result).toMatchObject([1, 4])
 
-    target = 9
-    result = findPair6(data, target)
-    expect(result).toBeFalsy()
-  })
+  target = 9
+  result = findPair6(data, target)
+  expect(result).toBeFalsy()
+})
 
-  test('findPairIndexes', () => {
-    const data = [-1, 0, 1, 3, 4]
-    expect(findPairIndexes(data, 2).sort()).toMatchObject([0, 3].sort())
-    expect(findPairIndexes(data, 12)).toBeUndefined()
-  })
+it('findPairIndexes', () => {
+  const data = [-1, 0, 1, 3, 4]
+  expect(findPairIndexes(data, 2)!.sort()).toMatchObject([0, 3].sort())
+  expect(findPairIndexes(data, 12)).toBeUndefined()
+})
 
-  test('haveSum', () => {
-    const data = [-1, 0, 1, 3, 4]
-    expect(haveSum(data, 2)).toBeTruthy()
-    expect(haveSum(data, 8)).toBeFalsy()
-  })
+it('haveSum', () => {
+  const data = [-1, 0, 1, 3, 4]
+  expect(haveSum(data, 2)).toBeTruthy()
+  expect(haveSum(data, 8)).toBeFalsy()
 })

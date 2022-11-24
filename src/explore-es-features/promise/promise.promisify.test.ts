@@ -1,10 +1,6 @@
-import { Promise_ } from './promise'
+import { promisify } from './promise'
 
-describe('Promise', () => {
-  describe('promisify()', () => {
-    it('should work', () => {
-      expect(Promise_.promisify(1).constructor).toBe(Promise)
-      expect(Promise_.promisify(Promise.resolve(1)).constructor).toBe(Promise)
-    })
-  })
+it('should work', () => {
+  expect(promisify(1).constructor).toBe(Promise)
+  expect(promisify(Promise.resolve(1)).constructor).toBe(Promise)
 })

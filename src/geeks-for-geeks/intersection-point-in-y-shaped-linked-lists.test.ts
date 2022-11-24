@@ -2,24 +2,20 @@ import {
   Node,
   intersectPoint,
   createFromString,
-} from './intersection-point-in-y-shapped-linked-lists'
+} from './intersection-point-in-y-shaped-linked-lists'
 
-describe('GFG. Intersection Point in Y Shapped Linked Lists', () => {
+describe('GFG. Intersection Point in Y Shaped Linked Lists', () => {
   it('Node should be creatable', () => {
     expect(new Node(42).data).toBe(42)
   })
 
-  describe('createFromString()', () => {
-    it('should work', () => {
-      const list = createFromString('7 5 9 60 50 34 26 40 13')
-      expect(list.data).toBe(7)
-      expect(list?.next).not.toBeNull()
-      expect(list.next?.next?.data).toBe(9)
-      expect(list.next?.next?.next?.next?.next?.data).toBe(34)
-      expect(
-        list.next?.next?.next?.next?.next?.next?.next?.next?.next
-      ).toBeNull()
-    })
+  it('createFromString() should work', () => {
+    const list = createFromString('7 5 9 60 50 34 26 40 13')
+    expect(list.data).toBe(7)
+    expect(list?.next).not.toBeNull()
+    expect(list.next?.next?.data).toBe(9)
+    expect(list.next?.next?.next?.next?.next?.data).toBe(34)
+    expect(list.next?.next?.next?.next?.next?.next?.next?.next?.next).toBeNull()
   })
 
   describe('intersectPoint()', () => {

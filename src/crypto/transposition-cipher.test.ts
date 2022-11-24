@@ -7,60 +7,56 @@ import {
   withoutSpaces,
 } from './transposition-cipher'
 
-describe('Crypto: Horizontally running transposition cipher', () => {
-  const keyword = 'комбайн'
-  const message = 'ЭТО СООБЩЕНИЕ СЛЕДУЕТ ОТПРАВИТЬ'
-  const encodedMessage = 'ОЕТИСИЕВОСОТЭЩЕПОНУАБЛТЬТЕДР'
+const keyword = 'комбайн'
+const message = 'ЭТО СООБЩЕНИЕ СЛЕДУЕТ ОТПРАВИТЬ'
+const encodedMessage = 'ОЕТИСИЕВОСОТЭЩЕПОНУАБЛТЬТЕДР'
 
-  describe('Cipher', () => {
-    test('should encode', () => {
-      expect(encode(message, keyword)).toBe(encodedMessage)
-    })
+// Horizontally running transposition cipher
 
-    test('should decode', () => {
-      expect(decode(encodedMessage, keyword)).toBe(withoutSpaces(message))
-    })
+it('should encode', () => {
+  expect(encode(message, keyword)).toBe(encodedMessage)
+})
 
-    test('hould just work', () => {
-      expect(decode(encode(message, keyword), keyword)).toBe(
-        withoutSpaces(message)
-      )
-    })
+it('should decode', () => {
+  expect(decode(encodedMessage, keyword)).toBe(withoutSpaces(message))
+})
+
+it('should just work', () => {
+  expect(decode(encode(message, keyword), keyword)).toBe(withoutSpaces(message))
+})
+
+describe('Util', () => {
+  it('getCipher() should return cipher', () => {
+    const cipher = getCipher(keyword)
+
+    expect(cipher.encode).toEqual([3, 6, 4, 1, 0, 2, 5])
+    expect(cipher.decode).toEqual([4, 3, 5, 0, 2, 6, 1])
   })
 
-  describe('Util', () => {
-    test('getCipher() should return cipher', () => {
-      const cipher = getCipher(keyword)
+  it('getColumn() should return column', () => {
+    const keyword = 'комбайн'
+    const matrixAsArray = [...'ОСОЭОБТЕИСЩНЛЕТЕОЕУТДИВТПАЬР']
 
-      expect(cipher.encode).toEqual([3, 6, 4, 1, 0, 2, 5])
-      expect(cipher.decode).toEqual([4, 3, 5, 0, 2, 6, 1])
-    })
+    expect(getColumn(matrixAsArray, keyword, 0).join('')).toBe('ОЕТИ')
+    expect(getColumn(matrixAsArray, keyword, 1).join('')).toBe('СИЕВ')
+    expect(getColumn(matrixAsArray, keyword, 6).join('')).toBe('ТЕДР')
+  })
 
-    test('getColumn() should return column', () => {
-      const keyword = 'комбайн'
-      const matrixAsArray = [...'ОСОЭОБТЕИСЩНЛЕТЕОЕУТДИВТПАЬР']
+  it('getRow() should return row', () => {
+    const keyword = 'комбайн'
 
-      expect(getColumn(matrixAsArray, keyword, 0).join('')).toBe('ОЕТИ')
-      expect(getColumn(matrixAsArray, keyword, 1).join('')).toBe('СИЕВ')
-      expect(getColumn(matrixAsArray, keyword, 6).join('')).toBe('ТЕДР')
-    })
+    expect(getRow([...encodedMessage], keyword, 0).join('')).toBe('ОСОЭОБТ')
+    expect(getRow([...encodedMessage], keyword, 1).join('')).toBe('ЕИСЩНЛЕ')
+    expect(getRow([...encodedMessage], keyword, 2).join('')).toBe('ТЕОЕУТД')
+    expect(getRow([...encodedMessage], keyword, 3).join('')).toBe('ИВТПАЬР')
+  })
 
-    test('getRow() should return row', () => {
-      const keyword = 'комбайн'
-
-      expect(getRow([...encodedMessage], keyword, 0).join('')).toBe('ОСОЭОБТ')
-      expect(getRow([...encodedMessage], keyword, 1).join('')).toBe('ЕИСЩНЛЕ')
-      expect(getRow([...encodedMessage], keyword, 2).join('')).toBe('ТЕОЕУТД')
-      expect(getRow([...encodedMessage], keyword, 3).join('')).toBe('ИВТПАЬР')
-    })
-
-    test('withoutSpaces() should work', () => {
-      expect(withoutSpaces('withoutSpaces() should work')).toBe(
-        'withoutSpaces()shouldwork'
-      )
-      expect(
-        withoutSpaces('    with    out   Spaces(    ) should work   ')
-      ).toBe('withoutSpaces()shouldwork')
-    })
+  it('withoutSpaces() should work', () => {
+    expect(withoutSpaces('withoutSpaces() should work')).toBe(
+      'withoutSpaces()shouldwork'
+    )
+    expect(withoutSpaces('    with    out   Spaces(    ) should work   ')).toBe(
+      'withoutSpaces()shouldwork'
+    )
   })
 })

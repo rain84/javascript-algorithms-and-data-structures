@@ -9,7 +9,7 @@
     Remark          : ??
 */
 // FIXME sorting is broken on the negative values
-import { getDigit, getLength } from '../utils/math.js'
+import { getDigit, getLength } from '../utils/math'
 
 export const radixSort = (arr: number[]) => {
   const buckets = []

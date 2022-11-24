@@ -7,7 +7,7 @@ type VertexContainer = {
   prev?: string
 }
 
-type Cb = (vertex: string, edge?: string) => void
+export type Cb = (vertex: string, edge?: string) => void
 
 export class Graph {
   #adjacency: AdjacencyList

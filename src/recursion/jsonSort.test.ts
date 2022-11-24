@@ -30,10 +30,6 @@ const output = {
   'tab.activeModifiedBorder': '#f00',
 }
 
-describe('Recursion', () => {
-  describe('JsonSort', () => {
-    it('should work', () => {
-      expect(jsonSort(input)).toMatchObject(output)
-    })
-  })
+it('should work', () => {
+  expect(jsonSort(input)).toMatchObject(output)
 })

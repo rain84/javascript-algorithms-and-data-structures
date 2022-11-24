@@ -28,7 +28,10 @@ export const qsort = (arr: number[], left = 0, right = arr.length - 1) => {
   qsort(arr, pivotIndex + 1, right)
 }
 
-export const quickSort = (arr: number[], p = { left: 0, right: arr.length - 1 }) => {
+export const quickSort = (
+  arr: number[],
+  p = { left: 0, right: arr.length - 1 }
+) => {
   let pivot = p.left
   let pivotOnStart = p.left
   const pivotValue = arr[pivotOnStart]
@@ -42,13 +45,15 @@ export const quickSort = (arr: number[], p = { left: 0, right: arr.length - 1 })
 
   ;[arr[pivotOnStart], arr[pivot]] = [arr[pivot], arr[pivotOnStart]]
 
-  if (1 < pivot - pivotOnStart) quickSort(arr, { left: pivotOnStart, right: pivot - 1 })
+  if (1 < pivot - pivotOnStart)
+    quickSort(arr, { left: pivotOnStart, right: pivot - 1 })
   if (1 < p.right - pivot) quickSort(arr, { left: pivot + 1, right: p.right })
 
   return arr
 }
 
-const swap = (arr: number[], i: number, j: number) => ([arr[i], arr[j]] = [arr[j], arr[i]])
+const swap = (arr: number[], i: number, j: number) =>
+  ([arr[i], arr[j]] = [arr[j], arr[i]])
 
 export const qsort2 = (arr: number[], left = 0, right = arr.length - 1) => {
   if (left >= right) return

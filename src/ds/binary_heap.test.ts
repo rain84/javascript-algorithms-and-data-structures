@@ -1,7 +1,7 @@
 import { random } from '../utils/array'
 import { BinaryHeapMax, BinaryHeapMin } from './binary_heap'
 
-describe('DS: Min and max binary heap', () => {
+describe('Min and max binary heap', () => {
   interface IHeap {
     max: BinaryHeapMax<number> | null
     min: BinaryHeapMin<number> | null
@@ -13,13 +13,17 @@ describe('DS: Min and max binary heap', () => {
     heap.max = new BinaryHeapMax<number>(BinaryHeapMax.selectorIdentity)
     heap.min = new BinaryHeapMin<number>(BinaryHeapMin.selectorIdentity)
     input.forEach((val) => {
-      heap.max.insert(val)
-      heap.min.insert(val)
+      heap.max?.insert(val)
+      heap.min?.insert(val)
     })
   })
 
-  test('should have "insert()" and "remove()"', () => {
-    const values = {
+  it('should have "insert()" and "remove()"', () => {
+    type TValues = {
+      max: number[]
+      min: number[]
+    }
+    const values: TValues = {
       max: [],
       min: [],
     }
@@ -27,12 +31,13 @@ describe('DS: Min and max binary heap', () => {
       asc: [...input],
       desc: [...input],
     }
-    let val: number
+    let val: number | undefined
 
     sorted.asc.sort((a, b) => a - b)
     sorted.desc.sort((a, b) => b - a)
-    while ((val = heap.max.remove()) !== undefined) values.max.push(val)
-    while ((val = heap.min.remove()) !== undefined) values.min.push(val)
+    while ((val = heap.max?.remove()) !== undefined)
+      values.max.push(val as number)
+    while ((val = heap.min?.remove()) !== undefined) values.min.push(val)
 
     expect(values.max).toMatchObject(sorted.desc)
     expect(values.min).toMatchObject(sorted.asc)
