@@ -1,21 +1,49 @@
 type Name = string
-type PreviousVertexes = Map<Name, Name>
 type MinimalPath = Map<Name, number>
 type Costs = Map<Name, number>
+type Breadcrumbs = Map<Name, Name>
+type CostsAndBreadcrumbs = { costs: Costs; breadcrumbs: Breadcrumbs }
+type GetOptimalPath = (
+  graph: Graph,
+  vertex: Name
+) => MaybeUndefined<(target: Name) => MaybeUndefined<MinimalPath>>
 
 export type Graph = Record<Name, Record<Name, number>>
 
-export const getOptimalPath = (
-  graph: Graph,
-  start: Name,
-  end: Name
-): Maybe<MinimalPath> => {
-  const costs: Costs = new Map([[start, 0]])
-  const unvisited = new Set<Name>([start])
-  const visited = new Set<Name>([start])
-  const previous: PreviousVertexes = new Map()
+export const getCosts = (graph: Graph, vertex: Name): MaybeUndefined<Costs> =>
+  getCostsAndBreadcrumbs(graph, vertex)?.['costs']
 
-  if (graph[start] === undefined) return
+export const getOptimalPath: GetOptimalPath = (graph, vertex) => {
+  const costsAndBreadcrumbs = getCostsAndBreadcrumbs(graph, vertex)
+  if (costsAndBreadcrumbs == undefined) return
+
+  return getPath(costsAndBreadcrumbs, vertex)
+}
+
+//  Time complexity O(n)
+const getMin = (vertexes: Set<Name>, costs: Costs): MaybeUndefined<Name> => {
+  if (costs?.size === 0 || vertexes?.size === 0) return
+
+  return [...vertexes.values()].reduce((min, next) => {
+    const costMin = costs.get(min) ?? +Infinity
+    const costNext = costs.get(next) ?? +Infinity
+
+    return costMin < costNext ? min : next
+  })
+}
+
+// Time complexity O(n^2)
+// TODO: rewrite with MinHeaps to reduce time complexity to O(n*log(n))
+const getCostsAndBreadcrumbs = (
+  graph: Graph,
+  vertex: Name
+): MaybeUndefined<CostsAndBreadcrumbs> => {
+  const costs: Costs = new Map([[vertex, 0]])
+  const unvisited = new Set<Name>([vertex])
+  const visited = new Set<Name>([vertex])
+  const breadcrumbs: Breadcrumbs = new Map()
+
+  if (graph[vertex] === undefined) return
 
   //  calculate costs of all vertexes
   while (unvisited.size) {
@@ -36,34 +64,26 @@ export const getOptimalPath = (
 
       if (cost.new < cost.current) {
         costs.set(neighbour, cost.new)
-        previous.set(neighbour, vertex)
+        breadcrumbs.set(neighbour, vertex)
       }
     })
   }
 
-  if (costs.get(end) === undefined) return
-
-  //  go through the previous vertexes starting from the last one
-  //  and get the path
-  let vertex = end
-  const path: [Name, number][] = []
-
-  do {
-    path.push([vertex, costs.get(vertex)!])
-  } while ((vertex = previous.get(vertex)!) !== start)
-
-  path.reverse()
-  return new Map(path)
+  return { costs, breadcrumbs }
 }
 
-//  Time complexity O(n)
-function getMin(vertexes: Set<Name>, costs: Costs): Name | undefined {
-  if (costs?.size === 0 || vertexes?.size === 0) return
+const getPath =
+  ({ costs, breadcrumbs }: CostsAndBreadcrumbs, vertex: Name) =>
+  (target: Name) => {
+    if (costs.get(target) === undefined) return
 
-  return [...vertexes.values()].reduce((min, next) => {
-    const costMin = costs.get(min) ?? +Infinity
-    const costNext = costs.get(next) ?? +Infinity
+    //  go through the previous vertexes starting from the last one
+    //  and get the path
+    const path: [Name, number][] = []
+    do {
+      path.push([target, costs.get(target)!])
+    } while ((target = breadcrumbs.get(target)!) !== vertex)
 
-    return costMin < costNext ? min : next
-  })
-}
+    path.reverse()
+    return new Map(path)
+  }
