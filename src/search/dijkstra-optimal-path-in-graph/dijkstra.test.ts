@@ -68,7 +68,7 @@ it.each`
 ])}
 
 `('should work on "$graphName"', ({ graph, start, end, result }) => {
-  expect(getOptimalPath(graph, start)(end)).toMatchObject(result)
+  expect(getOptimalPath(graph, start)?.(end)).toMatchObject(result)
 })
 
 it.each`
