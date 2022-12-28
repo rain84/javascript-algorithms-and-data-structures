@@ -1,4 +1,4 @@
-import { getCosts, getOptimalPath } from './dijkstra-optimal-path-in-graph'
+import { getCosts, getOptimalPath } from './dijkstra'
 
 const graph1 = {
   a: { b: 2, c: 1 },
