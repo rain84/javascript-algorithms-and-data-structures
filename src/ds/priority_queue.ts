@@ -1,23 +1,17 @@
 import { BinaryHeapMin } from './binary_heap'
 
-interface INode<T> {
-  value: T
-  priority: number
-}
-
-export class PriorityQueue<T> {
-  #heap: BinaryHeapMin<INode<T>>
+export class PriorityQueue {
+  #heap: BinaryHeapMin
 
   constructor() {
-    const keySelector = ({ priority }: INode<T>) => priority
-    this.#heap = new BinaryHeapMin<INode<T>>(keySelector)
+    this.#heap = new BinaryHeapMin()
   }
 
-  enqueue(value: T, priority: number) {
-    this.#heap.insert({ priority, value })
+  enqueue(value: number) {
+    this.#heap.insert(value)
   }
 
   dequeue() {
-    return this.#heap.remove()?.value
+    return this.#heap.remove()
   }
 }
