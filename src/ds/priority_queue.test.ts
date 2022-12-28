@@ -1,26 +1,30 @@
 import { random } from '../utils/array'
 import { PriorityQueue } from './priority_queue'
 
-let queue: PriorityQueue<string>
+let queue: PriorityQueue
 const data = [...'hello world!']
-let randomPriority: number[]
+let randomPriorityData: Map<number, string>
 
 beforeEach(() => {
-  randomPriority = random(data.length, 1000)
-  queue = new PriorityQueue<string>()
-  data.forEach((char, i) => queue.enqueue(char, randomPriority[i]))
+  randomPriorityData = new Map(
+    random(data.length, 1000).map((priority, i) => [priority, data[i]])
+  )
+  queue = new PriorityQueue()
+  for (const [priority] of randomPriorityData) {
+    queue.enqueue(priority)
+  }
 })
 
 it('should have "queue()" and "dequeue()"', () => {
   const values: string[] = []
-  let val: string | undefined
+  let val: MaybeUndefined<number>
 
-  while ((val = queue.dequeue()) !== undefined) values.push(val)
+  while ((val = queue.dequeue()) !== undefined)
+    values.push(randomPriorityData.get(val) ?? '')
 
-  const sortedValues = randomPriority
-    .map((val, i) => ({ val, i }))
-    .sort((a, b) => a.val - b.val)
-    .map(({ i }) => data[i])
+  const sortedValues = [...randomPriorityData.entries()]
+    .sort(([a], [b]) => a - b)
+    .map(([, val]) => val)
 
   expect(values).toMatchObject(sortedValues)
 })
