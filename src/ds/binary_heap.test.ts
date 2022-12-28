@@ -10,8 +10,8 @@ describe('Min and max binary heap', () => {
   let input = [...new Set(random(10, 100))]
 
   beforeEach(() => {
-    heap.max = new BinaryHeapMax<number>(BinaryHeapMax.selectorIdentity)
-    heap.min = new BinaryHeapMin<number>(BinaryHeapMin.selectorIdentity)
+    heap.max = new BinaryHeapMax()
+    heap.min = new BinaryHeapMin()
     input.forEach((val) => {
       heap.max?.insert(val)
       heap.min?.insert(val)
