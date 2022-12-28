@@ -1,6 +1,6 @@
 import { Graph } from './graph'
 
-export class GraphWeighted<T> extends Graph {
+export class GraphWeighted extends Graph {
   #weights: Map<string, number>
 
   constructor() {

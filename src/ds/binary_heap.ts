@@ -81,13 +81,13 @@ class BinaryHeap {
   }
 }
 
-export class BinaryHeapMax<T> extends BinaryHeap {
+export class BinaryHeapMax extends BinaryHeap {
   constructor() {
     super(compareFn.max)
   }
 }
 
-export class BinaryHeapMin<T> extends BinaryHeap {
+export class BinaryHeapMin extends BinaryHeap {
   constructor() {
     super(compareFn.min)
   }
