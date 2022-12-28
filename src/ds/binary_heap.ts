@@ -1,5 +1,3 @@
-type Selector<T> = (val: T) => number
-
 const compareFn = {
   max: (childKey: number = -Infinity, parentKey: number) =>
     childKey <= parentKey,
@@ -9,19 +7,15 @@ const compareFn = {
 
 type TComparator = typeof compareFn.max
 
-class BinaryHeap<T> {
-  #values: T[] = []
-  #keySelector: Selector<T>
+class BinaryHeap {
+  #values: number[] = []
   #comparator: TComparator
 
-  static selectorIdentity: Selector<number> = (val: number) => val
-
-  constructor(selector: Selector<T>, comparator: TComparator) {
-    this.#keySelector = selector
+  constructor(comparator: TComparator) {
     this.#comparator = comparator
   }
 
-  insert(val: T) {
+  insert(val: number) {
     this.#values.push(val)
     let childIndex = this.#values.length - 1
 
@@ -44,7 +38,7 @@ class BinaryHeap<T> {
     let parentIndex = 0
     const val = this.#values[0]
 
-    this.#values[0] = <T>this.#values.pop()
+    this.#values[0] = <number>this.#values.pop()
 
     while (true) {
       const childIndexes = this.#getChildIndexes(parentIndex)
@@ -71,7 +65,7 @@ class BinaryHeap<T> {
 
   #getKey(i: number) {
     if (this.#values[i] === undefined) return
-    else return this.#keySelector(this.#values[i])
+    else return this.#values[i]
   }
 
   #getParentIndex(i: number) {
@@ -87,14 +81,14 @@ class BinaryHeap<T> {
   }
 }
 
-export class BinaryHeapMax<T> extends BinaryHeap<T> {
-  constructor(selector: Selector<T>) {
-    super(selector, compareFn.max)
+export class BinaryHeapMax<T> extends BinaryHeap {
+  constructor() {
+    super(compareFn.max)
   }
 }
 
-export class BinaryHeapMin<T> extends BinaryHeap<T> {
-  constructor(selector: Selector<T>) {
-    super(selector, compareFn.min)
+export class BinaryHeapMin<T> extends BinaryHeap {
+  constructor() {
+    super(compareFn.min)
   }
 }
