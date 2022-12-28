@@ -1,4 +1,4 @@
-import { getOptimalPath } from './dijkstra-optimal-path-in-graph'
+import { getCosts, getOptimalPath } from './dijkstra-optimal-path-in-graph'
 
 const graph1 = {
   a: { b: 2, c: 1 },
@@ -21,8 +21,37 @@ const graph2 = {
 
 // prettier-ignore
 it.each`
+  graphName    | vertex  | graph    | costs
+
+  ${'graph-1'} | ${'a'} | ${graph1} |
+  ${new Map([
+    ['a', 0],
+    ['b', 2],
+    ['c', 1],
+    ['d', 6],
+    ['e', 3],
+    ['f', 4],
+    ['g', 5],
+  ])}
+
+  ${'graph-2'} | ${'1'} | ${graph2} |
+  ${new Map([
+    ['1', 0],
+    ['2', 7],
+    ['3', 9],
+    ['4', 20],
+    ['5', 20],
+    ['6', 11],
+  ])}
+
+  `('should return map of costs for the vertexes of "$graphName"', ({ graph, vertex, costs }) => {
+    expect(getCosts(graph, vertex)).toMatchObject(costs)
+  })
+
+// prettier-ignore
+it.each`
   graphName    | start  | end    | graph     | result
-  
+
   ${'graph-1'} | ${'a'} | ${'g'} | ${graph1} |
   ${new Map([
     ['c', 1],
@@ -36,10 +65,10 @@ it.each`
   ${new Map([
     ['3', 9],
     ['4', 20],
-  ])}
+])}
 
 `('should work on "$graphName"', ({ graph, start, end, result }) => {
-  expect(getOptimalPath(graph, start, end)).toMatchObject(result)
+  expect(getOptimalPath(graph, start)(end)).toMatchObject(result)
 })
 
 it.each`
@@ -50,6 +79,6 @@ it.each`
 `(
   'should return "undefined" for wrong input data on "$graphName"',
   ({ graph, start, end }) => {
-    expect(getOptimalPath(graph, start, end)).toBeUndefined()
+    expect(getOptimalPath(graph, start)?.(end)).toBeUndefined()
   }
 )
