@@ -1,8 +1,6 @@
 const compareFn = {
-  max: (childKey: number = -Infinity, parentKey: number) =>
-    childKey <= parentKey,
-  min: (childKey: number = +Infinity, parentKey: number) =>
-    childKey >= parentKey,
+  max: (parent: number, child: number = -Infinity) => child <= parent,
+  min: (parent: number, child: number = +Infinity) => child >= parent,
 }
 
 type TComparator = typeof compareFn.max
@@ -21,10 +19,10 @@ class BinaryHeap {
 
     while (childIndex) {
       const parentIndex = this.#getParentIndex(childIndex)
-      const parentKey = <number>this.#getKey(parentIndex)
-      const childKey = <number>this.#getKey(childIndex)
+      const parent = this.#values[parentIndex]
+      const child = this.#values[childIndex]
 
-      if (this.#comparator(childKey, parentKey)) return
+      if (this.#comparator(parent, child)) return
 
       this.#swap(childIndex, parentIndex)
       childIndex = parentIndex
@@ -38,34 +36,29 @@ class BinaryHeap {
     let parentIndex = 0
     const val = this.#values[0]
 
-    this.#values[0] = <number>this.#values.pop()
+    this.#values[0] = this.#values.pop()!
 
     while (true) {
       const childIndexes = this.#getChildIndexes(parentIndex)
-      const childKeys = childIndexes
-        .map((i) => this.#getKey(i))
+      const childs = childIndexes
+        .map((i) => this.#values[i])
         .filter((val) => val !== undefined)
 
-      if (childKeys[0] === undefined) break
+      if (childs[0] === undefined) break
 
-      const isFirstChild = this.#comparator(childKeys?.[1], childKeys[0])
+      const isFirstChild = this.#comparator(childs[0], childs?.[1])
       const [childKey, childIndex] = isFirstChild
-        ? [childKeys[0], childIndexes[0]]
-        : [childKeys[1], childIndexes[1]]
+        ? [childs[0], childIndexes[0]]
+        : [childs[1], childIndexes[1]]
 
-      const parentKey = <number>this.#getKey(parentIndex)
-      if (this.#comparator(<number>childKey, parentKey)) break
+      const parentKey = this.#values[parentIndex]
+      if (this.#comparator(parentKey, childKey)) break
 
       this.#swap(parentIndex, childIndex)
       parentIndex = childIndex
     }
 
     return val
-  }
-
-  #getKey(i: number) {
-    if (this.#values[i] === undefined) return
-    else return this.#values[i]
   }
 
   #getParentIndex(i: number) {
