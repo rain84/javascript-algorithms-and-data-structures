@@ -3,8 +3,8 @@ import { BinaryHeapMax, BinaryHeapMin } from './binary_heap'
 
 describe('Min and max binary heap', () => {
   interface IHeap {
-    max: BinaryHeapMax<number> | null
-    min: BinaryHeapMin<number> | null
+    max: MaybeNull<BinaryHeapMax>
+    min: MaybeNull<BinaryHeapMin>
   }
   let heap: Partial<IHeap> = {}
   let input = [...new Set(random(10, 100))]
@@ -35,8 +35,7 @@ describe('Min and max binary heap', () => {
 
     sorted.asc.sort((a, b) => a - b)
     sorted.desc.sort((a, b) => b - a)
-    while ((val = heap.max?.remove()) !== undefined)
-      values.max.push(val as number)
+    while ((val = heap.max?.remove()) !== undefined) values.max.push(val)
     while ((val = heap.min?.remove()) !== undefined) values.min.push(val)
 
     expect(values.max).toMatchObject(sorted.desc)
