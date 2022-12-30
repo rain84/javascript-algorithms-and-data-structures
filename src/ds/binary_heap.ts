@@ -27,6 +27,10 @@ export class BinaryHeap {
     this.#comparator = comparator
   }
 
+  get size() {
+    return this.#values.length
+  }
+
   insert(val: number) {
     this.#values.push(val)
     let childIndex = this.#values.length - 1

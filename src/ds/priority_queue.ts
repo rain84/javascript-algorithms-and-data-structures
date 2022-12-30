@@ -13,6 +13,10 @@ export class PriorityQueue {
     this.#heap = heap
   }
 
+  get size() {
+    return this.#heap.size
+  }
+
   enqueue(value: number) {
     this.#heap.insert(value)
   }
