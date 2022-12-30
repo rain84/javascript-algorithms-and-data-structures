@@ -33,6 +33,11 @@ it.each`
   }
 )
 
+it('should have "size"-getter', () => {
+  expect(queue.max?.size).toBe(data.length)
+  expect(queue.min?.size).toBe(data.length)
+})
+
 it.todo('Add tests for PriorityQueue createMax() / createMin() with values')
 
 function values(type: minmax) {

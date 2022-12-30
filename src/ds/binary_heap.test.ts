@@ -1,11 +1,11 @@
 import { random } from '../utils/array'
 import { BinaryHeap } from './binary_heap'
 
-interface IHeap {
-  max: MaybeNull<BinaryHeap>
-  min: MaybeNull<BinaryHeap>
+type minmax = 'min' | 'max'
+let heap: Record<minmax, MaybeNull<BinaryHeap>> = {
+  max: null,
+  min: null,
 }
-let heap: Partial<IHeap> = {}
 let input = [...new Set(random(10, 100))]
 
 beforeEach(() => {
@@ -39,6 +39,11 @@ it('Binary heaps should have "insert()" and "remove()"', () => {
 
   expect(values.max).toMatchObject(sorted.desc)
   expect(values.min).toMatchObject(sorted.asc)
+})
+
+it('should have "size"-getter', () => {
+  expect(heap.max?.size).toBe(input.length)
+  expect(heap.min?.size).toBe(input.length)
 })
 
 it.todo('Add tests for "BinaryHeap.fill()"')
