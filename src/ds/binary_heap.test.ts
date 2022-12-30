@@ -40,3 +40,5 @@ it('Binary heaps should have "insert()" and "remove()"', () => {
   expect(values.max).toMatchObject(sorted.desc)
   expect(values.min).toMatchObject(sorted.asc)
 })
+
+it.todo('Add tests for "BinaryHeap.fill()"')
