@@ -3,8 +3,10 @@ import { BinaryHeap, IBinaryHeap } from './binary_heap'
 export class PriorityQueue {
   #heap: BinaryHeap
 
-  static createMin = () => new PriorityQueue(BinaryHeap.createMin())
-  static createMax = () => new PriorityQueue(BinaryHeap.createMax())
+  static createMin = (values?: number | number[]) =>
+    new PriorityQueue(BinaryHeap.createMin(values))
+  static createMax = (values?: number | number[]) =>
+    new PriorityQueue(BinaryHeap.createMax(values))
 
   private constructor(heap: IBinaryHeap) {
     this.#heap = heap
