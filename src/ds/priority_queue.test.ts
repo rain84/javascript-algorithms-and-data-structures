@@ -33,6 +33,8 @@ it.each`
   }
 )
 
+it.todo('Add tests for PriorityQueue createMax() / createMin() with values')
+
 function values(type: minmax) {
   const values: string[] = []
   let val: MaybeUndefined<number>
