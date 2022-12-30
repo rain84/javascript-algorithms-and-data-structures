@@ -1,8 +1,19 @@
 type TComparator = (parent: number, child: number) => boolean
 export interface IBinaryHeap extends BinaryHeap {}
 export class BinaryHeap {
-  static createMin = () => new BinaryHeap(BinaryHeap.#comparators.min)
-  static createMax = () => new BinaryHeap(BinaryHeap.#comparators.max)
+  static createMin = (values?: number | number[]) =>
+    BinaryHeap.fill(new BinaryHeap(BinaryHeap.#comparators.min), values)
+
+  static createMax = (values?: number | number[]) =>
+    BinaryHeap.fill(new BinaryHeap(BinaryHeap.#comparators.max), values)
+
+  static fill = (heap: BinaryHeap, values?: number | number[]) => {
+    if (values === undefined) return heap
+    if (typeof values === 'number') values = [values]
+    values.forEach((val) => heap.insert(val))
+    return heap
+  }
+
   static #comparators = {
     max: (parent: number, child: number = -Infinity) => child <= parent,
     min: (parent: number, child: number = +Infinity) => child >= parent,
