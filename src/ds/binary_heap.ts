@@ -1,15 +1,17 @@
-const compareFn = {
-  max: (parent: number, child: number = -Infinity) => child <= parent,
-  min: (parent: number, child: number = +Infinity) => child >= parent,
-}
+type TComparator = (parent: number, child: number) => boolean
+export interface IBinaryHeap extends BinaryHeap {}
+export class BinaryHeap {
+  static createMin = () => new BinaryHeap(BinaryHeap.#comparators.min)
+  static createMax = () => new BinaryHeap(BinaryHeap.#comparators.max)
+  static #comparators = {
+    max: (parent: number, child: number = -Infinity) => child <= parent,
+    min: (parent: number, child: number = +Infinity) => child >= parent,
+  }
 
-type TComparator = typeof compareFn.max
-
-class BinaryHeap {
   #values: number[] = []
   #comparator: TComparator
 
-  constructor(comparator: TComparator) {
+  private constructor(comparator: TComparator) {
     this.#comparator = comparator
   }
 
@@ -71,17 +73,5 @@ class BinaryHeap {
 
   #swap(i: number, j: number) {
     ;[this.#values[i], this.#values[j]] = [this.#values[j], this.#values[i]]
-  }
-}
-
-export class BinaryHeapMax extends BinaryHeap {
-  constructor() {
-    super(compareFn.max)
-  }
-}
-
-export class BinaryHeapMin extends BinaryHeap {
-  constructor() {
-    super(compareFn.min)
   }
 }
