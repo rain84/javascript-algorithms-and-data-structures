@@ -5,6 +5,7 @@ export class PriorityQueue {
 
   static createMin = (values?: number | number[]) =>
     new PriorityQueue(BinaryHeap.createMin(values))
+
   static createMax = (values?: number | number[]) =>
     new PriorityQueue(BinaryHeap.createMax(values))
 

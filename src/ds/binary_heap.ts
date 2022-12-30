@@ -1,5 +1,6 @@
 type TComparator = (parent: number, child: number) => boolean
 export interface IBinaryHeap extends BinaryHeap {}
+
 export class BinaryHeap {
   static createMin = (values?: number | number[]) =>
     BinaryHeap.fill(new BinaryHeap(BinaryHeap.#comparators.min), values)
