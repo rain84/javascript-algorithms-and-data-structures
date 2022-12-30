@@ -1,10 +1,13 @@
-import { BinaryHeapMin } from './binary_heap'
+import { BinaryHeap, IBinaryHeap } from './binary_heap'
 
 export class PriorityQueue {
-  #heap: BinaryHeapMin
+  #heap: BinaryHeap
 
-  constructor() {
-    this.#heap = new BinaryHeapMin()
+  static createMin = () => new PriorityQueue(BinaryHeap.createMin())
+  static createMax = () => new PriorityQueue(BinaryHeap.createMax())
+
+  private constructor(heap: IBinaryHeap) {
+    this.#heap = heap
   }
 
   enqueue(value: number) {
