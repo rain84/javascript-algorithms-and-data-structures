@@ -11,10 +11,8 @@ let input = [...new Set(random(10, 100))]
 beforeEach(() => {
   heap.max = BinaryHeap.createMax()
   heap.min = BinaryHeap.createMin()
-  input.forEach((val) => {
-    heap.max?.insert(val)
-    heap.min?.insert(val)
-  })
+  heap.max?.fill(input)
+  heap.min?.fill(input)
 })
 
 it('Binary heaps should have "insert()" and "remove()"', () => {
@@ -30,12 +28,12 @@ it('Binary heaps should have "insert()" and "remove()"', () => {
     asc: [...input],
     desc: [...input],
   }
-  let val: number | undefined
 
   sorted.asc.sort((a, b) => a - b)
   sorted.desc.sort((a, b) => b - a)
-  while ((val = heap.max?.remove()) !== undefined) values.max.push(val)
-  while ((val = heap.min?.remove()) !== undefined) values.min.push(val)
+
+  while (heap.max?.size) values.max.push(heap.max?.remove()!)
+  while (heap.min?.size) values.min.push(heap.min?.remove()!)
 
   expect(values.max).toMatchObject(sorted.desc)
   expect(values.min).toMatchObject(sorted.asc)
