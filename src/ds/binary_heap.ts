@@ -1,93 +1,135 @@
 type TComparator = (parent: number, child: number) => boolean
+type Selector = (value: any) => number
+type Element<T> = {
+  index: number
+  key: number
+  value: T
+}
+
 export interface IBinaryHeap extends BinaryHeap {}
 
-export class BinaryHeap {
-  static createMin = (values?: number | number[]) =>
-    BinaryHeap.fill(new BinaryHeap(BinaryHeap.#comparators.min), values)
+export class BinaryHeap<T = number> {
+  static createMin = (selector?: Selector) =>
+    new BinaryHeap(BinaryHeap.#comparators.min, selector)
 
-  static createMax = (values?: number | number[]) =>
-    BinaryHeap.fill(new BinaryHeap(BinaryHeap.#comparators.max), values)
-
-  static fill = (heap: BinaryHeap, values?: number | number[]) => {
-    if (values === undefined) return heap
-    if (typeof values === 'number') values = [values]
-    values.forEach((val) => heap.insert(val))
-    return heap
-  }
+  static createMax = (selector?: Selector) =>
+    new BinaryHeap(BinaryHeap.#comparators.max, selector)
 
   static #comparators = {
     max: (parent: number, child: number = -Infinity) => child <= parent,
     min: (parent: number, child: number = +Infinity) => child >= parent,
   }
 
-  #values: number[] = []
+  #values: T[] = []
   #comparator: TComparator
+  #selector: Selector
 
-  private constructor(comparator: TComparator) {
+  private constructor(
+    comparator: TComparator,
+    selector: Selector = (key: number) => key
+  ) {
     this.#comparator = comparator
+    this.#selector = selector
   }
 
   get size() {
     return this.#values.length
   }
 
-  insert(val: number) {
+  insert(val: T) {
     this.#values.push(val)
-    let childIndex = this.#values.length - 1
+    let index = this.#values.length - 1
 
-    while (childIndex) {
-      const parentIndex = this.#getParentIndex(childIndex)
-      const parent = this.#values[parentIndex]
-      const child = this.#values[childIndex]
+    while (index) {
+      const child = this.#getElement(index)!
+      const parent = this.#getParent(child.index)!
+      const inOrder = this.#comparator(parent.key, child.key)
 
-      if (this.#comparator(parent, child)) return
+      if (inOrder) return
 
-      this.#swap(childIndex, parentIndex)
-      childIndex = parentIndex
+      this.#swapValues(parent.index, child.index)
+      index = parent.index
     }
   }
 
+  get values() {
+    return this.#values
+  }
+
   remove() {
-    if (!this.#values.length) return
-    if (this.#values.length <= 2) return this.#values.shift()
+    if (this.size <= 2) return this.#values.shift()
 
-    let parentIndex = 0
-    const val = this.#values[0]
+    this.#swapValues(0, this.size - 1)
+    const val = this.#values.pop()
 
-    this.#values[0] = this.#values.pop()!
+    //  sinking down
+    let index = 0
 
     while (true) {
-      const childIndexes = this.#getChildIndexes(parentIndex)
-      const childs = childIndexes
-        .map((i) => this.#values[i])
-        .filter((val) => val !== undefined)
+      const parent = this.#getElement(index)!
+      const child = this.#getChildren(parent.index).reduce(
+        (left, right) =>
+          left && this.#comparator(left.key, right!.key) ? left : right,
+        undefined
+      )
 
-      if (childs[0] === undefined) break
+      const inOrder = !child || this.#comparator(parent.key, child.key)
+      if (inOrder) break
 
-      const isFirstChild = this.#comparator(childs[0], childs?.[1])
-      const [childKey, childIndex] = isFirstChild
-        ? [childs[0], childIndexes[0]]
-        : [childs[1], childIndexes[1]]
-
-      const parentKey = this.#values[parentIndex]
-      if (this.#comparator(parentKey, childKey)) break
-
-      this.#swap(parentIndex, childIndex)
-      parentIndex = childIndex
+      this.#swapValues(parent.index, child.index)
+      index = child.index
     }
 
     return val
   }
 
-  #getParentIndex(i: number) {
-    return Math.floor((i - 1) / 2)
+  fill(values?: T | T[]) {
+    if (values === undefined) return this
+
+    values = Array.isArray(values) ? values : [values]
+    values.forEach((val) => this.insert(val))
+
+    return this
   }
 
-  #getChildIndexes(i: number) {
-    return [2 * i + 1, 2 * i + 2]
+  // TODO: create solution, that won't push/pop inner storage (#values)
+  *[Symbol.iterator]() {
+    const values: T[] = []
+
+    while (this.size) {
+      const val = this.remove()
+      if (val !== undefined) values.push(val)
+      yield val
+    }
+
+    this.fill(values)
   }
 
-  #swap(i: number, j: number) {
+  #inBounds(index: number) {
+    return 0 <= index || index < this.#values.length
+  }
+
+  #getElement(index: number) {
+    if (!this.#inBounds(index)) return
+
+    const value = this.#values[index]
+    const key = this.#selector(value)
+
+    return { index, key, value }
+  }
+
+  #getParent(index: number) {
+    index = Math.floor((index - 1) / 2)
+    return this.#getElement(index)
+  }
+
+  #getChildren(index: number) {
+    return [2 * index + 1, 2 * index + 2]
+      .filter((i) => this.#inBounds(i))
+      .map((i) => this.#getElement(i))
+  }
+
+  #swapValues(i: number, j: number) {
     ;[this.#values[i], this.#values[j]] = [this.#values[j], this.#values[i]]
   }
 }
