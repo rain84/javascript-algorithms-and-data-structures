@@ -52,10 +52,6 @@ export class BinaryHeap<T = number> {
     }
   }
 
-  get values() {
-    return this.#values
-  }
-
   remove() {
     if (this.size <= 2) return this.#values.shift()
 
@@ -92,24 +88,17 @@ export class BinaryHeap<T = number> {
     return this
   }
 
-  // TODO: create solution, that won't push/pop inner storage (#values)
   *[Symbol.iterator]() {
-    const values: T[] = []
-
-    while (this.size) {
-      const val = this.remove()
-      if (val !== undefined) values.push(val)
-      yield val
-    }
-
-    this.fill(values)
+    const values: T[] = [...this.#values]
+    while (this.size) yield this.remove()
+    this.#values = values
   }
 
   #inBounds(index: number) {
     return 0 <= index || index < this.#values.length
   }
 
-  #getElement(index: number) {
+  #getElement(index: number): MaybeUndefined<Element<T>> {
     if (!this.#inBounds(index)) return
 
     const value = this.#values[index]
