@@ -1,5 +1,5 @@
 type TComparator = (parent: number, child: number) => boolean
-type Selector = (value: any) => number
+export type Selector = (value: any) => number
 type Element<T> = {
   index: number
   key: number
