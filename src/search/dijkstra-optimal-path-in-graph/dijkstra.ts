@@ -9,6 +9,7 @@ type GetOptimalPath = (
   graph: Graph,
   vertex: Name
 ) => MaybeUndefined<(target: Name) => MaybeUndefined<MinimalPath>>
+type UnvisitedVertexes = [number, string]
 
 export type Graph = Record<Name, Record<Name, number>>
 
@@ -31,15 +32,16 @@ const getCostsAndBreadcrumbs = (
   const costs: Costs = new Map([[vertex, 0]])
   const visited = new Set<Name>([vertex])
   const breadcrumbs: Breadcrumbs = new Map()
-  const queueMin = PriorityQueue.createMin(0)
-  const unvisited = new UnvisitedVertexes().set(0, vertex)
+  const unvisitedVertexes = PriorityQueue.createMin<UnvisitedVertexes>(
+    ([key]) => key
+  )
+  unvisitedVertexes.enqueue([0, vertex])
 
   if (graph[vertex] === undefined) return
 
   //  calculate costs of all vertexes
-  while (unvisited.size) {
-    const min = queueMin.dequeue()!
-    const vertex = unvisited.pop(min)!
+  while (unvisitedVertexes.size) {
+    const vertex = unvisitedVertexes.dequeue()![1]
     const neighbours = graph[vertex]
 
     visited.add(vertex)
@@ -58,8 +60,7 @@ const getCostsAndBreadcrumbs = (
       }
 
       const currentCost = costs.get(neighbour)!
-      unvisited.set(currentCost, neighbour)
-      queueMin.enqueue(currentCost)
+      unvisitedVertexes.enqueue([currentCost, neighbour])
     })
   }
 
@@ -81,36 +82,6 @@ const getPath =
     path.reverse()
     return new Map(path)
   }
-
-class UnvisitedVertexes {
-  #data: Map<number, Array<Name>>
-
-  constructor() {
-    this.#data = new Map()
-  }
-
-  get size() {
-    return this.#data.size
-  }
-
-  set(key: number, value: Name) {
-    const names = this.#data.get(key)?.concat([value]) ?? [value]
-    this.#data.set(key, names)
-
-    return this
-  }
-
-  pop(key: number) {
-    if (!this.#data.has(key)) return
-
-    const [value, ...names] = this.#data.get(key)!
-    this.#data.set(key, names)
-
-    if (!names.length) this.#data.delete(key)
-
-    return value
-  }
-}
 
 //  Time complexity O(n)
 //  This method stayed here from the previous realization without PriorityQueue DS
