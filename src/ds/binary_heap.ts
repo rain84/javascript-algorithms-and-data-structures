@@ -9,11 +9,11 @@ type Element<T> = {
 export interface IBinaryHeap extends BinaryHeap {}
 
 export class BinaryHeap<T = number> {
-  static createMin = (selector?: Selector) =>
-    new BinaryHeap(BinaryHeap.#comparators.min, selector)
+  static createMin = <T = number>(selector?: Selector) =>
+    new BinaryHeap<T>(BinaryHeap.#comparators.min, selector)
 
-  static createMax = (selector?: Selector) =>
-    new BinaryHeap(BinaryHeap.#comparators.max, selector)
+  static createMax = <T = number>(selector?: Selector) =>
+    new BinaryHeap<T>(BinaryHeap.#comparators.max, selector)
 
   static #comparators = {
     max: (parent: number, child: number = -Infinity) => child <= parent,
@@ -90,12 +90,12 @@ export class BinaryHeap<T = number> {
 
   *[Symbol.iterator]() {
     const values: T[] = [...this.#values]
-    while (this.size) yield this.remove()
+    while (this.size) yield this.remove()!
     this.#values = values
   }
 
   #inBounds(index: number) {
-    return 0 <= index || index < this.#values.length
+    return 0 <= index && index < this.#values.length
   }
 
   #getElement(index: number): MaybeUndefined<Element<T>> {
