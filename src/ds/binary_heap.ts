@@ -6,7 +6,7 @@ type Element<T> = {
   value: T
 }
 
-export interface IBinaryHeap extends BinaryHeap {}
+export interface IBinaryHeap<T> extends BinaryHeap<T> {}
 
 export class BinaryHeap<T = number> {
   static createMin = <T = number>(selector?: Selector) =>
@@ -79,12 +79,9 @@ export class BinaryHeap<T = number> {
     return val
   }
 
-  fill(values?: T | T[]) {
+  fill(values?: T[]) {
     if (values === undefined) return this
-
-    values = Array.isArray(values) ? values : [values]
     values.forEach((val) => this.insert(val))
-
     return this
   }
 
