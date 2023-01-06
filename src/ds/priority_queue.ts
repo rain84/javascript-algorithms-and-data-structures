@@ -1,15 +1,15 @@
 import { BinaryHeap, IBinaryHeap, type Selector } from './binary_heap'
 
-export class PriorityQueue {
-  #heap: BinaryHeap
+export class PriorityQueue<T = number> {
+  #heap: BinaryHeap<T>
 
-  static createMin = (selector?: Selector) =>
-    new PriorityQueue(BinaryHeap.createMin(selector))
+  static createMin = <T = number>(selector?: Selector) =>
+    new PriorityQueue<T>(BinaryHeap.createMin(selector))
 
-  static createMax = (selector?: Selector) =>
-    new PriorityQueue(BinaryHeap.createMax(selector))
+  static createMax = <T = number>(selector?: Selector) =>
+    new PriorityQueue<T>(BinaryHeap.createMax(selector))
 
-  private constructor(heap: IBinaryHeap) {
+  private constructor(heap: IBinaryHeap<T>) {
     this.#heap = heap
   }
 
@@ -17,12 +17,12 @@ export class PriorityQueue {
     return this.#heap.size
   }
 
-  fill(values: number | number[]) {
+  fill(values: T[]) {
     this.#heap.fill(values)
     return this
   }
 
-  enqueue(value: number) {
+  enqueue(value: T) {
     this.#heap.insert(value)
   }
 
