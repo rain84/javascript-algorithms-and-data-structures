@@ -17,5 +17,3 @@ export const euler = (x: number) => {
 
   return c
 }
-
-console.log(euler(8))
