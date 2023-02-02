@@ -85,7 +85,7 @@ export default {
   // modulePathIgnorePatterns: [],
 
   // Activates notifications for test results
-  notify: true,
+  notify: false,
 
   // An enum that specifies notification mode. Requires { notify: true }
   notifyMode: 'failure-change',
