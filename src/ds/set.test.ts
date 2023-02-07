@@ -41,6 +41,7 @@ it('Set should have .forEach()', () => {
     thisArgs.push(thisArg)
   })
 
+  expect(res.length).toBe(6)
   expect(res).toMatchObject([1, 1, 2, 2, 3, 3])
   expect(thisArgs.every((x) => x === set)).toBeTruthy()
 
@@ -67,6 +68,10 @@ it('Set should have .entries()', () => {
 
 it('Set should have .keys()', () => {
   expect([...new Set([1, 2, 3]).keys()]).toMatchObject([1, 2, 3])
+})
+
+it('Set should have .values()', () => {
+  expect([...new Set([1, 2, 3]).values()]).toMatchObject([1, 2, 3])
 })
 
 it('Set should have .delete()', () => {
