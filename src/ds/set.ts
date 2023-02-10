@@ -1,64 +1,51 @@
 import type { ISet, Cb } from './set.types'
 
+// Full implementation of the ES "Set" data structure
 // TODO: add ability to use Set with any type of "T"
 export class Set<T extends number> implements ISet<T> {
   static #LOAD_FACTOR = 0.75;
 
   readonly [Symbol.toStringTag] = 'CustomSet'
 
-  #storage: T[][] = []
-  #countOfItems: number = 0
-
-  static readonly #STORAGE_SIZE = 10
+  #storage: T[][] = [[]]
+  #itemsCount: number = 0
 
   constructor(xs?: T[] | null) {
-    for (let i = 0; i < Set.#STORAGE_SIZE; i++) {
-      this.#storage.push([])
-    }
+    this.clear()
+    if (!xs) return this
 
-    this.#countOfItems = xs?.length ?? 0
-    xs?.forEach((x) => this.add(x))
+    this.#storage.push([...xs])
+    this.#itemsCount = xs.length
+
+    if (this.#itemsCount > 1) {
+      let size = this.#getUpperBound(this.#itemsCount)
+      if (this.#shouldIncrease()) size *= 2
+      this.#rehash(size)
+    }
+  }
+
+  #rehash(size: number) {
+    const items = this.#storage.flat()
+    this.#reset(size)
+    items.forEach((x) => this.add(x))
   }
 
   get size() {
-    return this.#countOfItems
-  }
-
-  #getCapacity() {
-    return 2 ** Math.ceil(Math.log2(this.#countOfItems))
-  }
-
-  #shouldIncrease(capacity: number) {
-    return this.#countOfItems / capacity > Set.#LOAD_FACTOR
+    return this.#itemsCount
   }
 
   add(x: T): this {
-    if (!this.has(x)) {
-      const hash = this.#getHash(x)
-      this.#storage[hash].push(x)
+    if (this.has(x)) return this
+
+    const hash = this.#getHash(x)
+    this.#storage[hash].push(x)
+    this.#itemsCount++
+
+    if (this.#shouldIncrease()) {
+      this.#rehash(this.#storage.length * 2)
     }
 
     return this
-  }
-
-  clear(): void {
-    this.#countOfItems = 0
-    this.#storage = []
-    for (let i = 0; i < Set.#STORAGE_SIZE; i++) {
-      this.#storage.push([])
-    }
-  }
-
-  #find(x: number): MaybeNull<[T[], number]> {
-    const slot = this.#storage[this.#getHash(x)]
-
-    for (let i = 0; i < slot.length; i++) {
-      if (slot[i] === x) {
-        return [slot, i]
-      }
-    }
-
-    return null
   }
 
   delete(x: T): boolean {
@@ -72,8 +59,8 @@ export class Set<T extends number> implements ISet<T> {
     return true
   }
 
-  get storage() {
-    return this.#storage
+  has(x: T): boolean {
+    return this.#find(x) !== null
   }
 
   forEach(cb: Cb<T>, thisArg?: any): void {
@@ -82,8 +69,8 @@ export class Set<T extends number> implements ISet<T> {
     )
   }
 
-  has(x: T): boolean {
-    return this.#find(x) !== null
+  clear(): void {
+    this.#reset()
   }
 
   *[Symbol.iterator](): IterableIterator<T> {
@@ -110,22 +97,33 @@ export class Set<T extends number> implements ISet<T> {
     yield* this[Symbol.iterator]()
   }
 
-  #getHash(x: number, modulus = this.#storage.length) {
-    return x % modulus
+  #getUpperBound(x: number) {
+    return 2 ** Math.ceil(Math.log2(x))
   }
 
-  #rebuild() {
-    let capacity = this.#getCapacity()
-    if (this.#shouldIncrease(capacity)) capacity *= 2
+  #shouldIncrease() {
+    return this.#itemsCount / this.#storage.length >= Set.#LOAD_FACTOR
+  }
 
-    const storage = new Array<T[]>(capacity).fill([])
-    const { length } = storage
+  #find(x: number): MaybeNull<[T[], number]> {
+    const slot = this.#storage[this.#getHash(x)]
 
-    this.forEach((x) => {
-      const hash = this.#getHash(x, length)
-      storage[hash].push(x)
-    })
+    for (let i = 0; i < slot?.length ?? []; i++) {
+      if (slot[i] === x) {
+        return [slot, i]
+      }
+    }
 
-    this.#storage = storage
+    return null
+  }
+
+  #getHash(x: number, modulus = this.#storage.length) {
+    return Math.abs(x % modulus)
+  }
+
+  #reset(length = 1) {
+    this.#itemsCount = 0
+    this.#storage = []
+    while (length--) this.#storage.push([])
   }
 }
