@@ -6,16 +6,18 @@ beforeEach(() => {
   set.clear()
 })
 
-it('Set should have .add() and .size', () => {
-  expect(set.size).toBe(0)
-  expect(new Set([1, 2, 3]).size).toBe(3)
-})
-
 it('Set should have [Symbol.toStringTag]', () => {
   expect(set[Symbol.toStringTag]).toBe('CustomSet')
 })
 
-it('Set should have .add() and .has()', () => {
+it('Set should have .size', () => {
+  expect(set.size).toBe(0)
+
+  set = new Set(new Array(30).fill(0).map((_, i) => i))
+  expect(set.size).toBe(30)
+})
+
+it('Set should have .has()', () => {
   expect(set.has(7)).toBeFalsy()
   expect(set.add(7).has(7)).toBeTruthy()
 })
@@ -25,9 +27,28 @@ it('Set should have .clear()', () => {
   expect(set.size).toBe(0)
 })
 
+it('Set should have .add()', () => {
+  let i = 10
+  do set.add(i).add(i).add(-i).add(-i)
+  while (--i)
+
+  expect(set.size).toBe(20)
+  expect(set.has(10)).toBeTruthy()
+  expect(set.has(-10)).toBeTruthy()
+  expect(set.has(11)).toBeFalsy()
+  expect(set.has(-11)).toBeFalsy()
+})
+
 it('Set should have .delete()', () => {
   expect(set.delete(7)).toBeFalsy()
-  expect(set.add(7).delete(7)).toBeTruthy()
+  expect(set.delete(-9)).toBeFalsy()
+
+  set.add(7).add(-7).add(9).add(-9)
+
+  expect(set.delete(7)).toBeTruthy()
+  expect(set.delete(7)).toBeFalsy()
+  expect(set.delete(-9)).toBeTruthy()
+  expect(set.delete(-9)).toBeFalsy()
 })
 
 it('Set should have .forEach()', () => {
