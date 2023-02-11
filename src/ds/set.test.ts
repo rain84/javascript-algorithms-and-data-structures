@@ -98,3 +98,18 @@ it('Set should have .values()', () => {
 it('Set should have .delete()', () => {
   expect([...new Set([1, 2, 3]).values()]).toMatchObject([1, 2, 3])
 })
+
+it('should work well with intersections', () => {
+  const set1 = new Set<number>([1, 2, 4, 8, 16, 32, 64])
+  const set2 = new Set<number>([1, 4, 9, 16, 25, 36, 49, 64])
+  const intersection = new Set([...set1].filter((x) => set2.has(x)))
+  expect([...intersection].sort()).toMatchObject([1, 4, 16, 64].sort())
+})
+
+it('should work well with differences', () => {
+  // intersect can be simulated via
+  const set1 = new Set<number>([1, 2, 4, 8, 16, 32, 64])
+  const set2 = new Set<number>([1, 4, 9, 16, 25, 36, 49, 64])
+  const difference = new Set([...set1].filter((x) => !set2.has(x)))
+  expect([...difference].sort()).toMatchObject([2, 8, 32].sort())
+})
