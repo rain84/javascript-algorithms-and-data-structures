@@ -25,9 +25,14 @@ export class Set<T extends number> implements ISet<T> {
   }
 
   #rehash(size: number) {
-    const items = this.#storage.flat()
+    const storage = this.#storage
     this.#reset(size)
-    items.forEach((x) => this.add(x))
+
+    for (const slot of storage) {
+      for (const x of slot) {
+        this.add(x)
+      }
+    }
   }
 
   get size() {
@@ -64,9 +69,11 @@ export class Set<T extends number> implements ISet<T> {
   }
 
   forEach(cb: Cb<T>, thisArg?: any): void {
-    this.#storage.forEach((list) =>
-      list.forEach((x) => cb(x, x, thisArg ?? this))
-    )
+    for (const slot of this.#storage) {
+      for (const x of slot) {
+        cb(x, x, thisArg ?? this)
+      }
+    }
   }
 
   clear(): void {
@@ -106,9 +113,9 @@ export class Set<T extends number> implements ISet<T> {
   }
 
   #find(x: number): MaybeNull<[T[], number]> {
-    const slot = this.#storage[this.#getHash(x)]
+    const slot = this.#storage[this.#getHash(x)] ?? []
 
-    for (let i = 0; i < slot?.length ?? []; i++) {
+    for (let i = 0; i < slot.length; i++) {
       if (slot[i] === x) {
         return [slot, i]
       }
