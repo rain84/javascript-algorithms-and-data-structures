@@ -1,10 +1,10 @@
 //  fibonacci via recursion
-export const fib = (() => {
+export const fib1 = (() => {
   const cache = new Map()
 
   const memoized = (n: number) => {
     if (!cache.has(n)) {
-      const val = n <= 1 ? n : fib(n - 1) + fib(n - 2)
+      const val = n <= 1 ? n : fib1(n - 1) + fib1(n - 2)
       cache.set(n, val)
     }
 
@@ -29,3 +29,19 @@ export const fib2 = (() => {
 
   return memoized
 })()
+
+export const fib3 = (n: number) => {
+  let prev1 = 0
+  let prev2 = 1
+  let res = 0
+  if (n === 0) return prev1
+  if (n === 1) return prev2
+
+  while (--n) {
+    res = prev1 + prev2
+    prev1 = prev2
+    prev2 = res
+  }
+
+  return res
+}
