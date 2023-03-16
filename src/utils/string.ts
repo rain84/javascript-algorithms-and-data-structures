@@ -11,3 +11,6 @@ export function log(data: any, msg?: string): void {
 
 export const textToWords = (str: string): string[] =>
   str.split(unicodeDelimiters).filter(Boolean)
+
+export const capitalize = (s: string): string =>
+  s.length ? s[0]?.toLocaleUpperCase() + s.slice(1) : ''
