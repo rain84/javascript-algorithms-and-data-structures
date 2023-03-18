@@ -1,0 +1,6 @@
+{
+  "scrips": {
+    "ts-compile": "nodemon -w ./src.ts --exec ts-node ./src.ts",
+    "ts-compile2": "nodemon -w ./src.ts --exec 'tsc ./src.ts -t es2022 -m nodenext && node ./src.js'"
+  }
+}
