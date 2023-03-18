@@ -14,5 +14,8 @@
     "lib": ["ES2021", "DOM"]
   },
   "include": ["src/**/*.ts", "src/**/*.test.ts"],
-  "exclude": ["node_modules", "./src/**/*.spec.ts", ".vscode", "coverage"]
+  "exclude": ["node_modules", "./src/**/*.spec.ts", ".vscode", "coverage"],
+  "ts-node": {
+    "esm": true
+  }
 }
