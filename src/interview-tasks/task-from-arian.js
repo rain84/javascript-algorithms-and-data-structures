@@ -1,18 +1,18 @@
 /* eslint-disable no-lone-blocks */
-{
-  const descriptors = Object.getOwnPropertyDescriptors(Number.prototype)
 
+export const applyNumberMonkeyPatching = (fn) => {
   const p = new Proxy(Number.prototype, {
     get: (target, name, receiver) => {
-      if (Object.hasOwn(target, name)) return descriptors[name].value
+      if (Object.hasOwn(target, name))
+        return Reflect.set(target, name, receiver)
 
-      const fn = globalThis.eval(name)
-      const val = receiver
-      return fn(val)
+      const operator = globalThis.eval(name)
+      if (typeof operator !== 'function') return
+
+      const i = receiver
+      return fn(operator, i)
     },
   })
 
   Object.setPrototypeOf(Number.prototype, p)
-
-  console.log((5)[(x) => x + 1])
 }
