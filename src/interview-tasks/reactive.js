@@ -2,7 +2,7 @@ const subscribe = Symbol('subscribe')
 const unsubscribe = Symbol('unsubscribe')
 
 class Reactive {
-  #current
+  #ref
   #operator
   #subscribers = []
   #sources = []
@@ -24,14 +24,14 @@ class Reactive {
 
     // unboxing reactive value
     if (Reactive.#isReactiveValue(args[0])) {
-      const { current } = args[0]
-      args[0].current = null
-      args[0] = current
+      const { ref } = args[0]
+      args[0].ref = null
+      args[0] = ref
     }
 
     // create new reactive object with value
     if (Reactive.#isSingleArgument(...args)) {
-      this.#current = args[0]
+      this.#ref = args[0]
     }
 
     // create new reactive object with subscription for another reactive objects
@@ -47,19 +47,19 @@ class Reactive {
     else throw new Error(Reactive.#MESSAGE.WRONG_ARGUMENTS)
   }
 
-  get current() {
+  get ref() {
     if (this.#shouldUpdate) {
-      const values = this.#sources.map(({ current }) => current)
-      this.#current = this.#operator(...values)
+      const values = this.#sources.map(({ ref }) => ref)
+      this.#ref = this.#operator(...values)
       this.#subscribers?.forEach((cb) => cb())
       this.#shouldUpdate = false
     }
 
-    return this.#current
+    return this.#ref
   }
 
-  set current(next) {
-    this.#current = next
+  set ref(next) {
+    this.#ref = next
     this.#subscribers?.forEach((cb) => cb())
 
     if (Array.isArray(this.#sources)) {
@@ -74,10 +74,6 @@ class Reactive {
 
   [unsubscribe](cb) {
     this.#subscribers = this.#subscribers.filter((fn) => fn !== cb)
-  }
-
-  [Symbol.toPrimitive]() {
-    return this.#current
   }
 
   #cb = () => {
