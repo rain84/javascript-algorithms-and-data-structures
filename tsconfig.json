@@ -1,36 +1,26 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./src",
-        "downlevelIteration": true,
-        "inlineSourceMap": true,
-        "lib": [
-            "ES2021",
-            "DOM"
-        ],
-        "module": "es6",
-        "moduleResolution": "Node",
-        "outDir": "out",
-        "paths": {
-            "*": [
-                "*"
-            ]
-        },
-        "strict": true,
-        "target": "ESNext"
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "downlevelIteration": true,
+    "inlineSourceMap": true,
+    "lib": ["ES2021", "DOM"],
+    "module": "es6",
+    "moduleResolution": "Node",
+    "outDir": "out",
+    "paths": {
+      "*": ["*"]
     },
-    "exclude": [
-        "node_modules",
-        "./src/**/*.spec.ts",
-        ".vscode",
-        "coverage"
-    ],
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.test.ts",
-        "src/interview-tasks/reactive.ts",
-        "src/interview-tasks/compute.js"
-    ],
-    "ts-node": {
-        "esm": true
-    }
+    "strict": true,
+    "target": "ESNext"
+  },
+  "exclude": ["node_modules", "./src/**/*.spec.ts", ".vscode", "coverage"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.test.ts",
+    "src/interview-tasks/reactive.ts",
+    "src/reactivity/compute.js"
+  ],
+  "ts-node": {
+    "esm": true
+  }
 }
