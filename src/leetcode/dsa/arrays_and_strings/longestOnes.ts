@@ -10,6 +10,5 @@ export const longestOnes = (nums: number[], k: number): number => {
 
     max = Math.max(max, r - l + 1)
   }
-
   return max
 }
