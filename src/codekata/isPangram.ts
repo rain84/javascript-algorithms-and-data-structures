@@ -1,7 +1,7 @@
 // https://www.codewars.com/kata/545cedaa9943f7fe7b000048/train/typescript
 
 export const isPangram = (phrase: string): boolean =>
-  new Set([...phrase.toLowerCase().replaceAll(/[^a-z]/g, '')]).size === 26
+  new Set(phrase.toLowerCase().replaceAll(/[^a-z]/g, '')).size === 26
 
 export const isPangram2 = (phrase: string): boolean => {
   const alphabet = [...'abcdefghijklmnopqrstuvwxyz'].reduce<Record<string, number>>(
