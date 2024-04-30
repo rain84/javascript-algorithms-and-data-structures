@@ -1,6 +1,8 @@
+// https://leetcode.com/problems/max-sum-of-a-pair-with-equal-sum-of-digits/
+
 export function maximumSum(nums: number[]): number {
   let res = -1
-  let sums = new Map<number, number[]>()
+  let sums = new Map<number, [number, number]>()
 
   for (let i = 0; i < nums.length; i++) {
     let n = nums[i]
