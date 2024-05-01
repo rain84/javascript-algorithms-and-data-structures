@@ -13,3 +13,14 @@ export function createLinkedList<T = number>([head, ...tail]: T[]): ListNode<T> 
 
   return new ListNode<T>(head, createLinkedList<T>(tail))
 }
+
+export function toArray<T = number>(node: ListNode<T> | null): T[] {
+  const res: T[] = []
+
+  while (node) {
+    res.push(node.val)
+    node = node.next
+  }
+
+  return res
+}
