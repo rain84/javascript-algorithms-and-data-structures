@@ -1,7 +1,5 @@
 import { ListNode, createLinkedList, toArray } from './utils'
 
-export { ListNode, createLinkedList, toArray } from './utils'
-
 it('ListNode should work', () => {
   const node = new ListNode(1, new ListNode(2))
 
