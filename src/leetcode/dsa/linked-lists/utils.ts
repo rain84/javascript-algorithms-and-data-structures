@@ -1,15 +1,15 @@
-export class ListNode {
-  val: number
-  next: ListNode | null
+export class ListNode<T = number> {
+  val: T
+  next: ListNode<T> | null
 
-  constructor(val?: number, next?: ListNode | null) {
-    this.val = val ?? 0
+  constructor(val: T, next?: ListNode<T> | null) {
+    this.val = val
     this.next = next ?? null
   }
 }
 
-export function createLinkedList([head, ...tail]: number[]): ListNode {
+export function createLinkedList<T = number>([head, ...tail]: T[]): ListNode<T> {
   if (tail.length === 0) return new ListNode(head)
 
-  return new ListNode(head, createLinkedList(tail))
+  return new ListNode<T>(head, createLinkedList<T>(tail))
 }
