@@ -1,6 +1,26 @@
 // https://leetcode.com/problems/number-of-recent-calls/
 
+import { Queue } from 'ds/queue'
+
 export class RecentCounter {
+  #RANGE = 3000
+  #queue = new Queue<number>()
+
+  constructor() {}
+
+  ping(t: number): number {
+    this.#queue.enqueue(t)
+    const lowest = t - this.#RANGE
+
+    while (this.#queue.peek()! < lowest) {
+      this.#queue.dequeue()
+    }
+
+    return this.#queue.size
+  }
+}
+
+export class RecentCounter_with_array_based_queue {
   #RANGE = 3000
   #queue: number[] = []
 
