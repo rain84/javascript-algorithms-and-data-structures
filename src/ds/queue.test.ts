@@ -3,7 +3,7 @@ import { Queue } from './queue'
 let queue: Queue<string>
 
 beforeEach(() => {
-  queue = new Queue(...'abcde')
+  queue = new Queue('abcde')
 })
 
 it('should have ctor, "isEmpty()" & "size"', () => {

@@ -1,5 +1,5 @@
 class Node<T> {
-  constructor(public val: T, public prev: Node<T> | null = null) {}
+  constructor(public val: T, public next: Node<T> | null = null) {}
 }
 
 interface IQueue<T> {
@@ -16,9 +16,9 @@ export class Queue<T> implements IQueue<T> {
   #head: Node<T> | null = null
   #tail: Node<T> | null = null
 
-  constructor(...values: T[]) {
-    if (values.length) {
-      values.forEach((val) => this.enqueue(val))
+  constructor(values: Iterable<T> = []) {
+    for (const x of values) {
+      this.enqueue(x)
     }
   }
 
@@ -27,7 +27,7 @@ export class Queue<T> implements IQueue<T> {
   }
 
   peek() {
-    return this.#tail?.val
+    return this.#head?.val
   }
 
   enqueue(val: T) {
@@ -36,10 +36,8 @@ export class Queue<T> implements IQueue<T> {
     if (this.isEmpty()) {
       this.#head = this.#tail = node
     } else {
-      this.#head!.prev = node
-      this.#head = node
-
-      if (this.#tail === null) this.#tail = node
+      this.#tail!.next = node
+      this.#tail = node
     }
 
     this.#size_++
@@ -48,10 +46,10 @@ export class Queue<T> implements IQueue<T> {
   }
 
   dequeue() {
-    if (this.#tail === null) return
+    if (this.#head === null) return
 
-    const { val } = this.#tail
-    this.#tail = this.#tail.prev
+    const { val } = this.#head
+    this.#head = this.#head.next
     this.#size_--
 
     return val
