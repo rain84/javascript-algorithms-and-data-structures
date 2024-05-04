@@ -9,6 +9,7 @@ interface IQueue<T> {
   dequeue(): T | undefined
   isEmpty(): boolean
   peek(): T | undefined
+  [Symbol.iterator](): IterableIterator<T>
 }
 
 export class Queue<T> implements IQueue<T> {
@@ -57,5 +58,14 @@ export class Queue<T> implements IQueue<T> {
 
   isEmpty() {
     return this.size === 0
+  }
+
+  *[Symbol.iterator]() {
+    let node = this.#head
+
+    while (node) {
+      yield node.val
+      node = node.next
+    }
   }
 }

@@ -25,3 +25,7 @@ it('should have "enqueue()" & "dequeue()"', () => {
   expect(queue.size).toBe(0)
   expect(queue.isEmpty()).toBeTruthy()
 })
+
+it('should be iterable', () => {
+  expect([...queue].join('')).toBe('abcde')
+})
