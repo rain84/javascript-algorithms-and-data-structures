@@ -34,17 +34,21 @@ it('should have "front"', () => {
 })
 
 it('should have "enqueue()"', () => {
-  queue.enqueue('z')
-  expect(queue.size).toBe(6)
+  ;[...'fgh'].forEach((ch) => queue.enqueue(ch))
+
+  expect(queue.size).toBe(8)
+  expect(String(queue)).toBe('abcdefgh')
 })
 
 it('should have "dequeue()"', () => {
-  const val = queue.dequeue()
-  expect(val).toBe('a')
+  let sx = []
+  while (!queue.isEmpty) sx.push(queue.dequeue())
+
+  expect(sx.join('')).toBe('abcde')
 })
 
 it('should be iterable', () => {
-  expect([...queue].join('')).toBe('abcde')
+  expect([...queue]).toMatchObject([...'abcde'])
 })
 
 it('should have "at()"', () => {
