@@ -71,7 +71,7 @@ export class BST<T> {
     const queue = new Queue<Node<T>>()
     queue.enqueue(this.#root)
 
-    while (!queue.isEmpty()) {
+    while (!queue.isEmpty) {
       const node = <Node<T>>queue.dequeue()
 
       if (node?.left) queue.enqueue(node.left)

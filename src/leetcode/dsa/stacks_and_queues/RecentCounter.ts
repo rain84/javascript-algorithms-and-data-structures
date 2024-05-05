@@ -12,7 +12,7 @@ export class RecentCounter {
     this.#queue.enqueue(t)
     const lowest = t - this.#RANGE
 
-    while (this.#queue.peek()! < lowest) {
+    while (this.#queue.front! < lowest) {
       this.#queue.dequeue()
     }
 

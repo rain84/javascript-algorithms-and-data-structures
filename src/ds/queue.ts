@@ -2,18 +2,20 @@ class Node<T> {
   constructor(public val: T, public next: Node<T> | null = null) {}
 }
 
-interface IQueue<T> {
+export interface IQueue<T> {
   get size(): number
+  get isEmpty(): boolean
+  get front(): T | undefined
 
   enqueue(val: T): this
   dequeue(): T | undefined
-  isEmpty(): boolean
-  peek(): T | undefined
+  at(i: number): T | undefined
+
   [Symbol.iterator](): IterableIterator<T>
 }
 
 export class Queue<T> implements IQueue<T> {
-  #size_ = 0
+  #size = 0
   #head: Node<T> | null = null
   #tail: Node<T> | null = null
 
@@ -24,24 +26,39 @@ export class Queue<T> implements IQueue<T> {
   }
 
   get size() {
-    return this.#size_
+    return this.#size
   }
 
-  peek() {
+  get isEmpty() {
+    return this.#size === 0
+  }
+
+  get front() {
     return this.#head?.val
+  }
+
+  at(i: number): T | undefined {
+    if (this.size === 0) return
+    if (i < 0) i = this.#size + i
+    if (i < 0 || this.#size <= i) return
+
+    let node = this.#head
+    while (i--) node = node?.next!
+
+    return node?.val
   }
 
   enqueue(val: T) {
     const node = new Node(val)
 
-    if (this.isEmpty()) {
+    if (this.isEmpty) {
       this.#head = this.#tail = node
     } else {
       this.#tail!.next = node
       this.#tail = node
     }
 
-    this.#size_++
+    this.#size++
 
     return this
   }
@@ -51,13 +68,9 @@ export class Queue<T> implements IQueue<T> {
 
     const { val } = this.#head
     this.#head = this.#head.next
-    this.#size_--
+    this.#size--
 
     return val
-  }
-
-  isEmpty() {
-    return this.size === 0
   }
 
   *[Symbol.iterator]() {
