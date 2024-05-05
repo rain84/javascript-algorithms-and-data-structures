@@ -6,26 +6,54 @@ beforeEach(() => {
   queue = new Queue('abcde')
 })
 
-it('should have ctor, "isEmpty()" & "size"', () => {
+it('should have "isEmpty()"', () => {
+  expect(queue.isEmpty).toBeFalsy()
+
+  queue = new Queue()
+  expect(queue.isEmpty).toBeTruthy()
+})
+
+it('should have "size"', () => {
   expect(queue.size).toBe(5)
-  expect(queue.isEmpty()).toBeFalsy()
+
+  queue.enqueue('a')
+  expect(queue.size).toBe(6)
+
+  queue.dequeue()
+  expect(queue.size).toBe(5)
 
   queue = new Queue()
   expect(queue.size).toBe(0)
-  expect(queue.isEmpty()).toBeTruthy()
 })
 
-it('should have "enqueue()" & "dequeue()"', () => {
-  expect((queue.enqueue('z'), queue.size)).toBe(6)
-  expect(queue.dequeue()).toBe('a')
-  expect(queue.size).toBe(5)
+it('should have "front"', () => {
+  expect(queue.front).toBe('a')
 
-  queue.dequeue(), queue.dequeue(), queue.dequeue(), queue.dequeue()
-  expect(queue.dequeue()).toBe('z')
-  expect(queue.size).toBe(0)
-  expect(queue.isEmpty()).toBeTruthy()
+  queue.dequeue()
+  expect(queue.front).toBe('b')
+})
+
+it('should have "enqueue()"', () => {
+  queue.enqueue('z')
+  expect(queue.size).toBe(6)
+})
+
+it('should have "dequeue()"', () => {
+  const val = queue.dequeue()
+  expect(val).toBe('a')
 })
 
 it('should be iterable', () => {
   expect([...queue].join('')).toBe('abcde')
+})
+
+it('should be have "at()"', () => {
+  expect(queue.at(0)).toBe('a')
+  expect(queue.at(-1)).toBe('e')
+
+  expect(queue.at(-queue.size)).toBe('a')
+  expect(queue.at(-queue.size - 1)).toBeUndefined()
+
+  expect(queue.at(queue.size - 1)).toBe('e')
+  expect(queue.at(queue.size)).toBeUndefined()
 })
