@@ -47,7 +47,7 @@ it('should be iterable', () => {
   expect([...queue].join('')).toBe('abcde')
 })
 
-it('should be have "at()"', () => {
+it('should have "at()"', () => {
   expect(queue.at(0)).toBe('a')
   expect(queue.at(-1)).toBe('e')
 
@@ -56,4 +56,12 @@ it('should be have "at()"', () => {
 
   expect(queue.at(queue.size - 1)).toBe('e')
   expect(queue.at(queue.size)).toBeUndefined()
+})
+
+it('should convert to string', () => {
+  expect(String(queue)).toBe('abcde')
+  expect(`${queue}`).toBe('abcde')
+
+  const queue2 = new Queue([1, 2, 3])
+  expect(+queue2).toBe(123)
 })

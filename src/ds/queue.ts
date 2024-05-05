@@ -81,4 +81,12 @@ export class Queue<T> implements IQueue<T> {
       node = node.next
     }
   }
+
+  toString() {
+    return String(this)
+  }
+
+  [Symbol.toPrimitive]() {
+    return [...this].join('')
+  }
 }
