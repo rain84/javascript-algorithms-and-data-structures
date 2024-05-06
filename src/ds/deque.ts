@@ -1,33 +1,88 @@
 // https://en.wikipedia.org/wiki/Double-ended_queue
 
 export class Deque<T> implements IDeque<T> {
-  #size = 0
   #head: Node<T> | null = null
   #tail: Node<T> | null = null
+  #size = 0
 
-  constructor(values: Iterable<T> = []) {
-    for (const x of values) {
-      this.pushBack(x)
-    }
-  }
-
-  get size() {
-    return this.#size
-  }
-
-  get isEmpty() {
-    return this.size === 0
-  }
-
-  get front() {
-    return this.#head?.val
+  constructor(xs?: Iterable<T>) {
+    if (xs) for (const x of xs) this.pushBack(x)
   }
 
   get back(): T | undefined {
     return this.#tail?.val
   }
 
-  pushBack(val: T) {
+  get front(): T | undefined {
+    return this.#head?.val
+  }
+
+  get size(): number {
+    return this.#size
+  }
+
+  get isEmpty(): boolean {
+    return this.#size === 0
+  }
+
+  at(i: number): T | undefined {
+    if (i < -this.#size || this.#size <= i) return
+
+    let node: Node<T> | null = null
+
+    if (i >= 0) {
+      node = this.#head
+      while (i--) node = node?.next!
+    } else {
+      node = this.#tail
+      while (++i) node = node?.prev!
+    }
+
+    return node?.val
+  }
+
+  clear(): void {
+    let node = this.#head
+
+    while (node) {
+      const next = node.next
+      node.prev = node.next = null
+      node = next
+    }
+
+    this.#head = this.#tail = null
+    this.#size = 0
+  }
+
+  popBack(): T | undefined {
+    if (this.#tail === null) return
+
+    const { val, prev } = this.#tail
+
+    if (prev) prev.next = null
+
+    this.#tail.prev = null
+    this.#tail = prev
+    this.#size--
+
+    return val
+  }
+
+  popFront(): T | undefined {
+    if (this.#head === null) return
+
+    const { val, next } = this.#head
+
+    if (next) next.prev = null
+
+    this.#head.next = null
+    this.#head = next
+    this.#size--
+
+    return val
+  }
+
+  pushBack(val: T): this {
     const node = new Node(val)
 
     if (this.isEmpty) {
@@ -43,14 +98,14 @@ export class Deque<T> implements IDeque<T> {
     return this
   }
 
-  pushFront(val: T) {
+  pushFront(val: T): this {
     const node = new Node(val)
 
     if (this.isEmpty) {
       this.#head = this.#tail = node
     } else {
-      node.next = this.#head
       this.#head!.prev = node
+      node.next = this.#head
       this.#head = node
     }
 
@@ -59,65 +114,8 @@ export class Deque<T> implements IDeque<T> {
     return this
   }
 
-  popBack(): T | undefined {
-    if (this.#tail === null) return
-
-    const { val } = this.#tail
-    const prev = this.#tail.prev
-
-    if (prev) prev.next = null
-
-    this.#tail.next = this.#tail.prev = null
-    this.#tail = prev
-    this.#size--
-
-    return val
-  }
-
-  popFront() {
-    if (this.#head === null) return
-
-    const { val } = this.#head
-    const next = this.#head.next
-
-    if (next) next.prev = null
-
-    this.#head.next = this.#head.prev = null
-    this.#head = next
-    this.#size--
-
-    return val
-  }
-
-  at(i: number): T | undefined {
-    if (this.#size === 0 || this.#size <= i || i < -this.#size) return
-
-    let node = null
-
-    if (i >= 0) {
-      node = this.#head
-      while (i--) node = node?.next!
-    } else {
-      i = -i
-      node = this.#tail
-      while (--i) node = node?.prev!
-    }
-
-    return node?.val
-  }
-
-  clear(): void {
-    let node = this.#head
-
-    while (node) {
-      let next = node.next
-      node.next = node.prev = null
-      node = next
-    }
-
-    this.#head = this.#tail = null
-
-    this.#size = 0
+  toString() {
+    return String(this)
   }
 
   *[Symbol.iterator]() {
@@ -129,21 +127,9 @@ export class Deque<T> implements IDeque<T> {
     }
   }
 
-  toString() {
-    return String(this)
-  }
-
   [Symbol.toPrimitive]() {
     return [...this].join('')
   }
-}
-
-class Node<T> {
-  constructor(
-    public val: T,
-    public next: Node<T> | null = null,
-    public prev: Node<T> | null = null
-  ) {}
 }
 
 interface IDeque<T> {
@@ -162,4 +148,14 @@ interface IDeque<T> {
 
   [Symbol.iterator](): IterableIterator<T>
   [Symbol.toPrimitive](): string
+}
+
+class Node<T> {
+  val: T
+  prev: Node<T> | null = null
+  next: Node<T> | null = null
+
+  constructor(val: T) {
+    this.val = val
+  }
 }

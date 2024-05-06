@@ -26,7 +26,7 @@ it('should have "size"', () => {
   expect(deque.size).toBe(0)
 })
 
-it('should have "front"', () => {
+it('should have "popFront"', () => {
   expect(deque.front).toBe('a')
 
   deque.popFront()
@@ -40,29 +40,33 @@ it('should have "back"', () => {
   expect(deque.back).toBe('d')
 })
 
-it('should have "enqueue()"', () => {
-  ;[...'fgh'].forEach((ch) => deque.pushBack(ch))
+it('should have "pushBack()"', () => {
+  for (const ch of 'fgh') {
+    deque.pushBack(ch)
+  }
 
   expect(deque.size).toBe(8)
   expect(String(deque)).toBe('abcdefgh')
 })
 
-it('should have "enqueueFront()"', () => {
-  ;[...'fgh'].forEach((ch) => deque.pushFront(ch))
+it('should have "pushFront()"', () => {
+  for (const ch of 'fgh') {
+    deque.pushFront(ch)
+  }
 
   expect(deque.size).toBe(8)
   expect(String(deque)).toBe('hgfabcde')
 })
 
-it('should have "dequeue()"', () => {
-  let sx = []
+it('should have "popFront()"', () => {
+  const sx = []
   while (!deque.isEmpty) sx.push(deque.popFront())
 
   expect(sx.join('')).toBe('abcde')
 })
 
-it('should have "dequeueBack()"', () => {
-  let sx = []
+it('should have "popBack()"', () => {
+  const sx = []
   while (!deque.isEmpty) sx.push(deque.popBack())
 
   expect(sx.join('')).toBe('edcba')
