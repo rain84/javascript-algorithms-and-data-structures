@@ -62,9 +62,7 @@ it('should have "get()" and "set()"', () => {
 it('should have "insert()"', () => {
   expect(sll.insert(-1, 'Data')).toBeUndefined()
   expect(sll.insert(10, 'Data')).toBeUndefined()
-  expect(sll.insert(1, '🙏').insert(3, '🔥').toString()).toBe(
-    'Hello🙏 🔥world!!'
-  )
+  expect(sll.insert(1, '🙏')!.insert(3, '🔥')!.toString()).toBe('Hello🙏 🔥world!!')
 })
 
 it('should have "remove()"', () => {
