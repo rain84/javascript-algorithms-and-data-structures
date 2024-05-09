@@ -1,4 +1,4 @@
-import { ListNode } from './utils'
+import type { ListNode } from './utils'
 
 export function middleNode(head: ListNode | null): ListNode | null {
   let fast = head

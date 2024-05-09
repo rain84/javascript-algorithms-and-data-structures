@@ -8,7 +8,7 @@ it('should work', () => {
   ]
   const publisher = new ConcretePublisher()
 
-  subscribers.forEach((s) => publisher.subscribe(s))
+  for (const s of subscribers) publisher.subscribe(s)
   publisher.data = 7
   publisher.notify()
 

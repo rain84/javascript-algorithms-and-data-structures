@@ -22,7 +22,7 @@ export class ConcretePublisher<T> implements IPublisher<T> {
 
   notify() {
     if (this.#data === null) return
-    this.#subscribers.forEach((s) => s.update(this.#data!))
+    for (const s of this.#subscribers) s.update(this.#data!)
   }
 
   set data(x: T) {

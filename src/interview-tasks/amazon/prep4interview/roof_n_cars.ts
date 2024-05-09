@@ -23,7 +23,7 @@ export const getMinRoof = (arr: number[], n: number) => {
 
   const slice = arr.slice(0, n - 1)
   let i = n - 1
-  let result = Infinity
+  let result = Number.POSITIVE_INFINITY
   let slicePointer = i
 
   do {

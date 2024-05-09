@@ -1,4 +1,4 @@
-class LRUCache<T> {
+export class LRUCache<T> {
   #query: string[] = []
   #cache = new Map<string, T>()
 
@@ -30,8 +30,8 @@ class LRUCache<T> {
 }
 
 const cache = new LRUCache(4)
-console.log(`cache`, cache)
-;[...'qwerty'].forEach((item) => cache.set(item, item))
+console.log('cache', cache)
+for (const ch of 'qwerty') {
+  cache.set(ch, ch)
+}
 console.log([...cache])
-
-export {}

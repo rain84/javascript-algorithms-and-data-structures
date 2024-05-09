@@ -1,4 +1,4 @@
-import { ListNode } from './utils'
+import type { ListNode } from './utils'
 
 // TODO: add handling for the boundary inputs
 export function reverseBetween(

@@ -2,7 +2,7 @@
 
 export function maximumSum(nums: number[]): number {
   let res = -1
-  let sums = new Map<number, [number, number]>()
+  const sums = new Map<number, [number, number]>()
 
   for (let i = 0; i < nums.length; i++) {
     let n = nums[i]
@@ -20,7 +20,7 @@ export function maximumSum(nums: number[]): number {
       continue
     }
 
-    let arr = sums.get(sum)!
+    const arr = sums.get(sum)!
     const [prevN, prevSum] = arr
     const nextSum = n + prevN
 

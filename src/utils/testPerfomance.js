@@ -1,4 +1,4 @@
-import { performance } from 'perf_hooks'
+import { performance } from 'node:perf_hooks'
 
 export const testPerfomance = (fn, args, iterations = 10 ** 5) => {
   const time = performance.now()

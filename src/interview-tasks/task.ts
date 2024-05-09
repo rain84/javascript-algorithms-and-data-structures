@@ -3,7 +3,7 @@ interface Interval {
   max: [number, number]
 }
 
-const getMinCoveredInterval = ([head, ...arr]: [number, number][]) => {
+export const getMinCoveredInterval = ([head, ...arr]: [number, number][]) => {
   let left = { min: head[0], max: head[1] }
   let right = { min: head[0], max: head[1] }
 
@@ -28,5 +28,3 @@ const res = getMinCoveredInterval([
   [6, 9],
 ])
 console.log(res)
-
-export {}

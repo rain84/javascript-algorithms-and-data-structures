@@ -1,9 +1,4 @@
-import {
-  equalChunks,
-  getChunkIndexes,
-  extractByIndexes,
-  ResultType,
-} from './equalChunks'
+import { equalChunks, extractByIndexes, getChunkIndexes, type ResultType } from './equalChunks'
 
 const helpers = {
   sum: (arr: number[]) => arr.reduce((a, b) => a + b),
@@ -70,9 +65,7 @@ it('splitArrByIndexes should work', () => {
     restArray: [3, 4, 5, 6, 7, 8, 9],
   })
 
-  expect(
-    extractByIndexes([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [7, 9, 5, 2])
-  ).toEqual({
+  expect(extractByIndexes([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [7, 9, 5, 2])).toEqual({
     chunk: [7, 9, 5, 2],
     restArray: [0, 1, 3, 4, 6, 8],
   })

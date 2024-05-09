@@ -32,7 +32,7 @@ export const nextSequential = (n: number) => {
   }
 
   if (n <= result.sequence1) return result.sequence1
-  else if (n <= result.sequence2) return result.sequence2
+  if (n <= result.sequence2) return result.sequence2
 
   return result.sequence3
 }

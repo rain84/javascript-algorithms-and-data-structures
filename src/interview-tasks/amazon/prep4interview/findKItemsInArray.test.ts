@@ -11,7 +11,5 @@ const IO = new Map<[number[], number], number[]>([
 const comparator = (a: number, b: number) => (a < b ? -1 : 1)
 
 it('should work', () => {
-  IO.forEach((output, input) =>
-    expect(getItems(...input)!.sort(comparator)).toMatchObject(output)
-  )
+  IO.forEach((output, input) => expect(getItems(...input)!.sort(comparator)).toMatchObject(output))
 })

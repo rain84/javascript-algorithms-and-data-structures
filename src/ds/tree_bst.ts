@@ -9,7 +9,7 @@ class Node<T> {
     public val: T,
     public left: MaybeNull<Node<T>> = null,
     public right: MaybeNull<Node<T>> = null
-  ) { }
+  ) {}
 }
 
 type Selector<T> = (val: T) => number
@@ -116,8 +116,7 @@ export class BST<T> {
         break
 
       default:
-        const val: never = type
-        return val
+        return type as never
     }
   }
 }

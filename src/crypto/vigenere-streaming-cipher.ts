@@ -46,7 +46,9 @@ const execute =
 
     const result: string[] = []
     const getAutokeyCh =
-      config.type === 'encode' ? config.getAutokeyCh(primer, message as T) : config.getAutokeyCh(primer, result as T)
+      config.type === 'encode'
+        ? config.getAutokeyCh(primer, message as T)
+        : config.getAutokeyCh(primer, result as T)
 
     const ch = {
       message: '',
@@ -66,8 +68,10 @@ const execute =
       index.autokey = alphabet.indexOf(ch.autokey)
       index.message = alphabet.indexOf(ch.message)
 
-      if (index.autokey === -1) throw new Error(`Symbol "${ch.autokey}" in keyword is not valid for alphabet`)
-      if (index.message === -1) throw new Error(`Symbol "${ch.message}" in message is not valid for alphabet`)
+      if (index.autokey === -1)
+        throw new Error(`Symbol "${ch.autokey}" in keyword is not valid for alphabet`)
+      if (index.message === -1)
+        throw new Error(`Symbol "${ch.message}" in message is not valid for alphabet`)
 
       index.result = config.algorithm(index.message, index.autokey, alphabet.length)
 

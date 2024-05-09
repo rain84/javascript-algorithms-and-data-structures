@@ -9,10 +9,7 @@ type Direction = `${VerticalDirection} ${HorizontalDirection}`
 const d: Direction = 'bottom left'
 
 // *****************************************************************************
-function makeId<T extends number, U extends number>(
-  first: T,
-  second: U
-): `${T}-${U}`
+function makeId<T extends number, U extends number>(first: T, second: U): `${T}-${U}`
 function makeId<T extends string, U extends string>(
   first: T,
   second: U
@@ -24,7 +21,7 @@ function makeId<T extends string, U extends string>(
 // Key Remapping in Mapped Types
 const obj = { value1: 0, value2: 1, value3: 3 }
 let newObj: {
-  [Property in keyof typeof obj as `_${Property}`]: typeof obj[Property]
+  [Property in keyof typeof obj as `_${Property}`]: (typeof obj)[Property]
 }
 
 // *****************************************************************************
@@ -48,14 +45,11 @@ makeSList(['a', 'as'])
 
 // *****************************************************************************
 // extends Constraints on infer Type Variables
-type FirstOld<T> = T extends [infer S, ...unknown[]]
-  ? S extends string
-    ? S
-    : never
-  : never
+type FirstOld<T> = T extends [infer S, ...unknown[]] ? (S extends string ? S : never) : never
 type A = FirstOld<[string, number]>
 
 type FirstOld2<T1, T2 = string> = T1 extends [T2, ...unknown[]] ? T1[0] : never
+// biome-ignore lint/complexity/noBannedTypes: <explanation>
 type B = FirstOld2<[Symbol, number, boolean], Symbol>
 
 type FirstNew<T> = T extends [infer S extends string, ...unknown[]] ? S : never

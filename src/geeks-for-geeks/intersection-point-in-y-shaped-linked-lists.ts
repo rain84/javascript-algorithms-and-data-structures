@@ -34,13 +34,13 @@ export interface INode {
 }
 
 export class Node implements INode {
-  constructor(public data: number, public next: INode | null = null) {}
+  constructor(
+    public data: number,
+    public next: INode | null = null
+  ) {}
 }
 
 export const createFromString = (str: string) => {
   const numbers = str.split(/\D+/)
-  return numbers.reduceRight<INode>(
-    (next, val) => new Node(+val, next),
-    new Node(+numbers.pop()!)
-  )
+  return numbers.reduceRight<INode>((next, val) => new Node(+val, next), new Node(+numbers.pop()!))
 }

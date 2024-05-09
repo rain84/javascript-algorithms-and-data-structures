@@ -6,8 +6,6 @@ export class RecentCounter {
   #RANGE = 3000
   #queue = new Queue<number>()
 
-  constructor() {}
-
   ping(t: number): number {
     this.#queue.enqueue(t)
     const lowest = t - this.#RANGE
@@ -23,8 +21,6 @@ export class RecentCounter {
 export class RecentCounter_with_array_based_queue {
   #RANGE = 3000
   #queue: number[] = []
-
-  constructor() {}
 
   ping(t: number): number {
     this.#queue.push(t)

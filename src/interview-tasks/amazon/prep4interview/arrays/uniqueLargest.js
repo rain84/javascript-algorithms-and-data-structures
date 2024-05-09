@@ -22,8 +22,7 @@ export const uniqueLargest = (sizeOfArray, arr) => {
   return arr
 }
 
-export const largestAndSecondLargest = (sizeOfArray, arr) =>
-  uniqueLargest(2, arr)
+export const largestAndSecondLargest = (sizeOfArray, arr) => uniqueLargest(2, arr)
 
 // var input = [
 //   1637, 26936, 21371, 29767, 10518, 25412, 4186, 1512, 16318, 20457, 32469,

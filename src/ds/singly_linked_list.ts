@@ -21,7 +21,7 @@ export class SinglyLinkedList<T = unknown> {
   }
 
   push(...vals: T[]) {
-    vals.forEach((val) => {
+    for (const val of vals) {
       const node = new Node<T>(val)
 
       if (this.#head === null) this.#head = this.#tail = node
@@ -31,11 +31,12 @@ export class SinglyLinkedList<T = unknown> {
       }
 
       this.#length++
-    })
+    }
+
     return this
   }
 
-  pop(): T | void {
+  pop(): T | undefined {
     if (this.#head === null) return
 
     const val = this.#tail?.val
@@ -57,7 +58,7 @@ export class SinglyLinkedList<T = unknown> {
     return val
   }
 
-  shift(): T | void {
+  shift(): T | undefined {
     if (this.#length === 0) return
 
     const val = this.#head?.val
@@ -72,19 +73,19 @@ export class SinglyLinkedList<T = unknown> {
   }
 
   unshift(...vals: T[]) {
-    vals.forEach((val) => {
+    for (const val of vals) {
       const node = new Node(val)
       node.next = this.#head
       this.#head = node
       this.#length++
 
       if (!this.#tail) this.#tail = node
-    })
+    }
 
     return this
   }
 
-  get(index: number): T | void {
+  get(index: number): T | undefined {
     const node = this.#getNode(index)
     if (!node) return
 
@@ -177,7 +178,8 @@ export class SinglyLinkedList<T = unknown> {
 
   toString() {
     const arr: T[] = []
-    this.forEach((val) => arr.push(val))
+
+    for (const val of this) arr.push(val)
 
     return arr.join('')
   }
@@ -191,7 +193,7 @@ export class SinglyLinkedList<T = unknown> {
     }
   }
 
-  #getNode(index: number): Node<T> | void {
+  #getNode(index: number): Node<T> | undefined {
     if (!this.#withinBounds(index)) return
 
     let node = this.#head

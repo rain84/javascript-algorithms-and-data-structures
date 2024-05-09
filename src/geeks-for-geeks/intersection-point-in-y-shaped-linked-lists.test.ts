@@ -24,19 +24,16 @@ describe('GFG. Intersection Point in Y Shaped Linked Lists', () => {
     it.each([
       [...(['3 6 9', '10', '15 30'].map(createFromString) as T), 15],
       [...(['4 1', '5 6 1', '8 4 5'].map(createFromString) as T), 8],
-    ])(
-      '%# should work',
-      (list1: Node, list2: Node, common: Node, result: number) => {
-        let l = list1
-        while (l.next) l = l.next
-        l.next = common
+    ])('%# should work', (list1: Node, list2: Node, common: Node, result: number) => {
+      let l = list1
+      while (l.next) l = l.next
+      l.next = common
 
-        l = list2
-        while (l.next) l = l.next
-        l.next = common
+      l = list2
+      while (l.next) l = l.next
+      l.next = common
 
-        expect(intersectPoint(list1, list2)).toBe(result)
-      }
-    )
+      expect(intersectPoint(list1, list2)).toBe(result)
+    })
   })
 })

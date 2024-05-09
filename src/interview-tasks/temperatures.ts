@@ -3,7 +3,7 @@
   space complexity: O(n)
  */
 
-const temperatures = (days: number[]): number[] => {
+export const temperatures = (days: number[]): number[] => {
   const warmDays = days.map(() => 0)
   const stack = []
 
@@ -17,7 +17,9 @@ const temperatures = (days: number[]): number[] => {
         warmDays[i] = val.i - i
         stack.push({ day, i })
         break
-      } else stack.pop()
+      }
+
+      stack.pop()
     }
 
     if (!stack.length) {
@@ -33,5 +35,3 @@ const input = [17, 13, 12, 15, 11, 9, 12, 16]
 const shouldBe = [0, 2, 1, 4, 2, 1, 1, 0]
 
 console.log(temperatures(input))
-
-export {}

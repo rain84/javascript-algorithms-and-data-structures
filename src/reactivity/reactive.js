@@ -39,7 +39,7 @@ class Reactive {
       const [operator, ...sources] = args
       this.#operator = operator
       this.#sources = sources
-      this.#sources.forEach((s) => s[subscribe](this.#cb))
+      for (const s of this.#sources) s[subscribe](this.#cb)
       this.#shouldUpdate = true
     }
 
@@ -51,7 +51,7 @@ class Reactive {
     if (this.#shouldUpdate) {
       const values = this.#sources.map(({ ref }) => ref)
       this.#ref = this.#operator(...values)
-      this.#subscribers?.forEach((cb) => cb())
+      for (const cb of this.#subscribers) cb()
       this.#shouldUpdate = false
     }
 
@@ -60,10 +60,10 @@ class Reactive {
 
   set ref(next) {
     this.#ref = next
-    this.#subscribers?.forEach((cb) => cb())
+    for (const cb of this.#subscribers) cb()
 
     if (Array.isArray(this.#sources)) {
-      this.#sources.forEach((s) => s[unsubscribe](this.#cb))
+      for (const s of this.#sources) s[unsubscribe](this.#cb)
       this.#sources.length = 0
     }
   }

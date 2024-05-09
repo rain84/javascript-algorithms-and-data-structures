@@ -15,7 +15,12 @@
     "enabled": true,
     "rules": {
       "recommended": true,
-      "style": { "noNonNullAssertion": "off", "noCommaOperator": "off", "noParameterAssign": "off" }
+      "style": {
+        "noNonNullAssertion": "off",
+        "noCommaOperator": "off",
+        "noParameterAssign": "off"
+      },
+      "suspicious": { "noAssignInExpressions": "off" }
     }
   },
   "javascript": {

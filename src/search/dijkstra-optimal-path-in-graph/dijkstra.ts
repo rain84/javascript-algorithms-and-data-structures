@@ -14,11 +14,11 @@ type UnvisitedVertexes = [number, string]
 export type Graph = Record<Name, Record<Name, number>>
 
 export const getCosts = (graph: Graph, vertex: Name): MaybeUndefined<Costs> =>
-  getCostsAndBreadcrumbs(graph, vertex)?.['costs']
+  getCostsAndBreadcrumbs(graph, vertex)?.costs
 
 export const getOptimalPath: GetOptimalPath = (graph, vertex) => {
   const costsAndBreadcrumbs = getCostsAndBreadcrumbs(graph, vertex)
-  if (costsAndBreadcrumbs == undefined) return
+  if (costsAndBreadcrumbs === undefined) return
 
   return getPath(costsAndBreadcrumbs, vertex)
 }
@@ -32,9 +32,7 @@ const getCostsAndBreadcrumbs = (
   const costs: Costs = new Map([[vertex, 0]])
   const visited = new Set<Name>([vertex])
   const breadcrumbs: Breadcrumbs = new Map()
-  const unvisitedVertexes = PriorityQueue.createMin<UnvisitedVertexes>(
-    ([key]) => key
-  )
+  const unvisitedVertexes = PriorityQueue.createMin<UnvisitedVertexes>(([key]) => key)
   unvisitedVertexes.enqueue([0, vertex])
 
   if (graph[vertex] === undefined) return
@@ -46,12 +44,12 @@ const getCostsAndBreadcrumbs = (
 
     visited.add(vertex)
 
-    Object.keys(neighbours).forEach((neighbour) => {
+    for (const neighbour of Object.keys(neighbours)) {
       if (visited.has(neighbour)) return
 
       const cost = {
         new: (costs.get(vertex) ?? 0) + neighbours[neighbour],
-        current: costs.get(neighbour) ?? +Infinity,
+        current: costs.get(neighbour) ?? Number.POSITIVE_INFINITY,
       }
 
       if (cost.new < cost.current) {
@@ -61,7 +59,7 @@ const getCostsAndBreadcrumbs = (
 
       const currentCost = costs.get(neighbour)!
       unvisitedVertexes.enqueue([currentCost, neighbour])
-    })
+    }
   }
 
   return { costs, breadcrumbs }
@@ -90,8 +88,8 @@ function getMin(vertexes: Set<Name>, costs: Costs): MaybeUndefined<Name> {
   if (costs?.size === 0 || vertexes?.size === 0) return
 
   return [...vertexes.values()].reduce((min, next) => {
-    const costMin = costs.get(min) ?? +Infinity
-    const costNext = costs.get(next) ?? +Infinity
+    const costMin = costs.get(min) ?? Number.POSITIVE_INFINITY
+    const costNext = costs.get(next) ?? Number.POSITIVE_INFINITY
 
     return costMin < costNext ? min : next
   })

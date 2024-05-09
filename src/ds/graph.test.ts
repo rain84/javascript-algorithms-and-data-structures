@@ -4,12 +4,12 @@ import type { Cb } from './graph'
 let graph: Graph
 let path: string[]
 let edges: string[]
-let cb: Cb = (v, edge) => {
+const cb: Cb = (v, edge) => {
   path.push(v)
   if (edge) edges.push(edge)
 }
 
-const toString = (graph: Graph) => {
+const asString = (graph: Graph) => {
   const path: string[] = []
   const vertexes = []
   graph.bfsRecursive('a', (v: string) => path.push(v))
@@ -41,12 +41,12 @@ beforeEach(() => {
 
 it('should have "removeEdge()"', () => {
   graph.removeEdge('f', 'e')!.removeEdge('f', 'd')
-  expect(toString(graph)).toBe('abcde')
+  expect(asString(graph)).toBe('abcde')
 })
 
 it('should have "removeVertex()"', () => {
   graph.removeVertex('d')!.removeVertex('e')
-  expect(toString(graph)).toBe('abc')
+  expect(asString(graph)).toBe('abc')
 })
 
 it('should have "dfsRecursive()"', () => {

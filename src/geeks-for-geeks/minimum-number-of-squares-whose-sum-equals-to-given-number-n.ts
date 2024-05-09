@@ -33,11 +33,7 @@ const calcSum = (arr: number[]): number => arr.reduce((acc, val) => acc + val)
 //  any arbitary sum-combinations of them
 //  should be eqal to "sum"
 //  "size" is used to reduce the number of genetated combinantions
-const getCombinations = (
-  [val, ...values]: number[],
-  sum: number,
-  size = +Infinity
-): number[][] => {
+const getCombinations = ([val, ...values]: number[], sum: number, size = +Infinity): number[][] => {
   if (val === undefined) return []
 
   const results: number[][] = []
@@ -89,8 +85,5 @@ export const getSquares = (n: number): number[][] => {
 }
 
 export const getN = (n: number): number => {
-  return getSquares(n).reduce(
-    (l, { length }) => (length < l ? length : l),
-    +Infinity
-  )
+  return getSquares(n).reduce((l, { length }) => (length < l ? length : l), +Infinity)
 }

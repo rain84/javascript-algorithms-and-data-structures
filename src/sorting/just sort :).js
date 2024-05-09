@@ -1,73 +1,73 @@
 {
-    // sort order is 'asc' by default
-    const justSort = (arr2, order = false) => {
-        const orderFn = {
-            true: Math.max,
-            false: Math.min,
-        }[order]
-        const arr = [...arr2]
-        const res = []
+  // sort order is 'asc' by default
+  const justSort = (arr2, order = false) => {
+    const orderFn = {
+      true: Math.max,
+      false: Math.min,
+    }[order]
+    const arr = [...arr2]
+    const res = []
 
-        while (arr.length) {
-            const el = orderFn(...arr)
-            const idx = arr.indexOf(el)
-            res.push(el)
-            arr.splice(idx, 1)
-        }
-
-        return res
+    while (arr.length) {
+      const el = orderFn(...arr)
+      const idx = arr.indexOf(el)
+      res.push(el)
+      arr.splice(idx, 1)
     }
 
-    const justSort2 = (arr2, order = false) => {
-        const arr = [...arr2]
-        const res = []
-        let i = 0,
-            indexEl = 0,
-            el = { true: -Infinity, false: Infinity }[order]
+    return res
+  }
 
-        while (arr.length) {
-            const isMin = !order && arr[i] < el
-            const isMax = order && el < arr[i]
+  const justSort2 = (arr2, order = false) => {
+    const arr = [...arr2]
+    const res = []
+    let i = 0
+    let indexEl = 0
+    let el = { true: Number.NEGATIVE_INFINITY, false: Number.POSITIVE_INFINITY }[order]
 
-            if (isMin || isMax) {
-                el = arr[i]
-                indexEl = i
-            }
+    while (arr.length) {
+      const isMin = !order && arr[i] < el
+      const isMax = order && el < arr[i]
 
-            if (++i === arr.length) {
-                res.push(el)
-                arr.splice(indexEl, 1)
-                i = indexEl = 0
-                el = arr[i]
-            }
-        }
+      if (isMin || isMax) {
+        el = arr[i]
+        indexEl = i
+      }
 
-        return res
+      if (++i === arr.length) {
+        res.push(el)
+        arr.splice(indexEl, 1)
+        i = indexEl = 0
+        el = arr[i]
+      }
     }
 
-    const data = [7, 0, 2, 0, 2, 3, 4, 2, 3, 6]
+    return res
+  }
 
-    const testPerfomance = (fn, args, iterations = 10 ** 5) => {
-        const time = performance.now()
+  const data = [7, 0, 2, 0, 2, 3, 4, 2, 3, 6]
 
-        for (let i = iterations; i; i--) {
-            fn(...args)
-        }
-        const execTime = ((performance.now() - time) / iterations).toFixed(4)
+  const testPerfomance = (fn, args, iterations = 10 ** 5) => {
+    const time = performance.now()
 
-        console.log(`"${fn.name || 'ƒn'}" executed during ${execTime}`)
+    for (let i = iterations; i; i--) {
+      fn(...args)
     }
+    const execTime = ((performance.now() - time) / iterations).toFixed(4)
 
-    testPerfomance(justSort, [data])
-    testPerfomance(justSort, [data, true])
-    testPerfomance(justSort2, [data])
-    testPerfomance(justSort2, [data, true])
+    console.log(`"${fn.name || 'ƒn'}" executed during ${execTime}`)
+  }
 
-    console.log(
-        `
+  testPerfomance(justSort, [data])
+  testPerfomance(justSort, [data, true])
+  testPerfomance(justSort2, [data])
+  testPerfomance(justSort2, [data, true])
+
+  console.log(
+    `
         data:       ${data}
         justSort : ${justSort(data)}
         justSort2: ${justSort2(data)}
-    `.trim(),
-    )
+    `.trim()
+  )
 }

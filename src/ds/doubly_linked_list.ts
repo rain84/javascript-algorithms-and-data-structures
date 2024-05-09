@@ -22,7 +22,7 @@ export class DoublyLinkedList<T = unknown> {
   }
 
   push(...vals: T[]) {
-    vals.forEach((val) => {
+    for (const val of vals) {
       const node = new Node<T>(val)
       const isEmpty = this.#head === null && this.#tail === null
 
@@ -34,12 +34,12 @@ export class DoublyLinkedList<T = unknown> {
       }
 
       this.#length++
-    })
+    }
 
     return this
   }
 
-  pop(): T | void {
+  pop(): T | undefined {
     if (this.#tail === null) return
 
     const val = this.#tail?.val
@@ -56,7 +56,7 @@ export class DoublyLinkedList<T = unknown> {
     return val
   }
 
-  shift(): T | void {
+  shift(): T | undefined {
     if (this.#length === 0) return
 
     const val = this.#head?.val
@@ -73,7 +73,7 @@ export class DoublyLinkedList<T = unknown> {
   }
 
   unshift(...vals: T[]) {
-    vals.forEach((val) => {
+    for (const val of vals) {
       const node = new Node(val)
 
       this.#length++
@@ -86,12 +86,12 @@ export class DoublyLinkedList<T = unknown> {
       this.#head.prev = node
       node.next = this.#head
       this.#head = node
-    })
+    }
 
     return this
   }
 
-  get(index: number): T | void {
+  get(index: number): T | undefined {
     return this.#getNode(index)?.val
   }
 
@@ -167,6 +167,7 @@ export class DoublyLinkedList<T = unknown> {
 
   toString() {
     const arr: T[] = []
+    // biome-ignore lint:
     this.forEach((val) => arr.push(val))
 
     return arr.join('')
@@ -181,7 +182,7 @@ export class DoublyLinkedList<T = unknown> {
     }
   }
 
-  #getNode(index: number): Node<T> | void {
+  #getNode(index: number): Node<T> | undefined {
     if (!this.#withinBounds(index)) return
 
     const moveFromHead = index < this.#length / 2

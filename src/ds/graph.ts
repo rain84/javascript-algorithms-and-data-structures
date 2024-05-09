@@ -42,7 +42,10 @@ export class Graph {
 
   removeVertex(v: string) {
     if (!this.#adjacency[v]) return
-    this.#adjacency[v].forEach((v2) => this.removeEdge(v, v2))
+
+    for (const v2 of this.#adjacency[v]) {
+      this.removeEdge(v, v2)
+    }
 
     return this
   }
@@ -67,7 +70,7 @@ export class Graph {
 
   bfsRecursive(current: string, cb: Cb) {
     const visited = new Set<string>()
-    let vs: VertexContainer[] = [{ current }]
+    const vs: VertexContainer[] = [{ current }]
 
     const walk = () => {
       vs.forEach((vertex) => {

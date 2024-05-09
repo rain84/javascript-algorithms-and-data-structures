@@ -15,11 +15,10 @@ const names1 = getNamesExactlyOld({ names: ['Alice', 'Bob', 'Eve'] })
 //    readonly ["Alice", "Bob", "Eve"]
 const names2 = getNamesExactlyNew({ names: ['Alice', 'Bob', 'Eve'] })
 
-
-declare function fnBad<T extends readonly string[]>(args: T): void;
+declare function fnBad<T extends readonly string[]>(args: T): void
 // 'T' is still 'string[]' since 'readonly ["a", "b", "c"]' is not assignable to 'string[]'
-fnBad(["a", "b", "c"]);
+fnBad(['a', 'b', 'c'])
 
-declare function fnGood<const T extends readonly string[]>(args: T): void;
+declare function fnGood<const T extends readonly string[]>(args: T): void
 // T is readonly ["a", "b", "c"]
-fnGood(["a", "b", "c"]);
+fnGood(['a', 'b', 'c'])

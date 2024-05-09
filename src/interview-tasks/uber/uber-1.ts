@@ -33,11 +33,11 @@ interface ITree extends INode, ITraversable {
   add(...nodes: ITree[]): ITree
 }
 
-class CNode implements ITree {
+export class CNode implements ITree {
   children?: INode[]
   private _maxpathForRoot = 0
 
-  constructor(public name: string = 'node', public weight: number = 0) {}
+  constructor(public name = 'node', public weight = 0) {}
 
   add(...nodes: ITree[]): ITree {
     if (!this.children) this.children = []
@@ -59,8 +59,10 @@ class CNode implements ITree {
   }
 
   get maxpath() {
-    const maxpathsOfChildren = this?.children?.map((node) => (node as ITree).maxpath).sort((a, b) => b - a)
-    let previousMax = maxpathsOfChildren?.[1] ?? 0
+    const maxpathsOfChildren = this?.children
+      ?.map((node) => (node as ITree).maxpath)
+      .sort((a, b) => b - a)
+    const previousMax = maxpathsOfChildren?.[1] ?? 0
 
     return this.maxpathForRoot + previousMax
   }
@@ -78,17 +80,17 @@ const tree = new CNode('a').add(
   new CNode('b', 3),
   new CNode('c', 5),
   new CNode('d', 8).add(
-    new CNode('e', 2).add(
-      new CNode('g', 1),
-      new CNode('h', 1)),
+    new CNode('e', 2).add(new CNode('g', 1), new CNode('h', 1)),
     new CNode('f', 4)
   )
 )
 
+// biome-ignore lint:
 function stringify(data: any) {
   return JSON.stringify(data, null, ' ')
 }
 
+// biome-ignore lint:
 function log(data: any, msg?: string): void {
   const isObject = typeof data === 'object' && !Object.is(data, null)
   console.log(msg, isObject ? stringify(data) : data)
@@ -97,5 +99,3 @@ function log(data: any, msg?: string): void {
 log(tree)
 log(tree.maxpathForRoot, 'tree.maxpathForRoot')
 log(tree.maxpath, 'tree.maxpath')
-
-export {}

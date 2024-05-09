@@ -1,5 +1,8 @@
 class Node<T> {
-  constructor(public val: T, public next: Node<T> | null = null) {}
+  constructor(
+    public val: T,
+    public next: Node<T> | null = null
+  ) {}
 }
 
 export interface IQueue<T> {

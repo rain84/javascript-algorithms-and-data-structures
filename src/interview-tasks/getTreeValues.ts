@@ -1,4 +1,4 @@
-type TTree = {
+export type TTree = {
   value: number
   children?: TTree[]
 }
@@ -28,5 +28,3 @@ const tree: TTree = {
 }
 
 console.log(`[${getTreeValues(tree)}] should be equals to [1, 2, 3, 4, 5, 6, 7]`)
-
-export {}

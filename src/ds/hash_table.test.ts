@@ -1,11 +1,8 @@
 import { HashTable } from './hash_table'
 
 let hashTable: HashTable<number>
-const data =
-  'The C Programming Language is a computer programming book\
- written by Brian Kernighan and Dennis Ritchie'.split(
-    /\s+/
-  )
+const data = 'The C Programming Language is a computer programming book\
+ written by Brian Kernighan and Dennis Ritchie'.split(/\s+/)
 
 beforeEach(() => {
   hashTable = new HashTable()
@@ -59,7 +56,7 @@ it('should have "keys()"', () => {
 it('should have "values()"', () => {
   const indexes = data.map((_, i) => i)
   const values = hashTable.values()
-  values.sort((a, b) => a - b)
+  values.sort((a, b) => (a as unknown as number) - (b as unknown as number))
 
   expect(values).toMatchObject(indexes)
 })
@@ -67,7 +64,7 @@ it('should have "values()"', () => {
 it('should have "entries()"', () => {
   const entries = hashTable
     .entries()
-    .reduce((acc, [val, key]) => ((acc[key] = val), acc), [])
+    .reduce<string[]>((acc, [val, key]) => ((acc[key] = val), acc), [])
 
   expect(entries).toMatchObject(data)
 })

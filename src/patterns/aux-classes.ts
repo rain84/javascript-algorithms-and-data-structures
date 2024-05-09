@@ -1,10 +1,10 @@
 import { EventEmitter } from './event-emitter'
 
 export enum EVENT_TYPES {
-  'INCREMENT' = 'INCREMENT',
+  INCREMENT = 'INCREMENT',
   'A:INCREMENT' = 'A:INCREMENT',
-  'DECREMENT' = 'DECREMENT',
-  'ONLY_ONCE' = 'ONLY_ONCE',
+  DECREMENT = 'DECREMENT',
+  ONLY_ONCE = 'ONLY_ONCE',
 }
 
 export class ClassA extends EventEmitter {

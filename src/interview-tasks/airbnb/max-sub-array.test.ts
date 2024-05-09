@@ -1,6 +1,6 @@
 import { maxSubArray } from './max-sub-array'
 
-let arr: number[] = []
+const arr: number[] = []
 
 it('should return on empty array', () => {
   expect(maxSubArray(arr)).toBeUndefined()

@@ -60,6 +60,7 @@ export class Promise_<T> {
     return val?.constructor !== Promise ? Promise.resolve(val) : val
   }
 
+  // biome-ignore lint:
   constructor() {}
 }
 

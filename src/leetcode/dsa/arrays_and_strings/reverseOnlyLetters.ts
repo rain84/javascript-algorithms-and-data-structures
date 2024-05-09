@@ -3,7 +3,7 @@
 export function reverseOnlyLetters(s: string): string {
   const res: string[] = []
   const alphabet = new Set([...'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'])
-  let reversed: string[] = []
+  const reversed: string[] = []
 
   for (let i = s.length - 1; i >= 0; i--) {
     if (!alphabet.has(s[i])) continue

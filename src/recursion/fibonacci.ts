@@ -21,8 +21,7 @@ export const fib2 = (() => {
   const memoized = (n: number) => {
     if (n < 0) return
 
-    while (cache[n] === undefined)
-      cache.push(cache[cache.length - 1] + cache[cache.length - 2])
+    while (cache[n] === undefined) cache.push(cache[cache.length - 1] + cache[cache.length - 2])
 
     return cache[n]
   }

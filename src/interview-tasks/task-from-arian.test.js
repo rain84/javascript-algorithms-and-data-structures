@@ -18,9 +18,9 @@ it('should work', () => {
     { number: 3, operator: (x) => x - 1, expected: [2, 1, 0] },
   ]
 
-  data.forEach(({ number, operator, expected }) => {
+  for (const { number, operator, expected } of data) {
     const res = number[operator]
     console.log(res)
     console.assert(res.toString(), expected.toString(), 'wrong!')
-  })
+  }
 })

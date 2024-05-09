@@ -3,7 +3,7 @@ import type { ISet, Cb } from './set.types'
 // Full implementation of the ES "Set" data structure
 // TODO: add ability to use Set with any type of "T"
 export class Set<T extends number> implements ISet<T> {
-  static #LOAD_FACTOR = 0.75;
+  static #LOAD_FACTOR = 0.75
 
   readonly [Symbol.toStringTag] = 'CustomSet'
 

@@ -1,4 +1,4 @@
-import { ListNode } from './utils'
+import type { ListNode } from './utils'
 
 export const findKNode = (list: ListNode | null, k: number) => {
   const arr: ListNode[] = []

@@ -29,7 +29,7 @@ B B B
 
 type TMatrix2d = string[][]
 
-class Matrix {
+export class Matrix {
   matrix: TMatrix2d
 
   constructor(str: string) {
@@ -75,5 +75,3 @@ console.log('\n')
 
 matrix.adjaceAt(2, 2, 'G')
 console.log(matrix.toString())
-
-export {}

@@ -1,4 +1,5 @@
 type TComparator = (parent: number, child: number) => boolean
+// biome-ignore lint:
 export type Selector = (value: any) => number
 type Element<T> = {
   index: number
@@ -16,18 +17,15 @@ export class BinaryHeap<T = number> {
     new BinaryHeap<T>(BinaryHeap.#comparators.max, selector)
 
   static #comparators = {
-    max: (parent: number, child: number = -Infinity) => child <= parent,
-    min: (parent: number, child: number = +Infinity) => child >= parent,
+    max: (parent: number, child = Number.NEGATIVE_INFINITY) => child <= parent,
+    min: (parent: number, child = Number.POSITIVE_INFINITY) => child >= parent,
   }
 
   #values: T[] = []
   #comparator: TComparator
   #selector: Selector
 
-  private constructor(
-    comparator: TComparator,
-    selector: Selector = (key: number) => key
-  ) {
+  private constructor(comparator: TComparator, selector: Selector = (key: number) => key) {
     this.#comparator = comparator
     this.#selector = selector
   }
@@ -64,8 +62,7 @@ export class BinaryHeap<T = number> {
     while (true) {
       const parent = this.#getElement(index)!
       const child = this.#getChildren(parent.index).reduce(
-        (left, right) =>
-          left && this.#comparator(left.key, right!.key) ? left : right,
+        (left, right) => (left && this.#comparator(left.key, right!.key) ? left : right),
         undefined
       )
 
@@ -81,7 +78,7 @@ export class BinaryHeap<T = number> {
 
   fill(values?: T[]) {
     if (values === undefined) return this
-    values.forEach((val) => this.insert(val))
+    for (const v of values) this.insert(v)
     return this
   }
 

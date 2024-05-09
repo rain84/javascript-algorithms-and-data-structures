@@ -1,4 +1,4 @@
-const compressString = (str: string): string =>
+export const compressString = (str: string): string =>
   [...str].reduce((acc: string, val: string) => {
     const [, str, prevItem, lastItem] = /(.*)(\D)(\d+)$/.exec(acc) || /(.*)()(\D+)$/.exec(acc) || []
 
@@ -6,7 +6,8 @@ const compressString = (str: string): string =>
     if (lastItem === val) return acc + 2
     if (/^\d+$/.test(lastItem)) {
       if (prevItem === val) return str + prevItem + (+lastItem + 1)
-      else return acc + val
+
+      return acc + val
     }
 
     return acc + val
@@ -14,8 +15,8 @@ const compressString = (str: string): string =>
 
 const compressString2 = (str: string): string => {
   let lastCh: string = str[0]
-  let nextCh: string = ''
-  let res: string[] = []
+  let nextCh = ''
+  const res: string[] = []
   let counter = 1
 
   const push = (ch: string): void => {
@@ -41,7 +42,7 @@ const compressString2 = (str: string): string => {
   return res.join('')
 }
 
-const testing = (fns: Function[], validationData: [string, string][]) => {
+const testing = (fns: Fn[], validationData: [string, string][]) => {
   for (const fn of fns) {
     console.log(`Function '${fn.name}'`)
 
@@ -63,5 +64,3 @@ testing(
     ['AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!', 'A50!3'],
   ]
 )
-
-export {}

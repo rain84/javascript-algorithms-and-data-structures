@@ -62,7 +62,7 @@ export function longestSubarray2(nums: number[], limit: number): number {
       res = Math.max(res, length)
 
       if (r === nums.length - 1) break
-      else r++
+      r++
     } else {
       l++
     }

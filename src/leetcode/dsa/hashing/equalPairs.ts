@@ -10,7 +10,7 @@ export function equalPairs(grid: number[][]): number {
   }
 
   for (let j = 0; j < grid.length; j++) {
-    let col: number[] = []
+    const col: number[] = []
     for (let i = 0; i < grid.length; i++) {
       col.push(grid[i][j])
     }

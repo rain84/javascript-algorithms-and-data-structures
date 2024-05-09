@@ -22,10 +22,7 @@ class Tree<T> {
   values: T[] = []
   #dataSelector: (val: T) => unknown
 
-  constructor(
-    keySelector: (val: T) => number,
-    dataSelector: (val: T) => unknown
-  ) {
+  constructor(keySelector: (val: T) => number, dataSelector: (val: T) => unknown) {
     this.#dataSelector = dataSelector
     this.instance = new BST<T>(keySelector)
   }
@@ -130,7 +127,7 @@ it('should traverse', () => {
     */
 
   const tree = new BST<number>(selector.identity)
-  ;[10, 6, 3, 8, 15, 20].forEach((val) => tree.insert(val))
+  for (const x of [10, 6, 3, 8, 15, 20]) tree.insert(x)
 
   const values: number[] = []
 

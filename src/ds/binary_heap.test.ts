@@ -81,10 +81,7 @@ function getRandomComplexData(words: string[]): IRandomData[] {
   const randomArr = random(10, 10000)
   const sortedMap = [...randomArr]
     .sort((a, b) => a - b)
-    .reduce<Record<string, number>>(
-      (acc, val, key) => ((acc[val] = key), acc),
-      {}
-    )
+    .reduce<Record<string, number>>((acc, val, key) => ((acc[val] = key), acc), {})
 
   const randomData = randomArr.map((key) => ({
     key,

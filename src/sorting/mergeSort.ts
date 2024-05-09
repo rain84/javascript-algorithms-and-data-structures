@@ -14,16 +14,16 @@
 */
 
 export const mergeSort = (arr: number[]) => {
-  let pivot = ~~(arr.length / 2),
-    left = arr.slice(0, pivot),
-    right = arr.slice(pivot)
+  const pivot = ~~(arr.length / 2)
+  let left = arr.slice(0, pivot)
+  let right = arr.slice(pivot)
 
   if (1 < left.length) left = mergeSort(left)
   if (1 < right.length) right = mergeSort(right)
 
   const result = []
-  let i = 0,
-    j = 0
+  let i = 0
+  let j = 0
 
   while (i !== left.length && j !== right.length) {
     const val = left[i] < right[j] ? left[i++] : right[j++]

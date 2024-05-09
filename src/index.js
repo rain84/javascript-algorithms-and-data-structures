@@ -1,7 +1,7 @@
-import path from 'path'
+import { exec as _exec } from 'node:child_process'
+import path from 'node:path'
+import { promisify } from 'node:util'
 import { traverseDirRecursive } from './utils/index.js'
-import { exec as _exec } from 'child_process'
-import { promisify } from 'util'
 
 const exec = promisify(_exec)
 
@@ -33,10 +33,10 @@ const execScript = async (config) => {
     if (is.ts) {
       const command = [
         `cp ${config.base} tmp.ts`,
-        `tsc tmp.ts --target esnext ` + `--module CommonJS`,
-        `mv tmp.js tmp.cjs`,
-        `node tmp.cjs`,
-        `rm tmp.cjs tmp.ts`,
+        'tsc tmp.ts --target esnext --module CommonJS',
+        'mv tmp.js tmp.cjs',
+        'node tmp.cjs',
+        'rm tmp.cjs tmp.ts',
       ].join(' && ')
       const { error, stdout } = await exec(command, { cwd: path.dirname(entry.path) })
 

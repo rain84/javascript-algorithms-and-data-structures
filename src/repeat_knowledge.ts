@@ -1,16 +1,17 @@
 const generateRandomArray = (length: number, max = length) =>
   new Array(length).fill(0).map(() => ~~(Math.random() * (max + 1)))
-const isSorted = (arr: number[]) => arr.every((val, i, arr) => val >= (arr[i - 1] ?? -Infinity))
+const isSorted = (arr: number[]) =>
+  arr.every((val, i, arr) => val >= (arr[i - 1] ?? Number.NEGATIVE_INFINITY))
 
 const binarySearch = (arr: number[], val: number) => {
   let left = 0
   let right = arr.length - 1
 
   while (left <= right) {
-    let middle = Math.floor((right + left) / 2)
+    const middle = Math.floor((right + left) / 2)
 
     if (arr[middle] === val) return middle
-    else if (arr[middle] < val) left = middle + 1
+    if (arr[middle] < val) left = middle + 1
     else right = middle - 1
   }
 
@@ -19,7 +20,9 @@ const binarySearch = (arr: number[], val: number) => {
 
 const testBinarySearch = () => {
   const data = [2, 5, 6, 9, 13, 15, 28, 30]
-  data.forEach((elem) => console.log(`binarySearch([${data.toString()}], ${elem})`, binarySearch(data, elem)))
+  for (const elem of data) {
+    console.log(`binarySearch([${data.toString()}], ${elem})`, binarySearch(data, elem))
+  }
   console.log(`binarySearch([${data.toString()}], -1)`, binarySearch(data, -1))
   console.log(`binarySearch([${data.toString()}], 103)`, binarySearch(data, 103))
 }
@@ -155,7 +158,7 @@ const radixSort = (arr: number[]) => {
   while (true) {
     const bucket: number[][] = Array.from({ length: 10 }, () => [])
 
-    for (let digit of arr) {
+    for (const digit of arr) {
       const place = getDigitAtIndex(digit, radixIndex)
       bucket[place].push(digit)
     }
@@ -208,7 +211,12 @@ const radixSort2 = (arr: number[]) => {
 
     pos++
     indexes.length = 0
-    slots.forEach((slot) => slot.forEach((index) => indexes.push(index)))
+    for (const slot of slots) {
+      for (const i of slot) {
+        indexes.push(i)
+      }
+    }
+
     if (slots[0].length === arr.length) break
     slots.length = 0
   }
@@ -249,7 +257,7 @@ export class DoublyLinkedList<T = unknown> {
   }
 
   push(...vals: T[]) {
-    vals.forEach((val) => {
+    for (const val of vals) {
       const node = new Node<T>(val)
       const isEmpty = this.#head === null && this.#tail === null
 
@@ -261,12 +269,12 @@ export class DoublyLinkedList<T = unknown> {
       }
 
       this.#length++
-    })
+    }
 
     return this
   }
 
-  pop(): T | void {
+  pop(): T | undefined {
     if (this.#tail === null) return
 
     const val = this.#tail?.val
@@ -283,7 +291,7 @@ export class DoublyLinkedList<T = unknown> {
     return val
   }
 
-  shift(): T | void {
+  shift(): T | undefined {
     if (this.#length === 0) return
 
     const val = this.#head?.val
@@ -316,7 +324,7 @@ export class DoublyLinkedList<T = unknown> {
     return this
   }
 
-  get(index: number): T | void {
+  get(index: number): T | undefined {
     const node = this.#getNode(index)
     if (!node) return
 
@@ -395,6 +403,7 @@ export class DoublyLinkedList<T = unknown> {
 
   toString() {
     const arr: T[] = []
+    // biome-ignore lint:
     this.forEach((val) => arr.push(val))
 
     return arr.join('')
@@ -409,7 +418,7 @@ export class DoublyLinkedList<T = unknown> {
     }
   }
 
-  #getNode(index: number): Node<T> | void {
+  #getNode(index: number): Node<T> | undefined {
     if (!this.#withinBounds(index)) return
 
     let node = this.#head
@@ -429,5 +438,3 @@ export class DoublyLinkedList<T = unknown> {
 function getDigitAtIndex(digit: number, position: number) {
   return ~~(Math.abs(digit) / 10 ** (position - 1)) % 10
 }
-
-export {}

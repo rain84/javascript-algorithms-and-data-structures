@@ -1,7 +1,6 @@
 import { promiseHash } from './promiseHash'
 
-const random = (max = 0, min = 0) =>
-  Math.floor(Math.random() * (max - min + 1)) + min
+const random = (max = 0, min = 0) => Math.floor(Math.random() * (max - min + 1)) + min
 
 const r = <T>(val: T) => new Promise((res) => setTimeout(res, random(10), val))
 

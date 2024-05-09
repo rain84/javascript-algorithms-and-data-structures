@@ -19,14 +19,14 @@ export const compress = (str: string): string => {
 export const decompress = (str: string): string => {
   if (typeof str !== 'string' || !str.length) return ''
 
-  let result: string[] = []
+  const result: string[] = []
   let i = 0
   let count = 0
 
   do {
     const ch = str[i]
     const number = +ch
-    const isNumber = !isNaN(number)
+    const isNumber = !Number.isNaN(number)
 
     if (isNumber) {
       count = count === 0 ? number : count * 10 + number

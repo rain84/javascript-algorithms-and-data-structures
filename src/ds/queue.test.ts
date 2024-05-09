@@ -34,14 +34,14 @@ it('should have "front"', () => {
 })
 
 it('should have "enqueue()"', () => {
-  ;[...'fgh'].forEach((ch) => queue.enqueue(ch))
+  for (const ch of 'fgh') queue.enqueue(ch)
 
   expect(queue.size).toBe(8)
   expect(String(queue)).toBe('abcdefgh')
 })
 
 it('should have "dequeue()"', () => {
-  let sx = []
+  const sx = []
   while (!queue.isEmpty) sx.push(queue.dequeue())
 
   expect(sx.join('')).toBe('abcde')

@@ -1,4 +1,4 @@
-import { BinaryHeap, IBinaryHeap, type Selector } from './binary_heap'
+import { BinaryHeap, type IBinaryHeap, type Selector } from './binary_heap'
 
 export class PriorityQueue<T = number> {
   #heap: BinaryHeap<T>

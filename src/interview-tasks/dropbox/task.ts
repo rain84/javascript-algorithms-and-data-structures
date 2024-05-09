@@ -1,4 +1,4 @@
-const numberToColumn = (val: number) => {
+export const numberToColumn = (val: number) => {
   const charcodeA = 'A'.charCodeAt(0)
   const alphabetSize = 26
   let res = ''
@@ -28,5 +28,3 @@ const numberToColumn = (val: number) => {
 for (let i = 1; i < 100; i++) {
   console.log(i, ' - ', numberToColumn(i))
 }
-
-export {}

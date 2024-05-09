@@ -1,6 +1,7 @@
 import { ClassA, ClassB, EVENT_TYPES } from './aux-classes'
 
-let instanceA: ClassA, instanceB: ClassB
+let instanceA: ClassA
+let instanceB: ClassB
 
 beforeEach(() => {
   instanceA = new ClassA()
@@ -90,12 +91,7 @@ it("should have .off() with multiple cb's", () => {
     second: () => (instanceA.counter += 2),
     third: () => (instanceA.counter += 4),
   }
-  const unsubscribe = instanceA.on(
-    EVENT_TYPES.INCREMENT,
-    inc.first,
-    inc.second,
-    inc.third
-  )
+  const unsubscribe = instanceA.on(EVENT_TYPES.INCREMENT, inc.first, inc.second, inc.third)
 
   instanceA.trigger(EVENT_TYPES.INCREMENT)
   expect(instanceA.counter).toBe(7)

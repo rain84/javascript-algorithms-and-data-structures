@@ -6,7 +6,7 @@ export function dailyTemperatures(temperatures: number[]): number[] {
 
   for (let i = 1; i < temperatures.length; i++) {
     while (stack.length && temperatures[stack.at(-1)!] < temperatures[i]) {
-      let j = stack.pop()!
+      const j = stack.pop()!
       res[j!] = i - j
     }
 

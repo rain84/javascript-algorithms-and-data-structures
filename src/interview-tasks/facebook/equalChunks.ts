@@ -18,7 +18,12 @@
 
 export type ResultType = number[][]
 type EC = (arr: readonly number[], count: number) => ResultType | null
-type Run = (arr: readonly number[], size: number, iInit?: number, result?: number[]) => number[] | null
+type Run = (
+  arr: readonly number[],
+  size: number,
+  iInit?: number,
+  result?: number[]
+) => number[] | null
 type GHI = (arr: readonly number[], size: number) => ReturnType<Run>
 
 export const extractByIndexes = (arr: number[], sortedIndexes: number[]) => {

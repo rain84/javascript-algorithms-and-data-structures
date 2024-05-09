@@ -24,7 +24,7 @@ it('Should have 4 elements', () => {
 })
 
 it('Should have "forEach()" and "toString()"', () => {
-  expect('' + list).toBe('Hello world!!')
+  expect(String(list)).toBe('Hello world!!')
 })
 
 it('Should have "map()"', () => {

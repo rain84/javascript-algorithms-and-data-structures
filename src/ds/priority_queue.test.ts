@@ -11,9 +11,7 @@ const data = [...'hello world!']
 let randomPriorityData: Map<number, string>
 
 beforeEach(() => {
-  randomPriorityData = new Map(
-    random(data.length, 1000).map((priority, i) => [priority, data[i]])
-  )
+  randomPriorityData = new Map(random(data.length, 1000).map((priority, i) => [priority, data[i]]))
   queue.min = PriorityQueue.createMin()
   queue.max = PriorityQueue.createMax()
   for (const [priority] of randomPriorityData) {
@@ -26,12 +24,9 @@ it.each`
   type                   | values           | sortedValues
   ${'PriorityQueue.min'} | ${values('min')} | ${sortedValues('min')}
   ${'PriorityQueue.man'} | ${values('max')} | ${sortedValues('max')}
-`(
-  '$type should have "queue()" and "dequeue()"',
-  ({ type, values, sortedValues }) => {
-    expect(values).toMatchObject(sortedValues)
-  }
-)
+`('$type should have "queue()" and "dequeue()"', ({ type, values, sortedValues }) => {
+  expect(values).toMatchObject(sortedValues)
+})
 
 it('should have "size"-getter', () => {
   expect(queue.max?.size).toBe(data.length)

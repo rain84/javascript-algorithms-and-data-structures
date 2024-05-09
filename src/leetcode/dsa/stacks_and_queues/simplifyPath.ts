@@ -17,13 +17,13 @@ export function simplifyPath(path: string): string {
     }
   }
 
-  return '/' + res.join('/')
+  return `/${res.join('/')}`
 }
 
 export function simplifyPath2(path: string): string {
   const DELIMITER = '/'
   const res: string[] = []
-  let sx: string[] = []
+  const sx: string[] = []
 
   if (path[0] !== DELIMITER) res.push(DELIMITER)
 
@@ -50,10 +50,12 @@ export function simplifyPath2(path: string): string {
 
       case '..':
         // '/foo/moo/../bar' remove previous dir, i.e. '/foo/bar'
-        let c = 1
-        do {
-          if (res.pop() === DELIMITER) c--
-        } while (res.at(-1) !== DELIMITER && !c && res.length)
+        {
+          let c = 1
+          do {
+            if (res.pop() === DELIMITER) c--
+          } while (res.at(-1) !== DELIMITER && !c && res.length)
+        }
         break
 
       default:
@@ -62,7 +64,6 @@ export function simplifyPath2(path: string): string {
     }
 
     sx.length = 0
-    continue
   }
 
   // remove DELIMITER at the end

@@ -33,8 +33,7 @@ export const bubbleSort2 = (arr: number[], order = false) => {
     let j = -1
 
     while (++j < i) {
-      const shouldSwap =
-        (order && arr[j] < arr[j + 1]) || (!order && arr[j] > arr[j + 1])
+      const shouldSwap = (order && arr[j] < arr[j + 1]) || (!order && arr[j] > arr[j + 1])
 
       if (shouldSwap) {
         ;[arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
@@ -58,8 +57,7 @@ export const bubbleSortImproved = (arr: number[], order = false) => {
     let swapCounter = 0
 
     while (++j < i && notSorted) {
-      const shouldSwap =
-        (order && arr[j] < arr[j + 1]) || (!order && arr[j] > arr[j + 1])
+      const shouldSwap = (order && arr[j] < arr[j + 1]) || (!order && arr[j] > arr[j + 1])
 
       if (shouldSwap) {
         ;[arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]

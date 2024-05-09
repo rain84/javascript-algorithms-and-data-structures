@@ -16,12 +16,10 @@ const identity = <T>(val: TEntries<T>) => val
 
 const jsonTraverse = (json: TJson, transformFn = identity): TJson =>
   Object.fromEntries(
-    transformFn(Object.entries(json)).map(
-      ([key, value]: [string, TJsonValue]) => [
-        key,
-        isPOJO(value) ? jsonTraverse(value) : value,
-      ]
-    )
+    transformFn(Object.entries(json)).map(([key, value]: [string, TJsonValue]) => [
+      key,
+      isPOJO(value) ? jsonTraverse(value) : value,
+    ])
   )
 
 export const jsonSort = (json: TJson) => jsonTraverse(json, sortEntries)

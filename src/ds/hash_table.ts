@@ -30,40 +30,24 @@ export class HashTable<T> {
 
     if (!this.#storage[index]) return
     if (this.#storage[index].length === 1) delete this.#storage[index]
-    else
-      this.#storage[index] = this.#storage[index].filter(
-        ([itemKey]) => itemKey !== key
-      )
+    else this.#storage[index] = this.#storage[index].filter(([itemKey]) => itemKey !== key)
   }
 
   keys() {
-    return this.#getCollectionOf('keys')
+    return this.#storage.flat().reduce<string[]>((acc, [k]) => (acc.push(k), acc), [])
   }
 
   values() {
-    return this.#getCollectionOf('values')
+    return this.#storage.flat().reduce<T[]>((acc, [_, v]) => (acc.push(v), acc), [])
   }
 
   entries() {
-    return this.#getCollectionOf('entries')
+    return this.#storage.flat().reduce<Items<T>>((acc, [k, v]) => (acc.push([k, v]), acc), [])
   }
 
   #getItem(key: string) {
     const index = this.#hash(key)
     return this.#storage[index]?.find(([itemKey]) => itemKey === key)
-  }
-
-  #getCollectionOf(type: Collection) {
-    return this.#storage.flat().reduce((collection, [key, val]) => {
-      let item: any
-
-      if (type === 'keys') item = key
-      else if (type === 'values') item = val
-      else item = [key, val]
-
-      collection.push(item)
-      return collection
-    }, [] as any[])
   }
 
   #hash(s: string) {

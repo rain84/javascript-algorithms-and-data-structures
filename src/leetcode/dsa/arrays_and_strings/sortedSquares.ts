@@ -1,7 +1,7 @@
 export const sortedSquares = (numbers: number[]): number[] => {
-  let l = 0,
-    r = numbers.length - 1,
-    i = numbers.length
+  let l = 0
+  let r = numbers.length - 1
+  let i = numbers.length
 
   const res: number[] = new Array(numbers.length)
 

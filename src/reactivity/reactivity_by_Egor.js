@@ -26,9 +26,7 @@ function trigger(target, key) {
   if (!deps) {
     return
   }
-  deps.forEach((eff) => {
-    eff()
-  })
+  for (const eff of deps) eff()
 }
 function ref(raw) {
   const handler = {
@@ -48,12 +46,12 @@ function ref(raw) {
 function reactive(raw) {
   const handler = {
     get(target, key, reciever) {
-      let result = Reflect.get(target, key, reciever)
+      const result = Reflect.get(target, key, reciever)
       track(handler, key)
       return result
     },
     set(target, key, value, reciever) {
-      let oldValue = Reflect.get(target, key, reciever)
+      const oldValue = Reflect.get(target, key, reciever)
       if (oldValue !== value) {
         Reflect.set(target, key, value, reciever)
         trigger(handler, key)

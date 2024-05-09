@@ -1,4 +1,4 @@
-export const isPOJO = (x: unknown): x is Object => {
+export const isPOJO = (x: unknown): x is Record<Any, Any> => {
   if (x == null || typeof x !== 'object') return false
 
   const proto = Object.getPrototypeOf(x)

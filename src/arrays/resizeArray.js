@@ -19,5 +19,5 @@ export const resizeArray = (arr, size) => {
 
 const arr = [...'qwe']
 const extendedArr = resizeArray(arr, 10).join('')
-console.log(`arr`, arr.join(''))
-console.log(`extendedArr`, extendedArr, extendedArr.length)
+console.log('arr', arr.join(''))
+console.log(extendedArr, extendedArr, extendedArr.length)

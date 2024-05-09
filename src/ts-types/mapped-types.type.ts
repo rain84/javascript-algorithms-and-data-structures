@@ -1,7 +1,5 @@
 export type Setters<State> = {
-  [K in keyof State & string as `set${Capitalize<K>}`]: (
-    value: State[K]
-  ) => void
+  [K in keyof State & string as `set${Capitalize<K>}`]: (value: State[K]) => void
 }
 
 export type Getters<State> = {

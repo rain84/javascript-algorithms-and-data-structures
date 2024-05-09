@@ -24,7 +24,7 @@ it('should have 4 elements', () => {
 })
 
 it('should have "forEach()" and "toString()"', () => {
-  expect('' + list).toBe('Hello world!!')
+  expect(`${list}`).toBe('Hello world!!')
 })
 
 it('should have "map()"', () => {
@@ -45,9 +45,7 @@ it('should have "shift()" and "unshift()"', () => {
 
   list.unshift('Hello')
   expect(list.toString()).toBe('Hello world!!')
-  expect(list.unshift('🙏').unshift('🔥').unshift('🍺').toString()).toBe(
-    '🍺🔥🙏Hello world!!'
-  )
+  expect(list.unshift('🙏').unshift('🔥').unshift('🍺').toString()).toBe('🍺🔥🙏Hello world!!')
 })
 
 it('should have "get()" and "set()"', () => {
@@ -69,9 +67,7 @@ it('should have "get()" and "set()"', () => {
 it('should have "insert()"', () => {
   expect(list.insert(-1, 'Data')).toBeUndefined()
   expect(list.insert(10, 'Data')).toBeUndefined()
-  expect(list.insert(1, '🙏')!.insert(3, '🔥')!.toString()).toBe(
-    'Hello🙏 🔥world!!'
-  )
+  expect(list.insert(1, '🙏')!.insert(3, '🔥')!.toString()).toBe('Hello🙏 🔥world!!')
 })
 
 it('should have "remove()"', () => {

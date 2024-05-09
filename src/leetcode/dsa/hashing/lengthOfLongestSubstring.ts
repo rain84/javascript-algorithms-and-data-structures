@@ -5,7 +5,7 @@ export function lengthOfLongestSubstring(s: string): number {
   let max = 0
   let l = 0
   let r = 0
-  let obj: Record<string, number> = {}
+  const obj: Record<string, number> = {}
 
   while (r < s.length) {
     const chRight = s[r]

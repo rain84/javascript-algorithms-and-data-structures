@@ -6,7 +6,7 @@ it('should work', () => {
   const c = _(3)
 
   const sum = (...args) => args.reduce((a, b) => a + b)
-  let d = _(sum, a, b, c)
+  const d = _(sum, a, b, c)
 
   expect(d.ref).toBe(6)
 

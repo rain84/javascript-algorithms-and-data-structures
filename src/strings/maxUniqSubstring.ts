@@ -1,5 +1,5 @@
-const maxUniqSubstring = (str: string) => {
-  let cache = new Set<string>()
+export const maxUniqSubstring = (str: string) => {
+  const cache = new Set<string>()
   const max = {
     pointers: { l: 0, r: 0 },
     length: 0,
@@ -27,5 +27,3 @@ console.log(`
   hellothere: ${maxUniqSubstring('hellothere')}
   helot: ${maxUniqSubstring('helot')}
 `)
-
-export {}

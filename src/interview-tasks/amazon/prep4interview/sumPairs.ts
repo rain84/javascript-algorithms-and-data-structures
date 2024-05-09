@@ -1,7 +1,7 @@
 type Output = [number, number][]
 
 // time complexity: O(nlogn)
-const sumPairs = (arr: number[], target: number): Output => {
+export const sumPairs = (arr: number[], target: number): Output => {
   const res: Output = []
 
   arr = [...arr].sort((a, b) => (a < b ? -1 : 1))
@@ -36,6 +36,4 @@ const input = [1, 4, 6, 2, 3, 9, -1, 65, 8]
 const output = [6, 2]
 const sum = 8
 
-console.log(`sumPairs2(input)`, sumPairs2(input, sum))
-
-export {}
+console.log('sumPairs2(input)', sumPairs2(input, sum))

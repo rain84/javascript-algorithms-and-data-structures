@@ -11,7 +11,7 @@ const renderWaterfall = (rootNode, columnCount, elementGap) => {
   let col = 0
   let i = 0
 
-  for (let child of children) {
+  for (const child of children) {
     const { offsetHeight } = child
     const min = Math.min(...colsHeight)
     const minColIndex = colsHeight.indexOf(min)

@@ -1,11 +1,4 @@
-import {
-  encode,
-  decode,
-  getCipher,
-  getColumn,
-  getRow,
-  withoutSpaces,
-} from './transposition-cipher'
+import { encode, decode, getCipher, getColumn, getRow, withoutSpaces } from './transposition-cipher'
 
 const keyword = 'комбайн'
 const message = 'ЭТО СООБЩЕНИЕ СЛЕДУЕТ ОТПРАВИТЬ'
@@ -52,9 +45,7 @@ describe('Util', () => {
   })
 
   it('withoutSpaces() should work', () => {
-    expect(withoutSpaces('withoutSpaces() should work')).toBe(
-      'withoutSpaces()shouldwork'
-    )
+    expect(withoutSpaces('withoutSpaces() should work')).toBe('withoutSpaces()shouldwork')
     expect(withoutSpaces('    with    out   Spaces(    ) should work   ')).toBe(
       'withoutSpaces()shouldwork'
     )

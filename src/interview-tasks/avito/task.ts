@@ -20,7 +20,7 @@ export const findPairs1 = (list: number[], target: number) => {
   let indexRight = 1
   let sum: number
 
-  while (indexLeft != length - 1) {
+  while (indexLeft !== length - 1) {
     const l = list[indexLeft]
     const r = list[indexRight]
 

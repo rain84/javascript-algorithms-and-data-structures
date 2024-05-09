@@ -3,7 +3,7 @@
     
     Time Complexity : Best & Worst & Average => O(n * k)
     Space Complexity: O(n + k) 
-    Stablitiy       : ??
+    Stability       : ??
     Is-In-Place     : ?? (probably no)
     When to use     : ??
     Remark          : ??

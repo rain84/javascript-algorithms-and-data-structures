@@ -18,7 +18,5 @@ it('should decode', () => {
 })
 
 it('should just work', () => {
-  expect(
-    decode(alphabet.ru)(encode(alphabet.ru)(message, autokey), autokey)
-  ).toBe(message)
+  expect(decode(alphabet.ru)(encode(alphabet.ru)(message, autokey), autokey)).toBe(message)
 })

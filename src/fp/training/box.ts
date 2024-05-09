@@ -5,13 +5,7 @@
   https://jrsinclair.com/articles/2022/whats-so-great-about-functional-programming-anyway
 */
 
-export {}
-
-type Identity = <T>(x: T) => T
-
-interface Id<T = number> {
-  (x: T): T
-}
+type Id<T = number> = (x: T) => T
 
 const identity: Id = (x) => x
 const log = (info: string) => (x: string) => {
@@ -25,7 +19,7 @@ const box = (run = identity) => {
   return res
 }
 
-const add1: Id<number> = (x) => x + 1
+const add1: Id = (x) => x + 1
 const mult10 = (x: number) => x * 10
 
 const data = 0

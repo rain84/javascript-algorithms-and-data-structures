@@ -3,7 +3,7 @@ type LR = [number, number]
 const f = (l: number, n: number) => (l + n) % 256
 
 export const encode = (l: number, r: number): LR => {
-  let rounds = 3
+  const rounds = 3
   let i = 0
 
   while (i++ <= rounds) {

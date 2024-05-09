@@ -7,4 +7,4 @@
 5. Diffie-Hellman public/private key generation
 6. Encryption / decryption of messages using RSA
 
-#### Jest tests included
+## Jest tests included

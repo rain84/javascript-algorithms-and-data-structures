@@ -10,13 +10,13 @@
 export const run = (input: number[], sum: number, size: number) => {
   if (input.length < size) return false
 
-  let pointer = {
+  const pointer = {
     left: 0,
     right: input.length - 1,
   }
-  let value = {
-    left: -Infinity,
-    right: +Infinity,
+  const value = {
+    left: Number.NEGATIVE_INFINITY,
+    right: Number.POSITIVE_INFINITY,
   }
 
   const result: number[][] = []
@@ -37,11 +37,7 @@ export const run = (input: number[], sum: number, size: number) => {
   return result
 }
 
-export const getSubarraysEqualsToSum = (
-  arr: number[],
-  sum: number,
-  size: number
-) => {
+export const getSubarraysEqualsToSum = (arr: number[], sum: number, size: number) => {
   const input = [...new Set(arr)]
   input.sort((a, b) => a - b)
   const result: number[][] = []

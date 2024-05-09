@@ -1,3 +1,4 @@
+// biome-ignore lint:
 import { Set } from './set'
 
 let set = new Set<number>()
@@ -53,7 +54,7 @@ it('Set should have .delete()', () => {
 
 it('Set should have .forEach()', () => {
   const res: number[] = []
-  const thisArgs: Set<number>[] | {}[] = []
+  const thisArgs: Set<number>[] = []
   const context = {}
 
   set = new Set([1, 2, 3])
@@ -92,10 +93,6 @@ it('Set should have .keys()', () => {
 })
 
 it('Set should have .values()', () => {
-  expect([...new Set([1, 2, 3]).values()]).toMatchObject([1, 2, 3])
-})
-
-it('Set should have .delete()', () => {
   expect([...new Set([1, 2, 3]).values()]).toMatchObject([1, 2, 3])
 })
 

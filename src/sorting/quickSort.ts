@@ -5,10 +5,10 @@
 
     Time Complexity : Best => O(nLog(n)) , Worst => O(n*n) 
     Space Complexity: O(n) 
-    Stablitiy       : Not-Stable 
+    Stability       : Not-Stable 
     Is-In-Place     : In-Place
     Tag             : Divide & Conquer
-    When to use     : 1.It is prefered over merge sort for extremely large array
+    When to use     : 1.It is preferred over merge sort for extremely large array
                     2.When you don't care about worst case complexity
 */
 export const qsort = (arr: number[], left = 0, right = arr.length - 1) => {
@@ -28,12 +28,9 @@ export const qsort = (arr: number[], left = 0, right = arr.length - 1) => {
   qsort(arr, pivotIndex + 1, right)
 }
 
-export const quickSort = (
-  arr: number[],
-  p = { left: 0, right: arr.length - 1 }
-) => {
+export const quickSort = (arr: number[], p = { left: 0, right: arr.length - 1 }) => {
   let pivot = p.left
-  let pivotOnStart = p.left
+  const pivotOnStart = p.left
   const pivotValue = arr[pivotOnStart]
 
   while (++p.left <= p.right) {
@@ -42,18 +39,15 @@ export const quickSort = (
       ;[arr[pivot], arr[p.left]] = [arr[p.left], arr[pivot]]
     }
   }
-
   ;[arr[pivotOnStart], arr[pivot]] = [arr[pivot], arr[pivotOnStart]]
 
-  if (1 < pivot - pivotOnStart)
-    quickSort(arr, { left: pivotOnStart, right: pivot - 1 })
+  if (1 < pivot - pivotOnStart) quickSort(arr, { left: pivotOnStart, right: pivot - 1 })
   if (1 < p.right - pivot) quickSort(arr, { left: pivot + 1, right: p.right })
 
   return arr
 }
 
-const swap = (arr: number[], i: number, j: number) =>
-  ([arr[i], arr[j]] = [arr[j], arr[i]])
+const swap = (arr: number[], i: number, j: number) => ([arr[i], arr[j]] = [arr[j], arr[i]])
 
 export const qsort2 = (arr: number[], left = 0, right = arr.length - 1) => {
   if (left >= right) return

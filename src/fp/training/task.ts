@@ -35,15 +35,11 @@
 // Task(run).run(res, rej)
 // Task(run).map(f).run(res, rej)
 
-export {}
-
-type Cb<T> = (val: T) => any
-interface IRun<T> {
-  (res: Cb<T>, rej: Cb<T>): any
-}
-interface Id<T = number> {
-  (x: T): T
-}
+// biome-ignore lint:
+export type Cb<T> = (val: T) => any
+// biome-ignore lint:
+type IRun<T> = (res: Cb<T>, rej: Cb<T>) => any
+type Id<T = number> = (x: T) => T
 
 const identity: Id = (x) => x
 
@@ -64,9 +60,6 @@ const log = (info: string) => (val: number) => {
 
 console.clear()
 //	prettier-ignore
-const res = Task(run)
-	.map(log('1'))
-	.map(log('2'))
-	.run(log('run'), identity)
+const res = Task(run).map(log('1')).map(log('2')).run(log('run'), identity)
 
 console.log(res)

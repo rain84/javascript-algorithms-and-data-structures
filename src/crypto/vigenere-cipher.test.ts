@@ -14,7 +14,5 @@ it('should decode', () => {
 })
 
 it('should just work', () => {
-  expect(decode(alphabet)(encode(alphabet)(message, keyword), keyword)).toBe(
-    message
-  )
+  expect(decode(alphabet)(encode(alphabet)(message, keyword), keyword)).toBe(message)
 })

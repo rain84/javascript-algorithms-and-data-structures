@@ -8,7 +8,7 @@
     Stability       : Not-Stable
     Is-In-Place     : In-Place
     When to use     : 1. If array is of small size
-                        2. To minimise the number of swaps
+                        2. To minimize the number of swaps
     Remarks         : Bubble sort has more number of swaps as compare to selection
                         Sort but bubble sort has better best time complexity.
                         It can also be implemented as stabile.
@@ -35,7 +35,7 @@ export const selectionSortOld = (arr: number[], order = false) => {
   let i = 0
 
   do {
-    let min = {
+    const min = {
       val: arr[i],
       index: i,
     }

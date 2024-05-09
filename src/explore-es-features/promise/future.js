@@ -9,6 +9,7 @@ class Future {
     )
   }
 
+  // biome-ignore lint:
   then(cb) {
     this.#handlers.push(cb)
     return this

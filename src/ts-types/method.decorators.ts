@@ -1,8 +1,7 @@
 export const log =
-  (before?: string, after?: string) =>
-  (target: Function, ctx: ClassMethodDecoratorContext) => {
+  (before?: string, after?: string) => (target: Fn, ctx: ClassMethodDecoratorContext) => {
     const methodName = String(ctx.name)
-    function decorator(this: any, ...args: any[]) {
+    function decorator(this: Any, ...args: Any[]) {
       console.log(before ?? `START: ${methodName}()`)
       const res = target.apply(this, args)
       if (!before || after) console.log(after ?? `END: ${methodName}()`)
@@ -13,30 +12,25 @@ export const log =
 
 export const perf =
   (iterations = 100_000) =>
-  (target: Function, ctx: ClassMethodDecoratorContext) => {
+  (target: Fn, ctx: ClassMethodDecoratorContext) => {
     const methodName = String(ctx.name)
-    function decorator(this: any, ...args: any[]) {
+    function decorator(this: Any, ...args: Any[]) {
       let i = iterations
-      let startTime = performance.now()
+      const startTime = performance.now()
       while (i--) target.apply(this, args)
       const res = target.apply(this, args)
       const execTime = (performance.now() - startTime) / (iterations + 1)
-      console.log(
-        `Execution time of ${methodName}(): ${execTime.toFixed(4)} ms`
-      )
+      console.log(`Execution time of ${methodName}(): ${execTime.toFixed(4)} ms`)
       return res
     }
     return decorator
   }
 
-export const bound = (target: Function, ctx: ClassMethodDecoratorContext) => {
+export const bound = (target: Fn, ctx: ClassMethodDecoratorContext) => {
   const methodName = String(ctx.name)
-  if (ctx.private)
-    throw new Error(
-      `'bound' cannot decorate private properties like ${methodName}.`
-    )
+  if (ctx.private) throw new Error(`'bound' cannot decorate private properties like ${methodName}.`)
 
-  ctx.addInitializer(function (this: any) {
+  ctx.addInitializer(function (this: Any) {
     this[methodName] = this[methodName].bind(this)
   })
 }

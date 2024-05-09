@@ -1,15 +1,19 @@
 /**
  *  Omit prop or array of props from object
- *  thow the recursion
+ *  throw the recursion
  */
 
 const omit = (props, obj) => {
-	if (typeof props === 'string') {
-		const { [props]: _, ...rest } = obj
-		return rest
-	} else if (Array.isArray(props)) {
-		return props.reduce((acc, prop) => omit(prop, acc), obj)
-	} else throw new Error()
+  if (typeof props === 'string') {
+    const { [props]: _, ...rest } = obj
+    return rest
+  }
+
+  if (Array.isArray(props)) {
+    return props.reduce((acc, prop) => omit(prop, acc), obj)
+  }
+
+  throw new Error()
 }
 
 const prop = 'a'
@@ -19,8 +23,8 @@ const obj = Object.fromEntries([...[...'abcdef'].entries()].map(([key, val]) => 
 
 console.log('obj', obj)
 
-const omitedProp = omit(prop, obj)
-console.log('omitedProp', omitedProp)
+const omittedProp = omit(prop, obj)
+console.log('omittedProp', omittedProp)
 
-const omitedProps = omit(props, obj)
-console.log('omitedProps', omitedProps)
+const omittedProps = omit(props, obj)
+console.log('omittedProps', omittedProps)

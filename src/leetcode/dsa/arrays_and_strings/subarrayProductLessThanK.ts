@@ -3,8 +3,7 @@
 export function numSubarrayProductLessThanK(arr: number[], k: number): number {
   if (k <= 1) return 0
 
-  let r = 0,
-    l = 0
+  let l = 0
   let product = 1
   let res = 0
 
@@ -23,8 +22,6 @@ export const subarrayProductLessThanK = (arr: number[], maxProduct: number): num
   const res: number[][] = []
 
   for (let size = 1; size <= arr.length; size++) {
-    let l = 0
-
     for (let l = 0; l + size <= arr.length; l++) {
       let product = 1
       const nextArr: number[] = []

@@ -7,7 +7,7 @@ export function largestUniqueNumber(nums: number[]): number {
 
   if (map.size === 0) return -1
 
-  let max = -Infinity
+  let max = Number.NEGATIVE_INFINITY
 
   for (const [x, c] of map) {
     if (c === 1 && max < x) {
@@ -15,5 +15,5 @@ export function largestUniqueNumber(nums: number[]): number {
     }
   }
 
-  return max === -Infinity ? -1 : max
+  return max === Number.NEGATIVE_INFINITY ? -1 : max
 }
