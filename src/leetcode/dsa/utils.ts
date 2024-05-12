@@ -24,3 +24,11 @@ export function toArray<T = number>(node: ListNode<T> | null): T[] {
 
   return res
 }
+
+export class TreeNode {
+  constructor(
+    public val = 0,
+    public left: TreeNode | null = null,
+    public right: TreeNode | null = null
+  ) {}
+}
