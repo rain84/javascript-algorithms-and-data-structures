@@ -32,3 +32,59 @@ export class TreeNode {
     public right: TreeNode | null = null
   ) {}
 }
+
+/**
+ * @example '3  [9]  [20 [15 7]]'
+ * @example '3  []  [20 [15 7]]'
+ * @example '3  [4]'
+ */
+export const createTree = (s?: string): TreeNode | null => {
+  if (!s || !s.length || s === '[]') return null
+
+  const entries: string[] = []
+  const chars: string[] = []
+  const braces: string[] = []
+  const ERROR_MESSAGE = 'createTree(). Wrong count of braces'
+  const SPACE = ' '
+
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i]
+    const next = s[i + 1]
+
+    switch (ch) {
+      case SPACE:
+        if (braces.length) chars.push(SPACE)
+        break
+
+      case '[':
+        if (braces.length) chars.push('[')
+        braces.push('[')
+        break
+
+      case ']':
+        if (!braces.length) throw new Error(ERROR_MESSAGE)
+        braces.pop()
+
+        if (braces.length) chars.push(']')
+        else {
+          entries.push(chars.join(''))
+          chars.length = 0
+        }
+
+        break
+
+      default:
+        chars.push(ch)
+
+        if ((next === SPACE || next === undefined) && !braces.length) {
+          entries.push(chars.join(''))
+          chars.length = 0
+        }
+    }
+  }
+
+  if (braces.length) throw new Error(ERROR_MESSAGE)
+  const [value, left, right] = entries
+
+  return new TreeNode(+value, createTree(left), createTree(right))
+}
