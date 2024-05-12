@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/swap-nodes-in-pairs/
 
-import type { ListNode } from './utils'
+import type { ListNode } from '../utils'
 
 // solved with a recursion
 export function swapPairs(head: ListNode | null): ListNode | null {

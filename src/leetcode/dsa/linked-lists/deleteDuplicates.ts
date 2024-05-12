@@ -1,4 +1,4 @@
-import type { ListNode } from './utils'
+import type { ListNode } from '../utils'
 
 export function deleteDuplicates(head: ListNode | null): ListNode | null {
   let node = head

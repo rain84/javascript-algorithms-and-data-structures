@@ -1,5 +1,5 @@
+import { createLinkedList } from '../utils'
 import { pairSum } from './pairSum'
-import { createLinkedList } from './utils'
 
 it('should work 1', () => {
   const input = [5, 4, 2, 1]

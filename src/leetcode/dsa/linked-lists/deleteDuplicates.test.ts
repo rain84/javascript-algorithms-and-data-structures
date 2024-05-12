@@ -1,5 +1,5 @@
+import { createLinkedList } from '../utils'
 import { deleteDuplicates } from './deleteDuplicates'
-import { createLinkedList } from './utils'
 
 it('should work 1', () => {
   const input = createLinkedList([1, 1, 2])

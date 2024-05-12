@@ -1,5 +1,5 @@
+import { createLinkedList } from '../utils'
 import { middleNode } from './middleNode'
-import { createLinkedList } from './utils'
 
 it('should work 1', () => {
   const input = createLinkedList([1, 2, 3, 4, 5])

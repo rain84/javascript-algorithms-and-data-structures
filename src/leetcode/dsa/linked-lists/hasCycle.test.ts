@@ -1,5 +1,5 @@
+import { ListNode, createLinkedList } from '../utils'
 import { hasCycle } from './hasCycle'
-import { ListNode, createLinkedList } from './utils'
 
 it('should work 1', () => {
   const last = new ListNode(-4)

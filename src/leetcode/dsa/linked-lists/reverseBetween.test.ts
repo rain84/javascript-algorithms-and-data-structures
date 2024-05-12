@@ -1,5 +1,5 @@
+import { createLinkedList, toArray } from '../utils'
 import { reverseBetween } from './reverseBetween.WIP'
-import { createLinkedList, toArray } from './utils'
 
 it('should work 1', () => {
   const input = [1, 2, 3, 4, 5]

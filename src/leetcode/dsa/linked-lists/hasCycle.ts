@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/linked-list-cycle/
 
-import type { ListNode } from './utils'
+import type { ListNode } from '../utils'
 
 export function hasCycle(head: ListNode | null): boolean {
   if (!head) return false
