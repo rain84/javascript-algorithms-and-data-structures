@@ -37,7 +37,7 @@ it('TreeNode should exist', () => {
 })
 
 it('createTree() should work', () => {
-  const tree = createTree('3 5 [2 [1 [] 0] 7]')
+  const tree = createTree('3 5 [2 [1 null 0] [7 [] 2]]')
 
   expect(tree?.val).toBe(3)
 
@@ -51,4 +51,7 @@ it('createTree() should work', () => {
 
   expect(tree?.right?.left?.left).toBeNull()
   expect(tree?.right?.left?.right?.val).toBe(0)
+
+  expect(tree?.right?.right?.left).toBeNull()
+  expect(tree?.right?.right?.right?.val).toBe(2)
 })

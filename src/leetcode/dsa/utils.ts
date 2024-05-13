@@ -37,9 +37,10 @@ export class TreeNode {
  * @example '3  [9]  [20 [15 7]]'
  * @example '3  []  [20 [15 7]]'
  * @example '3  [4]'
+ * @example '3 5 [2 [1 null 0] [7 [] 2]]'
  */
 export const createTree = (s?: string): TreeNode | null => {
-  if (!s || !s.length || s === '[]') return null
+  if (!s || !s.length || s === '[]' || s === 'null') return null
 
   const entries: string[] = []
   const chars: string[] = []
