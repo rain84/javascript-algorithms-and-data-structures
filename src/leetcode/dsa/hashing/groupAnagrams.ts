@@ -1,5 +1,7 @@
-// https://leetcode.com/problems/group-anagrams/
-
+/**
+ * Description {@link https://leetcode.com/problems/group-anagrams/}
+ *
+ */
 export function groupAnagrams(strs: string[]): string[][] {
   const groups: Record<string, string[]> = {}
 

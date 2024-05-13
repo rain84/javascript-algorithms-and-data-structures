@@ -1,7 +1,9 @@
-// https://leetcode.com/problems/reverse-linked-list/submissions/
-
 import type { ListNode } from '../utils'
 
+/**
+ * Description {@link https://leetcode.com/problems/reverse-linked-list/submissions/}
+ *
+ */
 export function reverseList(head: ListNode | null): ListNode | null {
   let node = head
   let prev: ListNode | null = null

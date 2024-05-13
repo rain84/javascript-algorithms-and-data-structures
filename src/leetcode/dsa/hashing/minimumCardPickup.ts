@@ -1,5 +1,7 @@
-// https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/
-
+/**
+ * Description {@link https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/}
+ *
+ */
 export function minimumCardPickup(cards: number[]): number {
   let res = Number.POSITIVE_INFINITY
   const map = new Map<number, number>()

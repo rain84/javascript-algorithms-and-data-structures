@@ -1,5 +1,6 @@
 /**
  * Description {@link https://leetcode.com/problems/find-the-most-competitive-subsequence/}
+ *
  */
 export function mostCompetitive(nums: number[], k: number): number[] {
   const stack: number[] = []

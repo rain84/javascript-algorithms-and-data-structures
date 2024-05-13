@@ -1,7 +1,9 @@
-// https://leetcode.com/problems/sliding-window-maximum/
-
 import { Deque } from 'ds/deque'
 
+/**
+ * Description {@link https://leetcode.com/problems/sliding-window-maximum/}
+ *
+ */
 export function maxSlidingWindow(nums: number[], k: number): number[] {
   const deque = new Deque<number>([0])
   const res = Array(nums.length - k + 1).fill(nums[0])

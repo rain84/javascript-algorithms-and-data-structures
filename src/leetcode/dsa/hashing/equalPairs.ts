@@ -1,5 +1,7 @@
-// https://leetcode.com/problems/equal-row-and-column-pairs/
-
+/**
+ * Description {@link https://leetcode.com/problems/equal-row-and-column-pairs/}
+ *
+ */
 export function equalPairs(grid: number[][]): number {
   let res = 0
   const rows = new Map<string, number>()

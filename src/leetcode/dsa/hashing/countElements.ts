@@ -1,3 +1,7 @@
+/**
+ * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4661/}
+ *
+ */
 export function countElements(arr: number[]): number {
   const set = new Set<number>(arr)
   let c = 0

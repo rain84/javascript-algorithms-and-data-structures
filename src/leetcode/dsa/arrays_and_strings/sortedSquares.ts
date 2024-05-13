@@ -1,3 +1,7 @@
+/**
+ * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4689/}
+ *
+ */
 export const sortedSquares = (numbers: number[]): number[] => {
   let l = 0
   let r = numbers.length - 1

@@ -1,5 +1,9 @@
 import type { TreeNode } from '../utils'
 
+/**
+ * Description {@link https://leetcode.com/problems/path-sum/description/}
+ *
+ */
 export function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
   if (!root) return false
 

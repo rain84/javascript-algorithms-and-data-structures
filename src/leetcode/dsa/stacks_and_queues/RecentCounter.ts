@@ -1,7 +1,9 @@
-// https://leetcode.com/problems/number-of-recent-calls/
-
 import { Queue } from 'ds/queue'
 
+/**
+ * Description {@link https://leetcode.com/problems/number-of-recent-calls/}
+ *
+ */
 export class RecentCounter {
   #RANGE = 3000
   #queue = new Queue<number>()

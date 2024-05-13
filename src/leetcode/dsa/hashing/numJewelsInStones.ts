@@ -1,5 +1,7 @@
-// https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4664/
-
+/**
+ * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4664/}
+ *
+ */
 export function numJewelsInStones(jewels: string, stones: string): number {
   let res = 0
   const set = new Set<string>(jewels)

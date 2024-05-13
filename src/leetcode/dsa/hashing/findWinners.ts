@@ -1,3 +1,7 @@
+/**
+ * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4606/}
+ *
+ */
 export function findWinners(matches: number[][]): number[][] {
   const res: number[][] = [[], []]
   const winners: Record<number, number> = {}

@@ -1,5 +1,7 @@
-// https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
-
+/**
+ * Description {@link https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/}
+ *
+ */
 export function removeDuplicates(s: string): string {
   const stack: string[] = []
 

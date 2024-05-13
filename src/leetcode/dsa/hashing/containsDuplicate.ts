@@ -1,5 +1,7 @@
-// https://leetcode.com/problems/contains-duplicate
-
+/**
+ * Description {@link https://leetcode.com/problems/contains-duplicate}
+ *
+ */
 export function containsDuplicate(nums: number[]): boolean {
   const hashes: Record<string, boolean> = {}
 

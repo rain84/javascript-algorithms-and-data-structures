@@ -1,5 +1,7 @@
-// https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/
-
+/**
+ * Description {@link https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/}
+ *
+ */
 export function findNumOfValidWords(words: string[], puzzles: string[]): number[] {
   const res: number[] = []
   const wordsMasks = words.reduce<Map<number, number>>((map, w) => {

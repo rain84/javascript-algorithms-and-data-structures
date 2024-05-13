@@ -1,5 +1,6 @@
 /**
  *  Description {@link https://leetcode.com/problems/removing-stars-from-a-string/}
+ *
  */
 export function removeStars(s: string): string {
   const stack: string[] = []

@@ -1,5 +1,7 @@
-//  https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4607/
-
+/**
+ * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4607/}
+ *
+ */
 export function canConstruct(ransomNote: string, magazine: string): boolean {
   const o: Record<string, number> = {}
   let c = 0

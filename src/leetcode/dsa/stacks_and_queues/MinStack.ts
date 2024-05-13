@@ -1,5 +1,6 @@
 /**
  * Description {@link https://leetcode.com/problems/min-stack/}
+ *
  */
 export class MinStack {
   #stack: number[] = []

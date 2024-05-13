@@ -1,3 +1,7 @@
+/**
+ * Description {@link https://leetcode.com/problems/first-letter-to-appear-twice/description/}
+ *
+ */
 export function repeatedCharacter(s: string): string {
   const chars = new Set<string>()
 

@@ -3,6 +3,7 @@
  *
  * WIP, too long execution
  * Description of the solution can be checked here {@link https://doocs.github.io/leetcode/en/lc/907/}
+ *
  */
 export function sumSubarrayMins(arr: number[]): number {
   let sum = 0

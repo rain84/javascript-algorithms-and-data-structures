@@ -1,5 +1,7 @@
-// https://leetcode.com/problems/subarray-product-less-than-k/description/
-
+/**
+ * Description {@link https://leetcode.com/problems/subarray-product-less-than-k}
+ *
+ */
 export function numSubarrayProductLessThanK(arr: number[], k: number): number {
   if (k <= 1) return 0
 

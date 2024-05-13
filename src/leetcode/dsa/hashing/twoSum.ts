@@ -1,5 +1,7 @@
-// https://leetcode.com/problems/two-sum/submissions/1241159154/
-
+/**
+ * Description {@link https://leetcode.com/problems/two-sum/submissions/1241159154/}
+ *
+ */
 export function twoSum(nums: number[], target: number): number[] {
   const diffs = new Map<number, number>()
 

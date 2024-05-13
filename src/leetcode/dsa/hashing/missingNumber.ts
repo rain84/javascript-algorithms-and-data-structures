@@ -1,5 +1,7 @@
-// https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4602/
-
+/**
+ * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4602/}
+ *
+ */
 export function missingNumber(nums: number[]): number {
   const max = Math.max(...nums)
   const set = new Set(nums)

@@ -1,5 +1,7 @@
-// https://leetcode.com/problems/reverse-words-in-a-string-iii/submissions/1240042260/
-
+/**
+ * Description {@link https://leetcode.com/problems/reverse-words-in-a-string-iii/submissions/1240042260/}
+ *
+ */
 export function reverseWords(s: string): string {
   const res: string[] = []
   const SPACE = ' '

@@ -1,7 +1,9 @@
-// https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/
-
 import { Deque } from '../../../ds/deque'
 
+/**
+ * Description {@link https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/}
+ *
+ */
 export function longestSubarray(nums: number[], limit: number): number {
   let res = 0
   let l = 0

@@ -1,5 +1,7 @@
-//  https://leetcode.com/problems/daily-temperatures
-
+/**
+ * Description {@link  https://leetcode.com/problems/daily-temperatures}
+ *
+ */
 export function dailyTemperatures(temperatures: number[]): number[] {
   const stack: number[] = [0]
   const res = Array(temperatures.length).fill(0)

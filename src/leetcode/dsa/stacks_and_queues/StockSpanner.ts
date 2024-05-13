@@ -1,5 +1,7 @@
-// https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/706/stacks-and-queues/4612/
-
+/**
+ * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/706/stacks-and-queues/4612/}
+ *
+ */
 export class StockSpanner {
   #stack: Stock[] = []
   #index = 0

@@ -1,5 +1,7 @@
-// https://leetcode.com/problems/destination-city/
-
+/**
+ * Description {@link https://leetcode.com/problems/destination-city/}
+ *
+ */
 export function destCity(paths: string[][]): string {
   const set = new Set<string>()
 

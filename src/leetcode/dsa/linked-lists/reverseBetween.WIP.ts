@@ -1,6 +1,11 @@
 import type { ListNode } from '../utils'
 
-// TODO: add handling for the boundary inputs
+/**
+ * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/704/linked-lists/4598/}
+ *
+ * TODO: add handling for the boundary inputs
+ *
+ */
 export function reverseBetween(
   head: ListNode | null,
   left: number,

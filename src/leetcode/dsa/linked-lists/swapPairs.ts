@@ -1,8 +1,11 @@
-// https://leetcode.com/problems/swap-nodes-in-pairs/
-
 import type { ListNode } from '../utils'
 
-// solved with a recursion
+/**
+ * Description {@link https://leetcode.com/problems/swap-nodes-in-pairs/}
+ *
+ * Solved with a recursion
+ *
+ */
 export function swapPairs(head: ListNode | null): ListNode | null {
   const left = head
   const right = left?.next
