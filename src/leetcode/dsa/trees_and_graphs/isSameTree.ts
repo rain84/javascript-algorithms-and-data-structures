@@ -1,7 +1,7 @@
 import type { TreeNode } from '../utils'
 
 /**
- * Description {@link https://leetcode.com/problems/same-tree/}
+ * @description https://leetcode.com/problems/same-tree/
  *
  */
 

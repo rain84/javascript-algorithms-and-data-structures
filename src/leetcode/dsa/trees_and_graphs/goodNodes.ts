@@ -1,7 +1,7 @@
 import type { TreeNode } from '../utils'
 
 /**
- * Description {@link https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/}
+ * @description https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/
  *
  * Solved using a declarative approach
  */

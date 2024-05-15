@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/706/stacks-and-queues/4610/}
+ * @description https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/706/stacks-and-queues/4610/
  *
  */
 export function simplifyPath(path: string): string {

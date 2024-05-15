@@ -1,7 +1,7 @@
 import type { ListNode } from '../utils'
 
 /**
- * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4594/}
+ * @description https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4594/
  *
  */
 export const findKNode = (list: ListNode | null, k: number) => {

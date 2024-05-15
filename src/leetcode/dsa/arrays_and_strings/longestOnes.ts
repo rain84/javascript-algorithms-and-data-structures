@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4595/}
+ * @description https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4595/
  *
  */
 export const longestOnes = (nums: number[], k: number): number => {

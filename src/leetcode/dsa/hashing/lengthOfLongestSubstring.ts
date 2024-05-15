@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4690/}
+ * @description https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4690/
  *
  */
 export function lengthOfLongestSubstring(s: string): number {

@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/}
+ * @description https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
  *
  */
 export function removeDuplicates(s: string): string {

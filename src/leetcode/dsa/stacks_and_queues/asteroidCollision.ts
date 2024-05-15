@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/problems/asteroid-collision/}
+ * @description https://leetcode.com/problems/asteroid-collision/
  *
  */
 export function asteroidCollision(asteroids: number[]): number[] {

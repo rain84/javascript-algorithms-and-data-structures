@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/problems/find-the-most-competitive-subsequence/}
+ * @description https://leetcode.com/problems/find-the-most-competitive-subsequence/
  * Time complexity: O(n)
  * Space complexity: O(n)
  */

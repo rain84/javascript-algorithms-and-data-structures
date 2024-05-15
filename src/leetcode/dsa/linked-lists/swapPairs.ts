@@ -1,7 +1,7 @@
 import type { ListNode } from '../utils'
 
 /**
- * Description {@link https://leetcode.com/problems/swap-nodes-in-pairs/}
+ * @description https://leetcode.com/problems/swap-nodes-in-pairs/
  *
  * Solved with a recursion
  *

@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/problems/two-sum/submissions/1241159154/}
+ * @description https://leetcode.com/problems/two-sum/submissions/1241159154/
  *
  */
 export function twoSum(nums: number[], target: number): number[] {

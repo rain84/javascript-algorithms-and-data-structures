@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/problems/reverse-only-letters/description/}
+ * @description https://leetcode.com/problems/reverse-only-letters/description/
  *
  */
 export function reverseOnlyLetters(s: string): string {

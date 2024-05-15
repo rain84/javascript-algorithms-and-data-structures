@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/problems/equal-row-and-column-pairs/}
+ * @description https://leetcode.com/problems/equal-row-and-column-pairs/
  *
  */
 export function equalPairs(grid: number[][]): number {

@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/problems/first-letter-to-appear-twice/description/}
+ * @description https://leetcode.com/problems/first-letter-to-appear-twice/description/
  *
  */
 export function repeatedCharacter(s: string): string {

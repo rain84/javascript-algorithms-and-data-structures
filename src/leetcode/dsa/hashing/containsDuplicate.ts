@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/problems/contains-duplicate}
+ * @description https://leetcode.com/problems/contains-duplicate
  *
  */
 export function containsDuplicate(nums: number[]): boolean {

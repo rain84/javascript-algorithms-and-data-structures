@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4689/}
+ * @description https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4689/
  *
  */
 export const sortedSquares = (numbers: number[]): number[] => {

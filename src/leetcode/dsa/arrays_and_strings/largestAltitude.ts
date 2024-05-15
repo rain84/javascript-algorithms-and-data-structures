@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/problems/find-the-highest-altitude}
+ * @description https://leetcode.com/problems/find-the-highest-altitude
  *
  */
 export function largestAltitude(gain: number[]): number {

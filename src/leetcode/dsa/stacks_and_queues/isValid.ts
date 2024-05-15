@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/problems/valid-parentheses/}
+ * @description https://leetcode.com/problems/valid-parentheses/
  *
  */
 export function isValid(s: string): boolean {

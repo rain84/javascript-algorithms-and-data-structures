@@ -1,5 +1,5 @@
 /**
- *  Description {@link https://leetcode.com/problems/removing-stars-from-a-string/}
+ *  @description https://leetcode.com/problems/removing-stars-from-a-string/
  *
  */
 export function removeStars(s: string): string {

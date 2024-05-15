@@ -1,5 +1,5 @@
 /**
- * Description {@link https://leetcode.com/problems/max-sum-of-a-pair-with-equal-sum-of-digits/}
+ * @description https://leetcode.com/problems/max-sum-of-a-pair-with-equal-sum-of-digits/
  *
  */
 export function maximumSum(nums: number[]): number {
