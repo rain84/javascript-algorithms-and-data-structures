@@ -1,0 +1,47 @@
+import { type Tree } from '../utils'
+
+/**
+ * @description https://leetcode.com/problems/leaf-similar-trees/
+ */
+export function leafSimilar(root1: Tree, root2: Tree): boolean {
+  if (!root1 || !root2) return false
+  const a1: number[] = []
+  const a2: number[] = []
+
+  const dfs = (node: Tree, arr: number[]) => {
+    if (!node) return
+    if (!node.left && !node.right) {
+      arr.push(node.val)
+      return
+    }
+
+    dfs(node.left, arr)
+    dfs(node.right, arr)
+  }
+
+  dfs(root1, a1)
+  dfs(root2, a2)
+
+  if (a1.length !== a2.length) return false
+  for (let i = 0; i < a1.length; i++) {
+    if (a1[i] !== a2[i]) return false
+  }
+
+  return true
+}
+
+export function leafSimilar2(root1: Tree, root2: Tree): boolean {
+  if (!root1 || !root2) return false
+
+  const dfs = (node: Tree): string => {
+    if (!node) return ''
+    if (!node.left && !node.right) {
+      // biome-ignore lint/style/useTemplate: <explanation>
+      return node.val + '|'
+    }
+
+    return dfs(node.left) + dfs(node.right)
+  }
+
+  return dfs(root1) === dfs(root2)
+}
