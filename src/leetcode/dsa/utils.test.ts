@@ -1,4 +1,11 @@
-import { ListNode, TreeNode, createLinkedList, createTree, toArray } from './utils'
+import {
+  ListNode,
+  TreeNode,
+  createLinkedList,
+  createTree,
+  createTreeFromString,
+  toArray,
+} from './utils'
 
 it('ListNode should work', () => {
   const node = new ListNode(1, new ListNode(2))
@@ -36,8 +43,28 @@ it('TreeNode should exist', () => {
   expect(node.right?.val).toBe(3)
 })
 
-it('createTree() should work', () => {
-  const tree = createTree('3 5 [2 [1 null 0] [7 [] 2]]')
+it('createTree() from string should work', () => {
+  const tree = createTreeFromString('3 5 [2 [1 null 0] [7 [] 2]]')
+
+  expect(tree?.val).toBe(3)
+
+  expect(tree?.left?.val).toBe(5)
+  expect(tree?.left?.left).toBeNull()
+  expect(tree?.left?.right).toBeNull()
+
+  expect(tree?.right?.val).toBe(2)
+  expect(tree?.right?.left?.val).toBe(1)
+  expect(tree?.right?.right?.val).toBe(7)
+
+  expect(tree?.right?.left?.left).toBeNull()
+  expect(tree?.right?.left?.right?.val).toBe(0)
+
+  expect(tree?.right?.right?.left).toBeNull()
+  expect(tree?.right?.right?.right?.val).toBe(2)
+})
+
+it('createTree() from array should work 2', () => {
+  const tree = createTree([3, 5, [2, [1, null, 0], [7, null, 2]]])
 
   expect(tree?.val).toBe(3)
 

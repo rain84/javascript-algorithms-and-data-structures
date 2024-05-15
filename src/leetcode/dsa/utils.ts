@@ -38,8 +38,14 @@ export class TreeNode {
  * @example '3  []  [20 [15 7]]'
  * @example '3  [4]'
  * @example '3 5 [2 [1 null 0] [7 [] 2]]'
+ * @example [3, 5, [2, [1, null, 0], [7, null, 2]]]
  */
-export const createTree = (s?: string): TreeNode | null => {
+export const createTree = (arg: string | Arr): TreeNode | null => {
+  if (typeof arg === 'string') return createTreeFromString(arg)
+  return createTreeFromArray(arg as Arr)
+}
+
+export const createTreeFromString = (s: string): TreeNode | null => {
   if (!s || !s.length || s === '[]' || s === 'null') return null
 
   const entries: string[] = []
@@ -87,5 +93,21 @@ export const createTree = (s?: string): TreeNode | null => {
   if (braces.length) throw new Error(ERROR_MESSAGE)
   const [value, left, right] = entries
 
-  return new TreeNode(+value, createTree(left), createTree(right))
+  return new TreeNode(+value, createTreeFromString(left), createTreeFromString(right))
 }
+
+export function createTreeFromArray([root, left, right]: Arr): TreeNode | null {
+  if (typeof root !== 'number') return null
+  if (!Array.isArray(left)) left = [left]
+  if (!Array.isArray(right)) right = [right]
+
+  return new TreeNode(
+    root as number,
+    createTreeFromArray(left as Arr),
+    createTreeFromArray(right as Arr)
+  )
+}
+
+type A = [A, A[], A[]] | [A, A, A] | [undefined] | number | undefined | null
+type Arr = Exclude<A, [undefined] | number | undefined | null>
+export type Tree = TreeNode | null
