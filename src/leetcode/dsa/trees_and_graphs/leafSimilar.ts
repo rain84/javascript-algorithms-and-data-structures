@@ -1,14 +1,14 @@
-import { type Tree } from '../utils'
+import { type TreeNode } from '../utils'
 
 /**
  * @description https://leetcode.com/problems/leaf-similar-trees/
  */
-export function leafSimilar(root1: Tree, root2: Tree): boolean {
+export function leafSimilar(root1: TreeNode, root2: TreeNode): boolean {
   if (!root1 || !root2) return false
   const a1: number[] = []
   const a2: number[] = []
 
-  const dfs = (node: Tree, arr: number[]) => {
+  const dfs = (node: TreeNode, arr: number[]) => {
     if (!node) return
     if (!node.left && !node.right) {
       arr.push(node.val)
@@ -30,10 +30,10 @@ export function leafSimilar(root1: Tree, root2: Tree): boolean {
   return true
 }
 
-export function leafSimilar2(root1: Tree, root2: Tree): boolean {
+export function leafSimilar2(root1: TreeNode, root2: TreeNode): boolean {
   if (!root1 || !root2) return false
 
-  const dfs = (node: Tree): string => {
+  const dfs = (node: TreeNode): string => {
     if (!node) return ''
     if (!node.left && !node.right) {
       // biome-ignore lint/style/useTemplate: <explanation>

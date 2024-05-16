@@ -1,10 +1,10 @@
-import type { TreeNode } from '../utils'
+import { type TreeNode } from '../utils'
 
 /**
  * @description https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
  *
  */
-export function maxDepth(root: TreeNode | null): number {
+export function maxDepth(root: TreeNode): number {
   if (!root) return 0
   if (!root.right && !root.left) return 1
 

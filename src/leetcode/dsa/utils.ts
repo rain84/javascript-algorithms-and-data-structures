@@ -110,4 +110,3 @@ export function createTreeFromArray([root, left, right]: Arr): TreeNode | null {
 
 type A = [A, A[], A[]] | [A, A, A] | [undefined] | number | undefined | null
 type Arr = Exclude<A, [undefined] | number | undefined | null>
-export type Tree = TreeNode | null

@@ -1,12 +1,12 @@
-import type { TreeNode } from '../utils'
+import { type TreeNode } from '../utils'
 
 /**
  * @description https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/
  *
  * Solved using a declarative approach
  */
-export const goodNodes = (root: TreeNode | null): number => {
-  const dfs = (root: TreeNode | null, max = Number.NEGATIVE_INFINITY): number => {
+export const goodNodes = (root: TreeNode): number => {
+  const dfs = (root: TreeNode, max = Number.NEGATIVE_INFINITY): number => {
     if (!root) return 0
 
     max = Math.max(max, root.val)
@@ -18,8 +18,8 @@ export const goodNodes = (root: TreeNode | null): number => {
 }
 
 // Solved using an iterative approach
-export const goodNodes2 = (root: TreeNode | null): number => {
-  const stack: [TreeNode | null, number][] = [[root, Number.NEGATIVE_INFINITY]]
+export const goodNodes2 = (root: TreeNode): number => {
+  const stack: [TreeNode, number][] = [[root, Number.NEGATIVE_INFINITY]]
 
   let res = 0
   while (stack.length) {

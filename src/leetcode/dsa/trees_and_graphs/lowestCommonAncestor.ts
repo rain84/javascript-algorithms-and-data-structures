@@ -1,4 +1,5 @@
-import type { TreeNode } from '../utils'
+import { type TreeNode } from '../utils'
+
 /**
  * @description https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree
  *
