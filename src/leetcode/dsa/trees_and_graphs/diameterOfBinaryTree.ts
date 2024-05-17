@@ -1,10 +1,10 @@
-import { type TreeNode } from '../utils'
+import type { TreeNode } from '../utils'
 
 /**
  * 543. Diameter of Binary Tree
  * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4669/}
  */
-export function diameterOfBinaryTree(root: TreeNode): number {
+export function diameterOfBinaryTree(root: TreeNode | null): number {
   let path = 0
 
   const dfs = (node: TreeNode | null): number => {

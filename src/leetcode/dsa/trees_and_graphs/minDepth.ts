@@ -1,4 +1,4 @@
-import { type TreeNode } from '../utils'
+import type { TreeNode } from '../utils'
 
 /**
  * 111. Minimum Depth of Binary Tree

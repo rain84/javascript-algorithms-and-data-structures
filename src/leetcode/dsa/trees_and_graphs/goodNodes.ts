@@ -1,4 +1,4 @@
-import { type TreeNode } from '../utils'
+import type { TreeNode } from '../utils'
 
 /**
  * 1448. Count Good Nodes in Binary Tree
@@ -6,7 +6,7 @@ import { type TreeNode } from '../utils'
  *
  * Solved using a declarative approach
  */
-export const goodNodes = (root: TreeNode): number => {
+export const goodNodes = (root: TreeNode | null): number => {
   const dfs = (root: TreeNode | null, max = Number.NEGATIVE_INFINITY): number => {
     if (!root) return 0
 

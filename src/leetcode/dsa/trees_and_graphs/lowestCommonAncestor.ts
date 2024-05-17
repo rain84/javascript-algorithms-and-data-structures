@@ -1,4 +1,4 @@
-import { type TreeNode } from '../utils'
+import type { TreeNode } from '../utils'
 
 /**
  * 236. Lowest Common Ancestor of a Binary Tree
