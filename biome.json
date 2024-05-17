@@ -18,8 +18,7 @@
       "style": {
         "noNonNullAssertion": "off",
         "noCommaOperator": "off",
-        "noParameterAssign": "off",
-        "useImportType": "off"
+        "noParameterAssign": "off"
       },
       "suspicious": { "noAssignInExpressions": "off" }
     }
