@@ -1,5 +1,6 @@
 /**
- * @description https://leetcode.com/problems/group-anagrams/
+ * 49. Group Anagrams
+ * URL {@link https://leetcode.com/problems/group-anagrams/}
  *
  */
 export function groupAnagrams(strs: string[]): string[][] {

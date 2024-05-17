@@ -1,9 +1,10 @@
-import { TNode } from '../utils'
+import { type TreeNode } from '../utils'
 
 /**
- * @description https://leetcode.com/problems/invert-binary-tree/
+ * 226. Invert Binary Tree
+ * URL {@link https://leetcode.com/problems/invert-binary-tree/}
  */
-export function invertTree(root: TNode): TNode {
+export function invertTree(root: TreeNode | null): TreeNode | null {
   if (!root) return null
   ;[root.left, root.right] = [root.right, root.left]
 

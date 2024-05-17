@@ -1,14 +1,15 @@
 import { type TreeNode } from '../utils'
 
 /**
- * @description https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4617/
+ * 1026. Maximum Difference Between Node and Ancestor
+ * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4617/}
  *
  */
 export function maxAncestorDiff(root: TreeNode): number {
   if (!root) return 0
 
   const dfs = (
-    node: TreeNode,
+    node: TreeNode | null,
     max = Number.NEGATIVE_INFINITY,
     min = Number.POSITIVE_INFINITY
   ): number => {

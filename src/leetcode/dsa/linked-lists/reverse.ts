@@ -1,7 +1,8 @@
 import type { ListNode } from '../utils'
 
 /**
- * @description https://leetcode.com/problems/reverse-linked-list/submissions/
+ * 206. Reverse Linked List
+ * URL {@link https://leetcode.com/problems/reverse-linked-list/submissions/}
  *
  */
 export function reverseList(head: ListNode | null): ListNode | null {

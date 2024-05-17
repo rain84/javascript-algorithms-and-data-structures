@@ -1,5 +1,6 @@
 /**
- * @description https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/706/stacks-and-queues/4612/
+ * 496. Next Greater Element I
+ * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/706/stacks-and-queues/4612/}
  *
  */
 export function nextGreaterElement(nums1: number[], nums2: number[]): number[] {

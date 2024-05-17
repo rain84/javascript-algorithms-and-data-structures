@@ -1,5 +1,6 @@
 /**
- * @description https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/706/stacks-and-queues/4610/
+ * 71. Simplify Path
+ * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/706/stacks-and-queues/4610/}
  *
  */
 export function simplifyPath(path: string): string {
@@ -22,7 +23,7 @@ export function simplifyPath(path: string): string {
   return `/${res.join('/')}`
 }
 
-// My 1st working solution of the problem :)
+/** My 1st working solution of the problem :) */
 export function simplifyPath2(path: string): string {
   const DELIMITER = '/'
   const res: string[] = []

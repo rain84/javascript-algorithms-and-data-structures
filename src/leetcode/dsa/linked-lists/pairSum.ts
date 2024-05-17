@@ -1,7 +1,8 @@
 import type { ListNode } from '../utils'
 
 /**
- * @description https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/
+ * 2130. Maximum Twin Sum of a Linked List
+ * URL {@link https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/}
  *
  */
 export function pairSum(head: ListNode | null): number {

@@ -1,5 +1,6 @@
 /**
- * @description https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4664/
+ * 771. Jewels and Stones
+ * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4664/}
  *
  */
 export function numJewelsInStones(jewels: string, stones: string): number {
@@ -13,7 +14,7 @@ export function numJewelsInStones(jewels: string, stones: string): number {
   return res
 }
 
-// solution with HashMap
+/** Solution with HashMap */
 export function numJewelsInStones2(jewels: string, stones: string): number {
   let res = 0
   const map = new Map<string, number>()

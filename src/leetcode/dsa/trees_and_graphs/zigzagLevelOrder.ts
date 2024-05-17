@@ -1,8 +1,8 @@
 import { TreeNode, createTree } from '../utils'
 
 /**
- *
- * @description https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4621/
+ * 103. Binary Tree Zigzag Level Order Traversal
+ * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4621/}
  *
  */
 export function zigzagLevelOrder(root: TreeNode | null): number[][] {

@@ -1,8 +1,8 @@
 import { TreeNode } from '../utils'
 
 /**
- *
- * @description https://leetcode.com/problems/range-sum-of-bst/
+ * 938. Range Sum of BST
+ * URL {@link https://leetcode.com/problems/range-sum-of-bst/}
  *
  */
 export function rangeSumBST(root: TreeNode | null, low: number, high: number): number {

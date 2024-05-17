@@ -2,7 +2,8 @@ import { isDefined } from 'typescript/utils'
 import { type TreeNode } from '../utils'
 
 /**
- * @description https://leetcode.com/problems/binary-tree-right-side-view/description/
+ * 199. Binary Tree Right Side View
+ * URL {@link https://leetcode.com/problems/binary-tree-right-side-view/description/}
  *
  */
 export function rightSideView(root: TreeNode | null): number[] {

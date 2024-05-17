@@ -1,5 +1,6 @@
 /**
- * @description https://leetcode.com/problems/contains-duplicate
+ * 217. Contains Duplicate
+ * URL {@link https://leetcode.com/problems/contains-duplicate}
  *
  */
 export function containsDuplicate(nums: number[]): boolean {

@@ -1,5 +1,6 @@
 /**
- * @description https://leetcode.com/problems/reverse-only-letters/description/
+ * 917. Reverse Only Letters
+ * URL {@link https://leetcode.com/problems/reverse-only-letters/description/}
  *
  */
 export function reverseOnlyLetters(s: string): string {
@@ -20,5 +21,3 @@ export function reverseOnlyLetters(s: string): string {
 
   return res.join('')
 }
-
-console.log(reverseOnlyLetters('a-bC-dEf-ghIj'))

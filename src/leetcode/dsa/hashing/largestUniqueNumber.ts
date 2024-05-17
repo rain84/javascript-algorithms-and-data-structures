@@ -1,5 +1,6 @@
 /**
- * @description https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4662/
+ * 1133. Largest Unique Number
+ * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4662/}
  *
  */
 export function largestUniqueNumber(nums: number[]): number {

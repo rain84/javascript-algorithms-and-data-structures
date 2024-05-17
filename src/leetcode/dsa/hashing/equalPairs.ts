@@ -1,5 +1,6 @@
 /**
- * @description https://leetcode.com/problems/equal-row-and-column-pairs/
+ * 525. Contiguous Array
+ * URL {@link https://leetcode.com/problems/equal-row-and-column-pairs/}
  *
  */
 export function equalPairs(grid: number[][]): number {

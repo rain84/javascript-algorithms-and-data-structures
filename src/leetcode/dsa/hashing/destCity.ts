@@ -1,5 +1,6 @@
 /**
- * @description https://leetcode.com/problems/destination-city/
+ * 1436. Destination City
+ * URL {@link https://leetcode.com/problems/destination-city/}
  *
  */
 export function destCity(paths: string[][]): string {

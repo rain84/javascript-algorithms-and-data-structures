@@ -1,5 +1,5 @@
 /**
- * @description https://leetcode.com/problems/find-the-most-competitive-subsequence/
+ * URL {@link https://leetcode.com/problems/find-the-most-competitive-subsequence/}
  *
  */
 export function mostCompetitive(nums: number[], k: number): number[] {

@@ -1,7 +1,8 @@
 import type { ListNode } from '../utils'
 
 /**
- * @description https://leetcode.com/problems/swap-nodes-in-pairs/
+ * 24. Swap Nodes in Pairs
+ * URL {@link https://leetcode.com/problems/swap-nodes-in-pairs/}
  *
  * Solved with a recursion
  *
@@ -19,7 +20,7 @@ export function swapPairs(head: ListNode | null): ListNode | null {
   return right
 }
 
-// solved with a pointer manipulations
+/** Solved with a pointer manipulations */
 export function swapPairs2(head: ListNode | null): ListNode | null {
   let left = head
   let prev: ListNode | null = null

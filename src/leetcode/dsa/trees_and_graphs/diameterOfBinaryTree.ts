@@ -1,12 +1,13 @@
 import { type TreeNode } from '../utils'
 
 /**
- * @description https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4669/
+ * 543. Diameter of Binary Tree
+ * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4669/}
  */
 export function diameterOfBinaryTree(root: TreeNode): number {
   let path = 0
 
-  const dfs = (node: TreeNode): number => {
+  const dfs = (node: TreeNode | null): number => {
     if (!node) return 0
 
     const left = dfs(node.left)

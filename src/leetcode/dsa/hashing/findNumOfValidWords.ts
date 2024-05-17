@@ -1,5 +1,6 @@
 /**
- * @description https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/
+ * 1178. Number of Valid Words for Each Puzzle
+ * URL {@link https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/}
  *
  */
 export function findNumOfValidWords(words: string[], puzzles: string[]): number[] {

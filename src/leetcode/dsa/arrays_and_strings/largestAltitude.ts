@@ -1,5 +1,6 @@
 /**
- * @description https://leetcode.com/problems/find-the-highest-altitude
+ * 1732. Find the Highest Altitude
+ * URL {@link https://leetcode.com/problems/find-the-highest-altitude}
  *
  */
 export function largestAltitude(gain: number[]): number {

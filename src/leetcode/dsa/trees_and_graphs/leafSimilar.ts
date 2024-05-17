@@ -1,14 +1,15 @@
 import { type TreeNode } from '../utils'
 
 /**
- * @description https://leetcode.com/problems/leaf-similar-trees/
+ * 872. Leaf-Similar Trees
+ * URL {@link https://leetcode.com/problems/leaf-similar-trees/}
  */
 export function leafSimilar(root1: TreeNode, root2: TreeNode): boolean {
   if (!root1 || !root2) return false
   const a1: number[] = []
   const a2: number[] = []
 
-  const dfs = (node: TreeNode, arr: number[]) => {
+  const dfs = (node: TreeNode | null, arr: number[]) => {
     if (!node) return
     if (!node.left && !node.right) {
       arr.push(node.val)

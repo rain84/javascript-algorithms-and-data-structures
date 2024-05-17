@@ -1,7 +1,8 @@
 import { type TreeNode } from '../utils'
 
 /**
- * @description https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree
+ * 236. Lowest Common Ancestor of a Binary Tree
+ * URL {@link https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree}
  *
  */
 export function lowestCommonAncestor(root: T, p: T, q: T): T {

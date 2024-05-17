@@ -1,10 +1,11 @@
 import { type TreeNode } from '../utils'
 
 /**
- * @description https://leetcode.com/problems/path-sum/description/
+ * 112. Path Sum
+ * URL {@link https://leetcode.com/problems/path-sum/description/}
  *
  */
-export function hasPathSum(root: TreeNode, targetSum: number): boolean {
+export function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
   if (!root) return false
 
   const diff = targetSum - root.val

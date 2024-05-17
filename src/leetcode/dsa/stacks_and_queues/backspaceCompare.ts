@@ -1,5 +1,6 @@
 /**
- * @description https://leetcode.com/problems/backspace-string-compare/
+ * 844. Backspace String Compare
+ * URL {@link https://leetcode.com/problems/backspace-string-compare/}
  *
  */
 export function backspaceCompare(s: string, t: string): boolean {
