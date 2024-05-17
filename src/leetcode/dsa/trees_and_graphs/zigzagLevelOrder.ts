@@ -1,4 +1,4 @@
-import { TreeNode, createTree } from '../utils'
+import type { TreeNode } from '../utils'
 
 /**
  * 103. Binary Tree Zigzag Level Order Traversal
@@ -36,7 +36,3 @@ export function zigzagLevelOrder(root: TreeNode | null): number[][] {
 
   return res
 }
-
-const tree = createTree('3 9 [20 15 7]')
-console.log(zigzagLevelOrder(tree))
-// expect(zigzagLevelOrder(tree)).toBe([[3], [20, 9], [15, 7]])
