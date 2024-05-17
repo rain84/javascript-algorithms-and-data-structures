@@ -110,3 +110,27 @@ export function createTreeFromArray([root, left, right]: Arr): TreeNode | null {
 
 type A = [A, A[], A[]] | [A, A, A] | [undefined] | number | undefined | null
 type Arr = Exclude<A, [undefined] | number | undefined | null>
+
+type TraverseOrder = 'preorder' | 'inorder' | 'postorder'
+export const getTreeValues = (root: TreeNode | null, traverseOrder: TraverseOrder): number[] => {
+  if (!root) return []
+
+  const res: number[] = []
+  const dfs = (node: TreeNode | null) => {
+    if (!node) return null
+
+    if (traverseOrder === 'preorder') res.push(node.val)
+    dfs(node.left)
+    if (traverseOrder === 'inorder') res.push(node.val)
+    dfs(node.right)
+    if (traverseOrder === 'postorder') res.push(node.val)
+  }
+
+  dfs(root)
+
+  return res
+}
+
+getTreeValues.preorder = (root: TreeNode | null) => getTreeValues(root, 'preorder')
+getTreeValues.inorder = (root: TreeNode | null) => getTreeValues(root, 'inorder')
+getTreeValues.postorder = (root: TreeNode | null) => getTreeValues(root, 'postorder')
