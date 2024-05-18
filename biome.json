@@ -21,7 +21,8 @@
         "noParameterAssign": "off"
       },
       "suspicious": { "noAssignInExpressions": "off" }
-    }
+    },
+    "ignore": ["./node_modules/**/*", "./out/**/*"]
   },
   "javascript": {
     "formatter": {
