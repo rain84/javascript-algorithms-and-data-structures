@@ -108,6 +108,30 @@ export function createTreeFromArray([root, left, right]: Arr): TreeNode | null {
   )
 }
 
+/** @todo in progress =) */
+export const createTree2 = (xs: (number | null)[]): TreeNode | null => {
+  if (!xs.length) return null
+
+  const root = new TreeNode(xs.shift()!)
+  const queue: (TreeNode | null)[] = [root]
+
+  xs = [...xs]
+  while (xs.length) {
+    const node = queue.shift()
+
+    const leftVal = xs.shift()
+    const rightVal = xs.shift()
+
+    if (leftVal && node) node.left = new TreeNode(leftVal)
+    queue.push(node?.left ?? null)
+
+    if (rightVal && node) node.right = new TreeNode(rightVal)
+    queue.push(node?.right ?? null)
+  }
+
+  return root
+}
+
 type A = [A, A[], A[]] | [A, A, A] | [undefined] | number | undefined | null
 type Arr = Exclude<A, [undefined] | number | undefined | null>
 

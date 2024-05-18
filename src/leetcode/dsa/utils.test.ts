@@ -3,6 +3,7 @@ import {
   TreeNode,
   createLinkedList,
   createTree,
+  createTree2,
   createTreeFromString,
   getTreeValues,
   toArray,
@@ -100,4 +101,21 @@ it('getTreeValues.inorder() should work', () => {
 it('getTreeValues.postorder() should work', () => {
   const tree = createTree('4 [2 1 3] [6 5 7]')
   expect(getTreeValues.postorder(tree)).toMatchObject([1, 3, 2, 5, 7, 6, 4])
+})
+
+it('createTree2() should work 1', () => {
+  const arr = [236, 104, 701, null, 227, null, 911]
+  const tree = createTree2(arr)
+  expect(getTreeValues.inorder(tree)).toMatchObject([104, 227, 236, 701, 911])
+})
+
+it('createTree2() should work 2', () => {
+  // prettier-ignore
+  const arr = [41,37,44,24,39,42,48,1,35,38,40,null,43,46,49,0,2,30,36,null,null,null,null,null,null,45,47,null,null,null,null,null,4,29,32,null,null,null,null,null,null,3,9,26,null,31,34,null,null,7,11,25,27,null,null,33,null,6,8,10,16,null,null,null,28,null,null,5,null,null,null,null,null,15,19,null,null,null,null,12,null,18,20,null,13,17,null,null,22,null,14,null,null,21,23]
+
+  const tree = createTree2(arr)
+  const a = arr.filter(Boolean).sort((a, b) => a! - b!)
+  const a2 = getTreeValues.inorder(tree)
+  expect(a2.length).toBe(a.length)
+  expect(a2).toMatchObject(a)
 })
