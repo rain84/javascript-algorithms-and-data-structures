@@ -1,8 +1,10 @@
-it('wait() should work', async () => {
-  const delay = 1000
-  const start = ((Date.now() + delay) / 1000) | 0
-  await delay(delay)
-  const finish = (Date.now() / 1000) | 0
+import { delay } from './promise'
 
-  expect(start).toBe(finish)
+it('wait() should work', async () => {
+  const time = 1000
+  const expired = ((Date.now() + time) / 1000) | 0
+  await delay(time)
+  const now = (Date.now() / 1000) | 0
+
+  expect(expired).toBe(now)
 })
