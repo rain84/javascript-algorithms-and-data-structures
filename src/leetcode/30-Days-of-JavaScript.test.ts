@@ -1,5 +1,12 @@
 import { delay } from 'utils/promise'
-import { TimeLimitedCache, compose, once, timeLimit, type F } from './30-Days-of-JavaScript'
+import {
+  TimeLimitedCache,
+  compose,
+  debounce,
+  once,
+  timeLimit,
+  type F,
+} from './30-Days-of-JavaScript'
 
 it('compose() should work', () => {
   const fx: F[] = [(x) => x + 1, (x) => x * x, (x) => 2 * x]
@@ -59,4 +66,20 @@ it('TimeLimitedCache should work', async () => {
 
   await delay(150)
   expect(cache.get(1)).toBe(-1)
+})
+
+it('debounce() should work', async () => {
+  let c = 0
+  const inc = () => c++
+  const delayedInc = debounce(inc, 50)
+
+  delayedInc()
+  delayedInc()
+  expect(c).toBe(0)
+
+  await delay(45)
+  expect(c).toBe(0)
+
+  await delay(5)
+  expect(c).toBe(1)
 })

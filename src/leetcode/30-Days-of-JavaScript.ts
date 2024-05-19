@@ -92,6 +92,18 @@ export class TimeLimitedCache {
     this.#cache.has(key) && (this.#cache.get(key)?.[1] ?? Number.NEGATIVE_INFINITY) < Date.now()
 }
 
+/**
+ * 2627. Debounce
+ * URL {@link https://leetcode.com/problems/debounce/description/}
+ */
+export const debounce = (fn: F, t: number): F => {
+  let timerId: ReturnType<typeof globalThis.setTimeout>
+  return (...args) => {
+    if (timerId) globalThis.clearTimeout(timerId)
+    timerId = globalThis.setTimeout(() => fn(...args), t)
+  }
+}
+
 export type F = (x: number) => number
 
 type JSONValue = null | boolean | number | string | JSONValue[] | { [key: string]: JSONValue }
