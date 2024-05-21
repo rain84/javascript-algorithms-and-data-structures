@@ -1,102 +1,54 @@
 import type { TreeNode } from '../utils'
-
 /**
  * 270. Closest Binary Search Tree Value
  *  URL {@link https://leetcode.com/problems/closest-binary-search-tree-value/description/}
+ *
+ * 1st solution (closestValue) is better by the speed
+ * than 2nd (closestValue2)
  */
-
-/*
 export function closestValue(root: TreeNode | null, target: number): number {
   if (!root) return Number.NaN
 
-  const xs: number[] = []
+  let res = 0
+  let diff = Number.POSITIVE_INFINITY
 
-  const dfs = (node: TreeNode | null): void => {
+  while (root) {
+    const next = Math.abs(target - root.val)
+
+    if (next < diff || (next === diff && root.val < res)) {
+      diff = next
+      res = root.val
+    }
+
+    root = target < root.val ? root.left : root.right
+  }
+
+  return res
+}
+
+/** Solved with DFS-recursion */
+export function closestValue2(root: TreeNode | null, target: number): number {
+  if (!root) return Number.NaN
+
+  let res = 0
+  let diff = Number.POSITIVE_INFINITY
+
+  const dfs = (node: TreeNode | null): undefined => {
     if (!node) return
 
-    dfs(node.left)
-    xs.push(node.val)
-    dfs(node.right)
+    const next = Math.abs(target - node.val)
 
-    return
+    if (next < diff || (next === diff && node.val < res)) {
+      diff = next
+      res = node.val
+    }
+
+    node = target < node.val ? node.left : node.right
+
+    return dfs(node)
   }
 
   dfs(root)
 
-  if (target <= xs[0]) return xs[0]
-  if (xs.at(-1)! <= target) return xs.at(-1)!
-  const i = xs.findIndex((x, i) => x <= target && target <= xs[i + 1])
-  const prev = xs[i]
-  const next = xs[i + 1]
-  const left = target - prev
-  const right = next - target
-
-  if (left === right) return Math.min(prev, next)
-
-  return left < right ? prev : next
+  return res
 }
-*/
-
-export function closestValue(root: TreeNode | null, target: number): number {
-  if (!root) return Number.NaN
-
-  let prev: TreeNode | null = root
-  let node: TreeNode | null = root
-
-  while (node) {
-    const node_target_prev = node.val < prev.val && target > node.val && !node.right
-    const prev_target_node = node.val > prev.val && target < node.val && !node.left
-
-    // in range
-    if (node_target_prev || prev_target_node) {
-      const diffWithNode = Math.abs(target - node.val)
-      const diffWithPrev = Math.abs(target - prev.val)
-
-      return diffWithNode <= diffWithPrev ? node.val : prev.val
-    }
-
-    const nextNode = target < node.val ? node.left : node.right
-
-    // if (!nextNode) {
-    // }
-
-    const moveLeft = target < prev.val && target < node.val
-    const moveRight = prev.val < target && node.val < target
-
-    if (moveLeft || moveRight) prev = node
-
-    node = nextNode
-  }
-
-  return 0
-}
-
-// export function closestValue(root: TreeNode | null, target: number): number {
-//   if (!root) return Number.NaN
-
-//   const dfs = (node: TreeNode | null, prev?: number): number => {
-//     if (!node) return prev!
-
-//     const { left, right, val } = node
-
-//     if (prev) {
-//       // in the left sub-tree, 'val' < 'prev'
-//       if (val < target && target < prev) {
-//         const isVal = target - val < prev - target
-//         return isVal ? val : prev
-//       }
-
-//       // in the right sub-tree, 'prev' < 'val'
-//       if (prev < target && target < val) {
-//         const isVal = val - target < target - prev
-//         return isVal ? val : prev
-//       }
-//     }
-
-//     node = target < val ? left : right
-
-//     return dfs(node, val)
-//   }
-
-//   return dfs(root)
-// }

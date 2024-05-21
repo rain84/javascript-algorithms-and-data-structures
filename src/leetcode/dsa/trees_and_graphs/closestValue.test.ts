@@ -35,3 +35,29 @@ it('should work 5', () => {
   const target = 3.5
   expect(closestValue(tree, target)).toBe(3)
 })
+
+it('should work 6', () => {
+  //         2
+  //     0       33
+  // null  1   25  40
+  const tree = createTree('2 [0 null 1] [33 25 40]')
+  const target = 0.428571
+  expect(closestValue(tree, target)).toBe(0)
+})
+
+it('should work 6', () => {
+  //         4
+  //     2       5
+  // 1      3
+  const tree = createTree('4 [2 1 3] 5')
+  const target = 4.5
+  expect(closestValue(tree, target)).toBe(4)
+})
+
+it('should work 7', () => {
+  //       1
+  // null      2
+  const tree = createTree('1 [] 2')
+  const target = 3.428571
+  expect(closestValue(tree, target)).toBe(2)
+})
