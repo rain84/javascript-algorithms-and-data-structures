@@ -16,11 +16,14 @@ importers:
         version: 7.24.1(@babel/core@7.24.5)
     devDependencies:
       '@biomejs/biome':
-        specifier: ^1.7.2
+        specifier: ^1.7.3
         version: 1.7.3
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
+      '@types/node':
+        specifier: 20.12.12
+        version: 20.12.12
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@20.12.12)
