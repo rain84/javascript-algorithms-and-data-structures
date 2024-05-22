@@ -1,6 +1,10 @@
 /**
- * 1466. Reorder Routes to Make All Paths Lead to the City Zero
- * URL {@link https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/description/}
+ *  1466. Reorder Routes to Make All Paths Lead to the City Zero
+ *
+ * {@link https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/description/ | LeetCode Link}
+ *
+ * {@link https://doocs.github.io/leetcode/en/lc/1466/#__tabbed_1_5 | Here} is very cool solution with a DFS-approach
+ *
  */
 export function minReorder(n: number, connections: number[][]): number {
   const roads: Record<number, Set<number>> = {}
