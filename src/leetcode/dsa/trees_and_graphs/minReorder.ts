@@ -1,37 +1,33 @@
 /**
  *  1466. Reorder Routes to Make All Paths Lead to the City Zero
  *
- * {@link https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/description/ | LeetCode Link}
- *
- * {@link https://doocs.github.io/leetcode/en/lc/1466/#__tabbed_1_5 | Here} is very cool solution with a DFS-approach
- *
+ * {@link https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/description/ | Link}
  */
 export function minReorder(n: number, connections: number[][]): number {
-  const roads: Record<number, Set<number>> = {}
-  const graph: Record<number, number[]> = {}
+  const graph: [number, number][][] = Array.from({ length: n }, () => [])
   const seen = new Set<number>()
 
-  for (const [k, v] of connections) {
-    ;(roads[k] ?? (roads[k] = new Set())).add(v)
-    ;(graph[k] ?? (graph[k] = [])).push(v)
-    ;(graph[v] ?? (graph[v] = [])).push(k)
+  for (const [a, b] of connections) {
+    // .push( [Neighbour, Road] )
+    graph[a].push([b, 1])
+    graph[b].push([a, 0])
   }
 
-  const xs = [0]
+  const q = [0]
   let res = 0
 
-  while (xs.length) {
-    const x = xs.pop()!
+  while (q.length) {
+    const x = q.pop()!
 
     if (seen.has(x)) continue
     seen.add(x)
 
-    if (graph[x]) xs.push(...graph[x])
+    for (const [neighbour, road] of graph[x]) {
+      if (seen.has(neighbour)) continue
+      q.push(neighbour)
 
-    for (const neighbour of graph[x]) {
-      if (!seen.has(neighbour) && !roads?.[neighbour]?.has(x)) {
-        res++
-      }
+      // we should calculate all the roads from '0'
+      res += road
     }
   }
 
