@@ -1,6 +1,6 @@
 /**
  * 739. Daily Temperatures
- * URL {@link  https://leetcode.com/problems/daily-temperatures}
+ * {@link  https://leetcode.com/problems/daily-temperatures | Link}
  *
  */
 export function dailyTemperatures(temperatures: number[]): number[] {

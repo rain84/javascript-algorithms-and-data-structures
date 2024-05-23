@@ -2,7 +2,7 @@ import { Deque } from 'ds/deque'
 
 /**
  * 239. Sliding Window Maximum
- * URL {@link https://leetcode.com/problems/sliding-window-maximum/}
+ * {@link https://leetcode.com/problems/sliding-window-maximum/ | Link}
  *
  */
 export function maxSlidingWindow(nums: number[], k: number): number[] {

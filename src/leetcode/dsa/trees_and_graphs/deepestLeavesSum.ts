@@ -2,7 +2,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 1302. Deepest Leaves Sum
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4620/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4620/ | Link}
  *
  */
 export function deepestLeavesSum(root: TreeNode | null): number {

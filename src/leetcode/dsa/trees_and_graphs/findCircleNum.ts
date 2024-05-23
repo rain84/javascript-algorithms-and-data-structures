@@ -1,6 +1,6 @@
 /**
  * 547. Number of Provinces
- * URL {@link https://leetcode.com/problems/number-of-provinces/}
+ * {@link https://leetcode.com/problems/number-of-provinces/ | Link}
  */
 
 /** Solved with DFS-recursion */

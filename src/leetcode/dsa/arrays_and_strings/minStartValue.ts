@@ -1,6 +1,6 @@
 /**
  * 1413. Minimum Value to Get Positive Step by Step Sum
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4657/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4657/ | Link}
  *
  */
 export const minStartValue = (nums: number[]): number => {

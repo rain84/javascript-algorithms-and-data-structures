@@ -1,6 +1,6 @@
 /**
  * 2225. Find Players With Zero or One Losses
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4606/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4606/ | Link}
  *
  */
 export function findWinners(matches: number[][]): number[][] {

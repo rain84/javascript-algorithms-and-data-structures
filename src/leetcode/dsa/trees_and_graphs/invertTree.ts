@@ -2,7 +2,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 226. Invert Binary Tree
- * URL {@link https://leetcode.com/problems/invert-binary-tree/}
+ * {@link https://leetcode.com/problems/invert-binary-tree/ | Link}
  */
 export function invertTree(root: TreeNode | null): TreeNode | null {
   if (!root) return null

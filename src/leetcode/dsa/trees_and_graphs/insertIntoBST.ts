@@ -2,7 +2,7 @@ import { TreeNode } from '../utils'
 
 /**
  * 701. Insert into a Binary Search Tree
- * URL {@link https://leetcode.com/problems/insert-into-a-binary-search-tree/description/}
+ * {@link https://leetcode.com/problems/insert-into-a-binary-search-tree/description/ | Link}
  *
  */
 export function insertIntoBST(root: TreeNode | null, val: number): TreeNode | null {

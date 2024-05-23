@@ -2,7 +2,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 112. Path Sum
- * URL {@link https://leetcode.com/problems/path-sum/description/}
+ * {@link https://leetcode.com/problems/path-sum/description/ | Link}
  *
  */
 export function hasPathSum(root: TreeNode | null, targetSum: number): boolean {

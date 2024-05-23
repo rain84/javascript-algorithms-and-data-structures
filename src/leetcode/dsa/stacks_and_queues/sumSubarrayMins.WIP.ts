@@ -1,6 +1,6 @@
 /**
  * 907. Sum of Subarray Minimums
- * URL {@link https://leetcode.com/problems/sum-of-subarray-minimums}
+ * {@link https://leetcode.com/problems/sum-of-subarray-minimums | Link}
  *
  * WIP, too long execution
  * Description of the solution can be checked here {@link https://doocs.github.io/leetcode/en/lc/907/}

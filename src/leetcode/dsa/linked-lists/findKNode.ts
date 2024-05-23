@@ -2,7 +2,7 @@ import type { ListNode } from '../utils'
 
 /**
  * 643. Maximum Average Subarray I
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4594/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4594/ | Link}
  *
  */
 export const findKNode = (list: ListNode | null, k: number) => {

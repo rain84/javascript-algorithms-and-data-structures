@@ -1,6 +1,6 @@
 /**
  * 1673. Find the Most Competitive Subsequence
- * URL {@link https://leetcode.com/problems/find-the-most-competitive-subsequence/}
+ * {@link https://leetcode.com/problems/find-the-most-competitive-subsequence/ | Link}
  * Time complexity: O(n)
  * Space complexity: O(n)
  */

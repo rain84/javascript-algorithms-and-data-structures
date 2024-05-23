@@ -2,7 +2,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 1448. Count Good Nodes in Binary Tree
- * URL {@link https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/}
+ * {@link https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/ | Link}
  *
  * Solved using a declarative approach
  */

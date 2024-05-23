@@ -1,6 +1,6 @@
 /**
  * 344. Reverse String
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4592/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4592/ | Link}
  *
  * Do not return anything, modify s in-place instead.
  *

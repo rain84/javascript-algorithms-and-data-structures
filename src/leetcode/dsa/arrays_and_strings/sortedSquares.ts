@@ -1,6 +1,6 @@
 /**
  * 977. Squares of a Sorted Array
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4689/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4689/ | Link}
  *
  */
 export const sortedSquares = (numbers: number[]): number[] => {

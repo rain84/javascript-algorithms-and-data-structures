@@ -2,7 +2,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 111. Minimum Depth of Binary Tree
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4691/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4691/ | Link}
  *
  */
 export function minDepth(root: TreeNode | null): number {

@@ -1,6 +1,6 @@
 /**
  * 2351. First Letter to Appear Twice
- * URL {@link https://leetcode.com/problems/first-letter-to-appear-twice/description/}
+ * {@link https://leetcode.com/problems/first-letter-to-appear-twice/description/ | Link}
  *
  */
 export function repeatedCharacter(s: string): string {

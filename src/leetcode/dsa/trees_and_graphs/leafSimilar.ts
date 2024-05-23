@@ -2,7 +2,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 872. Leaf-Similar Trees
- * URL {@link https://leetcode.com/problems/leaf-similar-trees/}
+ * {@link https://leetcode.com/problems/leaf-similar-trees/ | Link}
  */
 export function leafSimilar(root1: TreeNode | null, root2: TreeNode | null): boolean {
   if (!root1 || !root2) return false

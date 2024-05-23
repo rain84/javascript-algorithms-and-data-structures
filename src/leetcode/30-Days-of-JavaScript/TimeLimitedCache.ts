@@ -1,6 +1,6 @@
 /**
  * 2622. Cache With Time Limit
- * URL {@link https://leetcode.com/problems/cache-with-time-limit/description/}
+ * {@link https://leetcode.com/problems/cache-with-time-limit/description/ | Link}
  */
 export class TimeLimitedCache {
   #cache = new Map<number, [value: number, expire: number]>()

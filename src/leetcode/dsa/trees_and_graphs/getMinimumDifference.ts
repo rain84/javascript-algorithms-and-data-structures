@@ -2,7 +2,7 @@ import { TreeNode } from '../utils'
 
 /**
  * 530. Minimum Absolute Difference in BST
- * URL {@link https://leetcode.com/problems/minimum-absolute-difference-in-bst/}
+ * {@link https://leetcode.com/problems/minimum-absolute-difference-in-bst/ | Link}
  *
  */
 export function getMinimumDifference(root: TreeNode | null): number {

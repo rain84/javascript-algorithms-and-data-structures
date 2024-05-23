@@ -1,6 +1,6 @@
 /**
  * 917. Reverse Only Letters
- * URL {@link https://leetcode.com/problems/reverse-only-letters/description/}
+ * {@link https://leetcode.com/problems/reverse-only-letters/description/ | Link}
  *
  */
 export function reverseOnlyLetters(s: string): string {

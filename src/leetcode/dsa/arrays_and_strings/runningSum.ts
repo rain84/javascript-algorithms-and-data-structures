@@ -1,6 +1,6 @@
 /**
  * 1480. Running Sum of 1d Array
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4658/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4658/ | Link}
  *
  */
 export const runningSum = (nums: number[]): number[] => {

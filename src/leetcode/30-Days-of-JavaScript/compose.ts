@@ -1,6 +1,6 @@
 /**
  * 2629. Function Composition
- * URL {@link https://leetcode.com/problems/function-composition/description/}
+ * {@link https://leetcode.com/problems/function-composition/description/ | Link}
  */
 export const compose =
   (functions: F[]): F =>

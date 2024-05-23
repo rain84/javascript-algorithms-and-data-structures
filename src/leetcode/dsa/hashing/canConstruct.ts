@@ -1,6 +1,6 @@
 /**
  * 383. Ransom Note
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4607/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4607/ | Link}
  *
  */
 export function canConstruct(ransomNote: string, magazine: string): boolean {

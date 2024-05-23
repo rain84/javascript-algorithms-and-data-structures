@@ -2,7 +2,7 @@ import type { ListNode } from '../utils'
 
 /**
  * 141. Linked List Cycle
- * URL {@link https://leetcode.com/problems/linked-list-cycle/}
+ * {@link https://leetcode.com/problems/linked-list-cycle/ | Link}
  *
  */
 export function hasCycle(head: ListNode | null): boolean {

@@ -1,6 +1,6 @@
 /**
  * 1426. Counting Elements
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4661/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4661/ | Link}
  *
  */
 export function countElements(arr: number[]): number {

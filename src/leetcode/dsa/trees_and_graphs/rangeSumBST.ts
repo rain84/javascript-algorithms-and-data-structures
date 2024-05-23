@@ -2,7 +2,7 @@ import { TreeNode } from '../utils'
 
 /**
  * 938. Range Sum of BST
- * URL {@link https://leetcode.com/problems/range-sum-of-bst/}
+ * {@link https://leetcode.com/problems/range-sum-of-bst/ | Link}
  *
  */
 export function rangeSumBST(root: TreeNode | null, low: number, high: number): number {

@@ -1,6 +1,6 @@
 /**
  * 2695. Array Wrapper
- * URL {@link https://leetcode.com/problems/array-wrapper/description/}
+ * {@link https://leetcode.com/problems/array-wrapper/description/ | Link}
  */
 export class ArrayWrapper {
   #xs: number[]

@@ -2,7 +2,7 @@ import type { ListNode } from '../utils'
 
 /**
  * 92. Reverse Linked List II
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/704/linked-lists/4598/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/704/linked-lists/4598/ | Link}
  *
  * TODO: add handling for the boundary inputs
  *

@@ -1,6 +1,6 @@
 /**
  * 155. Min Stack
- * URL {@link https://leetcode.com/problems/min-stack/}
+ * {@link https://leetcode.com/problems/min-stack/ | Link}
  *
  */
 export class MinStack {

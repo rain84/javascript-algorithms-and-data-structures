@@ -1,6 +1,6 @@
 /**
  * 2260. Minimum Consecutive Cards to Pick Up
- * URL {@link https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/}
+ * {@link https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/ | Link}
  *
  */
 export function minimumCardPickup(cards: number[]): number {

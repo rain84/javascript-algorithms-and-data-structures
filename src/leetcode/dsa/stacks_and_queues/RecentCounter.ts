@@ -2,7 +2,7 @@ import { Queue } from 'ds/queue'
 
 /**
  * 933. Number of Recent Calls
- * URL {@link https://leetcode.com/problems/number-of-recent-calls/}
+ * {@link https://leetcode.com/problems/number-of-recent-calls/ | Link}
  *
  */
 export class RecentCounter {

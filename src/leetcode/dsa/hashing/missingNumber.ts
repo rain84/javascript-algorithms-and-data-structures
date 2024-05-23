@@ -1,6 +1,6 @@
 /**
  * 268. Missing Number
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4602/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4602/ | Link}
  *
  */
 export function missingNumber(nums: number[]): number {

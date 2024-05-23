@@ -3,7 +3,7 @@ import { TreeNode } from '../utils'
 
 /**
  * 515. Find Largest Value in Each Tree Row
- * URL {@link https://leetcode.com/problems/find-largest-value-in-each-tree-row/}
+ * {@link https://leetcode.com/problems/find-largest-value-in-each-tree-row/ | Link}
  *
  */
 export function largestValues(root: TreeNode | null): number[] {

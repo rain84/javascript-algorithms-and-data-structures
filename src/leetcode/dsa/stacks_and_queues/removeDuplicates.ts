@@ -1,6 +1,6 @@
 /**
  * 1047. Remove All Adjacent Duplicates In String
- * URL {@link https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/}
+ * {@link https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/ | Link}
  *
  */
 export function removeDuplicates(s: string): string {

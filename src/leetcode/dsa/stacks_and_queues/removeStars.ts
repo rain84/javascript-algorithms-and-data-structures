@@ -1,6 +1,6 @@
 /**
  * 2390. Removing Stars From a String
- * URL {@link https://leetcode.com/problems/removing-stars-from-a-string/}
+ * {@link https://leetcode.com/problems/removing-stars-from-a-string/ | Link}
  *
  */
 export function removeStars(s: string): string {

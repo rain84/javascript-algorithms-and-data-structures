@@ -1,6 +1,6 @@
 /**
  * 1189. Maximum Number of Balloons
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4663/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4663/ | Link}
  *
  */
 export function maxNumberOfBalloons(text: string): number {

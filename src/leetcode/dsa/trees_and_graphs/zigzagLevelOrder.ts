@@ -2,7 +2,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 103. Binary Tree Zigzag Level Order Traversal
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4621/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4621/ | Link}
  *
  */
 export function zigzagLevelOrder(root: TreeNode | null): number[][] {

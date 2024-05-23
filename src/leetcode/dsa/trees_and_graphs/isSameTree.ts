@@ -2,7 +2,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 100. Same Tree
- * URL {@link https://leetcode.com/problems/same-tree/}
+ * {@link https://leetcode.com/problems/same-tree/ | Link}
  *
  */
 export const isSameTree = (p: TreeNode | null, q: TreeNode | null): boolean =>

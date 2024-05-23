@@ -1,6 +1,6 @@
 /**
  * 771. Jewels and Stones
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4664/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4664/ | Link}
  *
  */
 export function numJewelsInStones(jewels: string, stones: string): number {

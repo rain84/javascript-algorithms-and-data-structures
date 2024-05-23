@@ -2,7 +2,7 @@ import type { ListNode } from '../utils'
 
 /**
  * 24. Swap Nodes in Pairs
- * URL {@link https://leetcode.com/problems/swap-nodes-in-pairs/}
+ * {@link https://leetcode.com/problems/swap-nodes-in-pairs/ | Link}
  *
  * Solved with a recursion
  *

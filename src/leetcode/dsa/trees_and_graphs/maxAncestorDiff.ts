@@ -2,7 +2,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 1026. Maximum Difference Between Node and Ancestor
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4617/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4617/ | Link}
  *
  */
 export function maxAncestorDiff(root: TreeNode | null): number {

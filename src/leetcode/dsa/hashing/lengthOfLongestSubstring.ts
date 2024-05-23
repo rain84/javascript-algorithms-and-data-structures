@@ -1,6 +1,6 @@
 /**
  * 3. Longest Substring Without Repeating Characters
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4690/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4690/ | Link}
  *
  */
 export function lengthOfLongestSubstring(s: string): number {

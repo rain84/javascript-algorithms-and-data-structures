@@ -2,7 +2,7 @@ import type { ListNode } from '../utils'
 
 /**
  * 876. Middle of the Linked List
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/704/linked-lists/4660/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/704/linked-lists/4660/ | Link}
  *
  */
 export function middleNode(head: ListNode | null): ListNode | null {

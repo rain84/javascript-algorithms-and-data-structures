@@ -1,6 +1,6 @@
 /**
  * 346. Moving Average from Data Stream
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/706/stacks-and-queues/4703/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/706/stacks-and-queues/4703/ | Link}
  *
  */
 export class MovingAverage {

@@ -1,6 +1,6 @@
 /**
  * 713. Subarray Product Less Than K
- * URL {@link https://leetcode.com/problems/subarray-product-less-than-k}
+ * {@link https://leetcode.com/problems/subarray-product-less-than-k | Link}
  *
  */
 export function numSubarrayProductLessThanK(arr: number[], k: number): number {

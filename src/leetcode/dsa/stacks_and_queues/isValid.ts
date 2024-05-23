@@ -1,6 +1,6 @@
 /**
  * 20. Valid Parentheses
- * URL {@link https://leetcode.com/problems/valid-parentheses/}
+ * {@link https://leetcode.com/problems/valid-parentheses/ | Link}
  *
  */
 export function isValid(s: string): boolean {

@@ -1,6 +1,6 @@
 /**
  * 1178. Number of Valid Words for Each Puzzle
- * URL {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4845/}
+ * {@link https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4845/ | Link}
  *
  */
 export function findMaxLength(nums: number[]): number {

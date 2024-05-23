@@ -1,6 +1,6 @@
 /**
  * 2627. Debounce
- * URL {@link https://leetcode.com/problems/debounce/description/}
+ * {@link https://leetcode.com/problems/debounce/description/ | Link}
  */
 export const debounce = (fn: Fn, t: number): Fn => {
   let timerId: ReturnType<typeof globalThis.setTimeout>

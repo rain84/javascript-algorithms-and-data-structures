@@ -1,6 +1,6 @@
 /**
  * 557. Reverse Words in a String III
- * URL {@link https://leetcode.com/problems/reverse-words-in-a-string-iii/submissions/1240042260/}
+ * {@link https://leetcode.com/problems/reverse-words-in-a-string-iii/submissions/1240042260/ | Link}
  *
  */
 export function reverseWords(s: string): string {
