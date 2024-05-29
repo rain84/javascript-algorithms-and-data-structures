@@ -13,3 +13,6 @@ export const textToWords = (str: string): string[] => str.split(unicodeDelimiter
 
 export const capitalize = <T extends string>(s: T) =>
   (s.length ? s[0]?.toLocaleUpperCase() + s.slice(1) : '') as Capitalize<T>
+
+export const toAlphabetKey = (n: number) =>
+  [...n.toString(26)].map((s) => (Number.parseInt(s, 26) + 10).toString(36)).join('')
