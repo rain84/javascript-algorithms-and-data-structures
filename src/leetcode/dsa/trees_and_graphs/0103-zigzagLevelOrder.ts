@@ -10,14 +10,13 @@ export function zigzagLevelOrder(root: TreeNode | null): number[][] {
 
   const res: number[][] = []
   let queue = [root]
-  let order = true
+  let order = false
 
   while (queue.length) {
     const nextQueue: TreeNode[] = []
     const row: number[] = []
 
-    while (queue.length) {
-      const { left, right, val } = queue.pop()!
+    for (const { left, right, val } of queue) {
       row.push(val)
 
       if (order) {

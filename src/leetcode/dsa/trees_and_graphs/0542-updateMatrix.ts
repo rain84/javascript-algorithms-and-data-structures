@@ -23,9 +23,7 @@ export function updateMatrix(mat: number[][]): number[][] {
     const nextQ: [number, number][] = []
     depth++
 
-    while (q.length) {
-      const [i, j] = q.pop()!
-
+    for (const [i, j] of q) {
       for (let k = 0; k < 4; k++) {
         const y = dirs[k] + i
         const x = dirs[k + 1] + j

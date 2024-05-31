@@ -39,9 +39,7 @@ export function findCircleNum2(isConnected: number[][]): number {
 
     if (seen.has(vertex)) continue
 
-    while (stack.length) {
-      const neighbours = stack.pop()!
-
+    for (const neighbours of stack) {
       for (let n = 0; n < neighbours.length; n++) {
         if (!neighbours[n] || seen.has(n)) continue
 
@@ -78,9 +76,7 @@ export function findCircleNum3(isConnected: number[][]): number {
   for (const [vertex, neighbours] of vertexes) {
     if (seen.has(vertex)) continue
 
-    while (neighbours.length) {
-      const neighbour = neighbours.pop()!
-
+    for (const neighbour of neighbours) {
       if (seen.has(neighbour)) continue
 
       neighbours.push(...vertexes.get(neighbour)!)

@@ -15,8 +15,7 @@ export function deepestLeavesSum(root: TreeNode | null): number {
     const nextQueue: TreeNode[] = []
     xs = []
 
-    while (queue.length) {
-      const { val, left, right } = queue.pop()!
+    for (const { val, left, right } of queue) {
       xs.push(val)
 
       if (left) nextQueue.push(left)

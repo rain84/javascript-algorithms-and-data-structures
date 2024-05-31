@@ -24,9 +24,7 @@ export function canVisitAllRoom2s(rooms: number[][]): boolean {
   const seen = new Set<number>()
   const q = [0]
 
-  while (q.length) {
-    const i = q.pop()!
-
+  for (const i of q) {
     if (seen.has(i)) continue
     seen.add(i)
     q.push(...rooms[i])

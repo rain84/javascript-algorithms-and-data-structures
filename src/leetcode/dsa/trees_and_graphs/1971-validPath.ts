@@ -46,9 +46,7 @@ export function validPath2(
   const seen = new Set<number>()
   const q = [source]
 
-  while (q.length) {
-    const i = q.pop()!
-
+  for (const i of q) {
     if (i === destination) return true
     if (seen.has(i)) continue
 

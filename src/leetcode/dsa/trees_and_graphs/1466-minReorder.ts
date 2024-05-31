@@ -47,9 +47,7 @@ export function minReorder2(n: number, connections: number[][]): number {
   const q = [0]
   let res = 0
 
-  while (q.length) {
-    const x = q.pop()!
-
+  for (const x of q) {
     if (seen.has(x)) continue
     seen.add(x)
 

@@ -23,8 +23,7 @@ export const goodNodes2 = (root: TreeNode): number => {
   const stack: [TreeNode | null, number][] = [[root, Number.NEGATIVE_INFINITY]]
 
   let res = 0
-  while (stack.length) {
-    let [node, max] = stack.pop()!
+  for (let [node, max] of stack) {
     if (!node) continue
 
     if (node.val >= max) {
