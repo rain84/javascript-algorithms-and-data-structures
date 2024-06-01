@@ -2,35 +2,29 @@
  * 323. Number of Connected Components in an Undirected Graph
  * {@link https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/description/ | Link}
  */
-
-/** @todo can not understand, why the test 3 should work*/
 export function countComponents(n: number, edges: number[][]): number {
   const graph: number[][] = Array.from({ length: n }, () => [])
-
-  for (const [a, b] of edges) {
-    graph[a].push(b)
-    graph[b].push(a)
-  }
-
-  const vertexes = new Set(edges.flat())
-  const iterator = vertexes.values()
   const seen = new Set<number>()
   let res = 0
 
-  const dfs = (x: number) => {
-    if (seen.has(x)) return
+  for (const [i, j] of edges) {
+    graph[i].push(j)
+    graph[j].push(i)
+  }
 
-    seen.add(x)
-    vertexes.delete(x)
+  const dfs = (i: number) => {
+    if (seen.has(i)) return
 
-    for (const y of graph[x]) {
-      dfs(y)
+    seen.add(i)
+    for (const j of graph[i]) {
+      dfs(j)
     }
   }
 
-  while (vertexes.size) {
-    const x = iterator.next().value
-    dfs(x)
+  for (let i = 0; i < n; i++) {
+    if (seen.has(i)) continue
+
+    dfs(i)
     res++
   }
 
@@ -38,33 +32,30 @@ export function countComponents(n: number, edges: number[][]): number {
 }
 
 /** BFS */
-// export function countComponents(n: number, edges: number[][]): number {
-//   const graph: number[][] = Array.from({ length: n }, () => [])
+export function countComponents2(n: number, edges: number[][]): number {
+  const graph: Map<number, number[]> = new Map(Array.from({ length: n }, (_, i) => [i, []]))
+  const seen = new Set<number>()
+  let res = 0
 
-//   for (const [a, b] of edges) {
-//     graph[a].push(b)
-//     graph[b].push(a)
-//   }
+  for (const [a, b] of edges) {
+    graph.get(a)!.push(b)
+    graph.get(b)!.push(a)
+  }
 
-//   const vertexes = new Set(edges.flat())
-//   const iterator = vertexes.values()
-//   const seen = new Set<number>()
-//   let res = 0
+  console.log(graph)
+  for (const [i] of graph) {
+    if (seen.has(i)) continue
 
-//   while (vertexes.size) {
-//     const q = [iterator.next().value]
+    const q = [i]
+    for (const j of q) {
+      if (seen.has(j)) continue
 
-//     while (q.length) {
-//       const i = q.pop()!
+      seen.add(j)
+      q.push(...graph.get(j)!)
+    }
 
-//       if (seen.has(i)) continue
-//       seen.add(i)
-//       vertexes.delete(i)
-//       q.push(...graph[i])
-//     }
+    res++
+  }
 
-//     res++
-//   }
-
-//   return res
-// }
+  return res
+}

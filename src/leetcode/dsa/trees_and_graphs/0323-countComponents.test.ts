@@ -21,7 +21,6 @@ it('should work 2', () => {
   expect(countComponents(n, edges)).toBe(1)
 })
 
-/** MAY BE WRONG EXPECTATIONS IN '.toBe()'????  */
 it('should work 3', () => {
   const n = 4
   const edges = [
