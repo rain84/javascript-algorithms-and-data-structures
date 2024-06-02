@@ -5,13 +5,12 @@
 export function nearestExit(maze: string[][], entrance: number[]): number {
   const m = maze.length
   const n = maze[0].length
-  const seen = Array.from({ length: m }, () => Array.from({ length: n }, () => false))
   const dir = [0, 1, 0, -1, 0]
   const q = [[...entrance, 0]]
 
   for (const [i, j, steps] of q) {
-    if (seen[i][j]) continue
-    seen[i][j] = true
+    if (maze[i][j] === '+') continue
+    maze[i][j] = '+'
 
     for (let d = 0; d < 4; d++) {
       const [y, x] = [i + dir[d], j + dir[d + 1]]
