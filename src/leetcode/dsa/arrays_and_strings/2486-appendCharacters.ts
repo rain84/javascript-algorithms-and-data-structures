@@ -3,11 +3,10 @@
  * {@link https://leetcode.com/problems/append-characters-to-string-to-make-subsequence/description | Link}
  */
 export function appendCharacters(s: string, t: string): number {
-  const n = s.length
   let j = 0
 
-  for (let i = 0; i < n; i++) {
-    if (s[i] === t[j]) j++
+  for (const ch of s) {
+    if (ch === t[j]) j++
   }
 
   return t.length - j
