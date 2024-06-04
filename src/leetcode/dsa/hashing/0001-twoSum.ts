@@ -4,15 +4,35 @@
  *
  */
 export function twoSum(nums: number[], target: number): number[] {
-  const diffs = new Map<number, number>()
+  const map: Record<number, number> = {}
 
   for (let i = 0; i < nums.length; i++) {
-    const val = nums[i]
-    const diff = target - val
+    const v = nums[i]
+    const diff = target - v
 
-    if (diffs.has(diff)) return [diffs.get(diff)!, i]
+    if (map[diff] !== undefined) return [map[diff], i]
+    map[v] = i
+  }
 
-    diffs.set(val, i)
+  return []
+}
+
+export function twoSum2(nums: number[], target: number): number[] {
+  const map: Record<number, number> = {}
+  const n = nums.length
+
+  for (let l = 0, r = n - 1; l <= r; l++, r--) {
+    let v = nums[l]
+    let diff = target - v
+
+    if (map[diff] !== undefined) return [map[diff], l]
+    map[v] = l
+
+    v = nums[r]
+    diff = target - v
+
+    if (map[diff] !== undefined) return [map[diff], r]
+    map[v] = r
   }
 
   return []
