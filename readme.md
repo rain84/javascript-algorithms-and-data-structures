@@ -20,3 +20,5 @@ If "imports" will not work in the compiled js-files, do the following:
 3. [React Interview Questions & Answers](https://github.com/sudheerj/reactjs-interview-questions)
 4. [JavaScript algorithms](https://github.com/trekhleb/javascript-algorithms/blob/master/README.ru-RU.md)
 5. [Geeks for Geeks. sSDE SHEET – A Complete Guide for SDE Preparation](https://www.geeksforgeeks.org/sde-sheet-a-complete-guide-for-sde-preparation/)
+
+## Work in progress on: lc-0092, lc-2101
