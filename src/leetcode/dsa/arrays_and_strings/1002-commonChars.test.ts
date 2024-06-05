@@ -13,3 +13,18 @@ it('should work 1', () => {
 it('should work 2', () => {
   expect(commonChars(['cool', 'lock', 'cook'])).toMatchObject(['c', 'o'])
 })
+
+it('should work 3', () => {
+  expect(
+    commonChars([
+      'acabcddd',
+      'bcbdbcbd',
+      'baddbadb',
+      'cbdddcac',
+      'aacbcccd',
+      'ccccddda',
+      'cababaab',
+      'addcaccd',
+    ])
+  ).toMatchObject([])
+})
