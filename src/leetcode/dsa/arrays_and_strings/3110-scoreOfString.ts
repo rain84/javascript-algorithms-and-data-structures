@@ -5,12 +5,9 @@
 export function scoreOfString(s: string): number {
   let res = 0
   const n = s.length
-  let prev = s.charCodeAt(0)
 
   for (let i = 1; i < n; i++) {
-    const curr = s.charCodeAt(i)
-    res += Math.abs(curr - prev)
-    prev = curr
+    res += Math.abs(s.charCodeAt(i) - s.charCodeAt(i - 1))
   }
 
   return res
