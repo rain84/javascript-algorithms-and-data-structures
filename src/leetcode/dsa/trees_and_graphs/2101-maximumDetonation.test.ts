@@ -10,7 +10,6 @@ it('should work 2', () => {
   expect(maximumDetonation([[1, 1, 5], [10, 10, 5]])).toBe(1)
 })
 
-/** TODO: fix the code to pass the test */
 it('should work 3', () => {
   // prettier-ignore
   expect(maximumDetonation([[1, 2, 3], [2, 3, 1], [3, 4, 2], [4, 5, 3], [5, 6, 4]])).toBe(5)
