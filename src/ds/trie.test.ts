@@ -4,17 +4,7 @@ let trie: Trie
 let dictionary: string[]
 
 beforeEach(() => {
-  dictionary = [
-    'cat',
-    'bat',
-    'rat',
-    'rabbit',
-    'carrot',
-    'batman',
-    'bumble-bee',
-    'car',
-    'cartoon',
-  ].sort()
+  dictionary = ['bat', 'batman', 'bumble-bee', 'car', 'carrot', 'cartoon', 'cat', 'rabbit', 'rat']
   trie = new Trie(dictionary)
 })
 
@@ -44,4 +34,12 @@ it('.delete() should work', () => {
   expect(trie.has(word)).toBeTruthy()
   trie.delete(word)
   expect(trie.has(word)).toBeFalsy()
+
+  trie.delete('b')
+  expect(trie.has('batman')).toBeTruthy()
+
+  for (const s of dictionary) {
+    trie.delete(s)
+  }
+  expect(trie.root).toMatchObject({})
 })
