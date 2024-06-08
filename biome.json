@@ -20,7 +20,7 @@
         "noCommaOperator": "off",
         "noParameterAssign": "off"
       },
-      "suspicious": { "noAssignInExpressions": "off" }
+      "suspicious": { "noAssignInExpressions": "off", "noFocusedTests": "off" }
     },
     "ignore": ["./node_modules/**/*", "./out/**/*"]
   },
