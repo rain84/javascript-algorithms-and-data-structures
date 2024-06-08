@@ -2,35 +2,33 @@ export class Trie {
   #trie: Trie_ = {}
   #TERMINAL_MARK = Symbol()
 
-  constructor(...words: T[] | [T[]]) {
-    if (words.length) this.add(...words)
+  constructor(words: string[]) {
+    for (const word of words) {
+      this.add(word)
+    }
   }
 
-  add(...strokes: T[] | [T[]]) {
-    if (Array.isArray(strokes[0])) strokes = strokes[0]
+  add(s: string) {
+    let t: Trie_ = this.#trie
 
-    for (const s of strokes) {
-      let t: Trie_ = this.#trie
+    for (const ch of s) {
+      t[ch] ??= {}
+      t = t[ch] as Trie_
+    }
 
-      for (const ch of s) {
-        t[ch] ??= {}
-        t = t[ch] as Trie_
-      }
-
-      if (t !== this.#trie) {
-        ;(t as Trie2)![this.#TERMINAL_MARK] = null
-      }
+    if (t !== this.#trie) {
+      ;(t as Trie2)![this.#TERMINAL_MARK] = null
     }
 
     return this
   }
 
-  has(s: T) {
+  has(s: string) {
     const t = this.#rewind(s)
     return t && this.#TERMINAL_MARK in t
   }
 
-  delete(s: T) {
+  delete(s: string) {
     const t = this.#rewind(s)
 
     if (t !== null) {
@@ -40,15 +38,15 @@ export class Trie {
     return this
   }
 
-  entries(prefix: T = ''): T[] {
+  entries(prefix = ''): string[] {
     const t = this.#rewind(prefix)
     if (!t) return []
 
     return this.#entries(t, prefix)
   }
 
-  #entries(trie: Trie_, s: T = '') {
-    const res: T[] = []
+  #entries(trie: Trie_, s = '') {
+    const res: string[] = []
 
     if (this.#TERMINAL_MARK in trie) res.push(s)
 
@@ -60,7 +58,7 @@ export class Trie {
     return res
   }
 
-  #rewind(s: T) {
+  #rewind(s: string) {
     let t = this.#trie
 
     for (const ch of s) {
@@ -72,6 +70,5 @@ export class Trie {
   }
 }
 
-type T = string
-type Trie_ = { [key: T]: Trie2 }
-type Trie2 = { [key: T | symbol]: Trie2 } | null
+type Trie_ = { [key: string]: Trie2 }
+type Trie2 = { [key: string | symbol]: Trie2 } | null
