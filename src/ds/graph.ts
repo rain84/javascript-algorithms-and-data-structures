@@ -60,10 +60,10 @@ export class Graph {
       vertex.prev = vertex.current
       visited.add(vertex.current)
 
-      this.#getNeighboursFor(vertex.current)?.forEach((current) => {
-        if (visited.has(current)) return
+      for (const current of this.#getNeighboursFor(vertex.current) ?? []) {
+        if (visited.has(current)) continue
         walk({ current, prev: vertex.prev })
-      })
+      }
     }
     walk({ current })
   }
@@ -73,8 +73,8 @@ export class Graph {
     const vs: VertexContainer[] = [{ current }]
 
     const walk = () => {
-      vs.forEach((vertex) => {
-        if (visited.has(vertex.current)) return
+      for (const vertex of vs) {
+        if (visited.has(vertex.current)) continue
 
         const edge = this.getEdge(vertex.current, vertex.prev)
         cb(vertex.current, edge)
@@ -87,7 +87,7 @@ export class Graph {
           })) ?? [])
         )
         walk()
-      })
+      }
     }
     walk()
   }

@@ -13,15 +13,15 @@ interface IRandomData {
   val: string
 }
 
-let heap: Record<minmax, MaybeNull<BinaryHeap>> = {
+const heap: Record<minmax, MaybeNull<BinaryHeap>> = {
   max: null,
   min: null,
 }
-let sorted: Record<minmax, MaybeNull<number[]>> = {
+const sorted: Record<minmax, MaybeNull<number[]>> = {
   max: null,
   min: null,
 }
-let input = [...new Set(random(10, 100))]
+const input = [...new Set(random(10, 100))]
 
 beforeEach(() => {
   heap.max = BinaryHeap.createMax().fill(input)

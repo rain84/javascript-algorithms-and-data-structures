@@ -1,18 +1,19 @@
-import type { ISet, Cb } from './set.types'
+import type { Cb, ISet } from './set.types'
 
 // Full implementation of the ES "Set" data structure
 // TODO: add ability to use Set with any type of "T"
+// biome-ignore lint:
 export class Set<T extends number> implements ISet<T> {
-  static #LOAD_FACTOR = 0.75
+  static #LOAD_FACTOR = 0.75;
 
   readonly [Symbol.toStringTag] = 'CustomSet'
 
   #storage: T[][] = [[]]
-  #itemsCount: number = 0
+  #itemsCount = 0
 
   constructor(xs?: T[] | null) {
     this.clear()
-    if (!xs) return this
+    if (!xs) return
 
     this.#storage.push([...xs])
     this.#itemsCount = xs.length
@@ -68,6 +69,7 @@ export class Set<T extends number> implements ISet<T> {
     return this.#find(x) !== null
   }
 
+  // biome-ignore lint:
   forEach(cb: Cb<T>, thisArg?: any): void {
     for (const slot of this.#storage) {
       for (const x of slot) {
