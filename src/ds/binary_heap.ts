@@ -106,7 +106,7 @@ export class BinaryHeap<T = number> {
   }
 
   #getParent(index: number) {
-    index = Math.floor((index - 1) / 2)
+    index = (index - 1) >> 1
     return this.#getElement(index)
   }
 
