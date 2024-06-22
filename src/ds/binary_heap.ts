@@ -34,7 +34,7 @@ export class BinaryHeap<T = number> {
     return this.#values.length
   }
 
-  insert(val: T) {
+  push(val: T) {
     this.#values.push(val)
     let index = this.#values.length - 1
 
@@ -50,7 +50,7 @@ export class BinaryHeap<T = number> {
     }
   }
 
-  remove() {
+  pop() {
     if (this.size <= 2) return this.#values.shift()
 
     this.#swapValues(0, this.size - 1)
@@ -76,15 +76,19 @@ export class BinaryHeap<T = number> {
     return val
   }
 
+  peek() {
+    return this.#values[0]
+  }
+
   fill(values?: T[]) {
     if (values === undefined) return this
-    for (const v of values) this.insert(v)
+    for (const v of values) this.push(v)
     return this
   }
 
   *[Symbol.iterator]() {
     const values: T[] = [...this.#values]
-    while (this.size) yield this.remove()!
+    while (this.size) yield this.pop()!
     this.#values = values
   }
 

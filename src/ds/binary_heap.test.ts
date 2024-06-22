@@ -38,8 +38,8 @@ it('Binary heaps should have "insert()" and "remove()"', () => {
     min: [],
   }
 
-  while (heap.max?.size) values.max.push(heap.max?.remove()!)
-  while (heap.min?.size) values.min.push(heap.min?.remove()!)
+  while (heap.max?.size) values.max.push(heap.max?.pop()!)
+  while (heap.min?.size) values.min.push(heap.min?.pop()!)
 
   expect(values.max).toMatchObject(sorted.max!)
   expect(values.min).toMatchObject(sorted.min!)
@@ -90,3 +90,13 @@ function getRandomComplexData(words: string[]): IRandomData[] {
 
   return randomData
 }
+
+it('should have "peek()"', () => {
+  let peeked = heap.max?.peek()
+  expect(peeked === heap.max?.peek()).toBeTruthy()
+  expect(peeked === heap.max?.pop()).toBeTruthy()
+
+  peeked = heap.min?.peek()
+  expect(peeked === heap.min?.peek()).toBeTruthy()
+  expect(peeked === heap.min?.pop()).toBeTruthy()
+})
