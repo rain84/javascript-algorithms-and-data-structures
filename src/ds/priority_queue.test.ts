@@ -33,6 +33,16 @@ it('should have "size"-getter', () => {
   expect(queue.min?.size).toBe(data.length)
 })
 
+it('should have "peek()"', () => {
+  let peeked = queue.max?.peek()
+  expect(peeked === queue.max?.peek()).toBeTruthy()
+  expect(peeked === queue.max?.dequeue()).toBeTruthy()
+
+  peeked = queue.min?.peek()
+  expect(peeked === queue.min?.peek()).toBeTruthy()
+  expect(peeked === queue.min?.dequeue()).toBeTruthy()
+})
+
 it.todo('Add tests for PriorityQueue createMax() / createMin() with values')
 
 function values(type: minmax) {

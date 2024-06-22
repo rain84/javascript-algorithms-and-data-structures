@@ -23,11 +23,15 @@ export class PriorityQueue<T = number> {
   }
 
   enqueue(value: T) {
-    this.#heap.insert(value)
+    this.#heap.push(value)
   }
 
   dequeue() {
-    return this.#heap.remove()
+    return this.#heap.pop()
+  }
+
+  peek() {
+    return this.#heap.peek()
   }
 
   [Symbol.iterator]() {
