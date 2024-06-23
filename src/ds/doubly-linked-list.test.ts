@@ -1,4 +1,4 @@
-import { DoublyLinkedList } from './doubly_linked_list'
+import { DoublyLinkedList } from './doubly-linked-list'
 
 let list: DoublyLinkedList<string | number>
 

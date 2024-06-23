@@ -1,4 +1,4 @@
-import { BST } from './tree_bst'
+import { BST } from './tree-bst'
 
 interface IShape {
   key: number

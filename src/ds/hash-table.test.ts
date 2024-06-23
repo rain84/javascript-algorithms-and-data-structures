@@ -1,4 +1,4 @@
-import { HashTable } from './hash_table'
+import { HashTable } from './hash-table'
 
 let hashTable: HashTable<number>
 const data = 'The C Programming Language is a computer programming book\

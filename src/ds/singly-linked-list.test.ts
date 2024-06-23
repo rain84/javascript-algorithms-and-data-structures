@@ -1,4 +1,4 @@
-import { SinglyLinkedList } from './singly_linked_list'
+import { SinglyLinkedList } from './singly-linked-list'
 
 let sll: SinglyLinkedList<string | number>
 

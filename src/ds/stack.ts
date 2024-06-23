@@ -1,4 +1,4 @@
-import { SinglyLinkedList } from './singly_linked_list'
+import { SinglyLinkedList } from './singly-linked-list'
 
 export class Stack<T> {
   #storage = new SinglyLinkedList<T>()

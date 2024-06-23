@@ -1,6 +1,6 @@
 import { random } from '../utils/array'
 import { textToWords } from '../utils/string'
-import { BinaryHeap } from './binary_heap'
+import { BinaryHeap } from './binary-heap'
 
 type minmax = 'min' | 'max'
 type TValues = {
