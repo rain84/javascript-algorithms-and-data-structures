@@ -52,8 +52,6 @@ it('should have "size"-getter', () => {
 
 it('should implement [Symbol.iterator]', () => {
   expect([...heap.max!]).toMatchObject(sorted.max!)
-  expect([...heap.max!]).toMatchObject(sorted.max!)
-  expect([...heap.min!]).toMatchObject(sorted.min!)
   expect([...heap.min!]).toMatchObject(sorted.min!)
 })
 
