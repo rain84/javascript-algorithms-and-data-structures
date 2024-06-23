@@ -32,7 +32,7 @@ beforeEach(() => {
   sorted.max.sort((a, b) => b - a)
 })
 
-it('Binary heaps should have "insert()" and "remove()"', () => {
+it('Binary heaps should have "push()" and "pop()"', () => {
   const values: TValues = {
     max: [],
     min: [],
