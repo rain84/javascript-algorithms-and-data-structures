@@ -1,4 +1,4 @@
-import { BinaryHeap } from 'ds/binary_heap'
+import { BinaryHeap } from 'ds/binary-heap'
 
 /**
  * 502. IPO
