@@ -1,48 +1,49 @@
 export class MinHeap<T = number> {
   #h: T[] = []
-  #items = new Set<T>()
 
   get size() {
     return this.#h.length
   }
 
   push(x: T) {
-    if (this.#items.has(x)) return
-    this.#items.add(x)
-
     const h = this.#h
 
     h.push(x)
     if (h.length === 1) return
 
     let i = h.length - 1
-
     while (i !== undefined) {
       const p = i >> 1
-
       if (h[p] <= h[i]) return
-
       this.#swap(i, p)
       i = p
     }
   }
 
   pop(): T | undefined {
-    return this.#sinkUp()
+    return this.#sinkingDown()
   }
 
-  #sinkUp(i = 0): T | undefined {
+  remove(v: T) {
+    const i = this.#h.indexOf(v)
+    if (i === -1) return
+    this.#sinkingDown(i)
+  }
+
+  peek(): T | undefined {
+    return this.#h[0]
+  }
+
+  #sinkingDown(i = 0): T | undefined {
     const h = this.#h
 
     if (h.length <= 2) {
       const val = this.#h.splice(i, 1)[0]
-      this.#items.delete(val)
       return val
     }
 
     this.#swap(i, h.length - 1)
     const val = h.pop()
-    this.#items.delete(val!)
 
     while (true) {
       const l = 2 * i + 1
@@ -58,17 +59,6 @@ export class MinHeap<T = number> {
     return val
   }
 
-  remove(v: T) {
-    if (!this.#items.has(v)) return
-
-    const i = this.#h.indexOf(v)
-    this.#sinkUp(i)
-  }
-
-  peek(): T | undefined {
-    return this.#h[0]
-  }
-
   #swap(i: number, j: number) {
     const h = this.#h
     ;[h[i], h[j]] = [h[j], h[i]]
@@ -76,11 +66,8 @@ export class MinHeap<T = number> {
 
   *[Symbol.iterator]() {
     const h = [...this.#h]
-    const items = new Set(this.#items)
-
     while (this.#h.length) yield this.pop()
     this.#h = h
-    this.#items = items
   }
 }
 
