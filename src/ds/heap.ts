@@ -1,0 +1,107 @@
+export class MinHeap<T = number> {
+  #h: T[] = []
+  #items = new Set<T>()
+
+  get size() {
+    return this.#h.length
+  }
+
+  push(x: T) {
+    if (this.#items.has(x)) return
+    this.#items.add(x)
+
+    const h = this.#h
+
+    h.push(x)
+    if (h.length === 1) return
+
+    let i = h.length - 1
+
+    while (i !== undefined) {
+      const p = i >> 1
+
+      if (h[p] <= h[i]) return
+
+      this.#swap(i, p)
+      i = p
+    }
+  }
+
+  pop(): T | undefined {
+    return this.#sinkUp()
+  }
+
+  #sinkUp(i = 0): T | undefined {
+    const h = this.#h
+
+    if (h.length <= 2) {
+      const val = this.#h.splice(i, 1)[0]
+      this.#items.delete(val)
+      return val
+    }
+
+    this.#swap(i, h.length - 1)
+    const val = h.pop()
+    this.#items.delete(val!)
+
+    while (true) {
+      const l = 2 * i + 1
+      const r = 2 * i + 2
+      const child = h[l] && h[r] ? (h[l] <= h[r] ? l : r) : h[l] ? l : r
+
+      if (!h[child] || h[i] <= h[child]) break
+
+      this.#swap(i, child)
+      i = child
+    }
+
+    return val
+  }
+
+  remove(v: T) {
+    if (!this.#items.has(v)) return
+
+    const i = this.#h.indexOf(v)
+    this.#sinkUp(i)
+  }
+
+  peek(): T | undefined {
+    return this.#h[0]
+  }
+
+  #swap(i: number, j: number) {
+    const h = this.#h
+    ;[h[i], h[j]] = [h[j], h[i]]
+  }
+
+  *[Symbol.iterator]() {
+    const h = [...this.#h]
+    const items = new Set(this.#items)
+
+    while (this.#h.length) yield this.pop()
+    this.#h = h
+    this.#items = items
+  }
+}
+
+export class MaxHeap extends MinHeap {
+  push(x: number): void {
+    super.push(-x)
+  }
+
+  pop(): number | undefined {
+    const res = super.pop()
+    if (res === undefined) return
+    return -res
+  }
+
+  peek(): number | undefined {
+    const res = super.peek()
+    if (res === undefined) return
+    return -res
+  }
+
+  remove(v: number): void {
+    super.remove(-v)
+  }
+}
