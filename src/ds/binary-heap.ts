@@ -21,7 +21,7 @@ export class BinaryHeap<T = number> {
     min: (parent: number, child = Number.POSITIVE_INFINITY) => child >= parent,
   }
 
-  #values: T[] = []
+  #h: T[] = []
   #comparator: TComparator
   #selector: Selector
 
@@ -31,12 +31,12 @@ export class BinaryHeap<T = number> {
   }
 
   get size() {
-    return this.#values.length
+    return this.#h.length
   }
 
   push(val: T) {
-    this.#values.push(val)
-    let index = this.#values.length - 1
+    this.#h.push(val)
+    let index = this.#h.length - 1
 
     while (index) {
       const child = this.#getElement(index)!
@@ -51,21 +51,19 @@ export class BinaryHeap<T = number> {
   }
 
   pop() {
-    if (this.size <= 2) return this.#values.shift()
+    if (this.size <= 2) return this.#h.shift()
 
     this.#swapValues(0, this.size - 1)
-    const val = this.#values.pop()
+    const val = this.#h.pop()
 
     //  sinking down
     let index = 0
 
     while (true) {
       const parent = this.#getElement(index)!
-      const child = this.#getChildren(parent.index).reduce(
-        (left, right) => (left && this.#comparator(left.key, right!.key) ? left : right),
-        undefined
-      )
 
+      const [l, r] = this.#getChildren(parent.index)
+      const child = l && r ? (this.#comparator(l.key, r.key) ? l : r) : l ?? r
       const inOrder = !child || this.#comparator(parent.key, child.key)
       if (inOrder) break
 
@@ -77,7 +75,7 @@ export class BinaryHeap<T = number> {
   }
 
   peek() {
-    return this.#values[0]
+    return this.#h[0]
   }
 
   fill(values?: T[]) {
@@ -87,36 +85,38 @@ export class BinaryHeap<T = number> {
   }
 
   *[Symbol.iterator]() {
-    const values: T[] = [...this.#values]
+    const values: T[] = [...this.#h]
     while (this.size) yield this.pop()!
-    this.#values = values
+    this.#h = values
   }
 
   #inBounds(index: number) {
-    return 0 <= index && index < this.#values.length
+    return 0 <= index && index < this.#h.length
   }
 
   #getElement(index: number): MaybeUndefined<Element<T>> {
     if (!this.#inBounds(index)) return
 
-    const value = this.#values[index]
+    const value = this.#h[index]
     const key = this.#selector(value)
 
     return { index, key, value }
   }
 
   #getParent(index: number) {
-    index = (index - 1) >> 1
+    index = index >> 1
     return this.#getElement(index)
   }
 
   #getChildren(index: number) {
-    return [2 * index + 1, 2 * index + 2]
-      .filter((i) => this.#inBounds(i))
-      .map((i) => this.#getElement(i))
+    const l = 2 * index + 1
+    const r = 2 * index + 2
+
+    return [this.#getElement(l), this.#getElement(r)].filter(Boolean)
   }
 
   #swapValues(i: number, j: number) {
-    ;[this.#values[i], this.#values[j]] = [this.#values[j], this.#values[i]]
+    const a = this.#h
+    ;[a[i], a[j]] = [a[j], a[i]]
   }
 }
