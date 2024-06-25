@@ -45,7 +45,7 @@ export const createTree = (arg: string | Arr): TreeNode | null => {
   return createTreeFromArray(arg as Arr)
 }
 
-export const createTreeFromString = (s: string): TreeNode | null => {
+const createTreeFromString = (s: string): TreeNode | null => {
   if (!s || !s.length || s === '[]' || s === 'null') return null
 
   const entries: string[] = []
@@ -96,7 +96,7 @@ export const createTreeFromString = (s: string): TreeNode | null => {
   return new TreeNode(+value, createTreeFromString(left), createTreeFromString(right))
 }
 
-export function createTreeFromArray([root, left, right]: Arr): TreeNode | null {
+function createTreeFromArray([root, left, right]: Arr): TreeNode | null {
   if (typeof root !== 'number') return null
   if (!Array.isArray(left)) left = [left]
   if (!Array.isArray(right)) right = [right]
@@ -158,3 +158,77 @@ export const getTreeValues = (root: TreeNode | null, traverseOrder: TraverseOrde
 getTreeValues.preorder = (root: TreeNode | null) => getTreeValues(root, 'preorder')
 getTreeValues.inorder = (root: TreeNode | null) => getTreeValues(root, 'inorder')
 getTreeValues.postorder = (root: TreeNode | null) => getTreeValues(root, 'postorder')
+
+const treeToStrings = (tree: TreeNode | null, spaceChar: string, spacesCount: number) => {
+  if (!tree) return
+
+  let q: TreeNode[] = [tree]
+  const layers: (number | string)[][] = [[tree?.val]]
+
+  while (q.length) {
+    const qNext: TreeNode[] = []
+    const layer: number[] = []
+
+    for (const x of q) {
+      const { left, right } = x
+      if (left) qNext.push(left)
+      if (right) qNext.push(right)
+      layer.push(left?.val ?? NaN)
+      layer.push(right?.val ?? NaN)
+    }
+    q = qNext
+
+    const haveDigits = layer.some((x) => !isNaN(+x))
+    if (haveDigits) layers.push(layer)
+  }
+
+  let maxDigit = Math.max(
+    ...layers
+      .flat()
+      .filter((x) => !isNaN(+x))
+      .map(Number)
+  )
+
+  let itemWidth = String(maxDigit).length
+  for (const l of layers) {
+    for (let i = 0; i < l.length; i++) {
+      if (isNaN(+l[i])) {
+        l[i] = spaceChar.repeat(itemWidth)
+        continue
+      }
+
+      let ch = String(l[i])
+      const currentWidth = ch.length
+      const c = (itemWidth - currentWidth) >> 1
+      ch = spaceChar.repeat(c) + ch + spaceChar.repeat(c)
+      ch = spaceChar.repeat(itemWidth - ch.length) + ch
+      l[i] = ch
+    }
+  }
+
+  const maxItemsInRow = layers.at(-1)!.length
+  const rowWidth = maxItemsInRow * itemWidth + (maxItemsInRow - 1) * spacesCount
+
+  let str: string[] = []
+  for (const l of layers) {
+    const spaceWidth = Math.ceil((rowWidth - l.length * itemWidth) / (l.length + 1))
+    const space = spaceChar.repeat(spaceWidth)
+    let s = l.join(space)
+
+    const lastLayer = l === layers.at(-1)!
+    if (lastLayer) {
+      if (isNaN(+l[0])) s = space + s
+      if (isNaN(+l.at(-1)!)) s = s + space
+    } else s = space + s + space
+
+    str.push(s)
+  }
+
+  return str
+}
+
+export const visualizeTree = (tree: TreeNode | null, spaceChar = ' ', spacesCount = 2) => {
+  const treeRows = treeToStrings(tree, spaceChar, spacesCount) ?? []
+  const rows = ['', ...treeRows, '']
+  console.log(rows.join('\n'))
+}
