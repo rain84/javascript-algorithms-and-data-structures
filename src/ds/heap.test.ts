@@ -1,100 +1,85 @@
 import { random } from 'utils/array'
 import { MaxHeap, MinHeap } from './heap'
 
-let minHeap: MinHeap
-let maxHeap: MaxHeap
-let minSorted: number[]
-let maxSorted: number[]
+const heap: { min?: MinHeap; max?: MaxHeap } = {}
+const sorted: { min?: number[]; max?: number[] } = {}
 const input = [...new Set(random(10, 100))]
 
 beforeEach(() => {
-  minHeap = new MinHeap()
-  maxHeap = new MaxHeap()
-  minSorted = [...input]
-  maxSorted = [...input]
+  heap.min = new MinHeap()
+  heap.max = new MaxHeap()
+  sorted.min = [...input]
+  sorted.max = [...input]
+
   for (const x of input) {
-    minHeap.push(x)
-    maxHeap.push(x)
+    heap.min.push(x)
+    heap.max.push(x)
   }
-  minSorted.sort((a, b) => a - b)
-  maxSorted.sort((a, b) => b - a)
+
+  sorted.min.sort((a, b) => a - b)
+  sorted.max.sort((a, b) => b - a)
 })
 
-it('minHeap should have constructor()', () => {
-  minHeap = new MinHeap(input)
-  const h = [...minHeap]
-  expect(h).toMatchObject(minSorted)
+it('heap should have constructor()', () => {
+  heap.min = new MinHeap(input)
+  heap.max = new MaxHeap(input)
+  expect([...heap.min]).toMatchObject(sorted.min!)
+  expect([...heap.max]).toMatchObject(sorted.max!)
 })
 
-it('maxHeap should have constructor()', () => {
-  maxHeap = new MaxHeap(input)
-  const h = [...maxHeap]
-  expect(h).toMatchObject(maxSorted)
-})
-
-it('minHeap should work with a duplicated values', () => {
+it('heap should work with a duplicated values', () => {
   const a = [0, 0, 0, 2, 2, 2, 6, 9, 24]
-  minHeap = new MinHeap(a)
-  expect([...minHeap]).toMatchObject(a)
+  heap.min = new MinHeap(a)
+  heap.max = new MaxHeap(a)
+  sorted.min = [...a].sort((a, b) => a - b)
+  sorted.max = [...a].sort((a, b) => b - a)
+  expect([...heap.min]).toMatchObject(sorted.min!)
+  expect([...heap.max]).toMatchObject(sorted.max!)
 })
 
-it('maxHeap should work with a duplicated values', () => {
-  const a = [0, 0, 0, 2, 2, 2, 6, 9, 24]
-  maxHeap = new MaxHeap(a)
-  a.sort((a, b) => b - a)
-  expect([...maxHeap]).toMatchObject(a)
+it('heap should have .pop() && .push()', () => {
+  heap.min = new MinHeap()
+  heap.max = new MaxHeap()
+  heap.min.push(5)
+  heap.min.push(1)
+  heap.max.push(1)
+  heap.max.push(5)
+  expect(heap.min.pop()).toBe(1)
+  expect(heap.min.pop()).toBe(5)
+  expect(heap.min.pop()).toBeUndefined()
+  expect(heap.max.pop()).toBe(5)
+  expect(heap.max.pop()).toBe(1)
+  expect(heap.max.pop()).toBeUndefined()
 })
 
-it('minHeap should have .pop() && .push()', () => {
-  const h = [...minHeap]
-  expect(h).toMatchObject(minSorted)
-})
-
-it('maxHeap should have .pop() && .push()', () => {
-  const h = [...maxHeap]
-  expect(h).toMatchObject(maxSorted)
-})
-
-it('minHeap should have .remove()', () => {
+it('heap should have .remove()', () => {
   const a = input.splice(5, 1)[0]
   const b = input.splice(7, 1)[0]
-  minHeap.remove(a)
-  minHeap.remove(b)
-  const h = [...minHeap]
-  input.sort((a, b) => a - b)
-  expect(h.length).toBe(input.length)
-  expect(h).toMatchObject(input)
+  heap.min!.remove(a)
+  heap.min!.remove(b)
+  heap.max!.remove(a)
+  heap.max!.remove(b)
+  sorted.min = [...input]
+  sorted.max = [...input]
+  sorted.min.sort((a, b) => a - b)
+  sorted.max.sort((a, b) => b - a)
+
+  expect(heap.min?.size).toBe(input.length)
+  expect(heap.max?.size).toBe(input.length)
+  expect([...heap.min!]).toMatchObject(sorted.min)
+  expect([...heap.max!]).toMatchObject(sorted.max)
 })
 
-it('maxHeap should have .remove()', () => {
-  const a = input.splice(5, 1)[0]
-  const b = input.splice(7, 1)[0]
-  maxHeap.remove(a)
-  maxHeap.remove(b)
-  const h = [...maxHeap]
-  input.sort((a, b) => b - a)
-  expect(h.length).toBe(input.length)
-  expect(h).toMatchObject(input)
-})
-
-it('minHeap should have "size"-getter', () => {
-  expect(minHeap.size).toBe(input.length)
-  expect(maxHeap.size).toBe(input.length)
-})
-
-it('maxHeap should have "size"-getter', () => {
-  expect(minHeap.size).toBe(input.length)
-  expect(maxHeap.size).toBe(input.length)
+it('heap should have "size"-getter', () => {
+  expect(heap.min!.size).toBe(input.length)
+  expect(heap.max!.size).toBe(input.length)
 })
 
 it('minHeap should have "peek()"', () => {
-  const peeked = minHeap.peek()
-  expect(peeked === minHeap?.peek()).toBeTruthy()
-  expect(peeked === minHeap?.pop()).toBeTruthy()
-})
-
-it('maxHeap should have "peek()"', () => {
-  const peeked = maxHeap.peek()
-  expect(peeked === maxHeap?.peek()).toBeTruthy()
-  expect(peeked === maxHeap?.pop()).toBeTruthy()
+  let peeked = heap.min!.peek()
+  expect(peeked === heap.min!.peek()).toBeTruthy()
+  expect(peeked === heap.min!.pop()).toBeTruthy()
+  peeked = heap.max!.peek()
+  expect(peeked === heap.max!.peek()).toBeTruthy()
+  expect(peeked === heap.max!.pop()).toBeTruthy()
 })
