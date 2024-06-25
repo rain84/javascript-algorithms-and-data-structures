@@ -41,9 +41,15 @@ export class MinHeap<T = number> {
   #sinkingDown(i = 0): T | undefined {
     const h = this.#h
 
-    if (h.length <= 2) {
-      const val = this.#h.splice(i, 1)[0]
-      return val
+    if (h.length === 1) return h.pop()
+    if (h.length === 2) {
+      const i = h[0] < h[1] ? 0 : 1
+      return h.splice(i, 1)[0]
+    }
+
+    // get index of the last duplicated value
+    if (h[i] === h[i + 1]) {
+      while (h[i] === h[i + 1]) i++
     }
 
     this.#swap(i, h.length - 1)
@@ -52,12 +58,12 @@ export class MinHeap<T = number> {
     while (true) {
       const l = 2 * i + 1
       const r = 2 * i + 2
-      const child = h[l] && h[r] ? (h[l] <= h[r] ? l : r) : h[l] ? l : r
 
-      if (!h[child] || h[i] <= h[child]) break
+      if (!h[l] && !h[r]) break
+      const c = h[l] && h[r] ? (h[l] <= h[r] ? l : r) : h[l] ? l : r
 
-      this.#swap(i, child)
-      i = child
+      if (h[c] < h[i]) this.#swap(i, c)
+      i = c
     }
 
     return val
@@ -70,7 +76,7 @@ export class MinHeap<T = number> {
 
   *[Symbol.iterator]() {
     const h = [...this.#h]
-    while (this.#h.length) yield this.pop()
+    while (this.#h.length) yield this.pop()!
     this.#h = h
   }
 }

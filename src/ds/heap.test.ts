@@ -32,6 +32,19 @@ it('maxHeap should have constructor()', () => {
   expect(h).toMatchObject(maxSorted)
 })
 
+it('minHeap should work with a duplicated values', () => {
+  const a = [0, 0, 0, 2, 2, 2, 6, 9, 24]
+  minHeap = new MinHeap(a)
+  expect([...minHeap]).toMatchObject(a)
+})
+
+it('maxHeap should work with a duplicated values', () => {
+  const a = [0, 0, 0, 2, 2, 2, 6, 9, 24]
+  maxHeap = new MaxHeap(a)
+  a.sort((a, b) => b - a)
+  expect([...maxHeap]).toMatchObject(a)
+})
+
 it('minHeap should have .pop() && .push()', () => {
   const h = [...minHeap]
   expect(h).toMatchObject(minSorted)
