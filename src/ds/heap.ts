@@ -5,7 +5,7 @@ export class MinHeap<T = number> {
     if (arr) for (const x of arr) this.push(x)
   }
 
-  get size() {
+  get size(): number {
     return this.#h.length
   }
 
@@ -25,12 +25,32 @@ export class MinHeap<T = number> {
   }
 
   pop(): T | undefined {
-    return this.#sinkingDown()
+    const h = this.#h
+
+    if (h.length === 0) return
+    if (h.length === 1) return h.pop()
+    if (h.length === 2) {
+      const i = h[0] < h[1] ? 0 : 1
+      return h.splice(i, 1)[0]
+    }
+
+    const i = this.#adjustIndex(0)
+    this.#swap(i, this.#h.length - 1)
+    const val = this.#h.pop()
+
+    this.#sinkingDown(i)
+
+    return val
   }
 
   remove(v: T) {
-    const i = this.#h.indexOf(v)
+    let i = this.#h.indexOf(v)
     if (i === -1) return
+
+    i = this.#adjustIndex(i)
+    this.#swap(i, this.#h.length - 1)
+    this.#h.pop()
+
     this.#sinkingDown(i)
   }
 
@@ -38,22 +58,8 @@ export class MinHeap<T = number> {
     return this.#h[0]
   }
 
-  #sinkingDown(i = 0): T | undefined {
+  #sinkingDown(i = 0) {
     const h = this.#h
-
-    if (h.length === 1) return h.pop()
-    if (h.length === 2) {
-      const i = h[0] < h[1] ? 0 : 1
-      return h.splice(i, 1)[0]
-    }
-
-    // get index of the last duplicated value
-    if (h[i] === h[i + 1]) {
-      while (h[i] === h[i + 1]) i++
-    }
-
-    this.#swap(i, h.length - 1)
-    const val = h.pop()
 
     while (true) {
       const l = 2 * i + 1
@@ -65,8 +71,12 @@ export class MinHeap<T = number> {
       if (h[c] < h[i]) this.#swap(i, c)
       i = c
     }
+  }
 
-    return val
+  /** @description Get index of the last duplicated value, if such exist */
+  #adjustIndex(i: number): number {
+    while (this.#h[i] === this.#h[i + 1]) i++
+    return i
   }
 
   #swap(i: number, j: number) {
