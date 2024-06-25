@@ -20,6 +20,18 @@ beforeEach(() => {
   maxSorted.sort((a, b) => b - a)
 })
 
+it('minHeap should have constructor()', () => {
+  minHeap = new MinHeap(input)
+  const h = [...minHeap]
+  expect(h).toMatchObject(minSorted)
+})
+
+it('maxHeap should have constructor()', () => {
+  maxHeap = new MaxHeap(input)
+  const h = [...maxHeap]
+  expect(h).toMatchObject(maxSorted)
+})
+
 it('minHeap should have .pop() && .push()', () => {
   const h = [...minHeap]
   expect(h).toMatchObject(minSorted)

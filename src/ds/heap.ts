@@ -1,6 +1,10 @@
 export class MinHeap<T = number> {
   #h: T[] = []
 
+  constructor(arr?: T[]) {
+    if (arr) for (const x of arr) this.push(x)
+  }
+
   get size() {
     return this.#h.length
   }
