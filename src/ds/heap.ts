@@ -27,12 +27,7 @@ export class MinHeap<T = number> {
   pop(): T | undefined {
     const h = this.#h
 
-    if (h.length === 0) return
-    if (h.length === 1) return h.pop()
-    if (h.length === 2) {
-      const i = h[0] < h[1] ? 0 : 1
-      return h.splice(i, 1)[0]
-    }
+    if (h.length < 2) return h.shift()
 
     const i = this.#adjustIndex(0)
     this.#swap(i, this.#h.length - 1)

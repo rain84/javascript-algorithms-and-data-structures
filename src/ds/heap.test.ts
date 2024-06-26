@@ -83,3 +83,14 @@ it('minHeap should have "peek()"', () => {
   expect(peeked === heap.max!.peek()).toBeTruthy()
   expect(peeked === heap.max!.pop()).toBeTruthy()
 })
+
+it('should work', () => {
+  const a = [
+    316, 157, 73, 106, 771, 828, 46, 212, 926, 604, 600, 992, 71, 51, 477, 869, 425, 405, 859, 924,
+    45, 187, 283, 590, 303, 66, 508, 982, 464, 398,
+  ]
+
+  heap.min = new MinHeap(a)
+  a.sort((a, b) => a - b)
+  expect([...heap.min]).toMatchObject(a)
+})
