@@ -29,7 +29,8 @@
   },
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.24.1",
-    "@babel/preset-typescript": "^7.24.1"
+    "@babel/preset-typescript": "^7.24.1",
+    "@datastructures-js/priority-queue": "5.4.0"
   },
   "packageManager": "pnpm@9.1.0"
 }
