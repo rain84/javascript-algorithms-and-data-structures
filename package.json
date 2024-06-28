@@ -11,11 +11,11 @@
   "author": "Aleksandr Gerasimov <rainy_sky@mail.ru>",
   "license": "MIT",
   "devDependencies": {
-    "@biomejs/biome": "^1.7.3",
+    "@biomejs/biome": "^1.8.3",
     "@types/jest": "^29.5.12",
-    "@types/node": "20.12.12",
+    "@types/node": "20.14.9",
     "jest": "^29.7.0",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.4"
   },
   "type": "module",
   "nodemonConfig": {
@@ -28,9 +28,9 @@
     ]
   },
   "dependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.24.1",
-    "@babel/preset-typescript": "^7.24.1",
-    "@datastructures-js/priority-queue": "5.4.0"
+    "@babel/plugin-transform-modules-commonjs": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "@datastructures-js/priority-queue": "6.3.1"
   },
   "packageManager": "pnpm@9.1.0"
 }
