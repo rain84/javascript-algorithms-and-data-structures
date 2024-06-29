@@ -15,8 +15,8 @@ importers:
         specifier: ^7.24.7
         version: 7.24.7(@babel/core@7.24.5)
       '@datastructures-js/priority-queue':
-        specifier: 6.3.1
-        version: 6.3.1
+        specifier: 5.4.0
+        version: 5.4.0
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.8.3
@@ -393,11 +393,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@datastructures-js/heap@4.3.3':
-    resolution: {integrity: sha512-UcUu/DLh/aM4W3C8zZfwxxm6/6FIZUlm3mcAXuNOCa6Aj4iizNvNXQyb8DjZQH2jKSQbMRyNlngP6TPimuGjpQ==}
+  '@datastructures-js/heap@3.2.0':
+    resolution: {integrity: sha512-FcU5ZAyb+VIOZz1HABsJUsbJi2ZyUDO7aoe97hq4d3tK3z8nMgwdxf5bO0gafR0ExFi18YTspntqHLzt4XOgnA==}
 
-  '@datastructures-js/priority-queue@6.3.1':
-    resolution: {integrity: sha512-eoxkWql/j0VJ0UFMFTpnyJz4KbEEVQ6aZ/JuJUgenu0Im4tYKylAycNGsYCHGXiVNEd7OKGVwfx1Ac3oYkuu7A==}
+  '@datastructures-js/priority-queue@5.4.0':
+    resolution: {integrity: sha512-x+EkL8tjbwBMCUyVIwsOiKnWiOvMiFAIrnWQihcO42sUZ8uc4sRsJgHAS164wnibM2kVgQUJcfvhIdssBOzxRg==}
 
   '@istanbuljs/load-nyc-config@1.1.0':
     resolution: {integrity: sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ==}
@@ -1822,11 +1822,11 @@ snapshots:
   '@biomejs/cli-win32-x64@1.8.3':
     optional: true
 
-  '@datastructures-js/heap@4.3.3': {}
+  '@datastructures-js/heap@3.2.0': {}
 
-  '@datastructures-js/priority-queue@6.3.1':
+  '@datastructures-js/priority-queue@5.4.0':
     dependencies:
-      '@datastructures-js/heap': 4.3.3
+      '@datastructures-js/heap': 3.2.0
 
   '@istanbuljs/load-nyc-config@1.1.0':
     dependencies:
