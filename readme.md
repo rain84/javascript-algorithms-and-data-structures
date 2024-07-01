@@ -34,4 +34,4 @@ If "imports" will not work in the compiled js-files, do the following:
 
 ## Work in progress on: lc-0092
 
-## Test myself again on: lc-0330, lc-0658
+## Test myself again on: lc-0330, lc-0658, lc-1579
