@@ -1,4 +1,8 @@
-import { threeConsecutiveOdds, threeConsecutiveOdds2 } from './1550-threeConsecutiveOdds'
+import {
+  threeConsecutiveOdds,
+  threeConsecutiveOdds2,
+  threeConsecutiveOdds3,
+} from './1550-threeConsecutiveOdds'
 
 it.each(
   //  prettier-ignore
@@ -15,4 +19,5 @@ it.each(
 )('should work %#', (input, output) => {
   expect(threeConsecutiveOdds(input)).toBe(output)
   expect(threeConsecutiveOdds2(input)).toBe(output)
+  expect(threeConsecutiveOdds3(input)).toBe(output)
 })
