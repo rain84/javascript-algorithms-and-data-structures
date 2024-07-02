@@ -1,4 +1,4 @@
-import { partitionArray } from './2294-partitionArray'
+import { partitionArray, partitionArray2 } from './2294-partitionArray'
 
 it.each(
   //  prettier-ignore
@@ -18,4 +18,5 @@ it.each(
   ]
 )('should work %#', (nums, k, output) => {
   expect(partitionArray(nums, k)).toBe(output)
+  expect(partitionArray2(nums, k)).toBe(output)
 })
