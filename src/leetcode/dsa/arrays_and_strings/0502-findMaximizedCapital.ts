@@ -1,3 +1,4 @@
+import { MaxPriorityQueue, MinPriorityQueue } from '@datastructures-js/priority-queue'
 import { BinaryHeap } from 'ds/binary-heap'
 
 /**
@@ -17,15 +18,18 @@ export function findMaximizedCapital(
     projects[i] = [profits[i], capital[i]]
   }
 
-  const q1 = BinaryHeap.createMin<[number, number]>(([_, c]) => c)
-  const q2 = BinaryHeap.createMax<[number, number]>(([p]) => p)
-  q1.fill(projects)
+  const minCapital = new MinPriorityQueue<[number, number]>({ priority: ([_, c]) => c })
+  const maxProfit = new MaxPriorityQueue<[number, number]>({ priority: ([p]) => p })
+
+  for (const p of projects) {
+    minCapital.enqueue(p, p[1])
+  }
 
   while (k--) {
-    while (q1.size && q1.peek()[1] <= w) {
-      q2.push(q1.pop()!)
+    while (minCapital.size() && minCapital.front().element[1] <= w) {
+      maxProfit.enqueue(minCapital.dequeue().element)
     }
-    if (q2.size) w += q2.pop()![0]
+    if (maxProfit.size()) w += maxProfit.dequeue().element[0]
   }
 
   return w
