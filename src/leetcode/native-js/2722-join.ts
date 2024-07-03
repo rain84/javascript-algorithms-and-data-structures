@@ -1,6 +1,6 @@
 /**
  * 2722. Join Two Arrays by ID
- * {@link https://leetcode.com/problems/join-two-arrays-by-id/description/ | Link}
+ * {@link https://leetcode.com/problems/join-two-arrays-by-id/ | Link}
  */
 export function join(arr1: ArrayType[], arr2: ArrayType[]): ArrayType[] {
   const r = (acc: Obj, x: ArrayType): Obj => ((acc[x.id] = x), acc)

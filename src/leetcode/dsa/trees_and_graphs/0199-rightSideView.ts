@@ -3,7 +3,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 199. Binary Tree Right Side View
- * {@link https://leetcode.com/problems/binary-tree-right-side-view/description/ | Link}
+ * {@link https://leetcode.com/problems/binary-tree-right-side-view/ | Link}
  *
  */
 export function rightSideView(root: TreeNode | null): number[] {

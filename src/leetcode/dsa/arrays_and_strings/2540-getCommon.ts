@@ -1,6 +1,6 @@
 /**
  * 2540. Minimum Common Value
- * {@link https://leetcode.com/problems/minimum-common-value/description/ | Link}
+ * {@link https://leetcode.com/problems/minimum-common-value/ | Link}
  */
 export function getCommon(nums1: number[], nums2: number[]): number {
   let p1 = 0

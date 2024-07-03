@@ -1,6 +1,6 @@
 /**
  * 560. Subarray Sum Equals K
- * {@link https://leetcode.com/problems/subarray-sum-equals-k/description/ | Link}
+ * {@link https://leetcode.com/problems/subarray-sum-equals-k/ | Link}
  */
 export function subarraySum(nums: number[], k: number): number {
   const cnt = new Map([[0, 1]])

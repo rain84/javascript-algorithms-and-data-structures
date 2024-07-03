@@ -2,7 +2,7 @@ import { MaxPriorityQueue } from '@datastructures-js/priority-queue'
 
 /**
  * 658. Find K Closest Elements
- * {@link https://leetcode.com/problems/find-k-closest-elements/description/ | Link}
+ * {@link https://leetcode.com/problems/find-k-closest-elements/ | Link}
  */
 export function findClosestElements(arr: number[], k: number, x: number): number[] {
   const hash = new Map<number, number[]>()

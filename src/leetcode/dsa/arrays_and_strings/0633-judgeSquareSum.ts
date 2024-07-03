@@ -1,6 +1,6 @@
 /**
  * 633. Sum of Square Numbers
- * {@link https://leetcode.com/problems/sum-of-square-numbers/description/ | Link}
+ * {@link https://leetcode.com/problems/sum-of-square-numbers/ | Link}
  */
 export function judgeSquareSum(c: number): boolean {
   let [a, b] = [0, Math.sqrt(c) | 0]

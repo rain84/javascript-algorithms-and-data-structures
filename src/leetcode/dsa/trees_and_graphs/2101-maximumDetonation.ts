@@ -1,6 +1,6 @@
 /**
  * 2101. Detonate the Maximum Bombs
- * {@link https://leetcode.com/problems/detonate-the-maximum-bombs/description/ | Link}
+ * {@link https://leetcode.com/problems/detonate-the-maximum-bombs/ | Link}
  */
 export function maximumDetonation(bombs: number[][]): number {
   const n = bombs.length

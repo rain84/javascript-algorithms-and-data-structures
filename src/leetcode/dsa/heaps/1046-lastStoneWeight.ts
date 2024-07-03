@@ -2,7 +2,7 @@ import { MaxPriorityQueue } from '@datastructures-js/priority-queue'
 
 /**
  * 1046. Last Stone Weight
- * {@link https://leetcode.com/problems/last-stone-weight/description/ | Link}
+ * {@link https://leetcode.com/problems/last-stone-weight/ | Link}
  */
 export function lastStoneWeight(stones: number[]): number {
   const h = new MaxPriorityQueue<number>()

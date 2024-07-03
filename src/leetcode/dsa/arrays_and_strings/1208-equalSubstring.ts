@@ -1,6 +1,6 @@
 /**
  * 1208. Get Equal Substrings Within Budget
- * {@link https://leetcode.com/problems/get-equal-substrings-within-budget/description/ | Link}
+ * {@link https://leetcode.com/problems/get-equal-substrings-within-budget/ | Link}
  */
 export function equalSubstring(s: string, t: string, maxCost: number): number {
   const getCost = (i: number) => Math.abs(s[i].charCodeAt(0) - t[i].charCodeAt(0))

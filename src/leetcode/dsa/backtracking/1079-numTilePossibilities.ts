@@ -1,6 +1,6 @@
 /**
  * 1079. Letter Tile Possibilities
- * {@link https://leetcode.com/problems/letter-tile-possibilities/description/ | Link}
+ * {@link https://leetcode.com/problems/letter-tile-possibilities/ | Link}
  */
 export function numTilePossibilities(tiles: string): number {
   const set = new Set<string>()

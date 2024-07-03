@@ -1,6 +1,6 @@
 /**
  * 974. Subarray Sums Divisible by K
- * {@link https://leetcode.com/problems/subarray-sums-divisible-by-k/description/ | Link}
+ * {@link https://leetcode.com/problems/subarray-sums-divisible-by-k/ | Link}
  *
  * This task blew up my mind..
  */

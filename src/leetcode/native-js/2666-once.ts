@@ -1,6 +1,6 @@
 /**
  * 2666. Allow One Function Call
- * {@link https://leetcode.com/problems/allow-one-function-call/description/ | Link}
+ * {@link https://leetcode.com/problems/allow-one-function-call/ | Link}
  */
 export const once =
   (fn?: Fn): OnceFn =>

@@ -2,7 +2,7 @@ import { MaxPriorityQueue } from '@datastructures-js/priority-queue'
 
 /**
  * 215. Kth Largest Element in an Array
- * {@link https://leetcode.com/problems/kth-largest-element-in-an-array/description/ | Link}
+ * {@link https://leetcode.com/problems/kth-largest-element-in-an-array/ | Link}
  */
 /** Max Priority Heap sort */
 export function findKthLargest(nums: number[], k: number): number {

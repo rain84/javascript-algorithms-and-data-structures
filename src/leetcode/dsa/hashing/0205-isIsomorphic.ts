@@ -1,6 +1,6 @@
 /**
  * 205. Isomorphic Strings
- * {@link https://leetcode.com/problems/isomorphic-strings/description/ | Link}
+ * {@link https://leetcode.com/problems/isomorphic-strings/ | Link}
  */
 export function isIsomorphic(s: string, t: string): boolean {
   const mapS: Record<string, string> = {}

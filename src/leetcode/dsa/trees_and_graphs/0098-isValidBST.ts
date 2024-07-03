@@ -2,7 +2,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 98. Validate Binary Search Tree
- * {@link https://leetcode.com/problems/validate-binary-search-tree/description/ | Link}
+ * {@link https://leetcode.com/problems/validate-binary-search-tree/ | Link}
  *
  */
 export function isValidBST(root: TreeNode | null): boolean {

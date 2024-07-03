@@ -1,6 +1,6 @@
 /**
  * 127. Word Ladder
- * {@link https://leetcode.com/problems/word-ladder/description/ | Link}
+ * {@link https://leetcode.com/problems/word-ladder/ | Link}
  */
 export function ladderLength(beginWord: string, endWord: string, wordList: string[]): number {
   if (!wordList.includes(endWord)) return 0

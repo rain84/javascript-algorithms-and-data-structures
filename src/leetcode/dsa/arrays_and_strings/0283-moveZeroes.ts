@@ -1,6 +1,6 @@
 /**
  * 283. Move Zeroes
- * {@link https://leetcode.com/problems/move-zeroes/description/ | Link}
+ * {@link https://leetcode.com/problems/move-zeroes/ | Link}
  */
 export function moveZeroes(nums: number[]): void {
   const n = nums.length

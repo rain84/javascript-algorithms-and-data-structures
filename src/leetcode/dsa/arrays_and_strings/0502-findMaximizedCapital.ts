@@ -1,9 +1,8 @@
 import { MaxPriorityQueue, MinPriorityQueue } from '@datastructures-js/priority-queue'
-import { BinaryHeap } from 'ds/binary-heap'
 
 /**
  * 502. IPO
- * {@link https://leetcode.com/problems/ipo/description/ | Link}
+ * {@link https://leetcode.com/problems/ipo/ | Link}
  */
 export function findMaximizedCapital(
   k: number,

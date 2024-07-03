@@ -1,6 +1,6 @@
 /**
  * 1552. Magnetic Force Between Two Balls
- * {@link https://leetcode.com/problems/magnetic-force-between-two-balls/description/ | Link}
+ * {@link https://leetcode.com/problems/magnetic-force-between-two-balls/ | Link}
  */
 export function maxDistance(position: number[], m: number): number {
   position.sort((a, b) => a - b)

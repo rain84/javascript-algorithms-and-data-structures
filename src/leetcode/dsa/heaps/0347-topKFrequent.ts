@@ -2,7 +2,7 @@ import { MinPriorityQueue } from '@datastructures-js/priority-queue'
 
 /**
  * 347. Top K Frequent Elements
- * {@link https://leetcode.com/problems/top-k-frequent-elements/description/ | Link}
+ * {@link https://leetcode.com/problems/top-k-frequent-elements/ | Link}
  */
 export function topKFrequent(nums: number[], k: number): number[] {
   const res = Array<number>(k)

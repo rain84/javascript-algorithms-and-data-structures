@@ -1,6 +1,6 @@
 /**
  * 1129. Shortest Path with Alternating Colors
- * {@link https://leetcode.com/problems/shortest-path-with-alternating-colors/description/ | Link}
+ * {@link https://leetcode.com/problems/shortest-path-with-alternating-colors/ | Link}
  */
 export function shortestAlternatingPaths(
   n: number,

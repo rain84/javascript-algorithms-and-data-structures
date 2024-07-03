@@ -1,6 +1,6 @@
 /**
  * 525. Contiguous Array
- * {@link https://leetcode.com/problems/contiguous-array/description/ | Link}
+ * {@link https://leetcode.com/problems/contiguous-array/ | Link}
  *
  */
 export function findMaxLength(nums: number[]): number {

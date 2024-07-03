@@ -1,6 +1,6 @@
 /**
  * 2694. Event Emitter
- * {@link https://leetcode.com/problems/event-emitter/description/ | Link}
+ * {@link https://leetcode.com/problems/event-emitter/ | Link}
  */
 export class EventEmitter {
   #handlers = new Map<string, Callback[]>()

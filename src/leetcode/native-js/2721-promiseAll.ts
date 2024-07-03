@@ -1,6 +1,6 @@
 /**
  * 2721. Execute Asynchronous Functions in Parallel
- * {@link https://leetcode.com/problems/execute-asynchronous-functions-in-parallel/description/ | Link}
+ * {@link https://leetcode.com/problems/execute-asynchronous-functions-in-parallel/ | Link}
  */
 export const promiseAll = <T>(arr: Fn<T>[]): Promise<T[]> =>
   new Promise((resolve, reject) => {

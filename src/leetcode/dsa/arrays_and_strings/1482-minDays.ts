@@ -1,6 +1,6 @@
 /**
  * 1482. Minimum Number of Days to Make m Bouquets
- * {@link https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/description/ | Link}
+ * {@link https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/ | Link}
  */
 export function minDays(bloomDay: number[], m: number, k: number): number {
   const n = m * k

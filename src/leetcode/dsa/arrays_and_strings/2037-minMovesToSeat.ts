@@ -1,6 +1,6 @@
 /**
  * 2037. Minimum Number of Moves to Seat Everyone
- * {@link https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/description/ | Link}
+ * {@link https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/ | Link}
  */
 export function minMovesToSeat(seats: number[], students: number[]): number {
   seats.sort((a, b) => a - b)

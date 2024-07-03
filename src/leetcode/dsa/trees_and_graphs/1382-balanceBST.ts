@@ -2,7 +2,7 @@ import { TreeNode } from '../utils'
 
 /**
  * 1382. Balance a Binary Search Tree
- * {@link https://leetcode.com/problems/balance-a-binary-search-tree/description/ | Link}
+ * {@link https://leetcode.com/problems/balance-a-binary-search-tree/ | Link}
  */
 export function balanceBST(root: TreeNode | null): TreeNode | null {
   if (!root) return null

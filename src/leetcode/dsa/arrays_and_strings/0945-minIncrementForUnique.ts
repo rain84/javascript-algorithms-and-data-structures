@@ -1,6 +1,6 @@
 /**
  * 945. Minimum Increment to Make Array Unique
- * {@link https://leetcode.com/problems/minimum-increment-to-make-array-unique/description/ | Link}
+ * {@link https://leetcode.com/problems/minimum-increment-to-make-array-unique/ | Link}
  */
 export function minIncrementForUnique(nums: number[]): number {
   const n = Math.max(...nums) + 1 + nums.length

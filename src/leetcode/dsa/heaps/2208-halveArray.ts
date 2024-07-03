@@ -2,7 +2,7 @@ import { MaxPriorityQueue } from '@datastructures-js/priority-queue'
 
 /**
  * 2208. Minimum Operations to Halve Array Sum
- * {@link https://leetcode.com/problems/minimum-operations-to-halve-array-sum/description/ | Link}
+ * {@link https://leetcode.com/problems/minimum-operations-to-halve-array-sum/ | Link}
  */
 export function halveArray(nums: number[]): number {
   let sum = nums.reduce((a, b) => a + b) / 2

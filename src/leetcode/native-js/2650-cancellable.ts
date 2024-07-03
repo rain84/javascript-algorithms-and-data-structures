@@ -1,6 +1,6 @@
 /**
  * 2650. Design Cancellable Function
- * {@link https://leetcode.com/problems/design-cancellable-function/description/ | Link}
+ * {@link https://leetcode.com/problems/design-cancellable-function/ | Link}
  */
 export function cancellable<T>(
   // biome-ignore lint: no-explicit-any

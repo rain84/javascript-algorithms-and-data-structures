@@ -1,10 +1,10 @@
 /**
  * 658. Find K Closest Elements
- * {@link https://leetcode.com/problems/find-k-closest-elements/description/ | Link}
+ * {@link https://leetcode.com/problems/find-k-closest-elements/ | Link}
  */
 /**
  * 658. Find K Closest Elements
- * {@link https://leetcode.com/problems/find-k-closest-elements/description/ | Link}
+ * {@link https://leetcode.com/problems/find-k-closest-elements/ | Link}
  */
 /** Binary search */
 export function findClosestElements(arr: number[], k: number, x: number): number[] {

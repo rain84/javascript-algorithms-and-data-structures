@@ -1,6 +1,6 @@
 /**
  * 2368. Reachable Nodes With Restrictions
- * {@link https://leetcode.com/problems/reachable-nodes-with-restrictions/description/ | Link}
+ * {@link https://leetcode.com/problems/reachable-nodes-with-restrictions/ | Link}
  */
 export function reachableNodes(n: number, edges: number[][], restricted: number[]): number {
   const graph: number[][] = Array.from({ length: n }, () => [])

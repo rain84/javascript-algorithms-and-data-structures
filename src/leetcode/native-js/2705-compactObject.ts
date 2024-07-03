@@ -1,6 +1,6 @@
 /**
  * 2705. Compact Object
- * {@link https://leetcode.com/problems/compact-object/description/ | Link}
+ * {@link https://leetcode.com/problems/compact-object/ | Link}
  */
 
 /** Fastest one */

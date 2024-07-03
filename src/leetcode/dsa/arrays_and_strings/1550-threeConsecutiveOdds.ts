@@ -1,6 +1,6 @@
 /**
  * 1550. Three Consecutive Odds
- * {@link https://leetcode.com/problems/three-consecutive-odds/description/ | Link}
+ * {@link https://leetcode.com/problems/three-consecutive-odds/ | Link}
  */
 export function threeConsecutiveOdds(arr: number[]): boolean {
   const n = arr.length

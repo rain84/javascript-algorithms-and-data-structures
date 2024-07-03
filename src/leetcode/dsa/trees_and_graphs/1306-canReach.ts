@@ -1,6 +1,6 @@
 /**
  * 1306. Jump Game III
- * {@link https://leetcode.com/problems/jump-game-iii/description/ | Link}
+ * {@link https://leetcode.com/problems/jump-game-iii/ | Link}
  */
 export function canReach(arr: number[], start: number): boolean {
   const q = [start]

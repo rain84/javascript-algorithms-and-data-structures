@@ -1,6 +1,6 @@
 /**
  * 1293. Shortest Path in a Grid with Obstacles Elimination
- * {@link https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/description/ | Link}
+ * {@link https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/ | Link}
  */
 export function shortestPath(grid: number[][], k: number): number {
   const n = grid.length

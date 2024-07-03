@@ -1,6 +1,6 @@
 /**
  * 5. Sort Colors
- * {@link https://leetcode.com/problems/sort-colors/description/ | Link}
+ * {@link https://leetcode.com/problems/sort-colors/ | Link}
  */
 export function sortColors(nums: number[]): void {
   const cnt: number[] = [0, 0, 0]

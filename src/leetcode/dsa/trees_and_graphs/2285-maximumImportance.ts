@@ -1,6 +1,6 @@
 /**
  * 2285. Maximum Total Importance of Roads
- * {@link https://leetcode.com/problems/maximum-total-importance-of-roads/description/ | Link}
+ * {@link https://leetcode.com/problems/maximum-total-importance-of-roads/ | Link}
  */
 export function maximumImportance(n: number, roads: number[][]): number {
   const cnt = Array(n).fill(0)

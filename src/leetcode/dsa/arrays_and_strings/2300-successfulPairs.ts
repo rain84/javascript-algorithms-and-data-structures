@@ -1,6 +1,6 @@
 /**
  * 2300. Successful Pairs of Spells and Potions
- * {@link https://leetcode.com/problems/successful-pairs-of-spells-and-potions/description/ | Link}
+ * {@link https://leetcode.com/problems/successful-pairs-of-spells-and-potions/ | Link}
  */
 export function successfulPairs(spells: number[], potions: number[], success: number): number[] {
   const res: number[] = []

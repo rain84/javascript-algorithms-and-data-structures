@@ -1,6 +1,6 @@
 /**
  * 1002. Find Common Characters
- * {@link https://leetcode.com/problems/find-common-characters/description/ | Link}
+ * {@link https://leetcode.com/problems/find-common-characters/ | Link}
  */
 export function commonChars(words: string[]): string[] {
   const freq = Array(26).fill(Number.POSITIVE_INFINITY)

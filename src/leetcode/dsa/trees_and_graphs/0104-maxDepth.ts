@@ -2,7 +2,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 104. Maximum Depth of Binary Tree
- * {@link https://leetcode.com/problems/maximum-depth-of-binary-tree/description/ | Link}
+ * {@link https://leetcode.com/problems/maximum-depth-of-binary-tree/ | Link}
  *
  */
 export function maxDepth(root: TreeNode | null): number {

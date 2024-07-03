@@ -1,6 +1,6 @@
 /**
  * 1496. Path Crossing
- * {@link https://leetcode.com/problems/path-crossing/description/ | Link}
+ * {@link https://leetcode.com/problems/path-crossing/ | Link}
  */
 export function isPathCrossing(path: string): boolean {
   let [x, y] = [0, 0]

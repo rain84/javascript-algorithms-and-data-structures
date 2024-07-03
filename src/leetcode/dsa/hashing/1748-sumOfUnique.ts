@@ -1,6 +1,6 @@
 /**
  * 1748. Sum of Unique Elements
- * {@link https://leetcode.com/problems/sum-of-unique-elements/description/ | Link}
+ * {@link https://leetcode.com/problems/sum-of-unique-elements/ | Link}
  */
 export function sumOfUnique(nums: number[]): number {
   const entries: number[] = []

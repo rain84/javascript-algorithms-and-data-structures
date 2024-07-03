@@ -1,8 +1,8 @@
-import { TreeNode, createTree, visualizeTree } from '../utils'
+import { TreeNode } from '../utils'
 
 /**
  * 1038. Binary Search Tree to Greater Sum Tree
- * {@link https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/description/ | Link}
+ * {@link https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/ | Link}
  */
 export function bstToGst(root: TreeNode | null): TreeNode | null {
   const dfs = (node: TreeNode | null, sum = 0): number => {

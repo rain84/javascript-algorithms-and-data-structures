@@ -1,6 +1,6 @@
 /**
  * 881. Boats to Save People
- * {@link https://leetcode.com/problems/boats-to-save-people/description/ | Link}
+ * {@link https://leetcode.com/problems/boats-to-save-people/ | Link}
  */
 export function numRescueBoats(people: number[], limit: number): number {
   let [res, l, r] = [0, 0, people.length - 1]

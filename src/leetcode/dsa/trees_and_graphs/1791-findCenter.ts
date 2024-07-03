@@ -1,6 +1,6 @@
 /**
  * 1791. Find Center of Star Graph
- * {@link https://leetcode.com/problems/find-center-of-star-graph/description/ | Link}
+ * {@link https://leetcode.com/problems/find-center-of-star-graph/ | Link}
  */
 
 export function findCenter(edges: number[][]): number {

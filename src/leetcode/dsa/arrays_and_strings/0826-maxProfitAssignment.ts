@@ -1,6 +1,6 @@
 /**
  * 826. Most Profit Assigning Work
- * {@link https://leetcode.com/problems/most-profit-assigning-work/description/ | Link}
+ * {@link https://leetcode.com/problems/most-profit-assigning-work/ | Link}
  */
 export function maxProfitAssignment(
   difficulty: number[],

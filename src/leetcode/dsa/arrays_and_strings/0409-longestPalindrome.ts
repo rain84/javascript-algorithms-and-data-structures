@@ -1,6 +1,6 @@
 /**
  * 409. Longest Palindrome
- * {@link https://leetcode.com/problems/longest-palindrome/description | Link}
+ * {@link https://leetcode.com/problems/longest-palindrome/ | Link}
  */
 export function longestPalindrome(s: string): number {
   const odd: Record<string, number> = {}

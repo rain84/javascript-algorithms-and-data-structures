@@ -1,6 +1,6 @@
 /**
  * 973. K Closest Points to Origin
- * {@link https://leetcode.com/problems/k-closest-points-to-origin/description/ | Link}
+ * {@link https://leetcode.com/problems/k-closest-points-to-origin/ | Link}
  *
  * Solved with binary search (1) and sort approaches (2)
  *

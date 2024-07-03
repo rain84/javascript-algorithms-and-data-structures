@@ -1,6 +1,6 @@
 /**
  * 846. Hand of Straights
- * {@link https://leetcode.com/problems/hand-of-straights/description/ | Link}
+ * {@link https://leetcode.com/problems/hand-of-straights/ | Link}
  */
 export function isNStraightHand(hand: number[], groupSize: number) {
   const cnt: Record<number, number> = {}

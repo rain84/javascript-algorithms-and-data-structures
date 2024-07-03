@@ -1,6 +1,6 @@
 /**
  * 330. Patching Array
- * {@link https://leetcode.com/problems/patching-array/description/ | Link
+ * {@link https://leetcode.com/problems/patching-array/ | Link
  */
 export function minPatches(nums: number[], n: number): number {
   let x = 1

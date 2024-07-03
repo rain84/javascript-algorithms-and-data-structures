@@ -1,6 +1,6 @@
 /**
  * 1051. Height Checker
- * {@link https://leetcode.com/problems/height-checker/description/ | Link}
+ * {@link https://leetcode.com/problems/height-checker/ | Link}
  */
 export function heightChecker2(heights: number[]): number {
   const cnt = Array(101).fill(0)

@@ -1,6 +1,6 @@
 /**
  * 1207. Unique Number of Occurrences
- * {@link https://leetcode.com/problems/unique-number-of-occurrences/description/ | Link}
+ * {@link https://leetcode.com/problems/unique-number-of-occurrences/ | Link}
  */
 export function uniqueOccurrences(arr: number[]): boolean {
   const hash = new Map<number, number>()

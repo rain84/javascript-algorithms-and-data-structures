@@ -1,6 +1,6 @@
 /**
  * 1196. How Many Apples Can You Put into the Basket
- * {@link https://leetcode.com/problems/how-many-apples-can-you-put-into-the-basket/description/ | Link}
+ * {@link https://leetcode.com/problems/how-many-apples-can-you-put-into-the-basket/ | Link}
  */
 export function maxNumberOfApples(weight: number[]): number {
   let [res, sum] = [0, 0]

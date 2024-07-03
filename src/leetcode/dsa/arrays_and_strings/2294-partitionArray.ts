@@ -1,6 +1,6 @@
 /**
  * 2294. Partition Array Such That Maximum Difference Is K
- * {@link https://leetcode.com/problems/partition-array-such-that-maximum-difference-is-k/description/ | Link}
+ * {@link https://leetcode.com/problems/partition-array-such-that-maximum-difference-is-k/ | Link}
  */
 export function partitionArray(nums: number[], k: number): number {
   let c = 0

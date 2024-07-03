@@ -1,6 +1,6 @@
 /**
  * 542. 01 Matrix
- * {@link https://leetcode.com/problems/01-matrix/description/ | Link}
+ * {@link https://leetcode.com/problems/01-matrix/ | Link}
  */
 export function updateMatrix(mat: number[][]): number[][] {
   let q: [number, number][] = []

@@ -2,7 +2,7 @@ import type { TreeNode } from '../utils'
 
 /**
  * 863. All Nodes Distance K in Binary Tree
- * {@link https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/description/ | Link}
+ * {@link https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/ | Link}
  */
 export function distanceK(root: TreeNode | null, target: TreeNode | null, k: number): number[] {
   if (!root) return [0]

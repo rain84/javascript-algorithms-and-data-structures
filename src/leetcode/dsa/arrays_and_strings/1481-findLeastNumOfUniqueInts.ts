@@ -1,6 +1,6 @@
 /**
  * 1481. Least Number of Unique Integers after K Removals
- * {@link https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/description/ | Link}
+ * {@link https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/ | Link}
  */
 export function findLeastNumOfUniqueInts(arr: number[], k: number): number {
   const cnt: Map<number, number> = new Map()

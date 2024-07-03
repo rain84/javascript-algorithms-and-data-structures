@@ -1,6 +1,6 @@
 /**
  * 841. Keys and Rooms
- * {@link https://leetcode.com/problems/keys-and-rooms/description/ | Link}
+ * {@link https://leetcode.com/problems/keys-and-rooms/ | Link}
  */
 
 /** DFS */

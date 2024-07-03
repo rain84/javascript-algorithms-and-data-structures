@@ -1,6 +1,6 @@
 /**
  * 88. Merge Sorted Array
- * {@link https://leetcode.com/problems/merge-sorted-array/description/ | Link}
+ * {@link https://leetcode.com/problems/merge-sorted-array/ | Link}
  * Do not return anything, modify nums1 in-place instead.
  */
 export function merge(nums1: number[], m: number, nums2: number[], n: number): void {

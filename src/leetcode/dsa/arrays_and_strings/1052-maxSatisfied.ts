@@ -1,6 +1,6 @@
 /**
  * 1052. Grumpy Bookstore Owner
- * {@link https://leetcode.com/problems/grumpy-bookstore-owner/description/ | Link}
+ * {@link https://leetcode.com/problems/grumpy-bookstore-owner/ | Link}
  */
 export function maxSatisfied(customers: number[], grumpy: number[], minutes: number): number {
   const n = customers.length

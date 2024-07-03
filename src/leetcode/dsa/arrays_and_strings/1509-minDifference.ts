@@ -1,6 +1,6 @@
 /**
  * 1509. Minimum Difference Between Largest and Smallest Value in Three Moves
- * {@link https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves/description/ | Link}
+ * {@link https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves/ | Link}
  */
 export function minDifference(nums: number[]): number {
   if (nums.length < 5) return 0

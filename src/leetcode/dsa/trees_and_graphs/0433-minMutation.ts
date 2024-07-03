@@ -1,6 +1,6 @@
 /**
  * 433. Minimum Genetic Mutation
- * {@link https://leetcode.com/problems/minimum-genetic-mutation/description/ | Link}
+ * {@link https://leetcode.com/problems/minimum-genetic-mutation/ | Link}
  */
 export function minMutation(startGene: string, endGene: string, bank: string[]): number {
   const seen = new Set<string>()

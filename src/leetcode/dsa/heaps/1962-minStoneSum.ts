@@ -2,7 +2,7 @@ import { MaxPriorityQueue } from '@datastructures-js/priority-queue'
 
 /**
  * 1962. Remove Stones to Minimize the Total
- * {@link https://leetcode.com/problems/remove-stones-to-minimize-the-total/description/ | Link}
+ * {@link https://leetcode.com/problems/remove-stones-to-minimize-the-total/ | Link}
  */
 export function minStoneSum(piles: number[], k: number): number {
   const maxQ = new MaxPriorityQueue<number>()

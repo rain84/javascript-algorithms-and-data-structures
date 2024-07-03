@@ -1,6 +1,6 @@
 /**
  * 704. Binary Search
- * {@link https://leetcode.com/problems/binary-search/description/ | Link}
+ * {@link https://leetcode.com/problems/binary-search/ | Link}
  */
 export function search(nums: number[], target: number): number {
   let [l, r] = [0, nums.length - 1]

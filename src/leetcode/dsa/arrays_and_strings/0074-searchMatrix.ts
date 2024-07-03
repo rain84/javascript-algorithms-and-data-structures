@@ -1,6 +1,6 @@
 /**
  * 74. Search a 2D Matrix
- * {@link https://leetcode.com/problems/search-a-2d-matrix/description/ | Link}
+ * {@link https://leetcode.com/problems/search-a-2d-matrix/ | Link}
  */
 export function searchMatrix(matrix: number[][], target: number): boolean {
   const [m, n] = [matrix.length, matrix[0].length]

@@ -1,6 +1,6 @@
 /**
  * 1394. Find Lucky Integer in an Array
- * {@link https://leetcode.com/problems/find-lucky-integer-in-an-array/description/ | Link}
+ * {@link https://leetcode.com/problems/find-lucky-integer-in-an-array/ | Link}
  */
 export function findLucky(arr: number[]): number {
   const hash: Record<number, number> = {}

@@ -1,6 +1,6 @@
 /**
  * 3110. Score of a String
- * {@link https://leetcode.com/problems/score-of-a-string/description/ | Link}
+ * {@link https://leetcode.com/problems/score-of-a-string/ | Link}
  */
 export function scoreOfString(s: string): number {
   let res = 0

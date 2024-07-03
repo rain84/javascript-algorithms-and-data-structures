@@ -1,6 +1,6 @@
 /**
  * 1122. Relative Sort Array
- * {@link https://leetcode.com/problems/relative-sort-array/description/ | Link}
+ * {@link https://leetcode.com/problems/relative-sort-array/ | Link}
  */
 export function relativeSortArray(arr1: number[], arr2: number[]): number[] {
   const cnt = Array(1001).fill(0)

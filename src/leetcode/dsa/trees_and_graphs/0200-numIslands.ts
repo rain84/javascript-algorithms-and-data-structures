@@ -1,6 +1,6 @@
 /**
  *  200. Number of Islands
- *  {@link https://leetcode.com/problems/number-of-islands/description/ | Link}
+ *  {@link https://leetcode.com/problems/number-of-islands/ | Link}
  */
 
 export function numIslands(grid: string[][]): number {

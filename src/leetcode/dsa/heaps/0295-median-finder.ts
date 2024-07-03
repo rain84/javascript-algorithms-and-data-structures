@@ -1,7 +1,7 @@
 import { MaxPriorityQueue, MinPriorityQueue } from '@datastructures-js/priority-queue'
 /**
  * 295. Find Median from Data Stream
- * {@link https://leetcode.com/problems/find-median-from-data-stream/description/ | Link}
+ * {@link https://leetcode.com/problems/find-median-from-data-stream/ | Link}
  */
 export class MedianFinder {
   #minQ = new MinPriorityQueue<number>()

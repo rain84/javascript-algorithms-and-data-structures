@@ -1,7 +1,7 @@
 import type { TreeNode } from '../utils'
 /**
  * 270. Closest Binary Search Tree Value
- *  {@link https://leetcode.com/problems/closest-binary-search-tree-value/description/ | Link}
+ *  {@link https://leetcode.com/problems/closest-binary-search-tree-value/ | Link}
  *
  * 1st solution (closestValue) is better by the speed
  * than 2nd (closestValue2)

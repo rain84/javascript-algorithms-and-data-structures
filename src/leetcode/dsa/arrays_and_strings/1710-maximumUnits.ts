@@ -1,6 +1,6 @@
 /**
  * 1710. Maximum Units on a Truck
- * {@link https://leetcode.com/problems/maximum-units-on-a-truck/description/ | Link}
+ * {@link https://leetcode.com/problems/maximum-units-on-a-truck/ | Link}
  */
 export function maximumUnits(boxTypes: number[][], truckSize: number): number {
   boxTypes.sort(([_, a], [__, b]) => b - a)

@@ -2,7 +2,7 @@ import { MaxHeap, MinHeap } from 'ds/heap'
 
 /**
  * 1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
- * {@link https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/description/ | Link}
+ * {@link https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/ | Link}
  */
 export function longestSubarray(nums: number[], limit: number): number {
   let [res, l, r, n] = [0, 0, 0, nums.length]

@@ -1,6 +1,6 @@
 /**
  * 2126. Destroying Asteroids
- * {@link https://leetcode.com/problems/destroying-asteroids/description/ | Link}
+ * {@link https://leetcode.com/problems/destroying-asteroids/ | Link}
  */
 export function asteroidsDestroyed(mass: number, asteroids: number[]): boolean {
   asteroids.sort((a, b) => a - b)

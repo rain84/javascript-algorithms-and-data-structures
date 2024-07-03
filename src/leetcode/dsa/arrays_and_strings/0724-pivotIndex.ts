@@ -1,6 +1,6 @@
 /**
  * 724. Find Pivot Index
- * {@link https://leetcode.com/problems/find-pivot-index/description/ | Link}
+ * {@link https://leetcode.com/problems/find-pivot-index/ | Link}
  */
 export function pivotIndex(nums: number[]): number {
   const n = nums.length

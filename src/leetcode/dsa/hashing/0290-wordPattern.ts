@@ -1,6 +1,6 @@
 /**
  * 290. Word Pattern
- * {@link https://leetcode.com/problems/word-pattern/description/ | Link}
+ * {@link https://leetcode.com/problems/word-pattern/ | Link}
  */
 export function wordPattern(pattern: string, s: string): boolean {
   const hash: Record<string, string> = Object.create(null)

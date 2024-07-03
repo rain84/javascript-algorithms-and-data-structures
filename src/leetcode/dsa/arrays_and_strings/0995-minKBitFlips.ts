@@ -1,6 +1,6 @@
 /**
  * 995. Minimum Number of K Consecutive Bit Flips
- * {@link https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/description/ | Link}
+ * {@link https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/ | Link}
  */
 export function minKBitFlips(nums: number[], k: number): number {
   const n = nums.length

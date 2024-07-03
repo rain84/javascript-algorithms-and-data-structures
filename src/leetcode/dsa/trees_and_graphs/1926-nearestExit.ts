@@ -1,6 +1,6 @@
 /**
  * 1926. Nearest Exit from Entrance in Maze
- * {@link https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/description/ | Link}
+ * {@link https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/ | Link}
  */
 export function nearestExit(maze: string[][], entrance: number[]): number {
   const m = maze.length

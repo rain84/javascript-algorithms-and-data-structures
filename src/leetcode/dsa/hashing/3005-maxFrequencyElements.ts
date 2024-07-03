@@ -1,6 +1,6 @@
 /**
  * 3005. Count Elements With Maximum Frequency
- * {@link https://leetcode.com/problems/count-elements-with-maximum-frequency/description/ | Link}
+ * {@link https://leetcode.com/problems/count-elements-with-maximum-frequency/ | Link}
  */
 export function maxFrequencyElements(nums: number[]): number {
   const hash: Record<number, number> = {}

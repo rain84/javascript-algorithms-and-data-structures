@@ -1,7 +1,7 @@
 import { MinPriorityQueue } from '@datastructures-js/priority-queue'
 /**
  * 1167. Minimum Cost to Connect Sticks
- * {@link https://leetcode.com/problems/minimum-cost-to-connect-sticks/description/ | Link}
+ * {@link https://leetcode.com/problems/minimum-cost-to-connect-sticks/ | Link}
  */
 export function connectSticks(sticks: number[]): number {
   const pq = new MinPriorityQueue<number>()

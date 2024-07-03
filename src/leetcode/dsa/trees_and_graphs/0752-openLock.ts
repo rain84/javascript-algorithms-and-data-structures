@@ -1,6 +1,6 @@
 /**
  * 752. Open the Lock
- * {@link https://leetcode.com/problems/open-the-lock/description/ | Link}
+ * {@link https://leetcode.com/problems/open-the-lock/ | Link}
  */
 export function openLock(deadends: string[], target: string): number {
   const seen = Array<boolean>(10_000)

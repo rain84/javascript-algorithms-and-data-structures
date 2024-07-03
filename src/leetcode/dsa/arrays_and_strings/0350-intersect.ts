@@ -1,6 +1,6 @@
 /**
  * 350. Intersection of Two Arrays II
- * {@link https://leetcode.com/problems/intersection-of-two-arrays-ii/description/ | Link}
+ * {@link https://leetcode.com/problems/intersection-of-two-arrays-ii/ | Link}
  */
 export function intersect(nums1: number[], nums2: number[]): number[] {
   const res: number[] = []

@@ -1,6 +1,6 @@
 /**
  * 1338. Reduce Array Size to The Half
- * {@link https://leetcode.com/problems/reduce-array-size-to-the-half/description/ | Link}
+ * {@link https://leetcode.com/problems/reduce-array-size-to-the-half/ | Link}
  */
 export function minSetSize(arr: number[]): number {
   const cnt: Record<number, number> = {}

@@ -1,6 +1,6 @@
 /**
  * 2637. Promise Time Limit
- * {@link https://leetcode.com/problems/promise-time-limit/description/ | Link}
+ * {@link https://leetcode.com/problems/promise-time-limit/ | Link}
  */
 export const timeLimit =
   (fn: Fn, t: number): Fn =>

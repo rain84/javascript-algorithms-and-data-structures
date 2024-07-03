@@ -1,6 +1,6 @@
 /**
  * 323. Number of Connected Components in an Undirected Graph
- * {@link https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/description/ | Link}
+ * {@link https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/ | Link}
  */
 export function countComponents(n: number, edges: number[][]): number {
   const graph: number[][] = Array.from({ length: n }, () => [])

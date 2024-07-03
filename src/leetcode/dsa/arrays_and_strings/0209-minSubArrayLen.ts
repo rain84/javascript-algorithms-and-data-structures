@@ -1,6 +1,6 @@
 /**
  * 209. Minimum Size Subarray Sum
- * {@link https://leetcode.com/problems/minimum-size-subarray-sum/description/ | Link}
+ * {@link https://leetcode.com/problems/minimum-size-subarray-sum/ | Link}
  */
 export function minSubArrayLen(target: number, nums: number[]): number {
   let res = Number.POSITIVE_INFINITY

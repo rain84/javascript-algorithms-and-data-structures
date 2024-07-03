@@ -1,6 +1,6 @@
 /**
  * 399. Evaluate Division
- * {@link https://leetcode.com/problems/evaluate-division/description/ | Link}
+ * {@link https://leetcode.com/problems/evaluate-division/ | Link}
  */
 export function calcEquation(
   equations: string[][],

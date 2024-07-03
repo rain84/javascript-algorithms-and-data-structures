@@ -1,6 +1,6 @@
 /**
  * 35. Search Insert Position
- * {@link https://leetcode.com/problems/search-insert-position/description/ | Link}
+ * {@link https://leetcode.com/problems/search-insert-position/ | Link}
  */
 export function searchInsert(nums: number[], target: number): number {
   let [l, r] = [0, nums.length - 1]

@@ -2,7 +2,7 @@ import { MinPriorityQueue } from '@datastructures-js/priority-queue'
 
 /**
  * 973. K Closest Points to Origin
- * {@link https://leetcode.com/problems/k-closest-points-to-origin/description/ | Link}
+ * {@link https://leetcode.com/problems/k-closest-points-to-origin/ | Link}
  */
 export function kClosest(points: number[][], k: number): number[][] {
   const minPQ = new MinPriorityQueue<[number, number]>()
