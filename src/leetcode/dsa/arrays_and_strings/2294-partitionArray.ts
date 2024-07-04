@@ -3,6 +3,8 @@
  * {@link https://leetcode.com/problems/partition-array-such-that-maximum-difference-is-k/ | Link}
  */
 export function partitionArray(nums: number[], k: number): number {
+  if (k === 0) return new Set(nums).size
+
   let c = 0
 
   while (nums.length) {
