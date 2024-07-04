@@ -1,30 +1,3 @@
-export class ListNode<T = number> {
-  val: T
-  next: ListNode<T> | null
-
-  constructor(val: T, next?: ListNode<T> | null) {
-    this.val = val
-    this.next = next ?? null
-  }
-}
-
-export function createLinkedList<T = number>([head, ...tail]: T[]): ListNode<T> {
-  if (tail.length === 0) return new ListNode(head)
-
-  return new ListNode<T>(head, createLinkedList<T>(tail))
-}
-
-export function toArray<T = number>(node: ListNode<T> | null): T[] {
-  const res: T[] = []
-
-  while (node) {
-    res.push(node.val)
-    node = node.next
-  }
-
-  return res
-}
-
 export class TreeNode {
   constructor(
     public val = 0,
@@ -173,26 +146,26 @@ const treeToStrings = (tree: TreeNode | null, spaceChar: string, spacesCount: nu
       const { left, right } = x
       if (left) qNext.push(left)
       if (right) qNext.push(right)
-      layer.push(left?.val ?? NaN)
-      layer.push(right?.val ?? NaN)
+      layer.push(left?.val ?? Number.NaN)
+      layer.push(right?.val ?? Number.NaN)
     }
     q = qNext
 
-    const haveDigits = layer.some((x) => !isNaN(+x))
+    const haveDigits = layer.some((x) => !Number.isNaN(+x))
     if (haveDigits) layers.push(layer)
   }
 
-  let maxDigit = Math.max(
+  const maxDigit = Math.max(
     ...layers
       .flat()
-      .filter((x) => !isNaN(+x))
+      .filter((x) => !Number.isNaN(+x))
       .map(Number)
   )
 
-  let itemWidth = String(maxDigit).length
+  const itemWidth = String(maxDigit).length
   for (const l of layers) {
     for (let i = 0; i < l.length; i++) {
-      if (isNaN(+l[i])) {
+      if (Number.isNaN(+l[i])) {
         l[i] = spaceChar.repeat(itemWidth)
         continue
       }
@@ -209,7 +182,7 @@ const treeToStrings = (tree: TreeNode | null, spaceChar: string, spacesCount: nu
   const maxItemsInRow = layers.at(-1)!.length
   const rowWidth = maxItemsInRow * itemWidth + (maxItemsInRow - 1) * spacesCount
 
-  let str: string[] = []
+  const str: string[] = []
   for (const l of layers) {
     const spaceWidth = Math.ceil((rowWidth - l.length * itemWidth) / (l.length + 1))
     const space = spaceChar.repeat(spaceWidth)
@@ -217,8 +190,8 @@ const treeToStrings = (tree: TreeNode | null, spaceChar: string, spacesCount: nu
 
     const lastLayer = l === layers.at(-1)!
     if (lastLayer) {
-      if (isNaN(+l[0])) s = space + s
-      if (isNaN(+l.at(-1)!)) s = s + space
+      if (Number.isNaN(+l[0])) s = space + s
+      if (Number.isNaN(+l.at(-1)!)) s = s + space
     } else s = space + s + space
 
     str.push(s)

@@ -1,6 +1,6 @@
 # Utils
 
-1. `createLinkedList()` - create LinkedList from array of values
+1. `create()` - create LinkedList from array of values
 2. `toArray` - create array of values from LinkedList
 3. `createTree` - create Binary Tree from string or array
 4. `getTreeValues()` - get array of tree-values using preorder/inorder/postorder- traverse
