@@ -1,4 +1,4 @@
-import { createTree, getTreeValues } from '../utils'
+import { createTree, getTreeValues } from '../utils/tree'
 import { insertIntoBST } from './0701-insertIntoBST'
 
 it('should work 1', () => {

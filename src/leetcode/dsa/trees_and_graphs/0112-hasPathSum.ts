@@ -1,4 +1,4 @@
-import type { TreeNode } from '../utils'
+import type { TreeNode } from '../utils/tree'
 
 /**
  * 112. Path Sum

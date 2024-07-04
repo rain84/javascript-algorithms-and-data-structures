@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { closestValue } from './0270-closestValue'
 
 it('should work 1', () => {

@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { lowestCommonAncestor } from './0236-lowestCommonAncestor'
 
 it('should work 1', () => {

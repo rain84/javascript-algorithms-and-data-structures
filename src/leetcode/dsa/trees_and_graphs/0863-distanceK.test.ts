@@ -1,4 +1,4 @@
-import { TreeNode, createTree } from '../utils'
+import { TreeNode, createTree } from '../utils/tree'
 import { distanceK } from './0863-distanceK'
 
 it('should work 1', () => {

@@ -1,5 +1,5 @@
 import { isDefined } from 'typescript/utils'
-import type { TreeNode } from '../utils'
+import type { TreeNode } from '../utils/tree'
 
 /**
  * 199. Binary Tree Right Side View

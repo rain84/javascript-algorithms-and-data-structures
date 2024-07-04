@@ -1,4 +1,4 @@
-import type { ListNode } from '../utils'
+import type { ListNode } from '../utils/tree'
 
 /**
  * 141. Linked List Cycle

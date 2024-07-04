@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { goodNodes } from './1448-goodNodes'
 
 it('should work 1', () => {

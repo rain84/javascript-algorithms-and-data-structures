@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { deepestLeavesSum } from './1302-deepestLeavesSum'
 
 it('should work 1', () => {

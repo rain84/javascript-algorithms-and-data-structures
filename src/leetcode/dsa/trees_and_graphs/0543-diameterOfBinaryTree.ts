@@ -1,4 +1,4 @@
-import type { TreeNode } from '../utils'
+import type { TreeNode } from '../utils/tree'
 
 /**
  * 543. Diameter of Binary Tree

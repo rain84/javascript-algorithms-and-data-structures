@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { minDepth } from './0111-minDepth'
 
 it('should work 1', () => {

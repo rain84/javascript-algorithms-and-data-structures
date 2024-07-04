@@ -1,4 +1,4 @@
-import type { TreeNode } from '../utils'
+import type { TreeNode } from '../utils/tree'
 
 /**
  * 530. Minimum Absolute Difference in BST

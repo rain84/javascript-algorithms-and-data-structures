@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { rangeSumBST } from './0938-rangeSumBST'
 
 it('should work 1', () => {

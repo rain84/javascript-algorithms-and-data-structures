@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { isSameTree } from './0100-isSameTree'
 
 it('should work 1', () => {

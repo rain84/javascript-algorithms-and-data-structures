@@ -1,4 +1,4 @@
-import type { TreeNode } from '../utils'
+import type { TreeNode } from '../utils/tree'
 /**
  * 270. Closest Binary Search Tree Value
  *  {@link https://leetcode.com/problems/closest-binary-search-tree-value/ | Link}

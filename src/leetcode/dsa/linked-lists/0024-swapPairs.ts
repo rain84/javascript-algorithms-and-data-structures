@@ -1,4 +1,4 @@
-import type { ListNode } from '../utils'
+import type { ListNode } from '../utils/tree'
 
 /**
  * 24. Swap Nodes in Pairs

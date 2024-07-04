@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { maxDepth } from './0104-maxDepth'
 
 it('should work 1', () => {

@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { zigzagLevelOrder } from './0103-zigzagLevelOrder'
 
 it('should work 1', () => {

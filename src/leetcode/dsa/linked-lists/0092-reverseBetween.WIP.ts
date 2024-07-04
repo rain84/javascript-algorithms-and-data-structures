@@ -1,4 +1,4 @@
-import type { ListNode } from '../utils'
+import type { ListNode } from '../utils/tree'
 
 /**
  * 92. Reverse Linked List II

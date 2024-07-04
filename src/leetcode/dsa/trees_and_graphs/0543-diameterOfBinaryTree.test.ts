@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { diameterOfBinaryTree } from './0543-diameterOfBinaryTree'
 
 it('should work 1', () => {

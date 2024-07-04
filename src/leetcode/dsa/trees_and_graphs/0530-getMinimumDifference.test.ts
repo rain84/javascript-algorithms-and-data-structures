@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { getMinimumDifference } from './0530-getMinimumDifference'
 
 it('should work 1', () => {

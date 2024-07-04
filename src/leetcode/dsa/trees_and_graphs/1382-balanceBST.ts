@@ -1,4 +1,4 @@
-import { TreeNode } from '../utils'
+import { TreeNode } from '../utils/tree'
 
 /**
  * 1382. Balance a Binary Search Tree

@@ -1,4 +1,4 @@
-import { createTree, type TreeNode } from '../utils'
+import { createTree, type TreeNode } from '../utils/tree'
 import { invertTree } from './0226-invertTree'
 
 it('should work 1', () => {

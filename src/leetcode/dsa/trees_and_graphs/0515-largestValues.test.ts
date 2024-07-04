@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { largestValues } from './0515-largestValues'
 
 it('should work 1', () => {

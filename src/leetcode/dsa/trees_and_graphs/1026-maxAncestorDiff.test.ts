@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { maxAncestorDiff } from './1026-maxAncestorDiff'
 
 it('should work 1', () => {

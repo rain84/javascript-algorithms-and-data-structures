@@ -1,5 +1,5 @@
 import { isDefined } from 'typescript/utils'
-import type { TreeNode } from '../utils'
+import type { TreeNode } from '../utils/tree'
 
 /**
  * 515. Find Largest Value in Each Tree Row

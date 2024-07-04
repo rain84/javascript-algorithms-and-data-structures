@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { balanceBST, balanceBST2 } from './1382-balanceBST'
 
 it('should work 1', () => {

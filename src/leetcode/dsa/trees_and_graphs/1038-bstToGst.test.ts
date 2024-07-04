@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { bstToGst } from './1038-bstToGst'
 
 it('should work 1', () => {

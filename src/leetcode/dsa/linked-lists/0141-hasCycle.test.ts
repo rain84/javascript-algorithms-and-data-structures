@@ -1,4 +1,4 @@
-import { ListNode, createLinkedList } from '../utils'
+import { ListNode, create } from '../utils/linked-list'
 import { hasCycle } from './0141-hasCycle'
 
 it('should work 1', () => {
@@ -27,9 +27,9 @@ it('should work 4', () => {
     21, 23, -21, 5,
   ]
 
-  expect(hasCycle(createLinkedList(data))).toBeFalsy()
+  expect(hasCycle(create(data))).toBeFalsy()
 })
 
 it('should work 5', () => {
-  expect(hasCycle(createLinkedList([]))).toBeFalsy()
+  expect(hasCycle(create([]))).toBeFalsy()
 })

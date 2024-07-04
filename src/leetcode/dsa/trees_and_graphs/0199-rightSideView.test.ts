@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { rightSideView } from './0199-rightSideView'
 
 it('should work 1', () => {

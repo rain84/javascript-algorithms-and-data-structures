@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { isValidBST } from './0098-isValidBST'
 
 it('should work 1', () => {

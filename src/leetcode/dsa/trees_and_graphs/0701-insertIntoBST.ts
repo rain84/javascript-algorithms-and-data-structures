@@ -1,4 +1,4 @@
-import { TreeNode } from '../utils'
+import { TreeNode } from '../utils/tree'
 
 /**
  * 701. Insert into a Binary Search Tree

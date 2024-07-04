@@ -1,4 +1,4 @@
-import { createTree } from '../utils'
+import { createTree } from '../utils/tree'
 import { leafSimilar } from './0872-leafSimilar'
 
 it('should work 1', () => {

@@ -1,4 +1,4 @@
-import { TreeNode } from '../utils'
+import { TreeNode } from '../utils/tree'
 
 /**
  * 1038. Binary Search Tree to Greater Sum Tree
