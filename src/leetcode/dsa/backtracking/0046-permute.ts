@@ -5,7 +5,7 @@
 export function permute(nums: number[]): number[][] {
   const res: number[][] = []
 
-  const backtrack = (curr: number[] = []) => {
+  const dfs = (curr: number[] = []) => {
     if (curr.length === nums.length) {
       res.push([...curr])
       return
@@ -15,12 +15,12 @@ export function permute(nums: number[]): number[][] {
       if (curr.includes(i)) continue
 
       curr.push(i)
-      backtrack(curr)
+      dfs(curr)
       curr.pop()
     }
   }
 
-  backtrack()
+  dfs()
 
   return res
 }
