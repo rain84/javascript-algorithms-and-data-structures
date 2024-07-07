@@ -1,4 +1,5 @@
 import { permute } from './0046-permute'
+import { sort } from './util'
 
 it.each(
   //  prettier-ignore
@@ -19,9 +20,3 @@ it.each(
 )('should work %#', (input, output) => {
   expect(sort(permute(input))).toBe(sort(output))
 })
-
-const sort = (arr: number[][]) =>
-  arr
-    .map((x) => String(x))
-    .sort()
-    .toString()

@@ -1,4 +1,5 @@
 import { subsets } from './0078-subsets'
+import { sort } from './util'
 
 it.each(
   //  prettier-ignore
@@ -15,9 +16,3 @@ it.each(
 )('should work %#', (input, output) => {
   expect(sort(subsets(input))).toBe(sort(output))
 })
-
-const sort = (arr: number[][]) =>
-  arr
-    .map((x) => String(x))
-    .sort()
-    .toString()
