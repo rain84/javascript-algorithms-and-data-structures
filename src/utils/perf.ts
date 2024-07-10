@@ -34,6 +34,7 @@ export const perf = (fns: Fn | Fn[], ...args: any[]) => {
   )
 
   console.table(res)
+  return res
 }
 
 perf.iterations = 10 ** 5
