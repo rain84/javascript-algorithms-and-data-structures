@@ -1,3 +1,4 @@
+import { random } from 'utils/array'
 import { perf } from '../utils/perf'
 
 const for_loop = (arr: number[]) => {
@@ -30,5 +31,5 @@ const for_of_loop = (arr: number[]) => {
 
 const reduce_loop = (arr: number[]) => arr.reduce((a, b) => a * b)
 
-const arr = [11, 86, 32, 65, 15, 19, 68, 28, 85, 31, 42]
+const arr = random(10 ** 3, 10 ** 4)
 perf([for_loop, for_while, reduce_loop, for_of_loop], arr)
