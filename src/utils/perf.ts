@@ -18,23 +18,34 @@ export const evaluate = (fn: Fn, args: any[], iterations = 10 ** 5) => {
 export const perf = (fns: Fn | Fn[], ...args: any[]) => {
   if (!Array.isArray(fns)) fns = [fns]
 
-  const res = Object.fromEntries(
-    fns.map((fn, i) => {
-      const res = evaluate(fn, args, perf.iterations)
-      return [
-        i + 1,
-        {
-          Function: fn.name,
-          'ops/sec': res.speed,
-          Time: res.time,
-          Iterations: perf.iterations,
-        },
-      ]
-    })
-  )
+  const data = fns.map<DataItem>((fn, i) => {
+    const res = evaluate(fn, args, perf.iterations)
+    return {
+      Function: fn.name,
+      'ops/sec': res.speed,
+      'Time (ms)': Math.floor(res.time),
+      Iterations: perf.iterations,
+      '%': '0',
+    }
+  })
 
-  console.table(res)
-  return res
+  const max = Math.max(...data.map((x) => x['ops/sec'])) / 100
+  for (const x of data) {
+    x['%'] = (x['ops/sec'] / max).toFixed(2)
+  }
+
+  data.sort((a, b) => b['ops/sec'] - a['ops/sec'])
+  console.table(Object.fromEntries(data.map((x, i) => [i + 1, x])))
+
+  return data
 }
 
 perf.iterations = 10 ** 5
+
+type DataItem = {
+  Function: string
+  'ops/sec': number
+  'Time (ms)': number
+  Iterations: number
+  '%': string
+}
