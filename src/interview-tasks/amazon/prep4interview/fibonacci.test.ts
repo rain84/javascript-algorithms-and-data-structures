@@ -1,4 +1,4 @@
-import { fibonacci, fibonacci2 } from './fibonacci'
+import { fibonacci, fibonacci2, fibonacci3 } from './fibonacci'
 
 it.each(
   //  prettier-ignore
@@ -10,4 +10,5 @@ it.each(
 )('should work %#', (input, output) => {
   expect(fibonacci(input)).toBe(output)
   expect(fibonacci2(input)).toBe(output)
+  expect(fibonacci3(input)).toBe(output)
 })

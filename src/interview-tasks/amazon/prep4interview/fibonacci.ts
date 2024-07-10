@@ -26,3 +26,15 @@ export const fibonacci2: Fib = (n) => {
   return fibonacci2[cache]!.get(n)!
 }
 fibonacci2[cache] = new Map()
+
+/** Bottom-up approach */
+export const fibonacci3 = (n: number) => {
+  const cache = Array(n + 1).fill(0)
+  cache[1] = 1
+
+  for (let i = 2; i <= n; i++) {
+    cache[i] = cache[i - 1] + cache[i - 2]
+  }
+
+  return cache[n]
+}
