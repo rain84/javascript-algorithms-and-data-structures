@@ -1,4 +1,4 @@
-import { minCostClimbingStairs } from './0746-minCostClimbingStairs'
+import { minCostClimbingStairs, minCostClimbingStairs2 } from './0746-minCostClimbingStairs'
 
 it.each(
   //  prettier-ignore
@@ -14,4 +14,5 @@ it.each(
   ]
 )('should work %#', (input, output) => {
   expect(minCostClimbingStairs(input)).toBe(output)
+  expect(minCostClimbingStairs2(input)).toBe(output)
 })
