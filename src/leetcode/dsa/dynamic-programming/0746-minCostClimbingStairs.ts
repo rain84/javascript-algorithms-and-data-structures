@@ -1,5 +1,3 @@
-import { perf } from 'utils/perf'
-
 /**
  * 746. Min Cost Climbing Stairs
  * {@link https://leetcode.com/problems/min-cost-climbing-stairs/ | Link}
@@ -17,16 +15,17 @@ export function minCostClimbingStairs(cost: number[]): number {
 
 export function minCostClimbingStairs2(cost: number[]): number {
   const n = cost.length
-  const cache = Array(n).fill(-1)
+  const f = Array(n).fill(0)
 
-  const fn = (i: number): number => {
-    if (i <= 1) return cost[i]
-    if (cache[i] !== undefined && cache[i] !== -1) return cache[i]
+  const dfs = (i: number): number => {
+    if (i >= n) return 0
 
-    cache[i] = (cost[i] ?? 0) + Math.min(fn(i - 1), fn(i - 2))
+    if (!f[i]) {
+      f[i] = Math.min(cost[i] + dfs(i + 1), (cost[i + 1] ?? 0) + dfs(i + 2))
+    }
 
-    return cache[i]
+    return f[i]
   }
 
-  return fn(n)
+  return dfs(0)
 }
