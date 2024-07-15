@@ -131,6 +131,25 @@ export const getTreeValues = (root: TreeNode | null, traverseOrder: TraverseOrde
 getTreeValues.preorder = (root: TreeNode | null) => getTreeValues(root, 'preorder')
 getTreeValues.inorder = (root: TreeNode | null) => getTreeValues(root, 'inorder')
 getTreeValues.postorder = (root: TreeNode | null) => getTreeValues(root, 'postorder')
+getTreeValues.bfs = (root: TreeNode | null) => {
+  const res: number[] = []
+  let q = [root]
+
+  while (q.length) {
+    const nextQ: (TreeNode | null)[] = []
+    for (const node of q) {
+      if (!node) continue
+
+      res.push(node.val)
+      nextQ.push(node.left)
+      nextQ.push(node.right)
+    }
+
+    q = nextQ
+  }
+
+  return res
+}
 
 const treeToStrings = (tree: TreeNode | null, spaceChar: string, spacesCount: number) => {
   if (!tree) return
