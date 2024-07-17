@@ -1,4 +1,3 @@
-import { getTreeValues } from './tree-get-values'
 import { TreeNode } from './tree-node'
 
 /**
@@ -8,9 +7,11 @@ import { TreeNode } from './tree-node'
  * @example '3 5 [2 [1 null 0] [7 [] 2]]'
  * @example [3, 5, [2, [1, null, 0], [7, null, 2]]]
  */
-export const createTree = (arg: string | Arr): TreeNode | null => {
+export const createTree = (arg: string | Arr | TCreateTree2): TreeNode | null => {
   if (typeof arg === 'string') return fromString(arg)
-  return fromArray(arg as Arr)
+  if (arg.some((x) => Array.isArray(x))) return fromArray(arg as Arr)
+
+  return createTree2(arg as TCreateTree2)
 }
 
 const fromString = (s: string): TreeNode | null => {
@@ -72,9 +73,8 @@ function fromArray([root, left, right]: Arr): TreeNode | null {
   return new TreeNode(root as number, fromArray(left as Arr), fromArray(right as Arr))
 }
 
-/** @todo in progress =) */
-export const createTree2 = (nums: (number | null)[]): TreeNode | null => {
-  if (!nums.length || !nums[0]) return null
+export const createTree2 = (nums: TCreateTree2): TreeNode | null => {
+  if (!nums.length || nums[0] === null) return null
 
   const n = nums.length
   const queue = Array<TreeNode | null>(n).fill(null)
@@ -83,7 +83,7 @@ export const createTree2 = (nums: (number | null)[]): TreeNode | null => {
   for (let i = 1; i < n; i++) {
     const parentNode = queue[(i - 1) >> 1]
 
-    if (parentNode && nums[i]) {
+    if (parentNode && typeof nums[i] === 'number') {
       const node = new TreeNode(nums[i]!)
 
       if (i & 1) parentNode.left = node
@@ -98,11 +98,4 @@ export const createTree2 = (nums: (number | null)[]): TreeNode | null => {
 
 type A = [A, A[], A[]] | [A, A, A] | [undefined] | number | undefined | null
 type Arr = Exclude<A, [undefined] | number | undefined | null>
-
-// prettier-ignore
-const arr = [41,37,44,24,39,42,48,1,35,38,40,null,43,46,49,0,2,30,36,null,null,null,null,null,null,45,47,null,null,null,null,null,4,29,32,null,null,null,null,null,null,3,9,26,null,31,34,null,null,7,11,25,27,null,null,33,null,6,8,10,16,null,null,null,28,null,null,5,null,null,null,null,null,15,19,null,null,null,null,12,null,18,20,null,13,17,null,null,22,null,14,null,null,21,23]
-
-const tree = createTree2(arr)
-const a = arr.filter((x) => x !== null).sort((a, b) => a! - b!)
-const a2 = getTreeValues.inorder(tree)
-console.log(a)
+type TCreateTree2 = (number | null)[]
