@@ -29,6 +29,8 @@ If "imports" will not work in the compiled js-files, do the following:
 
 ## [Algorithm Visualizer](https://algorithm-visualizer.org/), an interactive online platform designed to bring algorithms to life through visualization
 
+## [Visualization](https://eniac00.github.io/btv/) of the binary trees, presented in array-form
+
 ## Complexity of sorting
 ![Complexity of sorting](./assets/complexity_of_sorting.jpg)
 
