@@ -1,5 +1,5 @@
 import { type TreeNode, createTree, getTreeValues } from '../utils/tree'
-import { delNodes } from './1110-delNodes'
+import { delNodes, delNodes2 } from './1110-delNodes'
 
 it.each(
   //  prettier-ignore
@@ -18,16 +18,11 @@ it.each(
     ]
   ]
 )('should work %#', (root, to_delete, output) => {
-  expect(sort(delNodes(createTree(root), to_delete))).toMatchObject(
-    sort(output.map((x) => createTree(x)))
-  )
+  const result = sort(output.map((x) => createTree(x)))
+
+  expect(sort(delNodes(createTree(root), to_delete))).toMatchObject(result)
+  expect(sort(delNodes2(createTree(root), to_delete))).toMatchObject(result)
 })
 
 const sort = (arr: (TreeNode | null)[]) =>
   arr.map((tree) => getTreeValues.inorder(tree).sort().toString()).sort()
-
-it('should work 1', () => {
-  expect(sort(delNodes(createTree([1, 2, 3, null, null, null, 4]), [2, 1]))).toMatchObject(
-    sort([[3, null, 4]].map((x) => createTree(x)))
-  )
-})
