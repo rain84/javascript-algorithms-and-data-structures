@@ -19,7 +19,8 @@
         "noNonNullAssertion": "off",
         "noCommaOperator": "off",
         "noParameterAssign": "off",
-        "useTemplate": "off"
+        "useTemplate": "off",
+        "useImportType": "off"
       },
       "suspicious": { "noAssignInExpressions": "off", "noFocusedTests": "off" }
     },
@@ -29,7 +30,7 @@
     "formatter": {
       "jsxQuoteStyle": "double",
       "quoteProperties": "asNeeded",
-      "trailingComma": "es5",
+      "trailingCommas": "es5",
       "semicolons": "asNeeded",
       "arrowParentheses": "always",
       "bracketSpacing": true,
