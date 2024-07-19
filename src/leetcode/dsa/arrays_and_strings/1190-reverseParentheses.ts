@@ -1,3 +1,5 @@
+import { perf } from 'utils/perf'
+
 /**
  * 1190. Reverse Substrings Between Each Pair of Parentheses
  * {@link https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/ | Link}
@@ -16,19 +18,14 @@ export function reverseParentheses(s: string): string {
     }
   }
 
-  for (let i = 0, forward = true; i < n; ) {
+  for (let i = 0, step = 1; i < n; i += step) {
     const ch = s[i]
 
-    switch (s[i]) {
-      case '(':
-      case ')':
-        i = forward ? pairs[i] - 1 : pairs[i] + 1
-        forward = !forward
-        break
-
-      default:
-        res.push(ch)
-        i = forward ? i + 1 : i - 1
+    if ('()'.includes(s[i])) {
+      step = -step
+      i = pairs[i]
+    } else {
+      res.push(ch)
     }
   }
 
