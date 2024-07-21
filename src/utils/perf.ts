@@ -15,16 +15,16 @@ export const evaluate = (fn: Fn, args: any[], iterations = 10 ** 5) => {
 }
 
 // biome-ignore lint:
-export const perf = (fns: Fn | Fn[], ...args: any[]) => {
+export const perf = (fns: Fn | Fn[], args: any[], iterations = 10 ** 5) => {
   if (!Array.isArray(fns)) fns = [fns]
 
   const data = fns.map<DataItem>((fn, i) => {
-    const res = evaluate(fn, args, perf.iterations)
+    const res = evaluate(fn, args, iterations)
     return {
       Function: fn.name,
       'ops/sec': res.speed,
       'Time (ms)': Math.floor(res.time),
-      Iterations: perf.iterations,
+      Iterations: iterations,
       '%': '0',
     }
   })
@@ -39,8 +39,6 @@ export const perf = (fns: Fn | Fn[], ...args: any[]) => {
 
   return data
 }
-
-perf.iterations = 10 ** 5
 
 type DataItem = {
   Function: string
