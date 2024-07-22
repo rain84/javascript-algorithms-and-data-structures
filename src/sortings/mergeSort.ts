@@ -4,8 +4,8 @@
     Merge Sort:
 
     Time Complexity : Best & Worst & Average => O(nLog(n))
-    Space Complexity: O(n) 
-    Stability       : Stable 
+    Space Complexity: O(n)
+    Stability       : Stable
     Is-In-Place     : Not-In-Place
     Tag             : Divide & Conquer
     When to use     : 1.When we don't have random access(linked list)
@@ -13,25 +13,22 @@
                         2.When array is not to large.
 */
 
-export const mergeSort = (arr: number[]) => {
-  const pivot = ~~(arr.length / 2)
-  let left = arr.slice(0, pivot)
-  let right = arr.slice(pivot)
+export const mergeSort = (arr: number[]): number[] => {
+  if (arr.length <= 1) return arr
 
-  if (1 < left.length) left = mergeSort(left)
-  if (1 < right.length) right = mergeSort(right)
+  const pivot = arr.length >> 1
+  const left = mergeSort(arr.slice(0, pivot))
+  const right = mergeSort(arr.slice(pivot))
+  const [m, n] = [left.length, right.length]
+  let [i, j] = [0, 0]
+  const res: number[] = []
 
-  const result = []
-  let i = 0
-  let j = 0
-
-  while (i !== left.length && j !== right.length) {
-    const val = left[i] < right[j] ? left[i++] : right[j++]
-    result.push(val)
+  while (i < m && j < n) {
+    res.push(left[i] < right[j] ? left[i++] : right[j++])
   }
 
-  const restValues = i < left.length ? left.slice(i) : right.slice(j)
-  result.push(...restValues)
+  const rest = i < m ? left.slice(i) : right.slice(j)
+  res.push(...rest)
 
-  return result
+  return res
 }
