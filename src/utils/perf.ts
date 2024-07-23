@@ -15,7 +15,7 @@ export const evaluate = (fn: Fn, args: any[], iterations = 10 ** 5) => {
 }
 
 // biome-ignore lint:
-export const perf = (fns: Fn | Fn[], args: any[], iterations = 10 ** 5) => {
+export const perf = (fns: Fn | Fn[], args: any[] = [], iterations = 10 ** 5) => {
   if (!Array.isArray(fns)) fns = [fns]
 
   const data = fns.map<DataItem>((fn, i) => {
