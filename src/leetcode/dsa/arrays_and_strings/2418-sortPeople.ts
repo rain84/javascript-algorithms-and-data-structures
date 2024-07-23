@@ -1,8 +1,17 @@
+import { perf } from 'utils/perf'
+
 /**
  * 2418. Sort the People
  * {@link https://leetcode.com/problems/sort-the-people/ | Link}
  */
 export function sortPeople(names: string[], heights: number[]): string[] {
+  return names
+    .map((n, i) => ({ n, h: heights[i] }))
+    .sort((a, b) => b.h - a.h)
+    .map(({ n }) => n)
+}
+
+export function sortPeople2(names: string[], heights: number[]): string[] {
   const idx = mergeSort(heights)
   const heightsToNames = names.reduce<Record<number, string>>(
     (acc, name, i) => ((acc[heights[i]] = name), acc),

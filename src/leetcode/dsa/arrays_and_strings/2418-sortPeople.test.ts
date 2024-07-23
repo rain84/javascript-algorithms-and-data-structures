@@ -1,4 +1,4 @@
-import { sortPeople } from './2418-sortPeople'
+import { sortPeople, sortPeople2 } from './2418-sortPeople'
 
 it.each(
   //  prettier-ignore
@@ -14,4 +14,5 @@ it.each(
   ]
 )('should work %#', (names, heights, output) => {
   expect(sortPeople(names, heights)).toMatchObject(output)
+  expect(sortPeople2(names, heights)).toMatchObject(output)
 })
