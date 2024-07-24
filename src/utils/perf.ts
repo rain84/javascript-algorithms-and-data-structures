@@ -29,7 +29,7 @@ export const perf = (fns: Fn | Fn[], args: any[] = [], iterations = 10 ** 5) => 
       i + 1,
       {
         Function: x.name,
-        'ops/sec': (iterations / x.time) * 1000,
+        'ops/sec': ((iterations / x.time) * 1000) | 0,
         'Time (ms)': Math.floor(x.time),
         Iterations: iterations,
         'Speed (%)': ((100 * iterations) / x.time / maxSpeed).toFixed(2),
