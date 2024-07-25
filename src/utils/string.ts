@@ -17,3 +17,12 @@ export const capitalize = <T extends string>(s: T) =>
 
 export const toAlphabetKey = (n: number) =>
   [...n.toString(26)].map((s) => (Number.parseInt(s, 26) + 10).toString(36)).join('')
+
+const regexDigit = /\d+/
+export const getTrailingNumber = (s: string, defaultValue = 1) => {
+  let numb = 0
+  for (let i = s.length - 1, k = 1; regexDigit.test(s[i]); i--, k *= 10) {
+    numb += +s[i] * k
+  }
+  return numb || defaultValue
+}
