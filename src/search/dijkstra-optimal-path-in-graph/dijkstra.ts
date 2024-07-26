@@ -1,37 +1,27 @@
-import { PriorityQueue } from 'ds/priority_queue'
+import { PriorityQueue } from 'ds/priority-queue'
 
-type Name = string
-type MinimalPath = Map<Name, number>
-type Costs = Map<Name, number>
-type Breadcrumbs = Map<Name, Name>
-type CostsAndBreadcrumbs = { costs: Costs; breadcrumbs: Breadcrumbs }
-type GetOptimalPath = (
-  graph: Graph,
-  vertex: Name
-) => MaybeUndefined<(target: Name) => MaybeUndefined<MinimalPath>>
+type Costs = Map<string, number>
+type Path = Map<string, string>
+type CostsAndPath = { costs: Costs; path: Path }
 type UnvisitedVertexes = [number, string]
+type G = Record<string, Record<string, number>>
 
-export type Graph = Record<Name, Record<Name, number>>
+export const getCosts = (g: G, vertex: string): Costs | undefined =>
+  getCostsAndPath(g, vertex)?.costs
 
-export const getCosts = (graph: Graph, vertex: Name): MaybeUndefined<Costs> =>
-  getCostsAndBreadcrumbs(graph, vertex)?.costs
+export const dijkstra = (graph: G, vertex: string) => {
+  const costsAndPath = getCostsAndPath(graph, vertex)
+  if (costsAndPath === undefined) return
 
-export const getOptimalPath: GetOptimalPath = (graph, vertex) => {
-  const costsAndBreadcrumbs = getCostsAndBreadcrumbs(graph, vertex)
-  if (costsAndBreadcrumbs === undefined) return
-
-  return getPath(costsAndBreadcrumbs, vertex)
+  return getPath(costsAndPath, vertex)
 }
 
 // Time complexity O(n*log(n)),
 // b'coz implemented with PriorityQueue
-const getCostsAndBreadcrumbs = (
-  graph: Graph,
-  vertex: Name
-): MaybeUndefined<CostsAndBreadcrumbs> => {
+const getCostsAndPath = (graph: G, vertex: string): CostsAndPath | undefined => {
   const costs: Costs = new Map([[vertex, 0]])
-  const visited = new Set<Name>([vertex])
-  const breadcrumbs: Breadcrumbs = new Map()
+  const visited = new Set<string>([vertex])
+  const breadcrumbs: Path = new Map()
   const unvisitedVertexes = PriorityQueue.createMin<UnvisitedVertexes>(([key]) => key)
   unvisitedVertexes.enqueue([0, vertex])
 
@@ -62,17 +52,17 @@ const getCostsAndBreadcrumbs = (
     }
   }
 
-  return { costs, breadcrumbs }
+  return { costs, path: breadcrumbs }
 }
 
 const getPath =
-  ({ costs, breadcrumbs }: CostsAndBreadcrumbs, vertex: Name) =>
-  (target: Name) => {
+  ({ costs, path: breadcrumbs }: CostsAndPath, vertex: string) =>
+  (target: string) => {
     if (costs.get(target) === undefined) return
 
     //  go through the previous vertexes starting from the last one
     //  and get the path
-    const path: [Name, number][] = []
+    const path: [string, number][] = []
     do {
       path.push([target, costs.get(target)!])
     } while ((target = breadcrumbs.get(target)!) !== vertex)
@@ -84,7 +74,7 @@ const getPath =
 //  Time complexity O(n)
 //  This method stayed here from the previous realization without PriorityQueue DS
 //  I want leave it here for the history :)
-function getMin(vertexes: Set<Name>, costs: Costs): MaybeUndefined<Name> {
+function getMin(vertexes: Set<string>, costs: Costs): MaybeUndefined<string> {
   if (costs?.size === 0 || vertexes?.size === 0) return
 
   return [...vertexes.values()].reduce((min, next) => {

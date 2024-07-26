@@ -1,4 +1,4 @@
-import { getCosts, getOptimalPath } from './dijkstra'
+import { dijkstra, getCosts } from './dijkstra'
 
 const graph1 = {
   a: { b: 2, c: 1 },
@@ -61,7 +61,7 @@ it.each`
   ['4', 20],
 ])}
 `('should work on "$graphName"', ({ graph, start, end, result }) => {
-  expect(getOptimalPath(graph, start)?.(end)).toMatchObject(result)
+  expect(dijkstra(graph, start)?.(end)).toMatchObject(result)
 })
 
 it.each`
@@ -70,5 +70,5 @@ it.each`
   ${'graph-1'} | ${'z'} | ${'g'} | ${graph1}
   ${'graph-1'} | ${1}   | ${100} | ${graph1}
 `('should return "undefined" for wrong input data on "$graphName"', ({ graph, start, end }) => {
-  expect(getOptimalPath(graph, start)?.(end)).toBeUndefined()
+  expect(dijkstra(graph, start)?.(end)).toBeUndefined()
 })
