@@ -31,6 +31,8 @@ If "imports" will not work in the compiled js-files, do the following:
 
 ## [Visualization](https://eniac00.github.io/btv/) of the binary trees, presented in array-form
 
+## [Visualization](https://algorithms.discrete.ma.tum.de/) of Graph Algorithms
+
 ## Complexity of sorting
 ![Complexity of sorting](./assets/complexity_of_sorting.jpg)
 
