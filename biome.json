@@ -22,6 +22,9 @@
         "useTemplate": "off",
         "useImportType": "off"
       },
+      "correctness": {
+        "noFlatMapIdentity": "off"
+      },
       "suspicious": { "noAssignInExpressions": "off", "noFocusedTests": "off" }
     },
     "ignore": ["./node_modules/**/*", "./out/**/*"]
