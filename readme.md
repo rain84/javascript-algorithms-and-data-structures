@@ -36,6 +36,6 @@ If "imports" will not work in the compiled js-files, do the following:
 ## Complexity of sorting
 ![Complexity of sorting](./assets/complexity_of_sorting.jpg)
 
-## Work in progress on: lc-0092
+## Work in progress on: lc-0092, lc-1334
 
 ## Test myself again on: lc-0330, lc-0658, lc-1579
