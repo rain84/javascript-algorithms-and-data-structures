@@ -21,13 +21,18 @@ export function findTheCity(n: number, edges: number[][], distanceThreshold: num
 
     while (!pq.isEmpty()) {
       const u = pq.dequeue().element
+      if (seen[u]) continue
+      seen[u] = true
+
       for (const [v, w] of g[u]) {
         if (seen[v]) continue
 
-        dist[v] = Math.min(dist[v], dist[u] + w)
-        pq.enqueue(v, dist[v])
+        const wNext = dist[u] + w
+        if (wNext < dist[v]) {
+          dist[v] = wNext
+          pq.enqueue(v, dist[v])
+        }
       }
-      seen[u] = true
     }
 
     return dist.filter((x) => x <= distanceThreshold).length

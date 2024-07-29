@@ -11,13 +11,13 @@ it.each(
       5, [[0,1,2],[0,4,8],[1,2,3],[1,4,2],[2,3,1],[3,4,1]], 2,
       0
     ],
+    [
+      34, getEdges(), 9207,
+      33
+    ]
   ]
 )('should work %#', (n, edges, distanceThreshold, output) => {
   expect(findTheCity(n, edges, distanceThreshold)).toBe(output)
-})
-
-xit('should work 1', () => {
-  expect(findTheCity(34, getEdges(), 9207)).toMatchObject([])
 })
 
 // prettier-ignore
