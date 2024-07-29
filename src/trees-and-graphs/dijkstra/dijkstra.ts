@@ -1,11 +1,13 @@
-import { MinPriorityQueue } from '@datastructures-js/priority-queue' /**
+import { MinPriorityQueue } from '@datastructures-js/priority-queue'
+
+/**
  *                     Performance
 ───────────────────────────────────────────────────────────────────────────
  (index)  Function               ops/sec  Time (ms)  Iterations  Speed (%)
 ───────────────────────────────────────────────────────────────────────────
- 1        dijkstra  (PQ)         74666    1339       100000      100.00
- 2        dijkstra2 (sorting)    69578    1437       100000      93.19
- 3        dijkstra3 (DP)         38350    2607       100000      51.36
+ 1        dijkstra  (PQ)         140990   709        100000      100.00
+ 2        dijkstra2 (sorting)    117732   849        100000      83.50
+ 3        dijkstra3 (DP)         58245    1716       100000      41.31
 ───────────────────────────────────────────────────────────────────────────
 */
 
@@ -26,12 +28,12 @@ export const dijkstra = (edges: Edges, vertex: V): Result => {
   if (!g[vertex]) return { cost: {}, prev: {} }
 
   cost[vertex] = 0
-  const q = new MinPriorityQueue<[V, number]>({ priority: ([_, x]) => x })
-  q.enqueue([vertex, 0])
+  const q = new MinPriorityQueue<V>()
+  q.enqueue(vertex, 0)
   const prev: Record<V, V> = {}
 
   while (!q.isEmpty()) {
-    const u = q.dequeue().element[0]
+    const u = q.dequeue().element
     if (seen.has(u)) continue
     seen.add(u)
 
@@ -42,8 +44,8 @@ export const dijkstra = (edges: Edges, vertex: V): Result => {
       if (costNext < cost[v]) {
         cost[v] = costNext
         prev[v] = u
+        q.enqueue(v, w)
       }
-      q.enqueue([v, w])
     }
   }
 
@@ -83,8 +85,8 @@ export const dijkstra2 = (edges: Edges, vertex: V): Result => {
       if (costNext < cost[v]) {
         cost[v] = costNext
         prev[v] = u
+        q.push([v, w])
       }
-      q.push([v, w])
     }
   }
 
