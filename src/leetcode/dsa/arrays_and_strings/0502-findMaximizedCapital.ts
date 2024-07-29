@@ -21,7 +21,7 @@ export function findMaximizedCapital(
   const maxProfit = new MaxPriorityQueue<[number, number]>({ priority: ([p]) => p })
 
   for (const p of projects) {
-    minCapital.enqueue(p, p[1])
+    minCapital.enqueue(p)
   }
 
   while (k--) {
