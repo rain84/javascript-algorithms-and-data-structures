@@ -29,3 +29,21 @@ export function minCostClimbingStairs2(cost: number[]): number {
 
   return dfs(0)
 }
+
+export function minCostClimbingStairs3(cost: number[]): number {
+  const n = cost.length
+  const f = Array(n + 1)
+  f[0] = f[1] = 0
+
+  const dfs = (i: number): number => {
+    if (i <= 1) return f[i]
+
+    if (f[i] === undefined) {
+      f[i] = Math.min(cost[i - 1] + dfs(i - 1), cost[i - 2] + dfs(i - 2))
+    }
+
+    return f[i]
+  }
+
+  return dfs(n)
+}
