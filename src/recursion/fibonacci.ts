@@ -11,3 +11,13 @@ export const fib2 = (n: number) => {
 
   return arr[n]
 }
+
+export const fib3 = (n: number) => {
+  let [a, b] = [0, 1]
+
+  for (let i = 0; i < n; i++) {
+    ;[a, b] = [b, a + b]
+  }
+
+  return a
+}

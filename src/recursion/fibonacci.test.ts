@@ -1,4 +1,4 @@
-import { fib1, fib2 } from './fibonacci'
+import { fib1, fib2, fib3 } from './fibonacci'
 
 it.each(
   //  prettier-ignore
@@ -9,6 +9,10 @@ it.each(
     ],
     [
       fib2,
+      output()
+    ],
+    [
+      fib3,
       output()
     ],
   ]
