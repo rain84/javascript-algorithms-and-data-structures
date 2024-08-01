@@ -1,4 +1,4 @@
-import { numTeams } from './1395-numTeams'
+import { numTeams, numTeams2 } from './1395-numTeams'
 
 it.each(
   //  prettier-ignore
@@ -14,8 +14,9 @@ it.each(
     [
       [1,2,3,4],
       4
-    ]
+    ],
   ]
 )('should work %#', (input, output) => {
   expect(numTeams(input)).toBe(output)
+  expect(numTeams2(input)).toBe(output)
 })
