@@ -2,7 +2,7 @@
  * 1653. Minimum Deletions to Make String Balanced
  * {@link https://leetcode.com/problems/minimum-deletions-to-make-string-balanced/ | Link}
  *
- * Topics:  String | Dynamic Programming | Stack2
+ * Topics:  String | Dynamic Programming | Stack
  */
 
 /** Stack */
