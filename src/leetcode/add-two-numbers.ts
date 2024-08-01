@@ -1,42 +1,27 @@
+import { ListNode } from './dsa/utils/linked-list'
+
 /**
- * Definition for singly-linked list.
+ * 2. Add Two Numbers
+ * {@link https://leetcode.com/problems/add-two-numbers/ | Link}
  */
-
-class ListNode {
-  val: number
-  next: ListNode | null
-
-  constructor(val?: number, next?: ListNode | null) {
-    this.val = val === undefined ? 0 : val
-    this.next = next === undefined ? null : next
-  }
-}
-
 export function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
-  let appendix = 0
-  let sum = 0
-  let node = null
-  let result = null
+  let node = new ListNode(0)
+  const res = node
+  let x = 0
 
-  while (l1 || l2 || appendix) {
-    sum = (l1?.val ?? 0) + (l2?.val ?? 0) + appendix
-    appendix = 0
+  while (l1 || l2 || x) {
+    node.next = new ListNode((l1?.val ?? 0) + (l2?.val ?? 0) + x)
+    node = node.next
+    x = 0
 
-    if (sum > 9) {
-      sum %= 10
-      appendix = 1
+    if (node.val > 9) {
+      x = 1
+      node.val %= 10
     }
 
     l1 = l1?.next ?? null
     l2 = l2?.next ?? null
-
-    if (!result) {
-      result = node = new ListNode(sum)
-    } else if (node) {
-      node.next = new ListNode(sum)
-      node = node.next
-    }
   }
 
-  return result
+  return res.next
 }
