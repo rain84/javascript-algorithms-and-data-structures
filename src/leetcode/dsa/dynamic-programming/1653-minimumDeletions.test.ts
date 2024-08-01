@@ -3,6 +3,8 @@ import {
   minimumDeletions2,
   minimumDeletions3,
   minimumDeletions4,
+  minimumDeletions5,
+  minimumDeletions6,
 } from './1653-minimumDeletions'
 
 it.each(
@@ -26,4 +28,6 @@ it.each(
   expect(minimumDeletions2(input)).toBe(output)
   expect(minimumDeletions3(input)).toBe(output)
   expect(minimumDeletions4(input)).toBe(output)
+  expect(minimumDeletions5(input)).toBe(output)
+  expect(minimumDeletions6(input)).toBe(output)
 })
