@@ -95,3 +95,11 @@ export function numTeams3(rating: number[]): number {
 
   return res
 }
+
+/**
+ * TODO: Add implementation with Binary Indexed Tree
+ * {@link https://doocs.github.io/leetcode/en/lc/1395/?h=1395#solution-2-binary-indexed-tree }
+ */
+export function numTeams4(rating: number[]): number {
+  return 0
+}

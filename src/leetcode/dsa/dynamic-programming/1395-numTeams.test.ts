@@ -20,4 +20,5 @@ it.each(
   // expect(numTeams(input)).toBe(output)
   expect(numTeams2(input)).toBe(output)
   expect(numTeams3(input)).toBe(output)
+  // expect(numTeams4(input)).toBe(output)
 })
