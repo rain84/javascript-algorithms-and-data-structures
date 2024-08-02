@@ -15,24 +15,23 @@ export function numTeams(rating: number[]): number {
 
   const fn = (i: number, available: number, type: Type) => {
     if (!available) return 1
+    if (f[type][i][available] !== -1) return f[type][i][available]
 
-    if (f[type][i][available] === -1) {
-      let res = 0
-      for (let j = i + 1; j < n; j++) {
-        if (rating[j] > rating[i]) {
-          if (type === 'asc') {
-            res += fn(j, available - 1, 'asc')
-          }
-        } else {
-          if (type === 'desc') {
-            res += fn(j, available - 1, 'desc')
-          }
+    let res = 0
+    for (let j = i + 1; j < n; j++) {
+      if (rating[j] > rating[i]) {
+        if (type === 'asc') {
+          res += fn(j, available - 1, 'asc')
+        }
+      } else {
+        if (type === 'desc') {
+          res += fn(j, available - 1, 'desc')
         }
       }
-      f[type][i][available] = res
     }
+    f[type][i][available] = res
 
-    return f[type][i][available]
+    return res
   }
 
   let res = 0
