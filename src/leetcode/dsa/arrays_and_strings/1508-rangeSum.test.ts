@@ -1,4 +1,4 @@
-import { rangeSum } from './1508-rangeSum'
+import { rangeSum, rangeSum4 } from './1508-rangeSum'
 
 it.each(
   //  prettier-ignore
@@ -22,6 +22,7 @@ it.each(
   ]
 )('should work %#', (nums, n, left, right, output) => {
   expect(rangeSum(nums, n, left, right)).toBe(output)
+  expect(rangeSum2(nums, n, left, right)).toBe(output)
 })
 
 // prettier-ignore
