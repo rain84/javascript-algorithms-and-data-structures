@@ -1,4 +1,4 @@
-import { getLowBitIndex } from './getLowBitIndex'
+import { lowBitIndex } from './low-bit-index'
 
 it.each(
   //  prettier-ignore
@@ -14,5 +14,5 @@ it.each(
     [16, 4],  // '10000'
   ]
 )('should work %#', (input, output) => {
-  expect(getLowBitIndex(input)).toBe(output)
+  expect(lowBitIndex(input)).toBe(output)
 })

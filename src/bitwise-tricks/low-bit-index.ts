@@ -1,4 +1,4 @@
-export const getLowBitIndex = (x: number) => {
+export const lowBitIndex = (x: number) => {
   if (!x) return -1
 
   let c = 1
