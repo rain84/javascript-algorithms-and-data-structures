@@ -1,6 +1,8 @@
 /**
  * 523. Continuous Subarray Sum
- * {@link https://leetcode.com/problems/continuous-subarray-sum/description/}
+ * {@link https://leetcode.com/problems/continuous-subarray-sum/ | Link}
+ *
+ * Topics: Array | Hash Table | Math | Prefix Sum
  */
 export function checkSubarraySum(nums: number[], k: number): boolean {
   const n = nums.length

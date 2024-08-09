@@ -1,6 +1,6 @@
 /**
  * 2677. Chunk Array
- * https://leetcode.com/problems/chunk-array/description/
+ * {@link https://leetcode.com/problems/chunk-array/ | Link}
  */
 export function chunk(arr: number[], size: number): number[][] {
   const res: number[][] = []

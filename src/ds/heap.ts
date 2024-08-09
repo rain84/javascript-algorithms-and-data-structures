@@ -68,7 +68,7 @@ export class MinHeap<T = number> {
     }
   }
 
-  /** @description Get index of the last duplicated value, if such exist */
+  /** Get index of the last duplicated value, if such exist */
   #adjustIndex(i: number): number {
     while (this.#h[i] === this.#h[i + 1]) i++
     return i

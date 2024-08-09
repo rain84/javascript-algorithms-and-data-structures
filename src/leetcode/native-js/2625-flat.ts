@@ -1,6 +1,6 @@
 /**
  * 2625. Flatten Deeply Nested Array
- * https://leetcode.com/problems/flatten-deeply-nested-array/description/
+ * {@link https://leetcode.com/problems/flatten-deeply-nested-array/ | Link}
  */
 export const flat = (arr: MultiDimensionalArray, n: number): MultiDimensionalArray => {
   if (!n) return arr
