@@ -1,6 +1,6 @@
 /**
  * 885. Spiral Matrix III
- * {@link https://leetcode.com/problems/spiral-matrix-iii/description/ | Link}
+ * {@link https://leetcode.com/problems/spiral-matrix-iii/ | Link}
  *
  * Topics: Array | Matrix | Simulation
  */

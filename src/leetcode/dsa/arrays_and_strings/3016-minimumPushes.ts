@@ -6,7 +6,7 @@ import { MaxPriorityQueue } from '@datastructures-js/priority-queue'
  *
  * Topics: Hash Table | String | Greedy | Sorting | Counting
  *
- *                     Performance
+ * Performance (by 'utils/perf.ts')
 ───────────────────────────────────────────────────────────────────────────
  (index)  Function               ops/sec  Time (ms)  Iterations  Speed (%)
 ───────────────────────────────────────────────────────────────────────────

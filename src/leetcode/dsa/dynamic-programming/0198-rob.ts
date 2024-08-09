@@ -4,7 +4,7 @@
  *
  * Topics: Array | Dynamic Programming
  *
- * Performance
+ * Performance (by 'utils/perf.ts')
  * ───────────────────────────────────────────────────────────────────────────
  *  (index)  Function      ops/sec  Time (ms)  Iterations  Speed (%)
  * ───────────────────────────────────────────────────────────────────────────

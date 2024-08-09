@@ -1,7 +1,7 @@
 import { MinPriorityQueue } from '@datastructures-js/priority-queue'
 
 /**
- *                     Performance
+ * Performance (by 'utils/perf.ts')
 ───────────────────────────────────────────────────────────────────────────
  (index)  Function               ops/sec  Time (ms)  Iterations  Speed (%)
 ───────────────────────────────────────────────────────────────────────────
