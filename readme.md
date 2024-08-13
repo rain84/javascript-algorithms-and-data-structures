@@ -36,6 +36,6 @@ If "imports" will not work in the compiled js-files, do the following:
 ## Complexity of sorting
 ![Complexity of sorting](./assets/complexity_of_sorting.jpg)
 
-## Work in progress on: lc-0092, lc-1334, lc-1395
+## WIP on: [lc-0092](./src/leetcode/dsa/linked-lists/0092-reverseBetween.WIP.ts), [lc-1334](./src/leetcode/dsa/trees_and_graphs/1334-findTheCity.ts), [lc-1395](./src/leetcode/dsa/dynamic-programming/1395-numTeams.ts), [lc-1482](./src/leetcode/dsa/arrays_and_strings/1482-minDays.ts)
 
-## Test myself again on: lc-0330, lc-0658, lc-1579, lc-1508
+## Test myself again on: [lc-0330](./src/leetcode/dsa/arrays_and_strings/0330-minPatches.ts), [lc-0658](./src/leetcode/dsa/heaps/0658-findClosestElements.ts), [lc-1508](./src/leetcode/dsa/arrays_and_strings/1508-rangeSum.ts)
