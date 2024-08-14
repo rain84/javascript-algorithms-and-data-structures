@@ -1,4 +1,4 @@
-import { permute } from './0046-permute'
+import { permute, permute2, permute3 } from './0046-permute'
 import { sort } from './util'
 
 it.each(
@@ -13,10 +13,12 @@ it.each(
       [[0,1],[1,0]]
     ],
     [
-      [1], 
+      [1],
       [[1]]
     ]
   ]
 )('should work %#', (input, output) => {
   expect(sort(permute(input))).toBe(sort(output))
+  expect(sort(permute2(input))).toBe(sort(output))
+  expect(sort(permute3(input))).toBe(sort(output))
 })
