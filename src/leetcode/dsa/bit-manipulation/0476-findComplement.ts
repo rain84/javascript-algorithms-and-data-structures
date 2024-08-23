@@ -5,7 +5,7 @@
  */
 
 /*
- * Performance (by 'utils/perf.ts'), args = [[[1,2,3],[4,5],[1,2,3]],]
+ * Performance (by 'utils/perf.ts'), args = [5]
  *
  * ─────────────────────────────────────────────────────────────────────
  *  (index)  Function         ops/sec   Time (ms) Iterations  Speed (%)
