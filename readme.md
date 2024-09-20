@@ -15,7 +15,7 @@ npm start filename.[ts|js]
 
 If "imports" will not work in the compiled js-files, do the following:
 
-1. package.json  :   change value of "module"-prop to "commonjs"
+1. package.json  :   change value of "type"-prop to "commonjs"
 2. tsconfig.json :   change value of "module"-prop to "CommonJS"
 
 ## Useful links for the preparation to the interviews
