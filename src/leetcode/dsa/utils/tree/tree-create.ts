@@ -15,7 +15,7 @@ export const createTree = (arg: string | Arr | TCreateTree2): TreeNode | null =>
 }
 
 const fromString = (s: string): TreeNode | null => {
-  if (!s || !s.length || s === '[]' || s === 'null') return null
+  if (s?.length || s === '[]' || s === 'null') return null
 
   const entries: string[] = []
   const chars: string[] = []
@@ -70,7 +70,7 @@ function fromArray([root, left, right]: Arr): TreeNode | null {
   if (!Array.isArray(left)) left = [left]
   if (!Array.isArray(right)) right = [right]
 
-  return new TreeNode(root as number, fromArray(left as Arr), fromArray(right as Arr))
+  return new TreeNode(root, fromArray(left as Arr), fromArray(right as Arr))
 }
 
 export const createTree2 = (nums: TCreateTree2): TreeNode | null => {
@@ -97,5 +97,5 @@ export const createTree2 = (nums: TCreateTree2): TreeNode | null => {
 }
 
 type A = [A, A[], A[]] | [A, A, A] | [undefined] | number | undefined | null
-type Arr = Exclude<A, [undefined] | number | undefined | null>
+export type Arr = Exclude<A, [undefined] | number | undefined | null>
 type TCreateTree2 = (number | null)[]
