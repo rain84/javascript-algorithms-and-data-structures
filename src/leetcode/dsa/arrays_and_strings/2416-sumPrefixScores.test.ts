@@ -1,4 +1,4 @@
-import { sumPrefixScores } from './2416-sumPrefixScores'
+import { sumPrefixScores, sumPrefixScores2 } from './2416-sumPrefixScores'
 
 it.each(
   //  prettier-ignore
@@ -14,4 +14,5 @@ it.each(
   ]
 )('should work %#', (input, output) => {
   expect(sumPrefixScores(input)).toMatchObject(output)
+  expect(sumPrefixScores2(input)).toMatchObject(output)
 })

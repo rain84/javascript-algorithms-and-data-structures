@@ -4,8 +4,40 @@
  * Topics: Array | String | Trie | Counting
  */
 
-/** Brute Force. TLE */
+/** Trie-DS */
 export function sumPrefixScores(words: string[]): number[] {
+  const n = words.length
+  const res = Array(n).fill(0)
+  const trie = new Trie()
+
+  for (const word of words) {
+    let node = trie
+
+    for (const ch of word) {
+      node.children[ch] ??= new Trie()
+      node.children[ch].count++
+      node = node.children[ch]
+    }
+  }
+
+  for (let i = 0; i < n; i++) {
+    let node = trie
+    for (const ch of words[i]) {
+      node = node.children[ch]
+      res[i] += node.count
+    }
+  }
+
+  return res
+}
+
+class Trie {
+  count = 0
+  children: Record<string, Trie> = {}
+}
+
+/** Brute Force. TLE */
+export function sumPrefixScores2(words: string[]): number[] {
   const n = words.length
   const res = Array(n).fill(0)
 
