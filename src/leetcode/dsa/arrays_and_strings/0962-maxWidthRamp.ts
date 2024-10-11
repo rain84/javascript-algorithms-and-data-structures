@@ -52,3 +52,12 @@ export function maxWidthRamp3(nums: number[]): number {
 
   return res
 }
+
+/** One-liner */
+export const maxWidthRamp4 = (nums: number[], res = 0, j = 10 ** 5): number => (
+  nums
+    .map((x, i) => [x, i])
+    .sort(([a], [b]) => a - b)
+    .map(([_, i]) => ((res = Math.max(res, i - j)), (j = Math.min(j, i)))),
+  res
+)

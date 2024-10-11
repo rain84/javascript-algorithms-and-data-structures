@@ -1,4 +1,4 @@
-import { maxWidthRamp, maxWidthRamp2, maxWidthRamp3 } from './0962-maxWidthRamp'
+import { maxWidthRamp, maxWidthRamp2, maxWidthRamp3, maxWidthRamp4 } from './0962-maxWidthRamp'
 
 it.each(
   //  prettier-ignore
@@ -16,4 +16,5 @@ it.each(
   expect(maxWidthRamp(input)).toBe(output)
   expect(maxWidthRamp2(input)).toBe(output)
   expect(maxWidthRamp3(input)).toBe(output)
+  expect(maxWidthRamp4(input)).toBe(output)
 })
