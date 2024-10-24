@@ -1,5 +1,10 @@
 import { TreeNode } from '../utils/tree'
 
+/**
+ * {@link https://leetcode.com/problems/cousins-in-binary-tree-ii/description | 2641. Cousins in Binary Tree II}
+ *
+ * Topics: Hash Table | Tree | Depth-First Search | Breadth-First Search | Binary Tree
+ */
 export function replaceValueInTree(root: TreeNode | null): TreeNode | null {
   if (!root) return null
 

@@ -1,5 +1,10 @@
 import { TreeNode } from '../utils/tree'
 
+/**
+ * {@link https://leetcode.com/problems/kth-largest-sum-in-a-binary-tree/ | 2583. Kth Largest Level Sum in a Binary Tree}
+ *
+ * Topics: Tree | Breadth-First Search | Sorting
+ */
 export function kthLargestLevelSum(root: TreeNode | null, k: number): number {
   const res: number[] = []
   let q = [root!]
