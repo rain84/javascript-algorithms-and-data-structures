@@ -15,8 +15,13 @@ export function flipEquiv(root1: TreeNode | null, root2: TreeNode | null): boole
   return (flipEquiv(l1, l2) && flipEquiv(r1, r2)) || (flipEquiv(l1, r2) && flipEquiv(r1, l2))
 }
 
+export const flipEquiv2 = (a: TreeNode | null, b: TreeNode | null): boolean => {
+  const f = (t: TreeNode | null): string => (t ? '' + t.val + [f(t.left), f(t.right)].sort() : '')
+  return f(a) === f(b)
+}
+
 /** One-Liner */
-export const flipEquiv2 = (
+export const flipEquiv3 = (
   root1: T,
   root2: T,
   l1: T = null,
@@ -35,3 +40,11 @@ export const flipEquiv2 = (
   false
 
 type T = TreeNode | null
+
+/** TODO: trying the same approach as in flipQquiv2, but with Math */
+export const flipEquiv4 = (a: TreeNode | null, b: TreeNode | null): boolean => {
+  const f = (t: TreeNode | null): string => {
+    return t ? t.val + f(t.left) + f(t.right) : ''
+  }
+  return f(a) === f(b)
+}
