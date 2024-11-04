@@ -1,4 +1,4 @@
-import { getDigit, getLength } from './math'
+import { getDigit, getLength, transpose } from './math'
 
 it('getDigit() should work', () => {
   expect(getDigit(123, 1)).toBe(3)
@@ -9,4 +9,18 @@ it('getDigit() should work', () => {
   expect(getLength(1)).toBe(1)
   expect(getLength(10)).toBe(2)
   expect(getLength(-100)).toBe(3)
+})
+
+it('rotate() should rotate matrix', () => {
+  const matrix = [
+    [1, 2],
+    [3, 4],
+    [5, 6],
+  ]
+  expect(transpose(matrix)).toMatchObject([
+    [1, 3, 5],
+    [2, 4, 6],
+  ])
+
+  expect(transpose(transpose(matrix))).toMatchObject(matrix)
 })
