@@ -33,6 +33,9 @@ importers:
       nodemon:
         specifier: ^3.1.4
         version: 3.1.4
+      numstree:
+        specifier: 2.1.0
+        version: 2.1.0
 
 packages:
 
@@ -1158,6 +1161,10 @@ packages:
   npm-run-path@4.0.1:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
     engines: {node: '>=8'}
+
+  numstree@2.1.0:
+    resolution: {integrity: sha512-8PuZool0ipSfLoxD69VBwM6xYAUvttEaOXoCCPbsEDWGfABgUFBzCSpIFw+yAnopcRgNJZui6MH6+og0vHKnsw==}
+    engines: {node: '>=16'}
 
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
@@ -2911,6 +2918,8 @@ snapshots:
   npm-run-path@4.0.1:
     dependencies:
       path-key: 3.1.1
+
+  numstree@2.1.0: {}
 
   once@1.4.0:
     dependencies:
