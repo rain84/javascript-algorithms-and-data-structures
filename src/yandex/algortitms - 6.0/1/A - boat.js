@@ -15,13 +15,4 @@ const solution = (args) => {
   return res
 }
 
-const { createInterface } = require('node:readline')
-const args = []
-exports.solution = solution
-
-createInterface({
-  input: process.stdin,
-  output: process.stdout,
-})
-  .on('line', (line) => args.push(line.trim()))
-  .on('close', () => solution(args))
+export { solution }
