@@ -1,4 +1,4 @@
-import { canSortArray } from './3011-canSortArray'
+import { canSortArray, canSortArray2 } from './3011-canSortArray'
 
 it.each(
   //  prettier-ignore
@@ -18,4 +18,5 @@ it.each(
   ]
 )('should work %#', (input, output) => {
   expect(canSortArray(input)).toBe(output)
+  expect(canSortArray2(input)).toBe(output)
 })
