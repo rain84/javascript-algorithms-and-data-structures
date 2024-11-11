@@ -18,3 +18,22 @@ export const transpose = <T>(matrix: T[][]): T[][] => {
 
   return res
 }
+
+export const getPrimes = (n: number) => {
+  const res: number[] = []
+  let i = 2
+
+  while (res.length < n) {
+    let ok = true
+    for (const x of res) {
+      if (i % x === 0) {
+        ok = false
+        break
+      }
+    }
+    if (ok) res.push(i)
+    i++
+  }
+
+  return res
+}

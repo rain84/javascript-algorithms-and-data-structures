@@ -1,4 +1,4 @@
-import { getDigit, getLength, transpose } from './math'
+import { getDigit, getLength, getPrimes, transpose } from './math'
 
 it('getDigit() should work', () => {
   expect(getDigit(123, 1)).toBe(3)
@@ -23,4 +23,9 @@ it('rotate() should rotate matrix', () => {
   ])
 
   expect(transpose(transpose(matrix))).toMatchObject(matrix)
+})
+
+it('getPrimes() should work', () => {
+  const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23]
+  expect(getPrimes(primes.length)).toMatchObject(primes)
 })
