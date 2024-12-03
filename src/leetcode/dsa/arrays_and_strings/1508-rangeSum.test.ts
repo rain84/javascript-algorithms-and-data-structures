@@ -1,4 +1,4 @@
-import { rangeSum, rangeSum4 } from './1508-rangeSum'
+import { rangeSum, rangeSum2 } from './1508-rangeSum'
 
 it.each(
   //  prettier-ignore

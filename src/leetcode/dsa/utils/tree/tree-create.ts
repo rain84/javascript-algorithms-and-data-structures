@@ -98,4 +98,4 @@ export const createTree2 = (nums: TCreateTree2): TreeNode | null => {
 
 type A = [A, A[], A[]] | [A, A, A] | [undefined] | number | undefined | null
 export type Arr = Exclude<A, [undefined] | number | undefined | null>
-type TCreateTree2 = (number | null)[]
+export type TCreateTree2 = (number | null)[]

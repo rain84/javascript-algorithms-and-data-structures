@@ -16,5 +16,5 @@ export function longestSubarray(nums: number[]): number {
     }
   }
 
-  return Math.max(res, c)
+  return res
 }
