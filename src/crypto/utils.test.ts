@@ -1,4 +1,4 @@
-import { euler, gcd, isCoprime } from './utils'
+import { euler, gcd, isCoprime, primes } from './utils'
 
 it.each(
   //  prettier-ignore
@@ -53,4 +53,9 @@ it.each(
   ]
 )('euler() should work %#', (input, output) => {
   expect(euler(input)).toBe(output)
+})
+
+it('primes() should work', () => {
+  const output = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+  expect(primes(30)).toMatchObject(output)
 })

@@ -14,3 +14,26 @@ export const euler = (x: number) => {
 
   return c
 }
+
+/**
+ * {@link https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes}
+ */
+export const primes = (n: number): number[] => {
+  const arr = Array(n + 1).fill(1)
+  arr[0] = arr[1] = 0
+
+  for (let i = 2; i <= n; i++) {
+    if (arr[i]) {
+      for (let j = i ** 2; j <= n; j += i) {
+        arr[j] = 0
+      }
+    }
+  }
+
+  const res: number[] = []
+  for (let i = 2; i <= n; i++) {
+    if (arr[i]) res.push(i)
+  }
+
+  return res
+}
